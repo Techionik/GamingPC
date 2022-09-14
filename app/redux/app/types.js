@@ -1,0 +1,94 @@
+/**
+ * created by Inspire UI @author(dang@inspireui.com)
+ * @format
+ */
+const INITIAL_APP = 'app/INITIAL'
+const FINISH_INTRO = 'app/FINISH_INTRO'
+const DEFAULT_LANGUAGE = {
+  lang: 'en',
+  rtl: false
+}
+const SAVE_AIRPOTS_CITIES = 'home/SAVE_AIRPOTS_CITIES'
+/**
+ * notification
+ */
+const NOTIFICATION_ENABLE = 'app/notification/ENABLE'
+const NOTIFICATION_DISABLE = 'app/notification/DISABLE'
+const NOTIFICATION_TOGGLE = 'app/notification/TOGGLE'
+const SAVE_PUSH_NOTIFICATION = 'app/notification/SAVE_PUSH_NOTIFICATION'
+
+const SAVE_FCM_TOKEN = 'app/SAVE_FCM_TOKEN'
+const BANNER_COUNT = 'app/BANNER_COUNT'
+const SAVE_DEVICE_INFO = 'app/SAVE_DEVICE_INFO'
+const PN_COUNT = 'app/PN_COUNT'
+const RATING_DONE = 'app/RATING_DONE'
+const START_FETCHING = 'app/START_FETCHING'
+const STOP_FETCHING = 'app/STOP_FETCHING'
+
+const DIALOG_OPENING = 'app/DIALOG_OPENING'
+const DIALOG_CLOSING = 'app/DIALOG_CLOSING'
+const ADD_REFER_ID = 'app/ADD_REFER_ID'
+
+
+
+const PROBLEMS_LIST = 'app/PROBLEMS_LIST'
+
+/**
+ * language
+ */
+const LANGUAGE_CHANGE = 'app/language/CHANGE'
+const CHANGE_THEME = 'app/CHANGE_THEME'
+const RTL_CHANGE = 'app/rtl/CHANGE'
+
+/**
+ * netinfo
+ */
+const UPDATE_CONNECTION_STATUS = 'app/network/UPDATE_STATUS'
+
+/**
+ * toast
+ */
+const ADD_TOAST = 'app/toast/ADD'
+const REMOVE_TOAST = 'app/toast/REMOVE'
+const ADD_NOTIFICATION = 'app/notification/ADD'
+const REMOVE_NOTIFCATION = 'app/notification/REMOVE'
+
+/**
+ * sidemenu
+ */
+const SIDEMENU_OPEN = 'app/sidemenu/OPEN'
+const SIDEMENU_CLOSE = 'app/sidemenu/CLOSE'
+const SIDEMENU_TOGGLE = 'app/sidemenu/TOGGLE'
+
+export {
+  INITIAL_APP,
+  FINISH_INTRO,
+  NOTIFICATION_ENABLE,
+  NOTIFICATION_DISABLE,
+  NOTIFICATION_TOGGLE,
+  LANGUAGE_CHANGE,
+  ADD_NOTIFICATION,
+  REMOVE_NOTIFCATION,
+  RTL_CHANGE,
+  SAVE_DEVICE_INFO,
+  UPDATE_CONNECTION_STATUS,
+  SIDEMENU_OPEN,
+  SIDEMENU_CLOSE,
+  SIDEMENU_TOGGLE,
+  ADD_TOAST,
+  REMOVE_TOAST,
+  SAVE_FCM_TOKEN,
+  SAVE_PUSH_NOTIFICATION,
+  PN_COUNT,
+  DIALOG_OPENING,
+  BANNER_COUNT,
+  DIALOG_CLOSING,
+  RATING_DONE,
+  START_FETCHING,
+  STOP_FETCHING,
+  ADD_REFER_ID,
+  DEFAULT_LANGUAGE,
+  CHANGE_THEME,
+  SAVE_AIRPOTS_CITIES,
+  PROBLEMS_LIST
+}
