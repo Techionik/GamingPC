@@ -1,13 +1,15 @@
 import {Image, Text, TouchableOpacity, View} from "react-native";
 import {Color, Constants} from "../../common";
 import React from "react";
+import {useNavigation} from "@react-navigation/native";
 
 
 export default function HeaderComponent({Props, title,Drawer}) {
+    const navigation=useNavigation()
     const {t, language} = Props
     return (
         <View style={{flexDirection: "row",marginHorizontal:10, alignItems: "center", marginTop: 10,}}>
-            <TouchableOpacity style={{borderRadius: 10, backgroundColor: Color.grayback, padding: 20}}>
+            <TouchableOpacity onPress={()=>{navigation.navigate("DrawerScreen")}} style={{borderRadius: 10, backgroundColor: Color.grayback, padding: 20}}>
             </TouchableOpacity>
             {Drawer == true ?
                 <View style={{flex:1,alignItems:"center",}}>
