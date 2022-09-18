@@ -9,13 +9,7 @@ import {
 import withLanguage from "../../config/withLanguage";
 import SkipButton from "../Components/SkipButton";
 import {Color, Constants} from "../../common";
-import ButtonComponent from "../Components/ButtonComponent";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import HeaderComponent from "../Components/HeaderComponent";
-import SearchAndFilter from "../Components/SearchAndFilter";
-import SocialButton from "../Components/SocialButton";
-import HomeButtons from "../Components/HomeButtons";
-import ProductHeader from "../Components/ProductHeader";
 
 
 class ServiceStoreScreen extends React.Component {
@@ -121,7 +115,7 @@ function ServiceComponent({Props, item, index}) {
                    <Text style={{fontSize:12,fontFamily:Constants.fontFamilyMedium,color:"#E50027"}}>250 SAR</Text>
                 <TouchableOpacity style={{
                     paddingVertical: 2,
-                    paddingHorizontal: 5,
+                    paddingLeft: 5,
                     borderRadius: 5,
                     flexDirection:"row",
                     alignItems:"center",
