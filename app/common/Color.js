@@ -11,12 +11,14 @@ export default {
   main: '#fff',
   primaryDark: '#0097a7',
   rippleColor: '#0556a0',
-  primary: '#1476d1',
+  primary: '#40E0D0',
 
   primaryLight: '#666666',
   accent: '#00A859',
   accentLight: '#FFD54F',
-  gray: 'gray',
+  gray: '#787676',
+  grayback:"#F5F5F5",
+  grayIn:"#989393",
   white: '#ffffff',
   orange: '#F2711C',
   olive: '#B5CC18',
@@ -308,7 +310,7 @@ export default {
 
 // Color system
 export const white = '#efefef'
-export const grey1 = '#f7f7f7'
+export const grey1 = '#989393'
 export const grey2 = '#dddddd'
 export const grey3 = '#b8b4b6'
 export const grey4 = '#7b7b7b'

@@ -4,17 +4,24 @@ import { scale } from '../ScalingUtils'
 import Constants from '../common/Constants'
 import withLanguage from "../config/withLanguage";
 
+
 class SplashContainer extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    componentDidMount() {
+        setTimeout(()=>{
+            this.props.navigation.replace('AuthStack');
+        },1000)
+    }
 
-
-  render () {
+    render () {
     const {value} = this.props;
     const {t} = value;
 
     return (
             <View style={{ flex: 1 ,justifyContent:"center",alignItems:'center',backgroundColor:'#FFF'}}>
-              <Text>{t('inBus:amout_paid')}</Text>
-                <Image style={styles.gifStyle}  source={require('../images/Mesii.jpg')}/>
+                <Image style={styles.gifStyle}  source={require('../images/SplashLogo.png')}/>
             </View>
     )
   }
@@ -22,7 +29,7 @@ class SplashContainer extends React.Component {
 
 const styles=StyleSheet.create({
     gifStyle:{
-        width:"100%",
+        width:"60%",
         height:undefined,
         aspectRatio:1
     }
