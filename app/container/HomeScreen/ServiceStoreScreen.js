@@ -47,7 +47,7 @@ class ServiceStoreScreen extends React.Component {
                     <Image source={require('../../images/Background.png')} resizeMode={"cover"} style={{
                         borderBottomRightRadius: 30,
                         borderBottomLeftRadius: 30,
-                        zIndex: 2,
+                        zIndex: -2,
                         position: "absolute",
                         height: undefined,
                         width: "100%",
@@ -113,25 +113,28 @@ function ServiceComponent({Props, item, index}) {
         }}>
             <Image source={item.image} resizeMode={"contain"}
                    style={{height: 90, width: 90, borderRadius: 5}}/>
-            <View style={{marginLeft: 10, marginVertical: 5}}>
+            <View style={{marginLeft: 10, marginVertical: 5,flex:1}}>
                 <Text style={{fontSize: 14, fontFamily: Constants.fontFamilyMedium, color: "#000"}}>Hair Color Balyage</Text>
-
-                <Text style={{fontSize: 12, fontFamily: Constants.fontFamilyMedium, color: Color.gray,width:"50%"}}>Lorem Ipsum is simply dummy text of the
+                <Text style={{fontSize: 12, fontFamily: Constants.fontFamilyMedium, color: Color.gray,}}>Lorem Ipsum is simply dummy text of the
                     printing and typesetting industry.</Text>
-               <View style={{flex:1,flexDirection:"row",alignItems:"center",}}>
-
-                   <Text style={{fontSize:12,flex:1,fontFamily:Constants.fontFamilyMedium,color:"#E50027"}}>250 SAR</Text>
+               <View style={{flex:1,flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+                   <Text style={{fontSize:12,fontFamily:Constants.fontFamilyMedium,color:"#E50027"}}>250 SAR</Text>
                 <TouchableOpacity style={{
                     paddingVertical: 2,
-                    paddingHorizontal: 10,
+                    paddingHorizontal: 5,
                     borderRadius: 5,
-                    backgroundColor: "#40E080",
+                    flexDirection:"row",
+                    alignItems:"center",
+                    backgroundColor:Color.primary,
                 }}>
+                    <Image source={require("../../images/CartImage.png")} resizeMode={"contain"} style={{height:undefined,width:"20%",aspectRatio:1}}/>
                     <Text style={{
                         fontSize: 12,
+                        backgroundColor:"red",
                         fontFamily: Constants.fontFamilyMedium,
-                        color: "#fff"
-                    }}>{t("L:Open")}</Text>
+                        color: "#fff",
+                        marginLeft:5,
+                    }}>{t("L:AddtoCart")}</Text>
                 </TouchableOpacity>
                </View>
             </View>
