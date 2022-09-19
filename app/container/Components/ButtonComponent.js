@@ -14,7 +14,7 @@ export default function ButtonComponent({Style,title,titleStyle,onPress,}) {
             marginVertical: 20,
             marginHorizontal:20
         }, Style]}>
-            <Text style={[{fontSize:18,fontFamily:Constants.fontFamilyBold,color:"#fff"},titleStyle]}>{title}</Text>
+            <Text style={[{fontSize:18,fontFamily:Constants.fontFamilyBold,color:"#fff",includeFontPadding:false,padding:0},titleStyle]}>{title}</Text>
         </TouchableOpacity>
     )
 }

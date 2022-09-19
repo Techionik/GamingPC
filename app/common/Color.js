@@ -8,13 +8,16 @@ export default {
   google: '#d34836',
   transparent: 'rgba(207, 212, 216, 0.1)',
   backgroundColorBlue:"#254058",
+  borderGreyColor:"#C4C4C4",
 
   main: '#fff',
   primaryDark: '#0097a7',
   rippleColor: '#0556a0',
   primary: '#40E0D0',
+  redColor:"#E50027",
 
   primaryLight: '#74FEF0',
+  extraLightPrimary: '#E7FFFD',
   accent: '#00A859',
   accentLight: '#FFD54F',
   gray: '#787676',

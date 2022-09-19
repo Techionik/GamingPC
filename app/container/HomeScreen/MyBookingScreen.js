@@ -77,14 +77,15 @@ class MyBookingScreens extends React.Component {
     }
 
     render() {
-        const {t, language} = this.props.value
+        const {t, language,themeColor} = this.props.value
+        const {colors}=themeColor
         return (
             <View style={{flex: 1,backgroundColor:"#ffff"}}>
                 <HeaderComponent Location={false} title={"My Bookings"} Drawer={true} Props={this.props.value} />
 
 
                 <FlatList data={this.state.bookingList}  renderItem={({item, index}) =>
-                    <MyBookingsComponent title={item.title} image={item.image}
+                    <MyBookingsComponent taskArray={item.taskList} colors={colors} startTime={item.startTime} endTime={item.endTime} diffTime={item.diffTime} date={item.date}  title={item.title} image={item.image}
                      />
                 }/>
 

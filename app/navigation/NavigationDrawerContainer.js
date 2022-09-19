@@ -2,7 +2,7 @@
 
 import React, {Component} from 'react';
 import {
-    Dimensions,
+    Dimensions, FlatList,
     Modal,
     Platform,
     SafeAreaView, ScrollView,
@@ -30,6 +30,7 @@ import ToggleButton from "react-native-toggle-element";
 import Feather from "react-native-vector-icons/Feather";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import {changeTheme} from "../redux/app/actions";
+import {t} from "i18next";
 
 var Screenwidth = Dimensions.get('window').width; //full width
 var Screenheight = Dimensions.get('window').height;
@@ -57,7 +58,23 @@ class NavigationDrawerContainer extends Component<Props> {
             shareModal: false,
             rateModal: false,
             toggleValue:false,
-            language:"er"
+            language:"er",
+            list: [{screen: "HomeScreen", title: "Home"}, {
+                screen: "ServicesScreen",
+                title: "Service"
+            },
+                {screen: "MyBookingScreens", title: "My Booking"},
+                {screen: "LocationScreen", title: "Location"},
+                {screen: "MyWalletScreen", title: "My wallet"},
+                {screen: "MyPaymentScreen", title: "Payment"},
+                {screen: "ProfileScreen", title: "Profile"},
+                {screen: "SettingScreen", title: "Setting"},
+                {screen: "ShareFriendsScreen", title: "Share Friends"},
+                {screen: "ContactUsScreen", title: "Contact Us"},
+                {screen: "AboutUsScreen", title: "About Us"},
+                {screen: "TermConditionScreen", title: "Terms & Conditions"},
+                {screen: "TermConditionScreen", title: "LogOut"},
+            ]
 
 
         };
@@ -72,11 +89,7 @@ class NavigationDrawerContainer extends Component<Props> {
             <SafeAreaView style={{flex: 1, backgroundColor: colors?.drawerBackgroundColor}}>
 
 
-                <ScrollView showsVerticalScrollIndicator={false} style={{flex: 1}}>
-
-
-
-
+                <View showsVerticalScrollIndicator={false} style={{flex: 1}}>
 
                     <View style={{flexDirection: 'row',justifyContent:'space-between', alignItems: 'center', marginHorizontal: 20, marginTop: '10%'}}>
 
@@ -196,82 +209,31 @@ class NavigationDrawerContainer extends Component<Props> {
 
                         <View style={{width: '55%'}}>
 
-                            <View style={{height: '75%',}}>
+                            <View style={{height: '83%'}}>
 
-                                <View style={{flex: 1, marginBottom: '20%'}}>
-                                    <TextWithIcon onPress={() => {
-                                        navigation.navigate('HomeDrawer')
-                                        drawer.current?.close()
-                                    }} title={t("Home")}>
-                                    </TextWithIcon>
-                                    <TextWithIcon onPress={() => {
-                                        navigation.navigate('OutletsSceen')
-                                        drawer.current?.close()
-                                    }} title={t("Outlets")}>
-                                    </TextWithIcon>
 
-                                    <TextWithIcon onPress={() => {
-                                        navigation.navigate('BookMarkScreen')
-                                        drawer.current?.close()
-                                    }} title={t("Bookmarks")}>
-                                    </TextWithIcon>
-                                    <TextWithIcon onPress={() => {
-                                        navigation.navigate('HomeDrawer')
-                                        drawer.current?.close()
+                                <FlatList data={this.state.list} style={{marginVertical:15}}  renderItem={({item, index}) =>
 
-                                        navigation.navigate('NotificationsScreen')
-                                    }} title={t("Notification")}>
-                                    </TextWithIcon>
-                                    <TextWithIcon
-                                        onPress={() => {
-                                            navigation.navigate('SettingScreen')
-                                            drawer.current?.close()
-                                        }}
-                                        title={t("Settings")}>
-                                    </TextWithIcon>
-                                    <TextWithIcon
-                                        onPress={() => {
-                                            this.props.navigation.navigate('ContactUsScreen')
-                                            drawer.current?.close()
-                                        }}
-                                        title={t("Contact Us")}>
-                                    </TextWithIcon>
-                                    <TextWithIcon
-                                        onPress={() => {
-                                            this.setState({shareModal: true})
-                                            drawer.current?.close()
-                                        }}
-                                        title={t("Share")}>
-                                    </TextWithIcon>
-                                    <TextWithIcon
-                                        onPress={() => {
-                                            this.setState({rateModal: true})
-                                            drawer.current?.close()
-                                        }}
-                                        title={t("Rate")}>
-                                    </TextWithIcon>
-                                    <TextWithIcon exterViewStyle={{marginTop: 60}}
-                                        onPress={() => {
-                                            this.props.logout()
-                                            //
-                                            setTimeout(() => {
-                                                RNRestart.Restart()
-                                            }, 1000)
-                                            drawer.current?.close()
-                                        }}
-                                        title={t("Logout")}>
-                                    </TextWithIcon>
-                                </View>
+                                    <Text onPress={() => {
+                                        this.props.navigation.navigate(item.screen)
+                                    }} style={{ fontSize: 16 ,
+                                        marginTop:index===this.state.list.length-1?60:25,
+                                        paddingLeft:10,
+                                        includeFontPadding: false,
+                                        fontFamily: Constants.fontFamilyBold,
 
+                                        color: '#fff'}}>{item.title}</Text>
+
+                                }/>
 
                             </View>
-                            <View style={{height: '15%'}}/>
+                            <View style={{height: '5%'}}/>
                         </View>
                         <View style={{width: '30%',}}/>
 
                     </View>
 
-                </ScrollView>
+                </View>
 
 
             </SafeAreaView>
