@@ -30,6 +30,7 @@ import drawer from "./drawer_ref";
 import NavigationDrawerContainer from "./NavigationDrawerContainer";
 
 import ScalingDrawer from 'react-native-scaling-drawer';
+import AddToCartScreen from "../container/HomeScreen/AddToCartScreen";
 const  AppDrawerNavigator = createStackNavigator();
 function DrawerNavigator() {
     return (
@@ -110,7 +111,7 @@ const homeStack=()=>{
 
 const AppStack = ({props}) => {
     return (
-        <Stack.Navigator initialRouteName={"SettingScreen"}>
+        <Stack.Navigator initialRouteName={"AddToCartScreen"}>
             <Stack.Screen name={"SplashContainer"} component={SplashContainer} options={{headerShown: false}}/>
             <Stack.Screen name={"AuthStack"} component={AuthStack} options={{headerShown: false}}/>
             <Stack.Screen name={"homeStack"} component={AppDrawerNavigation} options={{headerShown: false}}/>
@@ -125,6 +126,7 @@ const AppStack = ({props}) => {
             <Stack.Screen name={"ShareFriendsScreen"} component={ShareFriendsScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"ContactUsScreen"} component={ContactUsScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"TermConditionScreen"} component={TermConditionScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"AddToCartScreen"} component={AddToCartScreen} options={{headerShown: false}}/>
 
         </Stack.Navigator>
     )
