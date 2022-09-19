@@ -4,20 +4,21 @@ import React from "react";
 import {useNavigation} from "@react-navigation/native";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import drawer from "../../navigation/drawer_ref";
+import AntDesign from "react-native-vector-icons/AntDesign";
 
 
-export default function HeaderComponent({Props, title,Drawer,Location,titleStyle}) {
+export default function HeaderComponent({Props, title,Drawer,Location,titleStyle,back}) {
 
     const navigation=Props
     const {t, language} = Props
     return (
-        <View style={{flexDirection: "row",marginHorizontal:10, alignItems: "center", marginTop: 10,}}>
+        <View style={{flexDirection: "row",marginHorizontal:10,paddingBottom:10, alignItems: "center", marginTop: 10,}}>
             <TouchableOpacity onPress={()=>{drawer.current.open()}} style={{borderRadius: 5, backgroundColor: Color.grayback, padding: 10}}>
                 <MaterialIcons name={"sort"} size={25} color={Color.grayIn}/>
             </TouchableOpacity>
             {Drawer == true ?
-                <View style={{flex:Location===false?0.9:1,alignItems:"center",}}>
-                    <Text style={[{fontSize: 16, fontFamily: Constants.fontFamilyBold, color: "#000"},titleStyle]}>{title}</Text></View> :
+                <View style={{flex:Location===false&&back==false?0.9:1,alignItems:"center",}}>
+                    <Text style={[{includeFontPadding:false,padding:0,fontSize: 16, fontFamily: Constants.fontFamilyBold, color: "#000"},titleStyle]}>{title}</Text></View> :
                <>
                 <View style={{marginLeft: 10, alignSelf: "flex-start"}}>
                     <Text style={{fontSize: 18, fontFamily: Constants.fontFamilyBold, color: "#000"}}>Hi Galeria !</Text>
@@ -29,8 +30,11 @@ export default function HeaderComponent({Props, title,Drawer,Location,titleStyle
                 </View>
                 <View style={{flex:1}}/>
                 <Image source={require('../../images/NotficationICon.png')} resizeMode={"contain"} style={{height:undefined,width:"10%",marginRight:10,aspectRatio:1}}/></>}
-            {Location===false?
-               null
+            {Location===false&&back===true?
+                 <View>
+                     <AntDesign name={"arrowleft"} color={"#fff"} size={25}/>
+                     <Text style={{fontSize:12,fontFamily:Constants.Bold,color:"#fff",includeFontPadding:false,padding:0}}>Back</Text>
+                 </View>
                 :
                 <TouchableOpacity style={{
                 width: 80,

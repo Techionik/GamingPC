@@ -34,6 +34,7 @@ import AddToCartScreen from "../container/HomeScreen/AddToCartScreen";
 import RattingReviewsScreen from "../container/HomeScreen/RattingReviewsScreen";
 import NotificationScreen from "../container/HomeScreen/NotificationScreen";
 import AppointmentScreen from "../container/HomeScreen/AppointmentScreen";
+import CehckOutScreen from "../container/HomeScreen/CheckOutScreen";
 const  AppDrawerNavigator = createStackNavigator();
 function DrawerNavigator() {
     return (
@@ -114,7 +115,7 @@ const homeStack=()=>{
 
 const AppStack = ({props}) => {
     return (
-        <Stack.Navigator initialRouteName={"NotificationScreen"}>
+        <Stack.Navigator initialRouteName={"CehckOutScreen"}>
             <Stack.Screen name={"SplashContainer"} component={SplashContainer} options={{headerShown: false}}/>
             <Stack.Screen name={"AuthStack"} component={AuthStack} options={{headerShown: false}}/>
             <Stack.Screen name={"homeStack"} component={AppDrawerNavigation} options={{headerShown: false}}/>
@@ -133,6 +134,7 @@ const AppStack = ({props}) => {
             <Stack.Screen name={"RattingReviewsScreen"} component={RattingReviewsScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"NotificationScreen"} component={NotificationScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"AppointmentScreen"} component={AppointmentScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"CehckOutScreen"} component={CehckOutScreen} options={{headerShown: false}}/>
 
         </Stack.Navigator>
     )

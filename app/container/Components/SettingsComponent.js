@@ -1,28 +1,34 @@
+import React from "react"
 import {Text, TouchableOpacity} from "react-native";
 import {Color, Constants} from "../../common";
 import ToggleButton from "react-native-toggle-element";
-import React from "@types/react";
+import AntDesign from "react-native-vector-icons/AntDesign";
 
 
-export default function SettingsComponent({toogle,onPress}){
+export default function SettingsComponent({toogle,onTogglePress,leftTitle,rightTitle,onPress,style,titleStyle,activeStyle,trackBar,colors,title,value}){
     return(
-        <TouchableOpacity onPress={onPress} style={{flexDirection:"row",alignItems:"center",marginTop:10}}>
-            <Text style={{fontSize:14,flex:1,includeFontPadding:false,padding:0,fontFamily:Constants.fontFamilyRegular,color:colors.blackAndWhite}}>Edit</Text>
+        <TouchableOpacity onPress={onPress} style={[{flexDirection:"row",alignItems:"center",marginVertical:5},style]}>
+            <Text style={[{fontSize:14,flex:1,includeFontPadding:false,padding:0,fontFamily:Constants.fontFamilyRegular,color:colors.blackAndWhite},titleStyle]}>{title}</Text>
             {toogle==true?
                 <ToggleButton
-                trackBar={{
+
+                    onPress={(newState) => onTogglePress(newState)}
+                trackBar={trackBar??{
                 height:15,
                 width:35,
                 inActiveBackgroundColor:"#787676",
                 activeBackgroundColor:Color.primary
             }}
-                thumbButton={{
+                leftComponent={leftTitle??null}
+                rightComponent={rightTitle??null}
+                thumbButton={activeStyle??{
                 height:15,
                 width:15,
                 inActiveBackgroundColor:"#fff",
                 activeBackgroundColor:"#fff"
             }}
-                value={true}
+
+                value={value}
                 />:
             <AntDesign name={"right"} size={15} color={colors.greyToTheme}/>
             }
