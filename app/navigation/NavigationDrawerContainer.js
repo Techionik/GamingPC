@@ -63,8 +63,6 @@ class NavigationDrawerContainer extends Component<Props> {
         };
 
     }
-
-
     render() {
         const {navigation, value} = this.props;
         const {t, language,themeColor} = value;
