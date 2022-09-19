@@ -3,14 +3,16 @@ import {Color, Constants} from "../../common";
 import React from "react";
 import {useNavigation} from "@react-navigation/native";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import drawer from "../../navigation/drawer_ref";
 
 
 export default function HeaderComponent({Props, title,Drawer,Location}) {
-    const navigation=useNavigation()
+
+    const navigation=Props
     const {t, language} = Props
     return (
         <View style={{flexDirection: "row",marginHorizontal:10, alignItems: "center", marginTop: 10,}}>
-            <TouchableOpacity onPress={()=>{navigation.navigate("DrawerScreen")}} style={{borderRadius: 5, backgroundColor: Color.grayback, padding: 10}}>
+            <TouchableOpacity onPress={()=>{drawer.current.open()}} style={{borderRadius: 5, backgroundColor: Color.grayback, padding: 10}}>
                 <MaterialIcons name={"sort"} size={25} color={Color.grayIn}/>
             </TouchableOpacity>
             {Drawer == true ?

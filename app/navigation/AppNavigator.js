@@ -77,9 +77,9 @@ export  class AppDrawerNavigation extends Component {
 
 }
 let defaultScalingDrawerConfig = {
-    scalingFactor: 0.9,
+    scalingFactor: 0.65,
 
-    minimizeFactor: 0.6,
+    minimizeFactor: 0.5,
 
     swipeOffset: 20
 };

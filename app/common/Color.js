@@ -7,20 +7,21 @@ export default {
   facebook: '#3b5998',
   google: '#d34836',
   transparent: 'rgba(207, 212, 216, 0.1)',
+  backgroundColorBlue:"#254058",
 
   main: '#fff',
   primaryDark: '#0097a7',
   rippleColor: '#0556a0',
   primary: '#40E0D0',
 
-  primaryLight: '#666666',
+  primaryLight: '#74FEF0',
   accent: '#00A859',
   accentLight: '#FFD54F',
   gray: '#787676',
   grayback:"#F5F5F5",
   grayIn:"#989393",
   white: '#ffffff',
-  orange: '#F2711C',
+  orange: '#FF9A6C',
   olive: '#B5CC18',
   green: '#51d96c',
   teal: '#00B5AD',
@@ -332,7 +333,10 @@ export const lightTheme = {
     screenBackgroundColor:'white',
    fieldBackgroundColor:'#F5F5F5',
    fieldTextColor:'#787676',
-   blackAndWhite:'#000000'
+   blackAndWhite:'#000000',
+    drawerBackgroundColor:'#40E0D0',
+    languageTextColor:"#455A64",
+    InactivelanguageTextColor:"#989393"
   }
 }
 
@@ -343,7 +347,11 @@ export const darkTheme = {
     screenBackgroundColor:'#263238',
     fieldBackgroundColor:'#6A7F91',
     fieldTextColor:'#FFFFFF',
-    blackAndWhite:'#FFFFFF'
+    blackAndWhite:'#FFFFFF',
+    drawerBackgroundColor:'#263238',
+    languageTextColor:"#fff",
+    InactivelanguageTextColor:"#263238"
+
 
   }
 }

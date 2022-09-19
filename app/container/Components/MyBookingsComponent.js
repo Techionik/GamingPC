@@ -20,7 +20,7 @@ export default function MyBookingsComponent({Style,image,title,titleStyle,onPres
            <Image resizeMode={"center"} source={image} style={{height:50,width:60}}/>
             <Text style={[{fontSize:16,fontFamily:Constants.fontFamilyRegular,color:"#000"},titleStyle]}>{title}</Text>
 
-            <Text style={[{fontSize:12,fontFamily:Constantss},titleStyle]}>{title}</Text>
+            <Text style={[{fontSize:12,},titleStyle]}>{title}</Text>
         </View>
 
         </View>
