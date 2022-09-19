@@ -71,8 +71,6 @@ class TermConditionScreen extends React.Component {
                     <CheckBoxComponent style={{marginLeft:10}} title={"I agree with the Terms & Conditions."} theme={themeColor}/>
                     <CheckBoxComponent style={{marginLeft:10}} title={"I agree with Local Renovators Privacy Policy."} theme={themeColor}/>
 
-
-
                 </View>
             </View>
 

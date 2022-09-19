@@ -30,7 +30,7 @@ const Router = (props) => {
     }, [languagee])
 
     const {t, i18n} = useTranslation();
-    const themeColor = theme === 'light' ? lightTheme : darkTheme
+    const themeColor = theme === 'light' ? darkTheme : darkTheme
     const barStyle = theme === 'light' ? Color.primary : '#121212'
     let languageObj;
     if (i18n.language !== languagee) {

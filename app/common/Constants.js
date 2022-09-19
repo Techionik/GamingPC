@@ -10,6 +10,7 @@ const Constants = {
   fontFamilySemiBold:"Poppins-Medium",
   fontFamilyBold: 'Poppins-SemiBold',
   fontFamilyBoldItalic: 'Poppins-BoldItalic',
+  Bold:"Poppins-Bold",
   // fontFamilyMediumItalic: 'Poppins-MediumItalic',
   fontFamilyMediumItalic: 'Poppins-Medium',
   // fontFamilyRegularItalic: 'Poppins-Italic',

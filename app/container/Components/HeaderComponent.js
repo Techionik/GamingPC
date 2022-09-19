@@ -6,7 +6,7 @@ import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import drawer from "../../navigation/drawer_ref";
 
 
-export default function HeaderComponent({Props, title,Drawer,Location}) {
+export default function HeaderComponent({Props, title,Drawer,Location,titleStyle}) {
 
     const navigation=Props
     const {t, language} = Props
@@ -17,7 +17,7 @@ export default function HeaderComponent({Props, title,Drawer,Location}) {
             </TouchableOpacity>
             {Drawer == true ?
                 <View style={{flex:Location===false?0.9:1,alignItems:"center",}}>
-                    <Text style={{fontSize: 16, fontFamily: Constants.fontFamilyRegular, color: "#000"}}>{title}</Text></View> :
+                    <Text style={[{fontSize: 16, fontFamily: Constants.fontFamilyBold, color: "#000"},titleStyle]}>{title}</Text></View> :
                <>
                 <View style={{marginLeft: 10, alignSelf: "flex-start"}}>
                     <Text style={{fontSize: 18, fontFamily: Constants.fontFamilyBold, color: "#000"}}>Hi Galeria !</Text>

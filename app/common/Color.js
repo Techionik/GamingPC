@@ -343,6 +343,8 @@ export const lightTheme = {
     greenBorder:"#40E0D0",
     whiteToGreen:"#fff",
     blackToGreen:'#000',
+    greyToWhite:"#787676",
+    greyToTheme:"#787676"
   }
 }
 
@@ -361,8 +363,10 @@ export const darkTheme = {
     BackgroundView:"#6A7F91",
     text:"#ffffff",
     greenBorder:"#fff",
-    whiteToGreen:"#BFFFF9",
-    blackToGreen:"#BFFFF9"
+    whiteToGreen:"#40E0D0",
+    blackToGreen:"#40E0D0",
+    greyToWhite:"#fff",
+    greyToTheme:"#40E0D0"
 
   }
 }
