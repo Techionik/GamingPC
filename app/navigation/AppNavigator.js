@@ -114,7 +114,7 @@ const homeStack=()=>{
 
 const AppStack = ({props}) => {
     return (
-        <Stack.Navigator initialRouteName={"homeStack"}>
+        <Stack.Navigator initialRouteName={"NotificationScreen"}>
             <Stack.Screen name={"SplashContainer"} component={SplashContainer} options={{headerShown: false}}/>
             <Stack.Screen name={"AuthStack"} component={AuthStack} options={{headerShown: false}}/>
             <Stack.Screen name={"homeStack"} component={AppDrawerNavigation} options={{headerShown: false}}/>

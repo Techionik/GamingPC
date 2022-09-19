@@ -8,6 +8,7 @@ import {
 } from 'react-native'
 import withLanguage from "../../config/withLanguage";
 import {Color, Constants} from "../../common";
+import HeaderComponent from "../Components/HeaderComponent";
 
 
 
@@ -24,9 +25,13 @@ class NotificationScreen extends React.Component {
         return (
                 <View style={{flex: 1,backgroundColor:colors.screenBackgroundColor}}>
 
+                    <HeaderComponent Location={false} title={"Notification"} Drawer={true} Props={this.props.value} />
 
 
-            </View>
+
+
+
+                </View>
 
         );
     }

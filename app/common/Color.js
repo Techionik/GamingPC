@@ -9,6 +9,7 @@ export default {
   transparent: 'rgba(207, 212, 216, 0.1)',
   backgroundColorBlue:"#254058",
   borderGreyColor:"#C4C4C4",
+  starColor:"#F24E1E",
 
   main: '#fff',
   primaryDark: '#0097a7',
@@ -16,7 +17,7 @@ export default {
   primary: '#40E0D0',
   redColor:"#E50027",
 
-  primaryLight: '#74FEF0',
+  primaryLight: 'rgba(64, 224, 208, 0.27)',
   extraLightPrimary: '#E7FFFD',
   accent: '#00A859',
   accentLight: '#FFD54F',
@@ -330,6 +331,8 @@ export const darkPrimary = '#212242'
 export const darkSecondary = '#262b49'
 export const lightblack = '#292929'
 export const darkgrey = '#7b7b7b'
+
+
 export const lightTheme = {
   key: 'light',
   colors: {
@@ -338,16 +341,21 @@ export const lightTheme = {
    fieldTextColor:'#787676',
    blackAndWhite:'#000000',
     drawerBackgroundColor:'#40E0D0',
+    redOrGreen:'#E50027',
     languageTextColor:"#455A64",
     InactivelanguageTextColor:"#989393",
     componentBackground:"#F5F5F5",
-    BackgroundView:"#F1FFFE",
+    BackgroundView:"#f1fffe",
     text:"#000",
     greenBorder:"#40E0D0",
     whiteToGreen:"#fff",
+    whiteAndBlue:"#fff",
     blackToGreen:'#000',
     greyToWhite:"#787676",
-    greyToTheme:"#787676"
+    greyToTheme:"#787676",
+    whiteToGrey:"#fff",
+    lightGreenToGreen:"rgba(64, 224, 208, 0.27)",
+
   }
 }
 
@@ -360,16 +368,20 @@ export const darkTheme = {
     fieldTextColor:'#FFFFFF',
     blackAndWhite:'#FFFFFF',
     drawerBackgroundColor:'#263238',
+    redOrGreen:'#40E0D0',
     languageTextColor:"#fff",
     InactivelanguageTextColor:"#263238",
     componentBackground:"#263238",
     BackgroundView:"#6A7F91",
     text:"#ffffff",
     greenBorder:"#fff",
+    whiteAndBlue:"#254058",
     whiteToGreen:"#40E0D0",
     blackToGreen:"#40E0D0",
     greyToWhite:"#fff",
-    greyToTheme:"#40E0D0"
+    greyToTheme:"#40E0D0",
+    lightGreenToGreen:"#40E0D0",
+    whiteToGrey:"#6A7F91",
 
   }
 }

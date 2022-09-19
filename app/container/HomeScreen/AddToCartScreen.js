@@ -18,7 +18,33 @@ class AddToCartScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            itemList:[
+                {
+                    image:require("../../images/S2.png"),
+                    title:"Hair Wash ",
+                    numberofPerson:"4",
+                    price:"434",
+                    quantity:"4",
 
+                },
+                {
+                    image:require("../../images/S1.png"),
+                    title:"Hair Balyage",
+                    numberofPerson:"2",
+                    price:"234",
+                    quantity:"2",
+
+                },
+                {
+                    image:require("../../images/S2.png"),
+                    title:"Nails Art",
+                    numberofPerson:"1",
+                    price:"434",
+                    quantity:"1",
+
+                },
+
+            ]
         }
     }
 
@@ -28,14 +54,9 @@ class AddToCartScreen extends React.Component {
         return (
                 <View style={{flex: 1,backgroundColor:colors.screenBackgroundColor}}>
                     <HeaderComponent Location={false} title={"Add To Cart"} Drawer={true} Props={this.props.value} />
-
-
-                    <FlatList data={this.state.bookingList}  renderItem={({item, index}) =>
-                       <AddToCartComponent/>
+                    <FlatList showsVerticalScrollIndicator={false}  style={{marginHorizontal:15,marginBottom:20}} data={this.state.itemList}  renderItem={({item, index}) =>
+                       <AddToCartComponent image={item.image} quantity={item.quantity} price={item.price} numberofPerson={item.numberofPerson} title={item.title} colors={colors}/>
                     }/>
-
-
-
 
                 </View>
 

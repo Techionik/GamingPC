@@ -5,29 +5,26 @@ import colors from "react-native/Libraries/NewAppScreen/components/Colors";
 import ButtonComponent from "./ButtonComponent";
 
 
-export default function MyBookingsComponent({Style,image,title,titleStyle,taskArray,colors,date,startTime,endTime,diffTime}) {
+export default function ReviewRatingComponent({Style,image,title,titleStyle,taskArray,colors,date,startTime,endTime,diffTime}) {
 
     return (
             <View  style={[{
                 borderRadius: 10,
-                backgroundColor: "#fff",
+                backgroundColor: colors.whiteToGrey,
                 paddingVertical: 10,
                 paddingHorizontal:15,
                 marginVertical: 10,
                 borderColor:Color.primary,
                 borderWidth:0.4,
-                marginHorizontal:15,
-                elevation:2
+
 
             }, Style]}>
-                <View style={{flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-
-                    <View style={{flexDirection:'row',alignItems:'center'}}>
-               <Image resizeMode={"center"} source={image} style={{height:50,width:60}}/>
+                <Image resizeMode={"cover"} source={image} style={{height:70,width:"100%",backgroundColor:'red'}}/>
+                <View style={{flexDirection:"row",alignItems:"center",justifyContent:"space-between",marginTop:10}}>
                 <Text style={[{fontSize:14,fontFamily:Constants.fontFamilyRegular,color:colors.blackAndWhite,marginLeft:3},titleStyle]}>{title}</Text>
-                    </View>
-                <Text style={[{fontSize:11,fontFamily:Constants.fontFamilyBold,color:colors.blackAndWhite,backgroundColor:Color.primaryLight,paddingHorizontal:10,paddingVertical:3,borderRadius:5,},titleStyle]}>Upcoming</Text>
+                <Text style={[{fontSize:11,fontFamily:Constants.fontFamilyBold,color:colors.blackAndWhite,backgroundColor:colors.lightGreenToGreen,paddingHorizontal:10,paddingVertical:3,borderRadius:5,},titleStyle]}>completed</Text>
             </View>
+
                 <View style={{height:1,width:"100%",backgroundColor:Color.borderGreyColor,alignSelf:'center',marginVertical:8}}></View>
                 <View style={{flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
 
@@ -39,9 +36,7 @@ export default function MyBookingsComponent({Style,image,title,titleStyle,taskAr
                 </View>
 
                 </View>
-
-
-                <FlatList style={{marginVertical:15,backgroundColor:Color.extraLightPrimary,borderRadius:10,paddingHorizontal:16,paddingVertical:7}} data={taskArray}  renderItem={({item, index}) =>
+                <FlatList style={{marginTop:15,marginBottom:8,backgroundColor:Color.extraLightPrimary,borderRadius:10,paddingHorizontal:16,paddingVertical:7}} data={taskArray}  renderItem={({item, index}) =>
 
                     <View style={{flexDirection:"row",alignItems:"center",justifyContent:"space-between",marginTop:5}}>
 
@@ -55,7 +50,6 @@ export default function MyBookingsComponent({Style,image,title,titleStyle,taskAr
 
                 }/>
 
-                <ButtonComponent title={"Cancel"} Style={{width:"60%",alignSelf:'center',paddingVertical:8,marginVertical:10}}  titleStyle={{fontFamily:Constants.fontFamilySemiBold,fontSize:16}}/>
 
             </View>
     )
