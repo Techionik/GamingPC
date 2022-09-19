@@ -1,5 +1,5 @@
 import axios from "axios";
-import * as globals from "../../../globals";
+
 import store from "../../store/configureStore";
 import {logout} from "../../redux/user/operations";
 
@@ -16,8 +16,8 @@ export default class RestApi {
             baseURL: 'https://bookme.pk/REST/API/rest_api.php?',
             timeout: 50000,
             headers: {
-                'Authorization': globals.AUTH_TOKEN,
-                'App-Version': globals.AppVersion,
+                'Authorization': "",
+                'App-Version': "",
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             }
@@ -27,8 +27,8 @@ export default class RestApi {
             baseURL: 'https://bookme.pk/api/v2',
             timeout: 50000,
             headers: {
-                'Authorization': globals.AUTH_TOKEN,
-                'App-Version': globals.AppVersion,
+                'Authorization': "",
+                'App-Version':"",
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             }
@@ -39,8 +39,8 @@ export default class RestApi {
             baseURL: `https://bookme.pk/api/v1`,
             timeout: 50000,
             headers: {
-                'Authorization': globals.AUTH_TOKEN,
-                'App-Version': globals.AppVersion,
+                'Authorization': "",
+                'App-Version': "",
             }
         });
 
@@ -48,7 +48,7 @@ export default class RestApi {
             baseURL: `https://cricket.bookme.pk`,
             timeout: 50000,
             headers: {
-                'Authorization': globals.AUTH_TOKEN,
+                'Authorization': "",
             }
         });
     }
@@ -72,8 +72,8 @@ export default class RestApi {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': globals.AUTH_TOKEN,
-                    'App-Version': globals.AppVersion,
+                    'Authorization': "",
+                    'App-Version': "",
                 }
             });
         }
@@ -89,8 +89,8 @@ export default class RestApi {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': globals.AUTH_TOKEN,
-                    'App-Version': globals.AppVersion,
+                    'Authorization': "",
+                    'App-Version': "",
                 }
             });
             // this.intiateInterceptor(this.instanceV1);
@@ -109,8 +109,8 @@ export default class RestApi {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': globals.AUTH_TOKEN,
-                    'App-Version': globals.AppVersion,
+                    'Authorization': "",
+                    'App-Version': "",
                 }
             });
             // this.intiateInterceptor(this.instanceV0);
@@ -127,8 +127,8 @@ export default class RestApi {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': globals.AUTH_TOKEN,
-                    'App-Version': globals.AppVersion,
+                    'Authorization': "",
+                    'App-Version': "",
                 }
             });
         } else {

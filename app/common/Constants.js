@@ -7,6 +7,7 @@ const Constants = {
   Language: 'English', // Arabic, English. Default to set redux. Only use first time
   fontFamilyRegular: 'Poppins-Regular',
   fontFamilyMedium: 'Poppins-Medium',
+  fontFamilySemiBold:"Poppins-Medium",
   fontFamilyBold: 'Poppins-SemiBold',
   fontFamilyBoldItalic: 'Poppins-BoldItalic',
   // fontFamilyMediumItalic: 'Poppins-MediumItalic',

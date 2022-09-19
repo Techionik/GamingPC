@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import { NavigationContainer } from "@react-navigation/native";
 import { isReadyRef, navigationRef } from "./RootNavigation";
 import {createStackNavigator} from "@react-navigation/stack"
@@ -26,9 +26,63 @@ import SettingScreen from "../container/HomeScreen/SettingScreen";
 import ShareFriendsScreen from "../container/HomeScreen/ShareFriendsScreen";
 import ContactUsScreen from "../container/HomeScreen/ContactUsScreen";
 import TermConditionScreen from "../container/HomeScreen/TermConditionScreen";
+import drawer from "./drawer_ref";
+import NavigationDrawerContainer from "./NavigationDrawerContainer";
+
+import ScalingDrawer from 'react-native-scaling-drawer';
+const  AppDrawerNavigator = createStackNavigator();
+function DrawerNavigator() {
+    return (
+
+        <AppDrawerNavigator.Navigator   initialRouteName='HomeDrawer'>
+            <AppDrawerNavigator.Screen name="HomeDrawer" component={homeStack} options={{ headerShown: false, gesturesEnabled: false }} />
+        </AppDrawerNavigator.Navigator>
+    );
+}
+const mapStateToProps2 = ({app}) => ({
+    lang:app?.language?.lang,
+    rtl:app?.language?.rtl,
+
+});
+
+@connect(
+    mapStateToProps2,
+    {}
+)
+
+export  class AppDrawerNavigation extends Component {
+
+    //TODO:- constructor
+    constructor(props) {
+        super(props);
+    }
 
 
+    render() {
+        return (
+            <ScalingDrawer
+                frontStyle={{backgroundColor: "black"}}
+                ref={drawer}
+                position={this.props.rtl?"right":'left'}
+                content={
+                    <NavigationDrawerContainer      drawer={drawer} navigation={this.props.navigation}/>
+                }
+                {...defaultScalingDrawerConfig}>
+                <DrawerNavigator
+                    onStateChange={(state) => console.log('New state is', state)}
+                />
+            </ScalingDrawer>
+        );
+    }
 
+}
+let defaultScalingDrawerConfig = {
+    scalingFactor: 0.9,
+
+    minimizeFactor: 0.6,
+
+    swipeOffset: 20
+};
 
 const Stack = createStackNavigator()
 const AuthStack=()=>{
@@ -59,7 +113,7 @@ const AppStack = ({props}) => {
         <Stack.Navigator initialRouteName={"SplashContainer"}>
             <Stack.Screen name={"SplashContainer"} component={SplashContainer} options={{headerShown: false}}/>
             <Stack.Screen name={"AuthStack"} component={AuthStack} options={{headerShown: false}}/>
-            <Stack.Screen name={"homeStack"} component={homeStack} options={{headerShown: false}}/>
+            <Stack.Screen name={"homeStack"} component={AppDrawerNavigation} options={{headerShown: false}}/>
             <Stack.Screen name={"MapScreen"} component={MapScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"DrawerScreen"} component={DrawerScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"MyBookingScreens"} component={MyBookingScreens} options={{headerShown: false}}/>

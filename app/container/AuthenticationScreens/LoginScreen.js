@@ -19,20 +19,23 @@ class LoginScreen extends React.Component {
     }
 
     render() {
-        const {t, language} = this.props?.value
+        const {t, language,themeColor} = this.props?.value
+        const {colors}=themeColor
+
+
         return (
-            <View style={{flex: 1, backgroundColor: "#fff", paddingTop: 30, paddingHorizontal: 15}}>
+            <View style={{flex: 1, backgroundColor:colors.screenBackgroundColor , paddingTop: 30, paddingHorizontal: 15}}>
                 <ImageBackground source={require('../../images/LoginImage.png')} resizeMode={"contain"}
                                  style={{aspectRatio: 1.5, width: "100%", height: undefined}}>
                     <SkipButton Props={this.props?.value}/>
                 </ImageBackground>
                 <Text
-                    style={{color: "#000", fontFamily: Constants.fontFamilyBold, fontSize: 22}}>{t("Auth:Login")}</Text>
-                <Text style={{color: Color.gray, fontFamily: Constants.fontFamilyBold, fontSize: 12}}>Lorem Ipsum is
+                    style={{color:  colors?.blackAndWhite, fontFamily: Constants.fontFamilyBold, fontSize: 22}}>{t("Auth:Login")}</Text>
+                <Text style={{color: colors?.fieldTextColor, fontFamily: Constants.fontFamilyBold, fontSize: 12}}>Lorem Ipsum is
                     simply dummy text of the printing and typesetting industry. Lorem Ipsum</Text>
                 <View style={{marginTop: 20}}>
-                    <FieldComponent Icon={require('../../images/MailIcon.png')} Placeholder={t("Auth:EmailField")}/>
-                    <FieldComponent secureTextEntry={true} Icon={require('../../images/PasswordIcon.png')}
+                    <FieldComponent theme={colors}  Icon={require('../../images/MailIcon.png')} Placeholder={t("Auth:EmailField")}/>
+                    <FieldComponent theme={colors} secureTextEntry={true} Icon={require('../../images/PasswordIcon.png')}
                                     IconStyle={{bottom: -4}} Placeholder={t("Auth:Password")}/>
                     <Text onPress={()=>{this.props.navigation.navigate("ForgotPasswordScreen")}} style={{
                         fontSize: 14,
@@ -49,13 +52,13 @@ class LoginScreen extends React.Component {
                     style={{flexDirection: "row", paddingVertical: 20, justifyContent: "center", alignItems: "center"}}>
                     <SocialButton Icon={require('../../images/GoogleIcon.png')}/>
                     <SocialButton Icon={require('../../images/FacebookIcon.png')} Style={{marginHorizontal: 20}}/>
-                    <SocialButton Icon={require('../../images/AppleIcon.png')} IconStyle={{left: -1}}/>
+                    <SocialButton Icon={require('../../images/AppleIcon.png')}  IconStyle={{left: -1,tintColor:colors?.blackAndWhite}}/>
                 </View>
                 <Text style={{
                     marginBottom: 10,
                     fontSize: 14,
                     fontFamily: Constants.fontFamilyRegular,
-                    color: "#000",
+                    color: colors?.blackAndWhite,
                     alignSelf: "center"
                 }}>{t("Auth:AnotherAccount")}<Text onPress={()=>{this.props.navigation.navigate("SignupScreen")}} style={{
                     fontSize: 16,
@@ -77,17 +80,18 @@ function OrLoginWith( {
 
 )
 {
-    const {t, language} = Props
+    const {t, language,themeColor} = Props
+
     return (
         <View style={{justifyContent: "center", alignItems: "center", flexDirection: "row"}}>
-            <View style={{height: 0.5, width: 70, backgroundColor: "#787676"}}/>
+            <View style={{height: 0.5, width: 70, backgroundColor:themeColor?.colors?.fieldTextColor}}/>
             <Text style={{
                 fontSize: 12,
                 fontFamily: Constants.fontFamilyMedium,
-                color: "#787676",
+                color: themeColor?.colors?.fieldTextColor,
                 marginHorizontal: 10
             }}>{t("Auth:Continuewith")}</Text>
-            <View style={{height: 0.5, width: 70, backgroundColor: "#787676"}}/>
+            <View style={{height: 0.5, width: 70, backgroundColor: themeColor?.colors?.fieldTextColor}}/>
         </View>
     )
 }

@@ -1,13 +1,7 @@
 import * as actions from "./actions";
-import {downloadAudio, loginSuccess, registerFailure, saveAllStories} from "./actions";
+import {loginSuccess, registerFailure} from "./actions";
 import RestApi from "../../services/restclient/RestApi";
 import {toast} from "../../Omni";
-import * as globals from "../../../globals";
-import {closeDialog, openDialog, startPointClaim, stopPointClaim} from "../app/actions";
-import * as axios from "axios";
-import moment from "moment";
-import {EventRegister} from 'react-native-event-listeners'
-import Constants from "../../common/Constants";
 
 
 export const login = (data) => (dispatch) => {
@@ -33,7 +27,7 @@ export const register = (data) => (dispatch) => {
     try {
         const {name, phoneNumber, email, password, iso, fcmToken, refer_user_id, countryCode, deviceInfo} = data;
         let params = {
-            "api_key": globals.API_KEY,
+            "api_key": "",
             'email': email,
             'name': name,
             'password': password,
