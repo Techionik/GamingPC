@@ -26,3 +26,4 @@ export default function MyBookingsComponent({Style,image,title,titleStyle,onPres
         </View>
     )
 }
+
