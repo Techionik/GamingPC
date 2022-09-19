@@ -336,7 +336,13 @@ export const lightTheme = {
    blackAndWhite:'#000000',
     drawerBackgroundColor:'#40E0D0',
     languageTextColor:"#455A64",
-    InactivelanguageTextColor:"#989393"
+    InactivelanguageTextColor:"#989393",
+    componentBackground:"#F5F5F5",
+    BackgroundView:"#F1FFFE",
+    text:"#000",
+    greenBorder:"#40E0D0",
+    whiteToGreen:"#fff",
+    blackToGreen:'#000',
   }
 }
 
@@ -350,8 +356,13 @@ export const darkTheme = {
     blackAndWhite:'#FFFFFF',
     drawerBackgroundColor:'#263238',
     languageTextColor:"#fff",
-    InactivelanguageTextColor:"#263238"
-
+    InactivelanguageTextColor:"#263238",
+    componentBackground:"#263238",
+    BackgroundView:"#6A7F91",
+    text:"#ffffff",
+    greenBorder:"#fff",
+    whiteToGreen:"#BFFFF9",
+    blackToGreen:"#BFFFF9"
 
   }
 }
