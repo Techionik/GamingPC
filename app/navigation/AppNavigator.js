@@ -31,6 +31,8 @@ import NavigationDrawerContainer from "./NavigationDrawerContainer";
 
 import ScalingDrawer from 'react-native-scaling-drawer';
 import AddToCartScreen from "../container/HomeScreen/AddToCartScreen";
+import RattingReviewsScreen from "../container/HomeScreen/RattingReviewsScreen";
+import NotificationScreen from "../container/HomeScreen/NotificationScreen";
 const  AppDrawerNavigator = createStackNavigator();
 function DrawerNavigator() {
     return (
@@ -127,6 +129,8 @@ const AppStack = ({props}) => {
             <Stack.Screen name={"ContactUsScreen"} component={ContactUsScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"TermConditionScreen"} component={TermConditionScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"AddToCartScreen"} component={AddToCartScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"RattingReviewsScreen"} component={RattingReviewsScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"NotificationScreen"} component={NotificationScreen} options={{headerShown: false}}/>
 
         </Stack.Navigator>
     )

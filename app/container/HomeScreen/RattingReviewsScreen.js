@@ -11,7 +11,7 @@ import {Color, Constants} from "../../common";
 
 
 
-class AddToCartScreen extends React.Component {
+class RattingReviewsScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -32,4 +32,4 @@ class AddToCartScreen extends React.Component {
     }
 }
 
-export default withLanguage(AddToCartScreen)
+export default withLanguage(RattingReviewsScreen)

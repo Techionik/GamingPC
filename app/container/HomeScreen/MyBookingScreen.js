@@ -80,7 +80,7 @@ class MyBookingScreens extends React.Component {
         const {t, language,themeColor} = this.props.value
         const {colors}=themeColor
         return (
-            <View style={{flex: 1,backgroundColor:"#ffff"}}>
+            <View style={{flex: 1,backgroundColor:colors.screenBackgroundColor}}>
                 <HeaderComponent Location={false} title={"My Bookings"} Drawer={true} Props={this.props.value} />
 
 
