@@ -356,6 +356,7 @@ export const lightTheme = {
     whiteToGrey:"#fff",
     lightGreyToWhite:"#D9D9D9",
     lightGreenToGreen:"rgba(64, 224, 208, 0.27)",
+    lightgreyToWhite:"rgba(231,230,230,0.93)",
     RedToWHite:"red",
 
   }
@@ -384,6 +385,8 @@ export const darkTheme = {
     greyToTheme:"#40E0D0",
     lightGreenToGreen:"#40E0D0",
     whiteToGrey:"#6A7F91",
+    lightgreyToWhite:"#ffff",
+
     lightGreyToWhite:"#fff",
     RedToWHite:"#fff"
 
