@@ -44,6 +44,7 @@ class AddToCartScreen extends React.Component {
 
                 },
 
+
             ]
         }
     }
@@ -54,6 +55,8 @@ class AddToCartScreen extends React.Component {
         return (
                 <View style={{flex: 1,backgroundColor:colors.screenBackgroundColor}}>
                     <HeaderComponent Location={false} title={"Add To Cart"} Drawer={true} Props={this.props.value} />
+
+
                     <FlatList showsVerticalScrollIndicator={false}  style={{marginHorizontal:15,marginBottom:20}} data={this.state.itemList}  renderItem={({item, index}) =>
                        <AddToCartComponent image={item.image} quantity={item.quantity} price={item.price} numberofPerson={item.numberofPerson} title={item.title} colors={colors}/>
                     }/>

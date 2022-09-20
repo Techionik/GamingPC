@@ -17,7 +17,7 @@ export default function HeaderComponent({Props, title,Drawer,Location,titleStyle
                 <MaterialIcons name={"sort"} size={25} color={Color.grayIn}/>
             </TouchableOpacity>
             {Drawer == true ?
-                <View style={{flex:Location===false&&back==false?0.9:1,alignItems:"center",}}>
+                <View style={{flex:Location===false||sback==false?0.9:1,alignItems:"center",}}>
                     <Text style={[{includeFontPadding:false,padding:0,fontSize: 16, fontFamily: Constants.fontFamilyBold, color: "#000"},titleStyle]}>{title}</Text></View> :
                <>
                 <View style={{marginLeft: 10, alignSelf: "flex-start"}}>
@@ -30,7 +30,7 @@ export default function HeaderComponent({Props, title,Drawer,Location,titleStyle
                 </View>
                 <View style={{flex:1}}/>
                 <Image source={require('../../images/NotficationICon.png')} resizeMode={"contain"} style={{height:undefined,width:"10%",marginRight:10,aspectRatio:1}}/></>}
-            {Location===false&&back===true?
+            {Location===false||back===true?
                  <View>
                      <AntDesign name={"arrowleft"} color={"#fff"} size={25}/>
                      <Text style={{fontSize:12,fontFamily:Constants.Bold,color:"#fff",includeFontPadding:false,padding:0}}>Back</Text>

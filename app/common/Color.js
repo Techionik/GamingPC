@@ -10,6 +10,7 @@ export default {
   backgroundColorBlue:"#254058",
   borderGreyColor:"#C4C4C4",
   starColor:"#F24E1E",
+  InActiveprogressCircleColor:"#E0E0E0",
 
   main: '#fff',
   primaryDark: '#0097a7',
