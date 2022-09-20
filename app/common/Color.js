@@ -11,6 +11,7 @@ export default {
   borderGreyColor:"#C4C4C4",
   starColor:"#F24E1E",
   InActiveprogressCircleColor:"#E0E0E0",
+  blueColor:"#00B9FF",
 
   main: '#fff',
   primaryDark: '#0097a7',
