@@ -2,7 +2,7 @@ import React from 'react'
 import {
     FlatList,
     Image,
-    ImageBackground, Text, TextInput, TouchableOpacity,
+    ImageBackground, ScrollView, Text, TextInput, TouchableOpacity,
     View
 
 } from 'react-native'
@@ -60,6 +60,17 @@ class PaymentHistoryScreen extends React.Component {
                     rate:"- 62",
 
                 },
+            ],
+            mondayList:[
+                {
+
+                    image:require("../../images/slonLogoImage.png"),
+                    title:"The Hair Pantry",
+                    task:"Hair Wash",
+                    time:"09:39 AM",
+                    rate:"- 62",
+
+                },
             ]
         }
     }
@@ -73,18 +84,19 @@ class PaymentHistoryScreen extends React.Component {
 
                 <FieldComponent Placeholder={"Search"} />
 
+                <ScrollView showsVerticalScrollIndicator={false} style={{flexGrow:1,}}>
                 <Text style={{color:colors.greyToWhite,marginHorizontal:30,marginVertical:10,fontFamily:Constants.fontFamilyRegular,fontSize:15}}>TODAY</Text>
 
-                <FlatList data={this.state.todayList} style={{padding:20,marginHorizontal:15,backgroundColor:colors.fieldBackgroundColor}}  renderItem={({item, index}) =>
+                <FlatList data={this.state.todayList} style={{paddingTop:20,paddingHorizontal:15,marginHorizontal:15,backgroundColor:colors.fieldBackgroundColor}}  renderItem={({item, index}) =>
                     <PaymentHistoryComponent image={item.image} colors={colors} title={item.title} time={item.time} rate={item.rate} task={item.task} />
                 }/>
 
                 <Text style={{color:colors.greyToWhite,marginHorizontal:30,marginVertical:10,fontFamily:Constants.fontFamilyRegular,fontSize:15}}>MONDAY</Text>
 
-                <FlatList data={this.state.todayList} style={{padding:20,marginHorizontal:15,backgroundColor:colors.fieldBackgroundColor}}  renderItem={({item, index}) =>
+                <FlatList data={this.state.mondayList} style={{paddingTop:20,paddingHorizontal:15,marginHorizontal:15,backgroundColor:colors.fieldBackgroundColor}}  renderItem={({item, index}) =>
                     <PaymentHistoryComponent image={item.image} colors={colors} title={item.title} time={item.time} rate={item.rate} task={item.task} />
                 }/>
-
+                </ScrollView>
             </View>
 
         );

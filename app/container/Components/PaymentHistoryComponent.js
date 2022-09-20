@@ -10,29 +10,30 @@ export default function PaymentHistoryComponent({Style,title,image,onPress,color
     return (
         <View onPress={onPress} style={[{
             flexDirection:'row',
+            alignItems:'flex-start'
         }, Style]}>
 
-            <View style={{backgroundColor:Color.blueColor,height:20,width:20,borderRadius:20,justifyContent:'center'}}>
-                <Image style={{height:10,width:10}} resizeMode={"contain"} source={image}/>
+            <View style={{backgroundColor:Color.blueColor,height:34,width:34,borderRadius:20,justifyContent:'center'}}>
+                <Image style={{height:13,width:13,alignSelf:'center'}} resizeMode={"contain"} source={image}/>
             </View>
 
-            <View>
-            <View style={{flexDirection:'row',justifyContent:'space-between',marginLeft:10,alignItems:'center'}}>
-                <View>
-                <Text style={{fontSize:15,fontFamily:Constants.fontFamilySemiBold,color:colors.blackAndWhite,}}>{title}</Text>
-                    <View style={{flexDirection:'row',alignItems:'center'}}></View>
-
+            <View style={{flex:1}}>
+            <View style={{flexDirection:'row',justifyContent:'space-between',marginLeft:13,alignItems:'center',flex:1}}>
+                <View >
+                <Text style={{fontSize:13,fontFamily:Constants.fontFamilySemiBold,color:colors.blackAndWhite,}}>{title}</Text>
+                    <View style={{flexDirection:'row',alignItems:'center'}}>
                     <FontAwesome5 size={15} name={"long-arrow-alt-right"} color={Color.redColor}/>
-                <Text style={{fontSize:13,fontFamily:Constants.fontFamilyRegular,color:colors.lightGreyToWhite,marginLeft:10}}>{task}</Text>
+                <Text style={{fontSize:12,fontFamily:Constants.fontFamilyRegular,color:colors.greyToWhite,marginLeft:10}}>{task}</Text>
+                    </View>
                 </View>
 
             <View>
-                <Text style={{fontSize:15,fontFamily:Constants.fontFamilySemiBold,color:colors.blackAndWhite,}}>{rate} SAR</Text>
-                <Text style={{fontSize:13,fontFamily:Constants.fontFamilyRegular,color:colors.lightGreyToWhite,}}>{time}</Text>
+                <Text style={{fontSize:13,fontFamily:Constants.fontFamilySemiBold,color:colors.blackAndWhite,}}>{rate} SAR</Text>
+                <Text style={{fontSize:12,fontFamily:Constants.fontFamilyRegular,color:colors.greyToWhite,}}>{time}</Text>
             </View>
             </View>
 
-                <View style={{borderWidth:1,width:'100%',backgroundColor:colors.lightGreyToWhite,marginVertical:15}}></View>
+                <View style={{height:1,width:'100%',backgroundColor:colors.lightgreyToWhite,marginVertical:15,alignSelf:'flex-end'}}></View>
 
             </View>
 
