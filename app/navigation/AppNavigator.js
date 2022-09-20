@@ -63,7 +63,6 @@ export  class AppDrawerNavigation extends Component {
         super(props);
     }
 
-
     render() {
         return (
             <ScalingDrawer
