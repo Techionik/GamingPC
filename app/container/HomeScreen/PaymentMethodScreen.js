@@ -41,8 +41,8 @@ class PaymentMethodScreen extends React.Component {
                 <FieldComponent FieldStyle={{left:-20}} theme={colors}   Placeholder={"CCV"}/>
                    <CheckBoxComponent style={{alignSelf:"center",marginVertical:10}} title={t("L:SaveInfo")} colors={colors}/>
                    <View style={{flex:1}}/>
-                   <ButtonComponent title={t("L:Payment")} Style={{backgroundColor:"#989393",marginVertical:0}} />
-                   <ButtonComponent title={t("L:Cancel")} titleStyle={{color:colors.greyToWhite}} Style={{backgroundColor:"transparent",marginBottom:10,borderWidth:1,borderColor:"#E6E4E0"}} />
+                   <ButtonComponent onPress={()=>{this.props.navigation.navigate("BookingRequestScreen")}} title={t("L:Payment")} Style={{backgroundColor:"#989393",marginVertical:0}} />
+                   <ButtonComponent onPress={()=>{this.props.navigation.navigate("CehckOutScreen")}} title={t("L:Cancel")} titleStyle={{color:colors.greyToWhite}} Style={{backgroundColor:"transparent",marginBottom:10,borderWidth:1,borderColor:"#E6E4E0"}} />
                </View>
 
             </View>

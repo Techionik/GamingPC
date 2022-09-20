@@ -14,6 +14,7 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 import SettingsComponent from "../Components/SettingsComponent";
 import ButtonComponent from "../Components/ButtonComponent";
 import {Modalize} from "react-native-modalize";
+import {useNavigation} from "@react-navigation/native";
 
 
 class CehckOutScreen extends React.Component {
@@ -70,8 +71,8 @@ class CehckOutScreen extends React.Component {
                     <Text style={{fontSize:12,fontFamily:Constants.fontFamilyBold,color:colors.blackAndWhite,marginVertical:10}}>{t("L:Address")}</Text>
                     <TouchableOpacity style={{backgroundColor:colors.lightGreentoDark,padding:10,borderRadius:5}}>
                         <View style={{flexDirection:"row",alignItems:"flex-start"}}>
-                            <Image source={require('../../images/MarkerPin.png')} style={{height:undefined,width:"5%",tintColor:"#989393",aspectRatio:0.83}}/>
-                            <Text style={{fontFamily:Constants.fontFamilyMedium,fontSize:12,color:"#000",marginLeft:5,marginRight:20}}>St-15. Main City Plaza Road, near Al-Safeer Tower, Riyadh</Text>
+                            <Image source={require('../../images/MarkerPin.png')} style={{height:undefined,width:"5%",tintColor:colors.greyToTheme,aspectRatio:0.83}}/>
+                            <Text style={{fontFamily:Constants.fontFamilyMedium,fontSize:12,color:colors.blackAndWhite,marginLeft:5,marginRight:20}}>St-15. Main City Plaza Road, near Al-Safeer Tower, Riyadh</Text>
                         </View>
                         <Text style={{fontSize:14,fontFamily:Constants.fontFamilyBold,color:"red",alignSelf:"flex-end"}}>{t("L:Change")}</Text>
                     </TouchableOpacity>
@@ -85,7 +86,7 @@ class CehckOutScreen extends React.Component {
                         <RowComponent colors={colors} style={{marginTop:10}} title1={t("L:Total")} title2={"SAR 1,025"}/>
                     </Card>
                    <View style={{flexDirection:"row",justifyContent:"space-between"}}>
-                       <ButtonComponent title={t("L:Cancel")} Style={{backgroundColor:"red",width:"35%"}} />
+                       <ButtonComponent onPress={()=>{this.props.navigation.navigate("AppointmentScreen")}} title={t("L:Cancel")} Style={{backgroundColor:"red",width:"35%"}} />
                        <ButtonComponent onPress={()=>{this.PaymentModel.current.open()}} title={t("L:Proceed")} Style={{backgroundColor:Color.primary,width:"35%"}} />
 
                    </View>
@@ -124,9 +125,10 @@ export default withLanguage(CehckOutScreen)
 
 function PaymentComponent({title,image,colors}){
     const [select,setSelect]=useState(false)
+    const navigation =useNavigation()
 
     return(
-        <TouchableOpacity onPress={()=>{setSelect(!select)}} style={{flexDirection:"row",alignItems:"center",marginVertical:7}}>
+        <TouchableOpacity onPress={()=>{setSelect(!select),navigation.navigate("PaymentMethodScreen")}} style={{flexDirection:"row",alignItems:"center",marginVertical:7}}>
             <Image source={image} style={{height:undefined,width:"20%",aspectRatio:1.55}}/>
             <Text style={{fontSize:14,marginLeft:10,flex:1,fontFamily:Constants.fontFamilyBold,color:colors.blackAndWhite,alignSelf:"center"}}>{title}</Text>
             <View style={{
@@ -151,7 +153,7 @@ function PaymentComponent({title,image,colors}){
 function RowComponent({title1,title2,style,colors,title2Style}){
     return(
         <View style={[{flexDirection:"row",alignItems:"center",marginBottom:5},style]}>
-            <Text style={{fontSize:12,includeFontPadding:false,padding:0,fontFamily:Constants.fontFamilyRegular,color:"#000",flex:1}}>{title1}</Text>
+            <Text style={{fontSize:12,includeFontPadding:false,padding:0,fontFamily:Constants.fontFamilyRegular,color:colors.blackAndWhite,flex:1}}>{title1}</Text>
             <Text style={[{fontSize:14,includeFontPadding:false,padding:0,fontFamily:Constants.fontFamilyMedium,color:colors.RedToTheme},title2Style]}>{title2}</Text>
         </View>
     )

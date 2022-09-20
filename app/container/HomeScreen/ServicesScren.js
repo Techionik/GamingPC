@@ -35,8 +35,10 @@ class ServicesScreen extends React.Component {
         return (
             <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor,}}>
                 <HeaderComponent colors={colors} Drawer={true} title={"Services"} Props={this.props.value}/>
+                <View style={{marginHorizontal:15}}>
                 <SearchAndFilter Props={this.props.value}/>
-                <BannerComponent  Props={this.props.value}/>
+                <BannerComponent image={require("../../images/Banner.png")}  Props={this.props.value}/>
+                </View>
                 <Text style={{fontSize:14,marginVertical:10,marginLeft:20,fontFamily:Constants.fontFamilyMedium,color:colors.blackAndWhite}}>Near by</Text>
                 <View style={{flex:1}}>
                     <FlatList contentContainerStyle={{paddingBottom:40}} showsVerticalScrollIndicator={false}  data={this.state.arr} style={{borderBottomWidth:0.5,borderColor:"989393"}} renderItem={({item,index})=>

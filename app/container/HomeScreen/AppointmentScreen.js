@@ -14,6 +14,7 @@ import AddToCartComponent from "../Components/AddToCartComponent";
 import Card from "../Components/Card";
 import {Calendar} from "react-native-calendars/src/index";
 import SettingsComponent from "../Components/SettingsComponent";
+import ButtonComponent from "../Components/ButtonComponent";
 
 
 class AppointmentScreen extends React.Component {
@@ -39,7 +40,7 @@ class AppointmentScreen extends React.Component {
             <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
                 <HeaderComponent back={true} backColor={'#40E0D0'} titleStyle={{color:colors.blackAndWhite}} Location={false} title={"Add To Cart"} Drawer={true} Props={this.props.value}/>
 
-                <ScrollView style={{padding: 20}}>
+                <ScrollView style={{padding: 20,}}>
                     <Card outerstyles={{  borderRadius:10}}>
                         <Calendar
 
@@ -171,7 +172,7 @@ class AppointmentScreen extends React.Component {
                         }} colors={colors} title={"Choose Worker (Optional )"} toogle={true}/>
                     {this.state.toggleValue&&
 
-                        <FlatList contentContainerStyle={{flex:1,paddingBottom:50,}} data={this.state.list} renderItem={({item, index}) =>
+                        <FlatList contentContainerStyle={{flex:1,paddingBottom:20,}} data={this.state.list} renderItem={({item, index}) =>
                         <TouchableOpacity
                             disabled={item.status == 'booked'} onPress={() => {
                             let tempList = JSON.parse(JSON.stringify(this.state.list));
@@ -226,8 +227,9 @@ class AppointmentScreen extends React.Component {
 
                     }/>}
 
-
+                    <ButtonComponent onPress={()=>{this.props.navigation.navigate("CehckOutScreen")}} title={t("L:Proceed")} Style={{marginBottom:20}}/>
                 </ScrollView>
+
 
 
             </View>

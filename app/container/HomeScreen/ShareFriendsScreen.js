@@ -2,7 +2,7 @@ import React from 'react'
 import {
     FlatList,
     Image,
-    ImageBackground, Text, TouchableOpacity,
+    ImageBackground, ScrollView, Text, TouchableOpacity,
     View
 
 } from 'react-native'
@@ -24,6 +24,7 @@ class ShareFriendsScreen extends React.Component {
         return (
             <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
                 <HeaderComponent Props={this.props.value} Drawer={true} Location={false} back={false} title={t("L:SharewithFriends")}/>
+                <ScrollView contentContainerStyle={{flexGrow:1,}}>
                 <Image source={require('../../images/FriednsICon.png')} style={{
                     height: undefined,
                     width: "90%",
@@ -45,11 +46,12 @@ class ShareFriendsScreen extends React.Component {
                     marginHorizontal: 20
                 }}>Lorem Ipsum is simply dummy text of the
                         printing and typesetting industry.</Text>
-                <View style={{flex:1}}/>
+
+                </ScrollView>
                 <View style={{marginHorizontal:20,paddingVertical:10,backgroundColor:colors.lightGreyToBackground,borderRadius:5,alignItems:"center",}}>
-                <Text style={{fontFamily:Constants.fontFamilyMedium,fontSize:16,color:colors.greyToWhite}}>76VVGV7234002WNFI</Text>
+                    <Text style={{fontFamily:Constants.fontFamilyMedium,fontSize:16,color:colors.greyToWhite}}>76VVGV7234002WNFI</Text>
                 </View>
-                <ButtonComponent title={t("L:Copy")}/>
+                <ButtonComponent Style={{marginBottom:20}} title={t("L:Copy")}/>
 
 
             </View>

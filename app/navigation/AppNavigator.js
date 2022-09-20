@@ -48,8 +48,17 @@ function DrawerNavigator() {
     return (
 
         <AppDrawerNavigator.Navigator initialRouteName='HomeDrawer'>
-            <AppDrawerNavigator.Screen name="HomeDrawer" component={homeStack}
-                                       options={{headerShown: false, gesturesEnabled: false}}/>
+            <AppDrawerNavigator.Screen name="HomeDrawer" component={homeStack} options={{headerShown: false, gesturesEnabled: false}}/>
+            <AppDrawerNavigator.Screen name="MyBookingScreens" component={MyBookingScreens} options={{headerShown: false, gesturesEnabled: false}}/>
+            <AppDrawerNavigator.Screen name="MapScreen" component={MapScreen} options={{headerShown: false, gesturesEnabled: false}}/>
+            <AppDrawerNavigator.Screen name="MyWalletScreen" component={MyWalletScreen} options={{headerShown: false, gesturesEnabled: false}}/>
+            <AppDrawerNavigator.Screen name="PaymentHistoryScreen" component={PaymentHistoryScreen} options={{headerShown: false, gesturesEnabled: false}}/>
+            <AppDrawerNavigator.Screen name="ProfileScreen" component={ProfileScreen} options={{headerShown: false, gesturesEnabled: false}}/>
+            <AppDrawerNavigator.Screen name="SettingScreen" component={SettingScreen} options={{headerShown: false, gesturesEnabled: false}}/>
+            <AppDrawerNavigator.Screen name="ShareFriendsScreen" component={ShareFriendsScreen} options={{headerShown: false, gesturesEnabled: false}}/>
+            <AppDrawerNavigator.Screen name="ContactUsScreen" component={ContactUsScreen} options={{headerShown: false, gesturesEnabled: false}}/>
+            <AppDrawerNavigator.Screen name="AboutUsScreen" component={AboutUsScreen} options={{headerShown: false, gesturesEnabled: false}}/>
+            <AppDrawerNavigator.Screen name="TermConditionScreen" component={TermConditionScreen} options={{headerShown: false, gesturesEnabled: false}}/>
         </AppDrawerNavigator.Navigator>
     );
 }
@@ -134,17 +143,14 @@ const AppStack = ({props}) => {
             <Stack.Screen name={"homeStack"} component={AppDrawerNavigation} options={{headerShown: false}}/>
             <Stack.Screen name={"MapScreen"} component={MapScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"DrawerScreen"} component={DrawerScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"MyBookingScreens"} component={MyBookingScreens} options={{headerShown: false}}/>
             <Stack.Screen name={"LocationScreen"} component={LocationScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"MyWalletScreen"} component={MyWalletScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"MyPaymentScreen"} component={MyPaymentScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"ProfileScreen"} component={ProfileScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"SettingScreen"} component={SettingScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"ShareFriendsScreen"} component={ShareFriendsScreen}
-                          options={{headerShown: false}}/>
-            <Stack.Screen name={"ContactUsScreen"} component={ContactUsScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"TermConditionScreen"} component={TermConditionScreen}
-                          options={{headerShown: false}}/>
+            {/*<Stack.Screen name={"MyWalletScreen"} component={MyWalletScreen} options={{headerShown: false}}/>*/}
+            {/*<Stack.Screen name={"MyPaymentScreen"} component={MyPaymentScreen} options={{headerShown: false}}/>*/}
+            {/*<Stack.Screen name={"ProfileScreen"} component={ProfileScreen} options={{headerShown: false}}/>*/}
+            {/*<Stack.Screen name={"SettingScreen"} component={SettingScreen} options={{headerShown: false}}/>*/}
+            {/*<Stack.Screen name={"ShareFriendsScreen"} component={ShareFriendsScreen} options={{headerShown: false}}/>*/}
+            {/*<Stack.Screen name={"ContactUsScreen"} component={ContactUsScreen} options={{headerShown: false}}/>*/}
+            {/*<Stack.Screen name={"TermConditionScreen"} component={TermConditionScreen} options={{headerShown: false}}/>*/}
             <Stack.Screen name={"AddToCartScreen"} component={AddToCartScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"RattingReviewsScreen"} component={RattingReviewsScreen}
                           options={{headerShown: false}}/>
@@ -158,10 +164,9 @@ const AppStack = ({props}) => {
                           options={{headerShown: false}}/>
             <Stack.Screen name={"PaymentMethodScreen"} component={PaymentMethodScreen}
                           options={{headerShown: false}}/>
-            <Stack.Screen name={"PaymentHistoryScreen"} component={PaymentHistoryScreen}
-                          options={{headerShown: false}}/>
-            <Stack.Screen name={"AboutUsScreen"} component={AboutUsScreen}
-                          options={{headerShown: false}}/>
+            {/*<Stack.Screen name={"PaymentHistoryScreen"} component={PaymentHistoryScreen}*/}
+            {/*              options={{headerShown: false}}/>*/}
+            {/*<Stack.Screen name={"AboutUsScreen"} component={AboutUsScreen} options={{headerShown: false}}/>*/}
             <Stack.Screen name={"DetailScreen"} component={DetailScreen}
                           options={{headerShown: false}}/>
 

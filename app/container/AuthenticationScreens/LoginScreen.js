@@ -25,9 +25,9 @@ class LoginScreen extends React.Component {
 
         return (
             <View style={{flex: 1, backgroundColor:colors.screenBackgroundColor , paddingTop: 30, paddingHorizontal: 15}}>
-                <ImageBackground source={require('../../images/LoginImage.png')} resizeMode={"contain"}
+                <ImageBackground  source={require('../../images/LoginImage.png')} resizeMode={"contain"}
                                  style={{aspectRatio: 1.5, width: "100%", height: undefined}}>
-                    <SkipButton Props={this.props?.value}/>
+                    <SkipButton  Props={this.props?.value}/>
                 </ImageBackground>
                 <Text
                     style={{color:  colors?.blackAndWhite, fontFamily: Constants.fontFamilyBold, fontSize: 22}}>{t("Auth:Login")}</Text>

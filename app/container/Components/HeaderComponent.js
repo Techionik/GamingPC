@@ -9,7 +9,7 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 
 export default function HeaderComponent({Props,backColor, title,Drawer,Location,titleStyle,back,style}) {
 
-    const navigation=Props
+    const navigation=useNavigation()
     const {t, language,themeColor} = Props
     const {colors}=themeColor
     return (
@@ -35,10 +35,13 @@ export default function HeaderComponent({Props,backColor, title,Drawer,Location,
                 <View style={{flex:1}}/>
                 <Image source={require('../../images/NotficationICon.png')} resizeMode={"contain"} style={{height:undefined,width:"10%",marginRight:10,aspectRatio:1}}/></>}
             {Location===false||back===true?
-                 <View>
+                 <TouchableOpacity onPress={()=>{
+                     navigation.pop()
+
+                 }}>
                      <AntDesign name={"arrowleft"} color={backColor??"#fff"} size={25}/>
                      <Text style={{fontSize:12,fontFamily:Constants.Bold,color:backColor??"#fff",includeFontPadding:false,padding:0}}>{t("L:Back")}</Text>
-                 </View>
+                 </TouchableOpacity>
                 :
                 <TouchableOpacity style={{
                 width: 80,

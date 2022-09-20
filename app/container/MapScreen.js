@@ -35,7 +35,7 @@ class MapScreen extends React.Component {
                         <View style={{padding: 20}}>
                            <Location colors={colors} Props={this.props.value} address={"St-14, Newcity Mall , FC Jersey Road , London."} status={"CurrentAddress"}/>
                            <Location colors={colors}  Props={this.props.value} address={"St-14, Newcity Mall , FC Jersey Road , London."} status={"PreviousAddress"}/>
-                             <ButtonComponent onPress={()=>{this.props.navigation.replace("homeStack")}} title={t("L:Saved")} Style={{backgroundColor:colors.greyToTheme,marginHorizontal:40}} titleStyle={{color:colors.greyToWhite}}/>
+                             <ButtonComponent onPress={()=>{this.props.navigation.replace("homeStack")}} title={t("L:Saved")} Style={{backgroundColor:colors.lightGreyToBackground,marginHorizontal:40}} titleStyle={{color:colors.greyToWhite}}/>
                         </View>
                     </View>
 

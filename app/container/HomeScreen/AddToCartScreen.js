@@ -61,7 +61,7 @@ class AddToCartScreen extends React.Component {
                     <FlatList showsVerticalScrollIndicator={false}  style={{marginHorizontal:15,marginBottom:20}} data={this.state.itemList}  renderItem={({item, index}) =>
                        <AddToCartComponent Props={this.props.value} image={item.image} quantity={item.quantity} price={item.price} numberofPerson={item.numberofPerson} title={item.title} colors={colors}/>
                     }/>
-                    <CurveButtonComponent children={<AntDesign name={"arrowright"} color={"#fff"} size={30} style={{marginLeft:10}}/>} title={t("L:ProcesstoCheckout")}/>
+                    <CurveButtonComponent onPress={()=>{this.props.navigation.navigate("CehckOutScreen")}} children={<AntDesign name={"arrowright"} color={"#fff"} size={30} style={{marginLeft:10}}/>} title={t("Auth:ProcesstoCheckout")}/>
 
                 </View>
 

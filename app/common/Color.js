@@ -368,7 +368,8 @@ export const lightTheme = {
     redToWhite:"red",
     lightGreyToBackground:"#D9D9D9",
     greyToExtraDark:"#D9D9D9",
-    darKToWhite:"#263238"
+    darKToWhite:"#263238",
+    lightPrimaryToPrimary:"#74FEF0"
 
   }
 }
@@ -408,7 +409,8 @@ export const darkTheme = {
     lightGreyToBackground:"#6A7F91",
     greyToExtraDark:"#263238",
     darKToWhite:"#fff",
-    lightgreyToDark:"#263238"
+    lightgreyToDark:"#263238",
+    lightPrimaryToPrimary:"#40E0D0"
 
   }
 }

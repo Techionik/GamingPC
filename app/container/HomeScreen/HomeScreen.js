@@ -45,7 +45,7 @@ class HomeScreen extends React.Component {
                 <View style={{flex:1,}}>
                 <FlatList  showsVerticalScrollIndicator={false} numColumns={2}  contentContainerStyle={{alignItems:"center",paddingBottom:30}}  data={this.state.arr} renderItem={({item,index})=>
                     <View style={{margin:10}}>
-                        <TouchableOpacity style={{borderRadius:10}}>
+                        <TouchableOpacity onPress={()=>{this.props.navigation.navigate("DetailScreen")}} style={{borderRadius:10}}>
                             <Image source={item.image} resizeMode={"contain"} style={{height:144,width:144}}/>
                         </TouchableOpacity>
                         <Text style={{fontSize:14,marginVertical:5,fontFamily:Constants.fontFamilyMedium,color:colors.blackAndWhite,}}>{item.title}</Text>

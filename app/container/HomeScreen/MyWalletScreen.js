@@ -128,7 +128,7 @@ class MyWalletScreen extends React.Component {
                                 <Text style={{
                                     fontSize: 12,
                                     fontFamily: Constants.Bold,
-                                    color: "red",
+                                    color: colors.RedToTheme,
                                     marginLeft: 10
                                 }}>{item.price}</Text>
                             </View>

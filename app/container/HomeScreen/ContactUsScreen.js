@@ -2,7 +2,7 @@ import React from 'react'
 import {
     FlatList,
     Image,
-    ImageBackground, Text, TextInput, TouchableOpacity,
+    ImageBackground, ScrollView, Text, TextInput, TouchableOpacity,
     View
 
 } from 'react-native'
@@ -24,7 +24,7 @@ class ContactUsScreen extends React.Component {
         const {colors} = themeColor
         return (
             <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
-                <HeaderComponent title={t("L:Contactus")} Drawer={true} Location={false} Props={this.props.value}
+                <HeaderComponent  title={t("L:Contactus")} Drawer={true} back={true} backColor={Color.primary} Location={false} Props={this.props.value}
                                  titleStyle={{color: colors.blackAndWhite}}/>
                 <Image source={require('../../images/ContactusImage.png')} style={{
                     height: undefined,
@@ -33,6 +33,8 @@ class ContactUsScreen extends React.Component {
                     alignSelf: "center",
                     aspectRatio: 1
                 }}/>
+
+                <ScrollView style={{flexGrow:1}}>
                 <View style={{borderRadius:30,marginTop:30,backgroundColor:colors.BackgroundView,marginHorizontal:20,paddingHorizontal:10,paddingBottom:40}}>
                     <View style={{backgroundColor:colors.whiteToGreen,borderRadius:10,paddingVertical:10,marginHorizontal:20,zIndex:2,elevation:2,top:-30,justifyContent:"center",alignItems:"center"}}>
                         <Text style={{color:colors.blackAndWhite,fontSize:16,fontFamily:Constants.fontFamilyMedium}}>{t("L:SendusaMessage")}</Text>
@@ -44,8 +46,8 @@ class ContactUsScreen extends React.Component {
                   <ProfileFieldComponent title={t("L:Message")} placeholder={"Hey I just wanted to say that I’m new on Ahla and I’m just loving your services."} colors={colors}/>
                     </View>
                 </View>
-                <View style={{flex:1}}/>
-                <CurveButtonComponent title={t("L:Submit")}/>
+                </ScrollView>
+                <CurveButtonComponent Style={{marginBottom:20}} title={t("L:Submit")}/>
             </View>
 
         );

@@ -16,32 +16,33 @@ class SignupScreen extends React.Component{
         super(props);
     }
     render() {
-        const {t,language}=this.props.value
+        const {t,language,themeColor}=this.props.value
+        const {colors}=themeColor
         return (
-            <View style={{flex: 1, backgroundColor: "#fff", paddingTop: 30, paddingHorizontal: 15}}>
+            <View style={{flex: 1, backgroundColor:colors.screenBackgroundColor , paddingTop: 30, paddingHorizontal: 15}}>
                 <ImageBackground source={require('../../images/SignUpImage.png')} resizeMode={"contain"}
                                  style={{aspectRatio: 1.5, width: "100%", height: undefined}}>
-                    <SkipButton Props={this.props?.value}/>
+                    <SkipButton  Props={this.props?.value}/>
                 </ImageBackground>
                 <Text
-                    style={{color: "#000", fontFamily: Constants.fontFamilyBold, fontSize: 22}}>{t("Auth:SignUp")}</Text>
-                <Text style={{color: Color.gray, fontFamily: Constants.fontFamilyBold, fontSize: 12}}>Lorem Ipsum is
+                    style={{color: colors.blackAndWhite, fontFamily: Constants.fontFamilyBold, fontSize: 22}}>{t("Auth:SignUp")}</Text>
+                <Text style={{color: colors.greyToWhite, fontFamily: Constants.fontFamilyBold, fontSize: 12}}>Lorem Ipsum is
                     simply dummy text of the printing and typesetting industry. Lorem Ipsum</Text>
                 <View style={{marginTop: 20}}>
-                    <FieldComponent Icon={require('../../images/ProfileIcon.png')} Placeholder={t("Auth:FirstName")}/>
-                    <FieldComponent Icon={require('../../images/MailIcon.png')} Placeholder={t("Auth:EmailField")}/>
-                    <FieldComponent Icon={require('../../images/PhoneIcon.png')} Placeholder={t("Auth:PhoneNumber")}/>
-                    <FieldComponent secureTextEntry={true} Icon={require('../../images/PasswordIcon.png')}
+                    <FieldComponent theme={colors}  Icon={require('../../images/ProfileIcon.png')} Placeholder={t("Auth:FirstName")}/>
+                    <FieldComponent theme={colors} Icon={require('../../images/MailIcon.png')} Placeholder={t("Auth:EmailField")}/>
+                    <FieldComponent theme={colors} Icon={require('../../images/PhoneIcon.png')} Placeholder={t("Auth:PhoneNumber")}/>
+                    <FieldComponent theme={colors} secureTextEntry={true} Icon={require('../../images/PasswordIcon.png')}
                                     IconStyle={{bottom: -4}} Placeholder={t("Auth:Password")}/>
-                    <FieldComponent secureTextEntry={true} Icon={require('../../images/PasswordIcon.png')}
+                    <FieldComponent theme={colors} secureTextEntry={true} Icon={require('../../images/PasswordIcon.png')}
                                     IconStyle={{bottom: -4}} Placeholder={t("Auth:ConfirmPassword")}/>
-                    <ButtonComponent title={t("Auth:SignUp")}/>
+                    <ButtonComponent theme={colors} title={t("Auth:SignUp")}/>
                     <View style={{flex:1}}/>
                     <Text style={{
                         marginBottom: 10,
                         fontSize: 14,
                         fontFamily: Constants.fontFamilyRegular,
-                        color: "#000",
+                        color: colors.blackAndWhite,
                         alignSelf: "center"
                     }}>{t("Auth:AnotherAccount")}<Text onPress={()=>{this.props.navigation.navigate("LoginScreen")}} style={{
                         fontSize: 16,

@@ -96,16 +96,16 @@ class ServiceStoreScreen extends React.Component {
                     </View>
 
                 <FlatList horizontal={true} showsHorizontalScrollIndicator={false} data={this.state.cat} style={{marginHorizontal:10,paddingVertical:10,marginVertical:10,borderBottomWidth:0.5,borderTopWidth:0.5,borderColor:colors.greenBorder}} renderItem={({item,index})=>
-                  <TouchableOpacity onPress={()=>{this.setState({select:index})}} style={{marginHorizontal:5,flex:0.5,alignSelf:"flex-start",paddingVertical:5,paddingHorizontal:10,borderRadius:30,backgroundColor:this.state.select==index?Color.primary:null}}>
-                  <Text style={{fontSize:14,fontFamily:Constants.fontFamilyRegular,color:colors.greyToWhite}}>{item.title}</Text>
+                  <TouchableOpacity onPress={()=>{this.setState({select:index})}} style={{marginHorizontal:5,flex:0.5,alignSelf:"flex-start",paddingVertical:3,paddingHorizontal:13,borderRadius:30,backgroundColor:this.state.select==index?Color.primary:null}}>
+                  <Text style={{fontSize:14,includeFontPadding:false,padding:0,fontFamily:Constants.fontFamilyRegular,color:colors.greyToWhite}}>{item.title}</Text>
                   </TouchableOpacity>
                 }/>
                 </View>
 
                 <View style={{flex:1}}>
-                    <FlatList showsVerticalScrollIndicator={false} data={this.state.arr}
+                    <FlatList contentContainerStyle={{paddingBottom:40}} showsVerticalScrollIndicator={false} data={this.state.arr}
                               renderItem={({item, index}) =>
-                        <ServiceComponent index={index} item={item} Props={this.props.value}/>
+                        <ServiceComponent onPressAddCart={()=>{this.props.navigation.navigate("AddToCartScreen")}} index={index} item={item} Props={this.props.value}/>
                     }/>
                 </View>
 
@@ -118,7 +118,7 @@ class ServiceStoreScreen extends React.Component {
 
 export default withLanguage(ServiceStoreScreen)
 
-function ServiceComponent({Props, item, index}) {
+function ServiceComponent({Props, item, index,onPressAddCart}) {
     const {t, language,themeColor} = Props
     const {colors}=themeColor
     return (
@@ -135,7 +135,7 @@ function ServiceComponent({Props, item, index}) {
                     printing and typesetting industry.</Text>
                <View style={{flex:1,flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
                    <Text style={{fontSize:12,fontFamily:Constants.fontFamilyMedium,color:colors.RedToTheme}}>250 SAR</Text>
-                <TouchableOpacity style={{
+                <TouchableOpacity onPress={onPressAddCart} style={{
                     paddingVertical: 2,
                     paddingLeft: 5,
                     borderRadius: 5,

@@ -64,9 +64,9 @@ class NavigationDrawerContainer extends Component<Props> {
                 title: "Service"
             },
                 {screen: "MyBookingScreens", title: "My Booking"},
-                {screen: "LocationScreen", title: "Location"},
+                {screen: "MapScreen", title: "Location"},
                 {screen: "MyWalletScreen", title: "My wallet"},
-                {screen: "MyPaymentScreen", title: "Payment"},
+                {screen: "PaymentHistoryScreen", title: "Payment"},
                 {screen: "ProfileScreen", title: "Profile"},
                 {screen: "SettingScreen", title: "Setting"},
                 {screen: "ShareFriendsScreen", title: "Share Friends"},
@@ -165,7 +165,7 @@ class NavigationDrawerContainer extends Component<Props> {
                     <View style={{
                         flexDirection: 'row',
                         alignItems: 'center',
-                        backgroundColor: Color.primaryLight,
+                        backgroundColor: colors.lightPrimaryToPrimary,
                         borderRadius: 20,
                         marginTop:30,
                         marginHorizontal:30,
@@ -176,7 +176,7 @@ class NavigationDrawerContainer extends Component<Props> {
                             this.setState({ language: "er" })
                         }} style={{
                             padding: 9,
-                            backgroundColor:this.state.language=="er"?colors.fieldBackgroundColor:Color.primaryLight ,
+                            backgroundColor:this.state.language=="er"?colors.fieldBackgroundColor:colors.lightPrimaryToPrimary ,
                             paddingHorizontal: 15,
                             borderRadius: 20,
                         }}>
@@ -190,7 +190,7 @@ class NavigationDrawerContainer extends Component<Props> {
                             this.setState({ language: "ur" })
                         }} style={{
                             padding: 9,
-                            backgroundColor:this.state.language=="ur"?colors.fieldBackgroundColor:Color.primaryLight ,
+                            backgroundColor:this.state.language=="ur"?colors.fieldBackgroundColor:colors.lightPrimaryToPrimary ,
                             paddingHorizontal: 18,
                             borderRadius: 20,
                         }}>
@@ -216,6 +216,7 @@ class NavigationDrawerContainer extends Component<Props> {
 
                                     <Text onPress={() => {
                                         this.props.navigation.navigate(item.screen)
+                                        drawer.current.close()
                                     }} style={{ fontSize: 16 ,
                                         marginTop:index===this.state.list.length-1?60:25,
                                         paddingLeft:10,

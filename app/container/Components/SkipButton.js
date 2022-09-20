@@ -1,6 +1,7 @@
 import {Text, TouchableOpacity} from "react-native";
 import {Color, Constants} from "../../common";
 import React from "react";
+import {useNavigation} from "@react-navigation/native";
 
 
 export default function SkipButton(
@@ -9,9 +10,10 @@ export default function SkipButton(
     }
 )
 {
+    const navigation=useNavigation()
     const {t, language} = Props
     return (
-        <TouchableOpacity onPress={onPress} style={[{
+        <TouchableOpacity onPress={()=>{navigation.replace("homeStack")}} style={[{
             borderColor: Color.primary,
             borderWidth: 1,
             alignSelf: "flex-end",
