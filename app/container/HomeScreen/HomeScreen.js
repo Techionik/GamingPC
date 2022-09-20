@@ -41,7 +41,7 @@ class HomeScreen extends React.Component {
                      <HomeButtons colors={colors}  title={t("L:ExpertReservation")} Style={{marginHorizontal:30}} Icon={require("../../images/ExpertIcon.png")} />
                      <HomeButtons colors={colors}  title={t("L:InSalon")} Icon={require("../../images/StoreIcon.png")} />
                 </View>
-                <ProductHeader colors={colors} title={"Trending Services"} />
+                <ProductHeader colors={colors} title={t("L:TrendingServices")} />
                 <View style={{flex:1,}}>
                 <FlatList  showsVerticalScrollIndicator={false} numColumns={2}  contentContainerStyle={{alignItems:"center",paddingBottom:30}}  data={this.state.arr} renderItem={({item,index})=>
                     <View style={{margin:10}}>
@@ -52,9 +52,6 @@ class HomeScreen extends React.Component {
                     </View>
                 }/>
                 </View>
-
-
-
             </View>
 
         );

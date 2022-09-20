@@ -18,7 +18,7 @@ const Router = (props) => {
     const {languagee, theme} = useSelector(state => state.app)
 
     useEffect(()=>{
-        dispatch(changeLanguage('en'))
+        dispatch(changeLanguage('ur'))
     },[])
 
 

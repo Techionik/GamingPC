@@ -57,7 +57,7 @@ class AddToCartScreen extends React.Component {
         const {colors}=themeColor
         return (
                 <View style={{flex: 1,backgroundColor:colors.screenBackgroundColor}}>
-                    <HeaderWihBackground Location={false} title={"Add To Cart"} Drawer={true} Props={this.props.value} />
+                    <HeaderWihBackground Location={false} title={t("L:AddToCart")} Drawer={true} Props={this.props.value} />
 
 
                     <FlatList showsVerticalScrollIndicator={false}  style={{marginHorizontal:15,marginBottom:20}} data={this.state.itemList}  renderItem={({item, index}) =>

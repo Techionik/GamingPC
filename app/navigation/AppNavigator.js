@@ -114,7 +114,7 @@ const AuthStack = () => {
 
 const homeStack = () => {
     return (
-        <Stack.Navigator initialRouteName={"GenderSelectionScreen"}>
+        <Stack.Navigator initialRouteName={"HomeScreen"}>
             <Stack.Screen name={"GenderSelectionScreen"} component={GenderSelectionScreen}
                           options={{headerShown: false}}/>
             <Stack.Screen name={"HomeScreen"} component={HomeScreen} options={{headerShown: false}}/>
@@ -127,7 +127,7 @@ const homeStack = () => {
 
 const AppStack = ({props}) => {
     return (
-        <Stack.Navigator initialRouteName={"MyWalletScreen"}>
+        <Stack.Navigator initialRouteName={"AddToCartScreen"}>
             <Stack.Screen name={"SplashContainer"} component={SplashContainer} options={{headerShown: false}}/>
             <Stack.Screen name={"AuthStack"} component={AuthStack} options={{headerShown: false}}/>
             <Stack.Screen name={"homeStack"} component={AppDrawerNavigation} options={{headerShown: false}}/>

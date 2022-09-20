@@ -82,7 +82,7 @@ class PaymentHistoryScreen extends React.Component {
             <View style={{flex: 1,backgroundColor:colors.screenBackgroundColor}}>
                 <HeaderWihBackground Location={false}  title={"Payment History"} Drawer={true} Props={this.props.value} />
 
-                <FieldComponent Placeholder={"Search"} />
+                <FieldComponent Icon={require('../../images/SearchIcon.png')} theme={colors} Style={{zIndex:2,top:-25,marginHorizontal:30}} Placeholder={"Search"} />
 
                 <ScrollView showsVerticalScrollIndicator={false} style={{flexGrow:1,}}>
                 <Text style={{color:colors.greyToWhite,marginHorizontal:30,marginVertical:10,fontFamily:Constants.fontFamilyRegular,fontSize:15}}>TODAY</Text>
