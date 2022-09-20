@@ -24,11 +24,7 @@ class TermConditionScreen extends React.Component {
         const {colors} = themeColor
         return (
             <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
-                <ImageBackground source={require('../../images/BackgroundRound.png')}
-                                 style={{height: undefined, width: "100%", aspectRatio: 2}}>
-                    <HeaderComponent titleStyle={{color: "#fff"}} title={"Terms & conditions"} Drawer={true}
-                                     Location={false} Props={this.props.value}/>
-                </ImageBackground>
+
                 <View style={{
                     paddingHorizontal: 10,
                     paddingVertical: 20,
@@ -68,8 +64,8 @@ class TermConditionScreen extends React.Component {
                         color: colors.text
                     }}>{"Users are individuals that visit your website. They can be external or internal. "}</Text>
 
-                    <CheckBoxComponent style={{marginLeft:10}} title={"I agree with the Terms & Conditions."} theme={themeColor}/>
-                    <CheckBoxComponent style={{marginLeft:10}} title={"I agree with Local Renovators Privacy Policy."} theme={themeColor}/>
+                    <CheckBoxComponent style={{marginLeft:10}} title={"I agree with the Terms & Conditions."} colors={themeColor}/>
+                    <CheckBoxComponent style={{marginLeft:10}} title={"I agree with Local Renovators Privacy Policy."} colors={themeColor}/>
 
                 </View>
             </View>

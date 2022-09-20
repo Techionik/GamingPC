@@ -18,7 +18,7 @@ export default function HeaderComponent({Props, title,Drawer,Location,titleStyle
                 <MaterialIcons name={"sort"} size={25} color={Color.grayIn}/>
             </TouchableOpacity>
             {Drawer == true ?
-                <View style={{flex:Location===false||sback==false?0.9:1,alignItems:"center",}}>
+                <View style={{flex:Location===false||back==false?0.9:1,alignItems:"center",}}>
                     <Text style={[{includeFontPadding:false,padding:0,fontSize: 16, fontFamily: Constants.fontFamilyBold, color: colors.blackAndWhite},titleStyle]}>{title}</Text></View> :
                <>
                 <View style={{marginLeft: 10, alignSelf: "flex-start"}}>

@@ -362,8 +362,11 @@ export const lightTheme = {
     lightGreentoDark:"#E7FFFD",
     whiteToDark:"#fff",
     RedToTheme:"red",
-    greyToDark:"#989393",
-    redToWhite:"red"
+    greyToDark:"#D9D9D9",
+    redToWhite:"red",
+    lightGreyToBackground:"#D9D9D9",
+    greyToExtraDark:"#D9D9D9",
+    darKToWhite:"#263238"
 
   }
 }
@@ -399,7 +402,10 @@ export const darkTheme = {
     lightGreentoDark:"#6A7F91",
     whiteToDark:"#6A7F91",
     greyToDark:"#6A7F91",
-    redToWhite:"#fff"
+    redToWhite:"#fff",
+    lightGreyToBackground:"#6A7F91",
+    greyToExtraDark:"#263238",
+    darKToWhite:"#fff"
 
   }
 }

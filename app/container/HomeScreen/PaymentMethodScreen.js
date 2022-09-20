@@ -14,6 +14,10 @@ import AddToCartComponent from "../Components/AddToCartComponent";
 import HeaderWihBackground from "../Components/HeaderWihBackground";
 import CurveButtonComponent from "../Components/CurveButtonComponent";
 import AntDesign from "react-native-vector-icons/AntDesign";
+import FieldComponent from "../Components/FieldComponent";
+import CheckBoxComponent from "../Components/CheckBoxComponent";
+import BannerComponent from "../Components/BannerComponent";
+import ButtonComponent from "../Components/ButtonComponent";
 
 
 
@@ -29,8 +33,18 @@ class PaymentMethodScreen extends React.Component {
         const {colors}=themeColor
         return (
             <View style={{flex: 1,backgroundColor:colors.screenBackgroundColor}}>
-                <HeaderWihBackground Location={false} title={"Add To Cart"} Drawer={true} Props={this.props.value} />
+                <HeaderWihBackground Location={false} title={"Payment Method"} Drawer={true} Props={this.props.value} />
                 <Image source={require('../../images/PaymentCard.png')} style={{height:undefined,width:"95%",marginVertical:10,alignSelf:"center",aspectRatio:1.9}}/>
+               <View style={{paddingHorizontal:10,flex:1}}>
+                <FieldComponent FieldStyle={{left:-20}} theme={colors}   Placeholder={"Account Number"}/>
+                <FieldComponent FieldStyle={{left:-20}} theme={colors}   Placeholder={"Account Name"}/>
+                <FieldComponent FieldStyle={{left:-20}} theme={colors}   Placeholder={"CCV"}/>
+                   <CheckBoxComponent style={{alignSelf:"center",marginVertical:10}} title={"Save this information for further use"} colors={colors}/>
+                   <View style={{flex:1}}/>
+                   <ButtonComponent title={"Payment"} Style={{backgroundColor:"#989393",marginVertical:0}} />
+                   <ButtonComponent title={"cancel"} titleStyle={{color:colors.greyToWhite}} Style={{backgroundColor:"transparent",marginBottom:10,borderWidth:1,borderColor:"#E6E4E0"}} />
+               </View>
+
             </View>
 
         );
