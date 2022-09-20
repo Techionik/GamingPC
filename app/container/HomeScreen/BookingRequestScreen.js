@@ -18,18 +18,62 @@ class BookingRequestScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            bookingScreenNumber:4
+            bookingScreenNumber:1,
+            bookingDataList:[
+                {
+                    key:1,
+                    time:"12:00 - 12:20",
+                    title:"Received Booking Request",
+                    description:"We received your Booking request.KIndly wait for 5 minutes We’ll update you soon.",
+                    image:require("../../images/receivedBookingRequestImage.png")
+                },
+                {
+                    key:2,
+                    time:"12:00 - 12:18",
+                    title:"Your Booking Request \n" +
+                        "is Accepted",
+                    description:"Your  Booking request is accepted. ",
+                    image:require("../../images/acceptBookingRequestImage.png")
+
+                },
+                {
+                    key:3,
+                    time:"12:00 - 12:10",
+                    title:"Experts are Getting Ready",
+                    description:"Our experts are getting ready and sson reached at your place.",
+                    image:require("../../images/expertReadyImage.png")
+
+                },
+                {
+                    key:4,
+                    time:"5 minutes left",
+                    title:"Experts are on the way",
+                    description:"Experts are on the way . Just few minutes left to reach at your doorsteps. ",
+                    image:require("../../images/MapBackground.png")
+
+                },
+                {
+                    key:5,
+                    time:"At your doorstep",
+                    title:"Experts arrived",
+                    description:"Open the door. Our experts are reached and on your doorsteps.",
+                    image:require("../../images/MapBackground.png")
+
+                }
+            ]
         }
     }
 
 
-    circleComponent({title, isActive, isLast,colors,}){
+    circleComponent({title, isActive, isLast,colors,isText,state}){
         return(
             <View style={{flexDirection:'row',alignItems:'center'}}>
 
-                <View style={{justifyContent:'center',width:60}}>
+                <TouchableOpacity onPress={()=>{
+                    this.setState({bookingScreenNumber:state})
+                }}  style={{justifyContent:'center',width:60}}>
                 {
-                    isActive ?
+                    isText ?
 
                         <Text style={{
                             color: colors.fieldTextColor,
@@ -63,7 +107,7 @@ class BookingRequestScreen extends React.Component {
                        }}></View>
                    }
                </View>
-                </View>
+                </TouchableOpacity>
             </View>
         )
     }
@@ -73,11 +117,11 @@ class BookingRequestScreen extends React.Component {
             <View style={{width:"80%",alignSelf:'center'}}>
 
                 <View style={{flexDirection:'row',alignItems:'center',marginLeft:15}}>
-                    {this.circleComponent({title:"Booking \n" + "Request",colors:colors,isActive:this.state.bookingScreenNumber>=1?true:false})}
-                    {this.circleComponent({title:"Request \n" + "Accepted",colors:colors,isActive:this.state.bookingScreenNumber>=2?true:false})}
-                    {this.circleComponent({title:"Getting \n" + "ready",colors:colors,isActive:this.state.bookingScreenNumber>=3?true:false})}
-                    {this.circleComponent({title:"On the  \n" + "way",colors:colors,isActive:this.state.bookingScreenNumber>=4?true:false,})}
-                    {this.circleComponent({title:"Experts \n" + "Arrived",colors:colors,isLast:true,isActive:this.state.bookingScreenNumber>=5?true:false})}
+                    {this.circleComponent({title:"Booking \n" + "Request",colors:colors,isActive:this.state.bookingScreenNumber>=1?true:false,isText:this.state.bookingScreenNumber==1?true:false,state:1})}
+                    {this.circleComponent({title:"Request \n" + "Accepted",colors:colors,isActive:this.state.bookingScreenNumber>=2?true:false,isText:this.state.bookingScreenNumber==2?true:false,state:2})}
+                    {this.circleComponent({title:"Getting \n" + "ready",colors:colors,isActive:this.state.bookingScreenNumber>=3?true:false,isText:this.state.bookingScreenNumber==3?true:false,state:3})}
+                    {this.circleComponent({title:"On the  \n" + "way",colors:colors,isActive:this.state.bookingScreenNumber>=4?true:false,isText:this.state.bookingScreenNumber==4?true:false,state:4})}
+                    {this.circleComponent({title:"Experts \n" + "Arrived",colors:colors,isLast:true,isActive:this.state.bookingScreenNumber>=5?true:false,isText:this.state.bookingScreenNumber==5?true:false,state:5})}
 
 
                 </View>
@@ -94,11 +138,16 @@ class BookingRequestScreen extends React.Component {
                 <View style={{flex: 1,backgroundColor:colors.screenBackgroundColor}}>
                     <HeaderComponent Location={false} title={"Your Booking"} Drawer={true} Props={this.props.value} />
 
-                    <View style={{flex:0.9}}>
+                    <View style={{flex:0.9,justifyContent:'center',alignItems:'center'}}>
 
+
+                        <Image resizeMode={"contain"} style={{height:undefined,width:"90%",alignSelf:'center',aspectRatio:1.4}} source={require("../../images/receivedBookingRequestImage.png")}/>
+
+                        <Text style={{fontSize:12,color:colors.blackAndWhite,fontFamily:Constants.fontFamilyRegular}}>{this.state.bookingScreenNumber==1?this.state.bookingList?.image[0]:this.state.bookingScreenNumber==2?this.state.bookingList?.image[1]:this.state.bookingScreenNumber==3?this.state.bookingList?.image[2]:this.state.bookingScreenNumber==4?this.state.bookingList?.image[3]:this.state.bookingScreenNumber==5?this.state.bookingList?.image[4]:null}</Text>
+                        <Text style={{fontSize:17,color:colors.blackAndWhite,fontFamily:Constants.fontFamilyBold}}>12:00 - 12:20</Text>
+                        <Text style={{fontSize:17,color:colors.blackAndWhite,fontFamily:Constants.fontFamilyBold,marginTop:20,marginBottom:15}}>Received Booking Request</Text>
+                        <Text style={{fontSize:12,textAlign:"center",marginHorizontal:30,color:colors.greyToWhite,fontFamily:Constants.fontFamilyRegular,marginTop:20,}}>We received your Booking request.KIndly wait for 5 minutes We’ll update you soon.</Text>
                     </View>
-
-
 
                     {this.BottomProgressBar({colors:colors})}
 
