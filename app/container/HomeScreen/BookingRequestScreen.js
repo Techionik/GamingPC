@@ -140,13 +140,14 @@ class BookingRequestScreen extends React.Component {
 
                     <View style={{flex:0.9,justifyContent:'center',alignItems:'center'}}>
 
+                        <Image resizeMode={"contain"} style={{height:undefined,width:"90%",alignSelf:'center',aspectRatio:1.4}} source={this.state.bookingDataList[this.state.bookingScreenNumber-1].image}/>
 
-                        <Image resizeMode={"contain"} style={{height:undefined,width:"90%",alignSelf:'center',aspectRatio:1.4}} source={require("../../images/receivedBookingRequestImage.png")}/>
+                        <Text style={{fontSize:12,color:colors.blackAndWhite,fontFamily:Constants.fontFamilyRegular}}>Estimated Time</Text>
+                        <Text style={{fontSize:17,color:colors.blackAndWhite,fontFamily:Constants.fontFamilyBold}}>{this.state.bookingDataList[this.state.bookingScreenNumber-1].time}</Text>
+                        <Text style={{fontSize:17,color:colors.blackAndWhite,fontFamily:Constants.fontFamilyBold,marginTop:20,marginBottom:15}}>{this.state.bookingDataList[this.state.bookingScreenNumber-1].title}</Text>
+                        <Text style={{fontSize:12,textAlign:"center",marginHorizontal:30,color:colors.greyToWhite,fontFamily:Constants.fontFamilyRegular,marginTop:20,}}>this.state.bookingDataList[this.state.bookingScreenNumber-1].description</Text>
 
-                        <Text style={{fontSize:12,color:colors.blackAndWhite,fontFamily:Constants.fontFamilyRegular}}>{this.state.bookingScreenNumber==1?this.state.bookingList?.image[0]:this.state.bookingScreenNumber==2?this.state.bookingList?.image[1]:this.state.bookingScreenNumber==3?this.state.bookingList?.image[2]:this.state.bookingScreenNumber==4?this.state.bookingList?.image[3]:this.state.bookingScreenNumber==5?this.state.bookingList?.image[4]:null}</Text>
-                        <Text style={{fontSize:17,color:colors.blackAndWhite,fontFamily:Constants.fontFamilyBold}}>12:00 - 12:20</Text>
-                        <Text style={{fontSize:17,color:colors.blackAndWhite,fontFamily:Constants.fontFamilyBold,marginTop:20,marginBottom:15}}>Received Booking Request</Text>
-                        <Text style={{fontSize:12,textAlign:"center",marginHorizontal:30,color:colors.greyToWhite,fontFamily:Constants.fontFamilyRegular,marginTop:20,}}>We received your Booking request.KIndly wait for 5 minutes We’ll update you soon.</Text>
+
                     </View>
 
                     {this.BottomProgressBar({colors:colors})}
