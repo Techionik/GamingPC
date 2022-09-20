@@ -17,10 +17,11 @@ class SplashContainer extends React.Component {
 
     render () {
     const {value} = this.props;
-    const {t} = value;
+    const {t,themeColor} = value;
+    const {colors}=themeColor
 
     return (
-            <View style={{ flex: 1 ,justifyContent:"center",alignItems:'center',backgroundColor:'#FFF'}}>
+            <View style={{ flex: 1 ,justifyContent:"center",alignItems:'center',backgroundColor:colors.screenBackgroundColor}}>
                 <Image style={styles.gifStyle}  source={require('../images/SplashLogo.png')}/>
             </View>
     )

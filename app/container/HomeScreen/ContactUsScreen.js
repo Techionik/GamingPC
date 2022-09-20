@@ -10,6 +10,7 @@ import withLanguage from "../../config/withLanguage";
 import {Color, Constants} from "../../common";
 import HeaderComponent from "../Components/HeaderComponent";
 import ProfileFieldComponent from "../Components/ProfileFieldComponent";
+import CurveButtonComponent from "../Components/CurveButtonComponent";
 
 
 class ContactUsScreen extends React.Component {
@@ -44,9 +45,7 @@ class ContactUsScreen extends React.Component {
                     </View>
                 </View>
                 <View style={{flex:1}}/>
-                <TouchableOpacity style={{backgroundColor:Color.primary,justifyContent:"center",alignItems:"center",paddingVertical:20,borderTopLeftRadius:70}}>
-                    <Text style={{fontSize:20,fontFamily:Constants.fontFamilyBold,color:"#fff"}}>Submit</Text>
-                </TouchableOpacity>
+                <CurveButtonComponent title={"Submit"}/>
             </View>
 
         );

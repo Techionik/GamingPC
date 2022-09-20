@@ -11,6 +11,9 @@ import {Color, Constants} from "../../common";
 import HeaderComponent from "../Components/HeaderComponent";
 import MyBookingsComponent from "../Components/MyBookingsComponent";
 import AddToCartComponent from "../Components/AddToCartComponent";
+import HeaderWihBackground from "../Components/HeaderWihBackground";
+import CurveButtonComponent from "../Components/CurveButtonComponent";
+import AntDesign from "react-native-vector-icons/AntDesign";
 
 
 
@@ -54,12 +57,13 @@ class AddToCartScreen extends React.Component {
         const {colors}=themeColor
         return (
                 <View style={{flex: 1,backgroundColor:colors.screenBackgroundColor}}>
-                    <HeaderComponent Location={false} title={"Add To Cart"} Drawer={true} Props={this.props.value} />
+                    <HeaderWihBackground Location={false} title={"Add To Cart"} Drawer={true} Props={this.props.value} />
 
 
                     <FlatList showsVerticalScrollIndicator={false}  style={{marginHorizontal:15,marginBottom:20}} data={this.state.itemList}  renderItem={({item, index}) =>
                        <AddToCartComponent image={item.image} quantity={item.quantity} price={item.price} numberofPerson={item.numberofPerson} title={item.title} colors={colors}/>
                     }/>
+                    <CurveButtonComponent children={<AntDesign name={"arrowright"} color={"#fff"} size={30} style={{marginLeft:10}}/>} title={"Process to Checkout"}/>
 
                 </View>
 

@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
-import { NavigationContainer } from "@react-navigation/native";
-import { isReadyRef, navigationRef } from "./RootNavigation";
+import {NavigationContainer} from "@react-navigation/native";
+import {isReadyRef, navigationRef} from "./RootNavigation";
 import {createStackNavigator} from "@react-navigation/stack"
-import { View } from "react-native";
-import { compose } from "redux";
-import { connect } from "react-redux";
-import { languageSelector, themeSelector } from "../redux/app/selectors";
+import {View} from "react-native";
+import {compose} from "redux";
+import {connect} from "react-redux";
+import {languageSelector, themeSelector} from "../redux/app/selectors";
 import SplashContainer from "../container/SplashContainer";
 import LoginScreen from "../container/AuthenticationScreens/LoginScreen";
 import SignupScreen from "../container/AuthenticationScreens/SignupScreeen";
@@ -36,18 +36,24 @@ import NotificationScreen from "../container/HomeScreen/NotificationScreen";
 import AppointmentScreen from "../container/HomeScreen/AppointmentScreen";
 import CehckOutScreen from "../container/HomeScreen/CheckOutScreen";
 import BookingRequestScreen from "../container/HomeScreen/BookingRequestScreen";
-const  AppDrawerNavigator = createStackNavigator();
+import OffersScreen from "../container/HomeScreen/OffersScreen";
+import PaymentMethodScreen from "../container/HomeScreen/PaymentMethodScreen";
+
+const AppDrawerNavigator = createStackNavigator();
+
 function DrawerNavigator() {
     return (
 
-        <AppDrawerNavigator.Navigator   initialRouteName='HomeDrawer'>
-            <AppDrawerNavigator.Screen name="HomeDrawer" component={homeStack} options={{ headerShown: false, gesturesEnabled: false }} />
+        <AppDrawerNavigator.Navigator initialRouteName='HomeDrawer'>
+            <AppDrawerNavigator.Screen name="HomeDrawer" component={homeStack}
+                                       options={{headerShown: false, gesturesEnabled: false}}/>
         </AppDrawerNavigator.Navigator>
     );
 }
+
 const mapStateToProps2 = ({app}) => ({
-    lang:app?.language?.lang,
-    rtl:app?.language?.rtl,
+    lang: app?.language?.lang,
+    rtl: app?.language?.rtl,
 
 });
 
@@ -56,21 +62,22 @@ const mapStateToProps2 = ({app}) => ({
     {}
 )
 
-export  class AppDrawerNavigation extends Component {
+export class AppDrawerNavigation extends Component {
 
-    //TODO:- constructor
+
     constructor(props) {
         super(props);
     }
+
 
     render() {
         return (
             <ScalingDrawer
                 frontStyle={{backgroundColor: "black"}}
                 ref={drawer}
-                position={this.props.rtl?"right":'left'}
+                position={this.props.rtl ? "right" : 'left'}
                 content={
-                    <NavigationDrawerContainer      drawer={drawer} navigation={this.props.navigation}/>
+                    <NavigationDrawerContainer drawer={drawer} navigation={this.props.navigation}/>
                 }
                 {...defaultScalingDrawerConfig}>
                 <DrawerNavigator
@@ -81,6 +88,7 @@ export  class AppDrawerNavigation extends Component {
     }
 
 }
+
 let defaultScalingDrawerConfig = {
     scalingFactor: 0.65,
 
@@ -90,21 +98,23 @@ let defaultScalingDrawerConfig = {
 };
 
 const Stack = createStackNavigator()
-const AuthStack=()=>{
-    return(
+const AuthStack = () => {
+    return (
         <Stack.Navigator initialRouteName={"LoginScreen"}>
             <Stack.Screen name={"LoginScreen"} component={LoginScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"SignupScreen"} component={SignupScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"ForgotPasswordScreen"} component={ForgotPasswordScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"ForgotPasswordScreen"} component={ForgotPasswordScreen}
+                          options={{headerShown: false}}/>
             <Stack.Screen name={"VerificationScreen"} component={VerificationScreen} options={{headerShown: false}}/>
         </Stack.Navigator>
     )
 }
 
-const homeStack=()=>{
-    return(
-        <Stack.Navigator initialRouteName={"ServicesScreen"}>
-            <Stack.Screen name={"GenderSelectionScreen"} component={GenderSelectionScreen } options={{headerShown: false}}/>
+const homeStack = () => {
+    return (
+        <Stack.Navigator initialRouteName={"GenderSelectionScreen"}>
+            <Stack.Screen name={"GenderSelectionScreen"} component={GenderSelectionScreen}
+                          options={{headerShown: false}}/>
             <Stack.Screen name={"HomeScreen"} component={HomeScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"ServicesScreen"} component={ServicesScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"ServiceStoreScreen"} component={ServiceStoreScreen} options={{headerShown: false}}/>
@@ -115,7 +125,7 @@ const homeStack=()=>{
 
 const AppStack = ({props}) => {
     return (
-        <Stack.Navigator initialRouteName={"BookingRequestScreen"}>
+        <Stack.Navigator initialRouteName={"PaymentMethodScreen"}>
             <Stack.Screen name={"SplashContainer"} component={SplashContainer} options={{headerShown: false}}/>
             <Stack.Screen name={"AuthStack"} component={AuthStack} options={{headerShown: false}}/>
             <Stack.Screen name={"homeStack"} component={AppDrawerNavigation} options={{headerShown: false}}/>
@@ -127,15 +137,24 @@ const AppStack = ({props}) => {
             <Stack.Screen name={"MyPaymentScreen"} component={MyPaymentScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"ProfileScreen"} component={ProfileScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"SettingScreen"} component={SettingScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"ShareFriendsScreen"} component={ShareFriendsScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"ShareFriendsScreen"} component={ShareFriendsScreen}
+                          options={{headerShown: false}}/>
             <Stack.Screen name={"ContactUsScreen"} component={ContactUsScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"TermConditionScreen"} component={TermConditionScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"TermConditionScreen"} component={TermConditionScreen}
+                          options={{headerShown: false}}/>
             <Stack.Screen name={"AddToCartScreen"} component={AddToCartScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"RattingReviewsScreen"} component={RattingReviewsScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"NotificationScreen"} component={NotificationScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"RattingReviewsScreen"} component={RattingReviewsScreen}
+                          options={{headerShown: false}}/>
+            <Stack.Screen name={"NotificationScreen"} component={NotificationScreen}
+                          options={{headerShown: false}}/>
             <Stack.Screen name={"AppointmentScreen"} component={AppointmentScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"CehckOutScreen"} component={CehckOutScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"BookingRequestScreen"} component={BookingRequestScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"BookingRequestScreen"} component={BookingRequestScreen}
+                          options={{headerShown: false}}/>
+            <Stack.Screen name={"OffersScreen"} component={OffersScreen}
+                          options={{headerShown: false}}/>
+            <Stack.Screen name={"PaymentMethodScreen"} component={PaymentMethodScreen}
+                          options={{headerShown: false}}/>
 
         </Stack.Navigator>
     )

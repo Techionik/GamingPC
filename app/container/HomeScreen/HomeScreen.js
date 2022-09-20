@@ -16,6 +16,7 @@ import SearchAndFilter from "../Components/SearchAndFilter";
 import SocialButton from "../Components/SocialButton";
 import HomeButtons from "../Components/HomeButtons";
 import ProductHeader from "../Components/ProductHeader";
+import BannerComponent from "../Components/BannerComponent";
 
 
 class HomeScreen extends React.Component {
@@ -28,25 +29,26 @@ class HomeScreen extends React.Component {
     }
 
     render() {
-        const {t, language} = this.props.value
+        const {t, language,themeColor} = this.props.value
+        const {colors}=themeColor
         return (
-            <View style={{flex: 1, backgroundColor: "#fff", paddingHorizontal: 15}}>
-                <HeaderComponent Props={this.props.value}/>
+            <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor, paddingHorizontal: 15}}>
+                <HeaderComponent style={{marginHorizontal:0}} titleStyle={{color:colors.blackAndWhite}}  Props={this.props.value}/>
                 <SearchAndFilter Props={this.props.value}/>
-                <Banner Props={this.props.value}/>
+                <BannerComponent image={require('../../images/Banner.png')} Props={this.props.value}/>
                 <View style={{flexDirection:"row",justifyContent:"center",marginVertical:10}}>
-                     <HomeButtons title={t("L:Inhouse")} Icon={require("../../images/HomeIcon.png")} />
-                     <HomeButtons title={t("L:ExpertReservation")} Style={{marginHorizontal:30}} Icon={require("../../images/ExpertIcon.png")} />
-                     <HomeButtons title={t("L:InSalon")} Icon={require("../../images/StoreIcon.png")} />
+                     <HomeButtons colors={colors}  title={t("L:Inhouse")} Icon={require("../../images/HomeIcon.png")} />
+                     <HomeButtons colors={colors}  title={t("L:ExpertReservation")} Style={{marginHorizontal:30}} Icon={require("../../images/ExpertIcon.png")} />
+                     <HomeButtons colors={colors}  title={t("L:InSalon")} Icon={require("../../images/StoreIcon.png")} />
                 </View>
-                <ProductHeader title={"Trending Services"} />
+                <ProductHeader colors={colors} title={"Trending Services"} />
                 <View style={{flex:1,}}>
-                <FlatList showsVerticalScrollIndicator={false} numColumns={2}  contentContainerStyle={{alignItems:"center"}}  data={this.state.arr} renderItem={({item,index})=>
+                <FlatList  showsVerticalScrollIndicator={false} numColumns={2}  contentContainerStyle={{alignItems:"center",paddingBottom:30}}  data={this.state.arr} renderItem={({item,index})=>
                     <View style={{margin:10}}>
                         <TouchableOpacity style={{borderRadius:10}}>
                             <Image source={item.image} resizeMode={"contain"} style={{height:144,width:144}}/>
                         </TouchableOpacity>
-                        <Text style={{fontSize:14,marginVertical:5,fontFamily:Constants.fontFamilyMedium,color:"#000",}}>{item.title}</Text>
+                        <Text style={{fontSize:14,marginVertical:5,fontFamily:Constants.fontFamilyMedium,color:colors.blackAndWhite,}}>{item.title}</Text>
                     </View>
                 }/>
                 </View>
@@ -61,20 +63,4 @@ class HomeScreen extends React.Component {
 
 export default withLanguage(HomeScreen)
 
-export function Banner({Props,style}){
-    const {t,language}=Props
-    return(
-        <View style={[{borderRadius:20,padding:10,backgroundColor:Color.primary,flexDirection:"row"},style]}>
-            <View style={{marginVertical:10,flex:1}}>
-                <Text style={{fontFamily:Constants.fontFamilyBold,fontSize:20,color:"#000"}}>{t("L:UPTO")} 40% {t("L:OFF")}</Text>
-                <Text style={{fontFamily:Constants.fontFamilyBold,fontSize:14,color:"#fff"}}>{t("L:SpecialDiscountOffer")}</Text>
-                <Text style={{fontFamily:Constants.fontFamilyBold,fontSize:12,color:"#fff"}}>{t("L:fornewCustomers")}</Text>
-                <TouchableOpacity style={{alignSelf:"flex-start",marginTop:5,backgroundColor:"#fff",paddingHorizontal:10,paddingVertical:5}}>
-                    <Text style={{fontSize:7,fontFamily:Constants.fontFamilyBold,color:"#000"}}>{t("L:ApplyCode")}:<Text style={{color:Color.primary,fontSize:10}}> NEW40OFF</Text></Text>
-                </TouchableOpacity>
-            </View>
-            <Image source={require('../../images/Banner.png')} resizeMode={"contain"} style={{aspectRatio:1.5,width:"50%",height:undefined,alignSelf:"flex-end",}}/>
 
-        </View>
-    )
-}

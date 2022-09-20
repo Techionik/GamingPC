@@ -7,25 +7,29 @@ import drawer from "../../navigation/drawer_ref";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
 
-export default function HeaderComponent({Props, title,Drawer,Location,titleStyle,back}) {
+export default function HeaderComponent({Props, title,Drawer,Location,titleStyle,back,style}) {
 
     const navigation=Props
-    const {t, language} = Props
+    const {t, language,themeColor} = Props
+    const {colors}=themeColor
     return (
-        <View style={{flexDirection: "row",marginHorizontal:10,paddingBottom:10, alignItems: "center", marginTop: 10,}}>
-            <TouchableOpacity onPress={()=>{drawer.current.open()}} style={{borderRadius: 5, backgroundColor: Color.grayback, padding: 10}}>
+        <View style={[{flexDirection: "row",marginHorizontal:10,paddingBottom:10, alignItems: "center", marginTop: 10,},style]}>
+            <TouchableOpacity onPress={()=>{drawer.current.open()}} style={{borderRadius: 5, backgroundColor: colors.greyToDark, padding: 10}}>
                 <MaterialIcons name={"sort"} size={25} color={Color.grayIn}/>
             </TouchableOpacity>
             {Drawer == true ?
                 <View style={{flex:Location===false||sback==false?0.9:1,alignItems:"center",}}>
-                    <Text style={[{includeFontPadding:false,padding:0,fontSize: 16, fontFamily: Constants.fontFamilyBold, color: "#000"},titleStyle]}>{title}</Text></View> :
+                    <Text style={[{includeFontPadding:false,padding:0,fontSize: 16, fontFamily: Constants.fontFamilyBold, color: colors.blackAndWhite},titleStyle]}>{title}</Text></View> :
                <>
                 <View style={{marginLeft: 10, alignSelf: "flex-start"}}>
-                    <Text style={{fontSize: 18, fontFamily: Constants.fontFamilyBold, color: "#000"}}>Hi Galeria !</Text>
+                    <Text style={{fontSize: 18,includeFontPadding:false,padding:0, fontFamily: Constants.fontFamilyBold, color: colors.blackAndWhite}}>Hi Galeria !</Text>
                     <Text style={{
-                        fontSize: 18,
+                        fontSize: 16,
                         fontFamily: Constants.fontFamilyBold,
-                        color: Color.grayIn
+                        color: colors.greyToDark,
+                        includeFontPadding:false,
+                        padding:0
+
                     }}>{t("L:WelcomeBack")}</Text>
                 </View>
                 <View style={{flex:1}}/>
@@ -44,7 +48,8 @@ export default function HeaderComponent({Props, title,Drawer,Location,titleStyle
                 borderWidth: 1,
                 alignItems: "center",
                 justifyContent: "center",
-                flexDirection: "row"
+                flexDirection: "row",
+                    backgroundColor:colors.whiteToDark,
             }}>
                 <Image source={require('../../images/MarkerPin.png')} resizeMode={"contain"}
                 style={{height: undefined, width: "20%", aspectRatio: 1, tintColor: Color.grayIn}}/>

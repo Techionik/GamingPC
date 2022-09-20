@@ -22,15 +22,18 @@ class ServiceStoreScreen extends React.Component {
             }, {image: require('../../images/S1.png'), title: "Nail Polish"}, {
                 image: require('../../images/S2.png'),
                 title: "Nail Polish"
-            }]
+            }],
+            cat:[{title:"Hair"},{title:"Facial"},{title:"Spa"},{title:"Beauty"},{title:"Nails"},],
+            select:"",
 
         }
     }
 
     render() {
-        const {t, language} = this.props.value
+        const {t, language,themeColor} = this.props.value
+        const {colors}=themeColor
         return (
-            <View style={{flex: 1, backgroundColor: "#fff",}}>
+            <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor,}}>
                 <View style={{
                     borderBottomRightRadius: 30,
                     borderBottomLeftRadius: 30,
@@ -38,7 +41,7 @@ class ServiceStoreScreen extends React.Component {
                     width: "100%",
                     aspectRatio: 1.5
                 }}>
-                    <Image source={require('../../images/Background.png')} resizeMode={"cover"} style={{
+                    <Image source={require('../../images/IemBackground.png')} resizeMode={"cover"} style={{
                         borderBottomRightRadius: 30,
                         borderBottomLeftRadius: 30,
                         zIndex: -2,
@@ -78,8 +81,28 @@ class ServiceStoreScreen extends React.Component {
                         </View>
                     </View>
                 </View>
+                <View >
+                    <View style={{flexDirection:"row",marginBottom:10,alignSelf:"center",alignItems:"center",backgroundColor:"#BFFFF9",borderBottomLeftRadius:10,borderBottomRightRadius:10,padding:10}}>
+                        <Image source={require('../../images/MarkerPin.png')} resizeMode={"contain"}
+                               style={{height: undefined, width: "5%", aspectRatio: 1, tintColor: Color.grayIn}}/>
+                        <Text  style={{
+                            fontSize: 12,
+                            fontFamily: Constants.fontFamilyRegular,
+                            includeFontPadding:false,
+                            padding:0,
+                            color: "#000",
+                            marginLeft: 5,
+                        }}>St-14, Newcity Mall  , London.</Text>
+                    </View>
 
-                <View style={{}}>
+                <FlatList horizontal={true} showsHorizontalScrollIndicator={false} data={this.state.cat} style={{marginHorizontal:10,paddingVertical:10,marginVertical:10,borderBottomWidth:0.5,borderTopWidth:0.5,borderColor:colors.greenBorder}} renderItem={({item,index})=>
+                  <TouchableOpacity onPress={()=>{this.setState({select:index})}} style={{marginHorizontal:5,flex:0.5,alignSelf:"flex-start",paddingVertical:5,paddingHorizontal:10,borderRadius:30,backgroundColor:this.state.select==index?Color.primary:null}}>
+                  <Text style={{fontSize:14,fontFamily:Constants.fontFamilyRegular,color:colors.greyToWhite}}>{item.title}</Text>
+                  </TouchableOpacity>
+                }/>
+                </View>
+
+                <View style={{flex:1}}>
                     <FlatList showsVerticalScrollIndicator={false} data={this.state.arr}
                               renderItem={({item, index}) =>
                         <ServiceComponent index={index} item={item} Props={this.props.value}/>
@@ -96,23 +119,22 @@ class ServiceStoreScreen extends React.Component {
 export default withLanguage(ServiceStoreScreen)
 
 function ServiceComponent({Props, item, index}) {
-    const {t, language} = Props
+    const {t, language,themeColor} = Props
+    const {colors}=themeColor
     return (
         <View style={{
             flexDirection: "row",
             paddingHorizontal: 20,
             paddingVertical: 5,
-            borderTopWidth: 0.5,
-            borderColor: "989393"
         }}>
             <Image source={item.image} resizeMode={"contain"}
                    style={{height: 90, width: 90, borderRadius: 5}}/>
             <View style={{marginLeft: 10, marginVertical: 5,flex:1}}>
-                <Text style={{fontSize: 14, fontFamily: Constants.fontFamilyMedium, color: "#000"}}>Hair Color Balyage</Text>
-                <Text style={{fontSize: 12, fontFamily: Constants.fontFamilyMedium, color: Color.gray,}}>Lorem Ipsum is simply dummy text of the
+                <Text style={{fontSize: 14, fontFamily: Constants.fontFamilyMedium, color: colors.blackAndWhite}}>Hair Color Balyage</Text>
+                <Text style={{fontSize: 12, fontFamily: Constants.fontFamilyMedium, color: colors.greyToWhite,}}>Lorem Ipsum is simply dummy text of the
                     printing and typesetting industry.</Text>
                <View style={{flex:1,flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-                   <Text style={{fontSize:12,fontFamily:Constants.fontFamilyMedium,color:"#E50027"}}>250 SAR</Text>
+                   <Text style={{fontSize:12,fontFamily:Constants.fontFamilyMedium,color:colors.RedToTheme}}>250 SAR</Text>
                 <TouchableOpacity style={{
                     paddingVertical: 2,
                     paddingLeft: 5,
@@ -124,7 +146,7 @@ function ServiceComponent({Props, item, index}) {
                     <Image source={require("../../images/CartImage.png")} resizeMode={"contain"} style={{height:undefined,width:"20%",aspectRatio:1}}/>
                     <Text style={{
                         fontSize: 12,
-                        backgroundColor:"red",
+
                         fontFamily: Constants.fontFamilyMedium,
                         color: "#fff",
                         marginLeft:5,
