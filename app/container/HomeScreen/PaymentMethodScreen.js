@@ -33,16 +33,16 @@ class PaymentMethodScreen extends React.Component {
         const {colors}=themeColor
         return (
             <View style={{flex: 1,backgroundColor:colors.screenBackgroundColor}}>
-                <HeaderWihBackground Location={false} title={"Payment Method"} Drawer={true} Props={this.props.value} />
+                <HeaderWihBackground Location={false} title={t("L:PaymentMethod")} Drawer={true} Props={this.props.value} />
                 <Image source={require('../../images/PaymentCard.png')} style={{height:undefined,width:"95%",marginVertical:10,alignSelf:"center",aspectRatio:1.9}}/>
                <View style={{paddingHorizontal:10,flex:1}}>
-                <FieldComponent FieldStyle={{left:-20}} theme={colors}   Placeholder={"Account Number"}/>
-                <FieldComponent FieldStyle={{left:-20}} theme={colors}   Placeholder={"Account Name"}/>
+                <FieldComponent FieldStyle={{left:-20}} theme={colors}   Placeholder={t("L:AccountNumber")}/>
+                <FieldComponent FieldStyle={{left:-20}} theme={colors}   Placeholder={t("L:AccountName")}/>
                 <FieldComponent FieldStyle={{left:-20}} theme={colors}   Placeholder={"CCV"}/>
-                   <CheckBoxComponent style={{alignSelf:"center",marginVertical:10}} title={"Save this information for further use"} colors={colors}/>
+                   <CheckBoxComponent style={{alignSelf:"center",marginVertical:10}} title={t("L:SaveInfo")} colors={colors}/>
                    <View style={{flex:1}}/>
-                   <ButtonComponent title={"Payment"} Style={{backgroundColor:"#989393",marginVertical:0}} />
-                   <ButtonComponent title={"cancel"} titleStyle={{color:colors.greyToWhite}} Style={{backgroundColor:"transparent",marginBottom:10,borderWidth:1,borderColor:"#E6E4E0"}} />
+                   <ButtonComponent title={t("L:Payment")} Style={{backgroundColor:"#989393",marginVertical:0}} />
+                   <ButtonComponent title={t("L:Cancel")} titleStyle={{color:colors.greyToWhite}} Style={{backgroundColor:"transparent",marginBottom:10,borderWidth:1,borderColor:"#E6E4E0"}} />
                </View>
 
             </View>

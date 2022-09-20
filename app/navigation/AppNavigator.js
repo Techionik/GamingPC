@@ -40,6 +40,7 @@ import OffersScreen from "../container/HomeScreen/OffersScreen";
 import PaymentMethodScreen from "../container/HomeScreen/PaymentMethodScreen";
 import PaymentHistoryScreen from "../container/HomeScreen/PaymentHistoryScreen";
 import AboutUsScreen from "../container/HomeScreen/AboutUsScreen";
+import DetailScreen from "../container/HomeScreen/DetailScreen";
 
 const AppDrawerNavigator = createStackNavigator();
 
@@ -114,7 +115,7 @@ const AuthStack = () => {
 
 const homeStack = () => {
     return (
-        <Stack.Navigator initialRouteName={"HomeScreen"}>
+        <Stack.Navigator initialRouteName={"GenderSelectionScreen"}>
             <Stack.Screen name={"GenderSelectionScreen"} component={GenderSelectionScreen}
                           options={{headerShown: false}}/>
             <Stack.Screen name={"HomeScreen"} component={HomeScreen} options={{headerShown: false}}/>
@@ -127,7 +128,7 @@ const homeStack = () => {
 
 const AppStack = ({props}) => {
     return (
-        <Stack.Navigator initialRouteName={"AddToCartScreen"}>
+        <Stack.Navigator initialRouteName={"SplashContainer"}>
             <Stack.Screen name={"SplashContainer"} component={SplashContainer} options={{headerShown: false}}/>
             <Stack.Screen name={"AuthStack"} component={AuthStack} options={{headerShown: false}}/>
             <Stack.Screen name={"homeStack"} component={AppDrawerNavigation} options={{headerShown: false}}/>
@@ -160,6 +161,8 @@ const AppStack = ({props}) => {
             <Stack.Screen name={"PaymentHistoryScreen"} component={PaymentHistoryScreen}
                           options={{headerShown: false}}/>
             <Stack.Screen name={"AboutUsScreen"} component={AboutUsScreen}
+                          options={{headerShown: false}}/>
+            <Stack.Screen name={"DetailScreen"} component={DetailScreen}
                           options={{headerShown: false}}/>
 
         </Stack.Navigator>

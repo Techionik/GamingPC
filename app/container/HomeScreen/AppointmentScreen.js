@@ -37,7 +37,7 @@ class AppointmentScreen extends React.Component {
         const {colors} = themeColor
         return (
             <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
-                <HeaderComponent titleStyle={{color:colors.blackAndWhite}} Location={false} title={"Add To Cart"} Drawer={true} Props={this.props.value}/>
+                <HeaderComponent back={true} backColor={'#40E0D0'} titleStyle={{color:colors.blackAndWhite}} Location={false} title={"Add To Cart"} Drawer={true} Props={this.props.value}/>
 
                 <ScrollView style={{padding: 20}}>
                     <Card outerstyles={{  borderRadius:10}}>

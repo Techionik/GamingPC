@@ -36,14 +36,14 @@ class MyWalletScreen extends React.Component {
         return (
             <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
                 <View style={{flex: 0.42, backgroundColor: Color.primary}}>
-                    <HeaderComponent Props={this.props.value} Drawer={true} Location={false} title={"My Wallet"} titleStyle={{color:"#fff"}}/>
+                    <HeaderComponent Props={this.props.value} Drawer={true} Location={false} title={t("L:MyWallet")} titleStyle={{color:"#fff"}}/>
                     <Text style={{
                         fontSize: 14,
                         textAlign: "center",
                         fontFamily: Constants.fontFamilyBold,
                         color: colors.whiteToDark,
                         marginTop: 10
-                    }}>TOTAL BALANCE</Text>
+                    }}>{t("L:TOTALBALANCE")}</Text>
                     <Text style={{
                         fontSize: 26,
                         textAlign: "center",
@@ -67,15 +67,15 @@ class MyWalletScreen extends React.Component {
                                 fontFamily: Constants.Bold,
                                 color: colors.greenBorder,
                                 marginRight: 5
-                            }}>This week</Text>
+                            }}>{t("L:Thisweek")}</Text>
                             <AntDesign name={"right"} color={colors.greenBorder} size={15}/>
                         </TouchableOpacity>
                         <Text style={{fontSize: 12, fontFamily: Constants.fontFamilyBold, color: colors.greyToWhite}}>07
                             July - 14 July</Text>
                     </View>
                     <View style={{flexDirection: "row",justifyContent:"center", alignItems: "center", marginVertical: 10}}>
-                        <WalletComponent colors={colors} style={{backgroundColor: "#5E0BB1"}} icon={"arrowdown"}/>
-                        <WalletComponent colors={colors} style={{backgroundColor: "red", marginLeft: 15}}
+                        <WalletComponent type={t("L:Deposit")} Props={this.props.value} colors={colors} style={{backgroundColor: "#5E0BB1"}} icon={"arrowdown"}/>
+                        <WalletComponent type={t("L:Used")} Props={this.props.value} colors={colors} style={{backgroundColor: "red", marginLeft: 15}}
                                          icon={"arrowup"}/>
                     </View>
                 </View>
@@ -94,7 +94,7 @@ class MyWalletScreen extends React.Component {
                                 flex: 1,
                                 fontFamily: Constants.fontFamilyMedium,
                                 color: colors.blackAndWhite
-                            }}>Transaction</Text>
+                            }}>{t("L:Transaction")}</Text>
                             <Text style={{
                                 fontSize: 14,
                                 fontFamily: Constants.fontFamilyMedium,
@@ -146,7 +146,8 @@ class MyWalletScreen extends React.Component {
 
 export default withLanguage(MyWalletScreen)
 
-function WalletComponent({style, icon, colors}) {
+function WalletComponent({style,Props, icon, colors,type}) {
+    const {t,language}=Props
     return (
         <View style={{flexDirection: "row", alignItems: "center"}}>
             <View style={[{
@@ -166,7 +167,7 @@ function WalletComponent({style, icon, colors}) {
                     fontFamily: Constants.fontFamilyBold,
                     fontSize: 12,
                     color: colors.lightGreyToWhite
-                }}>Deposit</Text>
+                }}>{type}</Text>
                 <Text style={{
                     includeFontPadding: false,
                     padding: 0,

@@ -58,12 +58,10 @@ class AddToCartScreen extends React.Component {
         return (
                 <View style={{flex: 1,backgroundColor:colors.screenBackgroundColor}}>
                     <HeaderWihBackground Location={false} title={t("L:AddToCart")} Drawer={true} Props={this.props.value} />
-
-
                     <FlatList showsVerticalScrollIndicator={false}  style={{marginHorizontal:15,marginBottom:20}} data={this.state.itemList}  renderItem={({item, index}) =>
-                       <AddToCartComponent image={item.image} quantity={item.quantity} price={item.price} numberofPerson={item.numberofPerson} title={item.title} colors={colors}/>
+                       <AddToCartComponent Props={this.props.value} image={item.image} quantity={item.quantity} price={item.price} numberofPerson={item.numberofPerson} title={item.title} colors={colors}/>
                     }/>
-                    <CurveButtonComponent children={<AntDesign name={"arrowright"} color={"#fff"} size={30} style={{marginLeft:10}}/>} title={"Process to Checkout"}/>
+                    <CurveButtonComponent children={<AntDesign name={"arrowright"} color={"#fff"} size={30} style={{marginLeft:10}}/>} title={t("L:ProcesstoCheckout")}/>
 
                 </View>
 

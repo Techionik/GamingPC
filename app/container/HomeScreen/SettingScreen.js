@@ -43,16 +43,15 @@ class SettingScreen extends React.Component {
                         marginVertical:20,
                         backgroundColor: colors.BackgroundView,
                     }}>
-                        <Text style={{fontSize:12,fontFamily:Constants.fontFamilyMedium,color:colors.greyToTheme}}>Account Settings</Text>
-                        <SettingsComponent style={{marginBottom:10}} title={"Edit Profile"} colors={colors}/>
-                        <SettingsComponent style={{marginBottom:10}} title={"Change Password"} colors={colors}/>
-                        <SettingsComponent style={{marginBottom:10}} title={"Push notifications"} toogle={true} colors={colors}/>
-                        <SettingsComponent style={{marginBottom:10}} title={"Dark Mode"} toogle={true} colors={colors}/>
-                        <Text style={{fontSize:12,fontFamily:Constants.fontFamilyMedium,color:colors.greyToTheme}}>Other Settings</Text>
-                        <SettingsComponent style={{marginBottom:10}} title={"Privacy Policy"} colors={colors}/>
-                        <SettingsComponent style={{marginBottom:10}} title={"Privacy Policy"} colors={colors}/>
-                        <SettingsComponent style={{marginBottom:10}} title={"Privacy Policy"} colors={colors}/>
-                        <SettingsComponent title={"Log out"} colors={colors}/>
+                        <Text style={{fontSize:12,fontFamily:Constants.fontFamilyMedium,color:colors.greyToTheme}}>{t("L:AccountSettings")}</Text>
+                        <SettingsComponent style={{marginBottom:10}} title={t("L:EditProfile")} colors={colors}/>
+                        <SettingsComponent style={{marginBottom:10}} title={t("L:ChangePassword")} colors={colors}/>
+                        <SettingsComponent style={{marginBottom:10}} title={t("L:Pushnotifications")} toogle={true} colors={colors}/>
+                        <SettingsComponent style={{marginBottom:10}} title={t("L:DarkMode")} toogle={true} colors={colors}/>
+                        <Text style={{fontSize:12,fontFamily:Constants.fontFamilyMedium,color:colors.greyToTheme}}>{t("L:OtherSettings")}</Text>
+                        <SettingsComponent style={{marginBottom:10}} title={t("L:PrivacyPolicy")} colors={colors}/>
+                        <SettingsComponent style={{marginBottom:10}} title={t("L:TermsandConditions")} colors={colors}/>
+                        <SettingsComponent title={t("L:Logout")} colors={colors}/>
 
 
 

@@ -5,7 +5,8 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import Entypo from "react-native-vector-icons/Entypo";
 
 
-export default function AddToCartComponent({Style,title,image,onPress,colors,numberofPerson,price,quantity}) {
+export default function AddToCartComponent({Props,Style,title,image,onPress,colors,numberofPerson,price,quantity}) {
+  const {t,language}=Props
     return (
         <View onPress={onPress} style={[{
             borderRadius: 10,
@@ -23,8 +24,8 @@ export default function AddToCartComponent({Style,title,image,onPress,colors,num
             <View style={{marginLeft:10,justifyContent:'space-between'}}>
                 <View>
                 <Text style={{fontSize:14,fontFamily:Constants.fontFamilySemiBold,color:colors.blackAndWhite,}}>{title}</Text>
-                <Text style={[{fontSize:13,fontFamily:Constants.fontFamilyRegular,color:colors.fieldTextColor},]}>Persons : {numberofPerson}</Text>
-                <Text style={{fontSize:13,fontFamily:Constants.fontFamilyBold,color:colors.redOrGreen}}>Edit</Text>
+                <Text style={[{fontSize:13,fontFamily:Constants.fontFamilyRegular,color:colors.fieldTextColor},]}>{t("L:Persons")} : {numberofPerson}</Text>
+                <Text style={{fontSize:13,fontFamily:Constants.fontFamilyBold,color:colors.redOrGreen}}>{t("L:Edit")}</Text>
                 </View>
                 <Text style={{fontSize:15,fontFamily:Constants.fontFamilyBold,color:Color.primary,marginTop:15}}>{price} SAR</Text>
             </View>
@@ -34,7 +35,7 @@ export default function AddToCartComponent({Style,title,image,onPress,colors,num
             <View style={{justifyContent:'space-between',alignItems:'flex-end'}}>
                 <View>
                     <View style={{flexDirection:'row',alignItems:'center'}}>
-                    <Text style={{fontSize:12,fontFamily:Constants.fontFamilyBold,color:colors.redOrGreen}}>Remove</Text>
+                    <Text style={{fontSize:12,fontFamily:Constants.fontFamilyBold,color:colors.redOrGreen}}>{t("L:Remove")}</Text>
                 <Ionicons name={"remove-circle-outline"} style={{marginLeft:4}} color={colors.redOrGreen} size={20}/>
                     </View>
                 </View>

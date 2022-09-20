@@ -69,20 +69,20 @@ class NotificationScreen extends React.Component {
         return (
                 <View style={{flex: 1,backgroundColor:colors.screenBackgroundColor}}>
 
-                    <HeaderComponent Location={false} title={"Notification"} Drawer={true} Props={this.props.value} />
+                    <HeaderComponent Location={false} title={t("L:Notification")} Drawer={true} Props={this.props.value} />
 
                     <ScrollView showsVerticalScrollIndicator={false} style={{marginHorizontal:15,marginVertical:20}}>
-                    <Text style={{fontSize:14,fontFamily:Constants.fontFamilyBold,color:colors.greyToWhite,marginLeft:3}}>Today</Text>
+                    <Text style={{fontSize:14,fontFamily:Constants.fontFamilyBold,color:colors.greyToWhite,marginLeft:3}}>{t("L:Today")}</Text>
 
                         <FlatList data={this.state.todayList}  renderItem={({item, index}) =>
-                            <NotificationComponent notification={item.notification} name={item.name} time={item.time} isPaid={item.isPaid} colors={colors} />
+                            <NotificationComponent Props={this.props.value} notification={item.notification} name={item.name} time={item.time} isPaid={item.isPaid} colors={colors} />
 
                         }/>
 
-                        <Text style={{fontSize:14,fontFamily:Constants.fontFamilyBold,color:colors.greyToWhite,marginLeft:3,marginTop:20,}}>YesterDay</Text>
+                        <Text style={{fontSize:14,fontFamily:Constants.fontFamilyBold,color:colors.greyToWhite,marginLeft:3,marginTop:20,}}>{t("L:Yesterday")}</Text>
 
                         <FlatList data={this.state.yesterdayList} style={{marginBottom:20}}   renderItem={({item, index}) =>
-                            <NotificationComponent notification={item.notification} name={item.name} time={item.time} isPaid={item.isPaid} colors={colors} />
+                            <NotificationComponent Props={this.props.value} notification={item.notification} name={item.name} time={item.time} isPaid={item.isPaid} colors={colors} />
                         }/>
 
 

@@ -33,7 +33,7 @@ class CehckOutScreen extends React.Component {
         const {colors} = themeColor
         return (
             <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
-                <HeaderWihBackground title={"Checkout Screen"} Props={this.props.value}
+                <HeaderWihBackground title={t("L:CheckoutScreen")} Props={this.props.value}
                                      children={
                                          <Text style={{
                                              fontSize: 14,
@@ -41,7 +41,7 @@ class CehckOutScreen extends React.Component {
                                              color: "#fff",
                                              alignSelf: "center",
                                              marginTop: 20
-                                         }}>BookSlot#1264843904</Text>
+                                         }}>{t("L:BookSlot")}#1264843904</Text>
                                      }
                 />
                 <ScrollView contentContainerStyle={{paddingBottom:20}} style={{flex: 1, padding: 15}}>
@@ -50,43 +50,43 @@ class CehckOutScreen extends React.Component {
                             fontSize: 10,
                             fontFamily: Constants.fontFamilyRegular,
                             color: colors.blackAndWhite
-                        }}>Date : 4/7/2022</Text>
+                        }}>{t("L:Date")} : 4/7/2022</Text>
                         <Text style={{
                             fontSize: 10,
                             fontFamily: Constants.fontFamilyRegular,
                             color: colors.blackAndWhite
-                        }}>Date : 4/7/2022</Text>
+                        }}>{t("L:Date")} : 4/7/2022</Text>
                     </View>
-                    <StatusBar colors={colors} title1={"Menu"} title2={"Cart"} title3={"CheckOut"}/>
+                    <StatusBar colors={colors} title1={t("L:Menu")} title2={t("L:Cart")} title3={t("L:CheckOut")}/>
                     <FlatList contentContainerStyle={{flex: 1, paddingBottom: 20,}} data={this.state.list}
                               renderItem={({item, index}) =>
 
-                                  <CheckOutComponent colors={colors}/>
+                                  <CheckOutComponent Props={this.props.value} colors={colors}/>
                               }/>
-                    <Text style={{fontSize:12,fontFamily:Constants.fontFamilyBold,color:colors.blackAndWhite,marginVertical:10}}>Payment Method</Text>
+                    <Text style={{fontSize:12,fontFamily:Constants.fontFamilyBold,color:colors.blackAndWhite,marginVertical:10}}>{t("L:PaymentMethod")}</Text>
                        <TouchableOpacity style={{backgroundColor:colors.lightGreentoDark,padding:10,borderRadius:5}}>
-                           <SettingsComponent colors={colors} title={"Cash on Visit"} titleStyle={{fontFamily:Constants.fontFamilyBold,color:"#000"}}/>
+                           <SettingsComponent colors={colors} title={t("L:CashonVisit")} titleStyle={{fontFamily:Constants.fontFamilyBold,color:colors.blackAndWhite}}/>
                        </TouchableOpacity>
-                    <Text style={{fontSize:12,fontFamily:Constants.fontFamilyBold,color:colors.blackAndWhite,marginVertical:10}}>Address</Text>
+                    <Text style={{fontSize:12,fontFamily:Constants.fontFamilyBold,color:colors.blackAndWhite,marginVertical:10}}>{t("L:Address")}</Text>
                     <TouchableOpacity style={{backgroundColor:colors.lightGreentoDark,padding:10,borderRadius:5}}>
                         <View style={{flexDirection:"row",alignItems:"flex-start"}}>
                             <Image source={require('../../images/MarkerPin.png')} style={{height:undefined,width:"5%",tintColor:"#989393",aspectRatio:0.83}}/>
                             <Text style={{fontFamily:Constants.fontFamilyMedium,fontSize:12,color:"#000",marginLeft:5,marginRight:20}}>St-15. Main City Plaza Road, near Al-Safeer Tower, Riyadh</Text>
                         </View>
-                        <Text style={{fontSize:14,fontFamily:Constants.fontFamilyBold,color:"red",alignSelf:"flex-end"}}>Change</Text>
+                        <Text style={{fontSize:14,fontFamily:Constants.fontFamilyBold,color:"red",alignSelf:"flex-end"}}>{t("L:Change")}</Text>
                     </TouchableOpacity>
 
                     <Card outerstyles={{borderRadius:5,padding:10,backgroundColor:colors.whiteToDark,marginTop:10}}>
-                        <Text style={{fontSize:12,fontFamily:Constants.fontFamilyRegular,color:colors.blackAndWhite}}>Order Summary</Text>
+                        <Text style={{fontSize:12,fontFamily:Constants.fontFamilyRegular,color:colors.blackAndWhite}}>{t("L:OrderSummary")}</Text>
                         <View style={{flex:1,height:1,backgroundColor:"#000",marginVertical:10}}/>
-                        <RowComponent colors={colors} title1={"Service charges : "} title2={"SAR 990"}/>
-                        <RowComponent colors={colors}  title1={"Discount : "} title2={"SAR  24 (SAR 10)"}/>
-                        <RowComponent colors={colors} title1={"Home Visit Charges : "} title2={"SAR  24 (SAR 10)"}/>
-                        <RowComponent colors={colors} style={{marginTop:10}} title1={"Home Visit Charges : "} title2={"SAR 1,025"}/>
+                        <RowComponent colors={colors} title1={t("L:Servicecharges")} title2={"SAR 990"}/>
+                        <RowComponent colors={colors}  title1={t("L:Discount")} title2={"SAR  24 (SAR 10)"}/>
+                        <RowComponent colors={colors} title1={t("L:HomeVisitCharges")} title2={"SAR  24 (SAR 10)"}/>
+                        <RowComponent colors={colors} style={{marginTop:10}} title1={t("L:Total")} title2={"SAR 1,025"}/>
                     </Card>
                    <View style={{flexDirection:"row",justifyContent:"space-between"}}>
-                       <ButtonComponent title={"Cancel"} Style={{backgroundColor:"red",width:"35%"}} />
-                       <ButtonComponent onPress={()=>{this.PaymentModel.current.open()}} title={"Proceed"} Style={{backgroundColor:Color.primary,width:"35%"}} />
+                       <ButtonComponent title={t("L:Cancel")} Style={{backgroundColor:"red",width:"35%"}} />
+                       <ButtonComponent onPress={()=>{this.PaymentModel.current.open()}} title={t("L:Proceed")} Style={{backgroundColor:Color.primary,width:"35%"}} />
 
                    </View>
 
@@ -156,7 +156,8 @@ function RowComponent({title1,title2,style,colors,title2Style}){
         </View>
     )
 }
-function CheckOutComponent({colors}) {
+function CheckOutComponent({colors,Props}) {
+    const {t,language}=Props
     return (
         <Card outerstyles={{flexDirection: "row", alignItems: "center", padding: 5, borderRadius: 5,backgroundColor:colors.whiteToDark}}>
             <Image source={require('../../images/S1.png')}
@@ -175,7 +176,7 @@ function CheckOutComponent({colors}) {
                     color: colors.greyToWhite,
                     includeFontPadding: false,
                     padding: 0
-                }}>Persons : 2</Text>
+                }}>{t("L:Persons")} : 2</Text>
             </View>
             <View style={{alignSelf: "flex-start", margin: 10}}>
                 <View style={{flexDirection: "row", alignItems: "center",}}>
@@ -186,7 +187,7 @@ function CheckOutComponent({colors}) {
                         includeFontPadding: false,
                         padding: 0,
                         marginRight: 5
-                    }}>Remove</Text>
+                    }}>{t("L:Remove")}</Text>
                     <AntDesign name={"minuscircleo"} color={colors.RedToWHite} size={14}/>
                 </View>
                 <Text style={{marginTop: 10, fontSize: 16, fontFamily: Constants.fontFamilyMedium, color: "#40E0D0"}}>335

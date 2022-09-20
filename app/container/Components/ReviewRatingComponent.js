@@ -5,8 +5,8 @@ import colors from "react-native/Libraries/NewAppScreen/components/Colors";
 import ButtonComponent from "./ButtonComponent";
 
 
-export default function ReviewRatingComponent({Style,image,title,titleStyle,taskArray,colors,date,startTime,endTime,diffTime}) {
-
+export default function ReviewRatingComponent({Props,Style,image,title,titleStyle,taskArray,colors,date,startTime,endTime,diffTime}) {
+  const {t,language}=Props
     return (
             <View  style={[{
                 borderRadius: 10,
@@ -19,10 +19,10 @@ export default function ReviewRatingComponent({Style,image,title,titleStyle,task
 
 
             }, Style]}>
-                <Image resizeMode={"cover"} source={image} style={{height:70,width:"100%",backgroundColor:'red'}}/>
+                <Image resizeMode={"cover"} source={image} style={{height:70,width:"100%",}}/>
                 <View style={{flexDirection:"row",alignItems:"center",justifyContent:"space-between",marginTop:10}}>
                 <Text style={[{fontSize:14,fontFamily:Constants.fontFamilyRegular,color:colors.blackAndWhite,marginLeft:3},titleStyle]}>{title}</Text>
-                <Text style={[{fontSize:11,fontFamily:Constants.fontFamilyBold,color:colors.blackAndWhite,backgroundColor:colors.lightGreenToGreen,paddingHorizontal:10,paddingVertical:3,borderRadius:5,},titleStyle]}>completed</Text>
+                <Text style={[{fontSize:11,fontFamily:Constants.fontFamilyBold,color:colors.blackAndWhite,backgroundColor:colors.lightGreenToGreen,paddingHorizontal:10,paddingVertical:3,borderRadius:5,},titleStyle]}>{t("L:completed")}</Text>
             </View>
 
                 <View style={{height:1,width:"100%",backgroundColor:Color.borderGreyColor,alignSelf:'center',marginVertical:8}}></View>

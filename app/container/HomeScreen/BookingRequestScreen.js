@@ -23,40 +23,39 @@ class BookingRequestScreen extends React.Component {
                 {
                     key:1,
                     time:"12:00 - 12:20",
-                    title:"Received Booking Request",
-                    description:"We received your Booking request.KIndly wait for 5 minutes We’ll update you soon.",
+                    title:"ReceivedBookingRequest",
+                    description:"ReceivedBookingRequestDic",
                     image:require("../../images/receivedBookingRequestImage.png")
                 },
                 {
                     key:2,
                     time:"12:00 - 12:18",
-                    title:"Your Booking Request \n" +
-                        "is Accepted",
-                    description:"Your  Booking request is accepted. ",
+                    title:"BookingAccepted",
+                    description:"BookingAcceptedDic",
                     image:require("../../images/acceptBookingRequestImage.png")
 
                 },
                 {
                     key:3,
                     time:"12:00 - 12:10",
-                    title:"Experts are Getting Ready",
-                    description:"Our experts are getting ready and sson reached at your place.",
+                    title:"expertsGettingRead",
+                    description:"expertsGettingReadDic",
                     image:require("../../images/expertReadyImage.png")
 
                 },
                 {
                     key:4,
                     time:"5 minutes left",
-                    title:"Experts are on the way",
-                    description:"Experts are on the way . Just few minutes left to reach at your doorsteps. ",
+                    title:"expertsOnWay",
+                    description:"expertsOnWayDic",
                     image:require("../../images/MapBackground.png")
 
                 },
                 {
                     key:5,
                     time:"At your doorstep",
-                    title:"Experts arrived",
-                    description:"Open the door. Our experts are reached and on your doorsteps.",
+                    title:"Expertsarrived",
+                    description:"ExpertsarrivedDic",
                     image:require("../../images/MapBackground.png")
 
                 }
@@ -113,15 +112,16 @@ class BookingRequestScreen extends React.Component {
     }
 
     BottomProgressBar({colors}){
+        const {t,language}=this.props.value
         return(
             <View style={{width:"80%",alignSelf:'center'}}>
 
                 <View style={{flexDirection:'row',alignItems:'center',marginLeft:15}}>
-                    {this.circleComponent({title:"Booking \n" + "Request",colors:colors,isActive:this.state.bookingScreenNumber>=1?true:false,isText:this.state.bookingScreenNumber==1?true:false,state:1})}
-                    {this.circleComponent({title:"Request \n" + "Accepted",colors:colors,isActive:this.state.bookingScreenNumber>=2?true:false,isText:this.state.bookingScreenNumber==2?true:false,state:2})}
-                    {this.circleComponent({title:"Getting \n" + "ready",colors:colors,isActive:this.state.bookingScreenNumber>=3?true:false,isText:this.state.bookingScreenNumber==3?true:false,state:3})}
-                    {this.circleComponent({title:"On the  \n" + "way",colors:colors,isActive:this.state.bookingScreenNumber>=4?true:false,isText:this.state.bookingScreenNumber==4?true:false,state:4})}
-                    {this.circleComponent({title:"Experts \n" + "Arrived",colors:colors,isLast:true,isActive:this.state.bookingScreenNumber>=5?true:false,isText:this.state.bookingScreenNumber==5?true:false,state:5})}
+                    {this.circleComponent({title:t("L:Booking")+"\n" +t("L:Request"),colors:colors,isActive:this.state.bookingScreenNumber>=1?true:false,isText:this.state.bookingScreenNumber==1?true:false,state:1})}
+                    {this.circleComponent({title:t("L:Request")+"\n" +t("L:Accepted"),colors:colors,isActive:this.state.bookingScreenNumber>=2?true:false,isText:this.state.bookingScreenNumber==2?true:false,state:2})}
+                    {this.circleComponent({title:t("L:Getting")+"\n"+t("L:ready"),colors:colors,isActive:this.state.bookingScreenNumber>=3?true:false,isText:this.state.bookingScreenNumber==3?true:false,state:3})}
+                    {this.circleComponent({title:t("L:Onthe") +"\n"+t("L:way"),colors:colors,isActive:this.state.bookingScreenNumber>=4?true:false,isText:this.state.bookingScreenNumber==4?true:false,state:4})}
+                    {this.circleComponent({title:t("L:Experts") +"\n"+t("L:Arrived"),colors:colors,isLast:true,isActive:this.state.bookingScreenNumber>=5?true:false,isText:this.state.bookingScreenNumber==5?true:false,state:5})}
 
 
                 </View>
@@ -136,16 +136,16 @@ class BookingRequestScreen extends React.Component {
         const {colors}=themeColor
         return (
                 <View style={{flex: 1,backgroundColor:colors.screenBackgroundColor}}>
-                    <HeaderComponent Location={false} title={"Your Booking"} Drawer={true} Props={this.props.value} />
+                    <HeaderComponent Location={false} title={t("L:YourBooking")} Drawer={true} Props={this.props.value} />
 
                     <View style={{flex:0.9,justifyContent:'center',alignItems:'center'}}>
 
                         <Image resizeMode={"contain"} style={{height:undefined,width:"90%",alignSelf:'center',aspectRatio:1.4}} source={this.state.bookingDataList[this.state.bookingScreenNumber-1].image}/>
 
-                        <Text style={{fontSize:12,color:colors.blackAndWhite,fontFamily:Constants.fontFamilyRegular}}>Estimated Time</Text>
+                        <Text style={{fontSize:12,color:colors.blackAndWhite,fontFamily:Constants.fontFamilyRegular}}>{t("L:EstimatedTime")}</Text>
                         <Text style={{fontSize:17,color:colors.blackAndWhite,fontFamily:Constants.fontFamilyBold}}>{this.state.bookingDataList[this.state.bookingScreenNumber-1].time}</Text>
-                        <Text style={{fontSize:17,color:colors.blackAndWhite,fontFamily:Constants.fontFamilyBold,marginTop:20,marginBottom:15}}>{this.state.bookingDataList[this.state.bookingScreenNumber-1].title}</Text>
-                        <Text style={{fontSize:12,textAlign:"center",marginHorizontal:30,color:colors.greyToWhite,fontFamily:Constants.fontFamilyRegular,marginTop:20,}}>this.state.bookingDataList[this.state.bookingScreenNumber-1].description</Text>
+                        <Text style={{fontSize:17,color:colors.blackAndWhite,fontFamily:Constants.fontFamilyBold,marginTop:20,marginBottom:15}}>{t(`L:${this.state.bookingDataList[this.state.bookingScreenNumber-1].title}`)}</Text>
+                        <Text style={{fontSize:12,textAlign:"center",marginHorizontal:30,color:colors.greyToWhite,fontFamily:Constants.fontFamilyRegular,marginTop:20,}}>{t(`L:${this.state.bookingDataList[this.state.bookingScreenNumber - 1].description}`)}</Text>
 
 
                     </View>

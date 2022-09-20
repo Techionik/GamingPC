@@ -49,10 +49,10 @@ class RattingReviewsScreen extends React.Component {
         return (
                 <View style={{flex: 1,backgroundColor:colors.screenBackgroundColor}}>
 
-                    <HeaderComponent Location={false} title={"Rating & Review"} Drawer={true} Props={this.props.value} />
+                    <HeaderComponent Location={false} title={t("L:RatingReview")} Drawer={true} Props={this.props.value} />
                    <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{flexGrow:1,marginHorizontal:15,}}>
-                    <ReviewRatingComponent title={this.state.title} image={this.state.image} colors={colors} taskArray={this.state.taskList} date={this.state.date} diffTime={this.state.diffTime} endTime={this.state.endTime} startTime={this.state.startTime} />
-                    <Text style={{fontSize:16,marginVertical:20,marginHorizontal:10,fontFamily:Constants.fontFamilyRegular,color:colors.blackAndWhite,}}>Give Stars to Rate</Text>
+                    <ReviewRatingComponent Props={this.props.value} title={this.state.title} image={this.state.image} colors={colors} taskArray={this.state.taskList} date={this.state.date} diffTime={this.state.diffTime} endTime={this.state.endTime} startTime={this.state.startTime} />
+                    <Text style={{fontSize:16,marginVertical:20,marginHorizontal:10,fontFamily:Constants.fontFamilyRegular,color:colors.blackAndWhite,}}>{t("L:RatingText")}</Text>
                        <StarRating containerStyle={{marginHorizontal:60,marginVertical:10}}  starSize={35}
                            fullStarColor={Color.starColor}
                            disabled={false}
@@ -60,10 +60,10 @@ class RattingReviewsScreen extends React.Component {
                            rating={this.state.starCount}
                            selectedStar={(rating) => this.onStarRatingPress(rating)}
                        />
-                       <Text style={{fontSize:16,marginVertical:20,marginHorizontal:10,fontFamily:Constants.fontFamilyRegular,color:colors.blackAndWhite,}}>Additional Comment</Text>
-                       <TextInput multiline={true} numberOfLines={7} placeholder={"Add your Comment"} placeholderTextColor={colors.greyToWhite} style={{textAlignVertical:'top',paddingLeft:10,fontFamily:Constants.fontFamilyRegular,borderWidth:2,borderColor:Color.borderGreyColor,borderRadius:6}}/>
+                       <Text style={{fontSize:16,marginVertical:20,marginHorizontal:10,fontFamily:Constants.fontFamilyRegular,color:colors.blackAndWhite,}}>{t("L:AdditionalComment")}</Text>
+                       <TextInput multiline={true} numberOfLines={7} placeholder={t("L:AdditionalComment")} placeholderTextColor={colors.greyToWhite} style={{textAlignVertical:'top',paddingLeft:10,fontFamily:Constants.fontFamilyRegular,borderWidth:2,paddingHorizontal:10,borderColor:Color.borderGreyColor,borderRadius:6}}/>
 
-                       <ButtonComponent title={"Submit"}/>
+                       <ButtonComponent title={t("L:Submit")}/>
                    </ScrollView>
 
 

@@ -7,7 +7,7 @@ import drawer from "../../navigation/drawer_ref";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
 
-export default function HeaderComponent({Props, title,Drawer,Location,titleStyle,back,style}) {
+export default function HeaderComponent({Props,backColor, title,Drawer,Location,titleStyle,back,style}) {
 
     const navigation=Props
     const {t, language,themeColor} = Props
@@ -36,8 +36,8 @@ export default function HeaderComponent({Props, title,Drawer,Location,titleStyle
                 <Image source={require('../../images/NotficationICon.png')} resizeMode={"contain"} style={{height:undefined,width:"10%",marginRight:10,aspectRatio:1}}/></>}
             {Location===false||back===true?
                  <View>
-                     <AntDesign name={"arrowleft"} color={"#fff"} size={25}/>
-                     <Text style={{fontSize:12,fontFamily:Constants.Bold,color:"#fff",includeFontPadding:false,padding:0}}>Back</Text>
+                     <AntDesign name={"arrowleft"} color={backColor??"#fff"} size={25}/>
+                     <Text style={{fontSize:12,fontFamily:Constants.Bold,color:backColor??"#fff",includeFontPadding:false,padding:0}}>{t("L:Back")}</Text>
                  </View>
                 :
                 <TouchableOpacity style={{

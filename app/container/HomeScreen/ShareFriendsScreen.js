@@ -23,7 +23,7 @@ class ShareFriendsScreen extends React.Component {
         const {colors} = themeColor
         return (
             <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
-                <HeaderComponent Props={this.props.value} Drawer={true} Location={false} back={false} title={"Share with Friends"}/>
+                <HeaderComponent Props={this.props.value} Drawer={true} Location={false} back={false} title={t("L:SharewithFriends")}/>
                 <Image source={require('../../images/FriednsICon.png')} style={{
                     height: undefined,
                     width: "90%",
@@ -36,7 +36,7 @@ class ShareFriendsScreen extends React.Component {
                     fontFamily: Constants.fontFamilyMedium,
                     color: colors.blackAndWhite,
                     alignSelf: "center"
-                }}>Share with friends</Text>
+                }}>{t("L:SharewithFriends")}</Text>
                 <Text style={{
                     fontSize: 14,
                     fontFamily: Constants.fontFamilyRegular,
@@ -49,7 +49,7 @@ class ShareFriendsScreen extends React.Component {
                 <View style={{marginHorizontal:20,paddingVertical:10,backgroundColor:colors.lightGreyToBackground,borderRadius:5,alignItems:"center",}}>
                 <Text style={{fontFamily:Constants.fontFamilyMedium,fontSize:16,color:colors.greyToWhite}}>76VVGV7234002WNFI</Text>
                 </View>
-                <ButtonComponent title={"Copy"}/>
+                <ButtonComponent title={t("L:Copy")}/>
 
 
             </View>

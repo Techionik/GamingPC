@@ -80,18 +80,18 @@ class PaymentHistoryScreen extends React.Component {
         const {colors}=themeColor
         return (
             <View style={{flex: 1,backgroundColor:colors.screenBackgroundColor}}>
-                <HeaderWihBackground Location={false}  title={"Payment History"} Drawer={true} Props={this.props.value} />
+                <HeaderWihBackground Location={false}  title={t("L:PaymentHistory")} Drawer={true} Props={this.props.value} />
 
-                <FieldComponent Icon={require('../../images/SearchIcon.png')} theme={colors} Style={{zIndex:2,top:-25,marginHorizontal:30}} Placeholder={"Search"} />
+                <FieldComponent Icon={require('../../images/SearchIcon.png')} theme={colors} Style={{zIndex:2,top:-25,marginHorizontal:30}} Placeholder={t("L:Search")} />
 
                 <ScrollView showsVerticalScrollIndicator={false} style={{flexGrow:1,}}>
-                <Text style={{color:colors.greyToWhite,marginHorizontal:30,marginVertical:10,fontFamily:Constants.fontFamilyRegular,fontSize:15}}>TODAY</Text>
+                <Text style={{color:colors.greyToWhite,marginHorizontal:30,marginVertical:10,fontFamily:Constants.fontFamilyRegular,fontSize:15}}>{t("L:Today")}</Text>
 
                 <FlatList data={this.state.todayList} style={{paddingTop:20,paddingHorizontal:15,marginHorizontal:15,backgroundColor:colors.fieldBackgroundColor}}  renderItem={({item, index}) =>
                     <PaymentHistoryComponent image={item.image} colors={colors} title={item.title} time={item.time} rate={item.rate} task={item.task} />
                 }/>
 
-                <Text style={{color:colors.greyToWhite,marginHorizontal:30,marginVertical:10,fontFamily:Constants.fontFamilyRegular,fontSize:15}}>MONDAY</Text>
+                <Text style={{color:colors.greyToWhite,marginHorizontal:30,marginVertical:10,fontFamily:Constants.fontFamilyRegular,fontSize:15}}>{t("L:MONDAY")}</Text>
 
                 <FlatList data={this.state.mondayList} style={{paddingTop:20,paddingHorizontal:15,marginHorizontal:15,backgroundColor:colors.fieldBackgroundColor}}  renderItem={({item, index}) =>
                     <PaymentHistoryComponent image={item.image} colors={colors} title={item.title} time={item.time} rate={item.rate} task={item.task} />
