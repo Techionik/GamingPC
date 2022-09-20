@@ -36,7 +36,7 @@ class MyWalletScreen extends React.Component {
         return (
             <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
                 <View style={{flex: 0.42, backgroundColor: Color.primary}}>
-                    <HeaderComponent Props={this.props.value} Drawer={true} Location={false} title={"My Wallet"}/>
+                    <HeaderComponent Props={this.props.value} Drawer={true} Location={false} title={"My Wallet"} titleStyle={{color:"#fff"}}/>
                     <Text style={{
                         fontSize: 14,
                         textAlign: "center",
