@@ -8,6 +8,8 @@ import withLanguage from "../../config/withLanguage";
 import SkipButton from "../Components/SkipButton";
 import {Color, Constants} from "../../common";
 import ButtonComponent from "../Components/ButtonComponent";
+import InputVerify from "../Components/input/InputVerify";
+import InputCode from "../Components/input/InputCode";
 
 
 class VerificationScreen extends React.Component{
@@ -26,10 +28,21 @@ class VerificationScreen extends React.Component{
                                  style={{aspectRatio: 1.5, width: "100%", height: undefined}}>
                 </ImageBackground>
                 <Text
-                    style={{color: colors.blackAndWhite, fontFamily: Constants.fontFamilyBold, fontSize: 22}}>{t("Auth:Verification")}</Text>
+                    style={{color: colors.blackAndWhite, fontFamily: Constants.fontFamilyBold, fontSize: 22}}>{t("L:Verification")}</Text>
                 <Text style={{color: colors.greyToWhite, fontFamily: Constants.fontFamilyBold, fontSize: 12}}>Lorem Ipsum is
                     simply dummy text of the printing and typesetting industry. Lorem Ipsum</Text>
                 <View style={{marginTop: 20}}>
+                    <View style={{marginHorizontal:30}}>
+                    <InputCode
+                        onFulfill={()=>{}}
+                        onCodeChange={value => {
+                            // setCode(value)
+                            this.setState({code:value})
+                            // verifyCode(value)
+                        }}
+                        // editable={!isLoading}
+                    />
+                    </View>
                 <ButtonComponent onPress={()=>{this.props.navigation.replace("homeStack")}} title={t("Auth:Send")}/>
                 </View>
             </View>

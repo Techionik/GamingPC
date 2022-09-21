@@ -140,7 +140,7 @@
     "SharewithFriends": "Share with Friends",
     "Copy": "Copy",
     "Summary": "Summary",
-    "summaryText": "A terms and conditions agreement outlines the website administrator’s rules regarding user behavior and provides information about the actions the website administrator can and will perform.\\n\" +\n            \"Essentially, your terms and conditions text is a contract between your website and its users. In the event of a legal dispute, arbitrators will look at it to determine whether each party acted within their rights.",
+    "summaryText": "A terms and conditions agreement outlines the website administrator’s rules regarding user behavior and provides information about the actions the website administrator can and will perform.Essentially, your terms and conditions text is a contract between your website and its users. In the event of a legal dispute, arbitrators will look at it to determine whether each party acted within their rights.",
     "legalterms": "What are legal terms ?",
     "legalTermText": "Legal terms are an agreement between you and your users. Legal terms establish the rights and responsibilities of both parties. Those rights and responsibilities include any rules that users must agree to when using your website or mobile app.",
     "LocalLaws": "Does Local Renovators legal terms generator cover all contract and consumer protection laws?",
@@ -148,6 +148,16 @@
     "individualText": "Users are individuals that visit your website. They can be external or internal.",
     "Whatareusers": "What are users",
     "agrementSucces": "I agree with the Terms & Conditions.",
-    "agrementSucces2": "I agree with Local Renovators Privacy Policy."
+    "agrementSucces2": "I agree with Local Renovators Privacy Policy.",
+    "DarkMode": "Dark Mode",
+    "Home": "Home",
+    "Location": "Location",
+    "Setting": "Setting",
+    "ShareFriends": "Share Friends",
+    "Service": "Service",
+    "Wallet": "Wallet",
+    "Verification": "Verification",
+
+
   }
 }

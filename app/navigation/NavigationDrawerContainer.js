@@ -29,19 +29,21 @@ import withLanguage from "../config/withLanguage";
 import ToggleButton from "react-native-toggle-element";
 import Feather from "react-native-vector-icons/Feather";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import {changeTheme} from "../redux/app/actions";
+import {changeLanguage, changeTheme} from "../redux/app/actions";
 import {t} from "i18next";
+
 
 var Screenwidth = Dimensions.get('window').width; //full width
 var Screenheight = Dimensions.get('window').height;
 const mapStateToProps = ({user, app}) => ({
     app,
-    user
+    user,
+    languagee:user?.languagee
 });
 
 @connect(
     mapStateToProps,
-    {logout,changeTheme}
+    {logout,changeTheme,changeLanguage}
 )
 
 class NavigationDrawerContainer extends Component<Props> {
@@ -58,26 +60,27 @@ class NavigationDrawerContainer extends Component<Props> {
             shareModal: false,
             rateModal: false,
             toggleValue:false,
-            language:"er",
+            language:this.props.value.language,
             list: [{screen: "HomeScreen", title: "Home"}, {
                 screen: "ServicesScreen",
                 title: "Service"
             },
-                {screen: "MyBookingScreens", title: "My Booking"},
+                {screen: "MyBookingScreens", title: "MyBookings"},
                 {screen: "MapScreen", title: "Location"},
-                {screen: "MyWalletScreen", title: "My wallet"},
+                {screen: "MyWalletScreen", title: "MyWallet"},
                 {screen: "PaymentHistoryScreen", title: "Payment"},
                 {screen: "ProfileScreen", title: "Profile"},
                 {screen: "SettingScreen", title: "Setting"},
-                {screen: "ShareFriendsScreen", title: "Share Friends"},
-                {screen: "ContactUsScreen", title: "Contact Us"},
-                {screen: "AboutUsScreen", title: "About Us"},
-                {screen: "TermConditionScreen", title: "Terms & Conditions"},
-                {screen: "TermConditionScreen", title: "LogOut"},
+                {screen: "ShareFriendsScreen", title: "ShareFriends"},
+                {screen: "ContactUsScreen", title: "Contactus"},
+                {screen: "AboutUsScreen", title: "Aboutus"},
+                {screen: "TermConditionScreen", title: "TermsandConditions"},
+                {screen: "TermConditionScreen", title: "Logout"},
             ]
 
 
         };
+
 
     }
     render() {
@@ -117,7 +120,7 @@ class NavigationDrawerContainer extends Component<Props> {
                                     includeFontPadding: false,
                                     fontFamily: Constants.fontFamilySemiBold,
                                     color: '#fff'
-                                }}>{t("Wallet : 2,456 SAR")}</Text>
+                                }}>{t("L:Wallet")} : 2,456 SAR</Text>
                             </View>
                         </View>
 
@@ -128,7 +131,7 @@ class NavigationDrawerContainer extends Component<Props> {
                             fontFamily: Constants.fontFamilySemiBold,
                             color: '#fff',
                             marginHorizontal:10
-                        }}>{t("Dark Mode")}</Text>
+                        }}>{t("L:DarkMode")}</Text>
                             <ToggleButton
                                 value={this.props.app?.theme=='dark'}
                                 onPress={(newState) => {
@@ -173,21 +176,28 @@ class NavigationDrawerContainer extends Component<Props> {
                     }}>
 
                         <TouchableOpacity onPress={() => {
-                            this.setState({ language: "er" })
+                            this.setState({ language: "en" })
+                            this.props.changeLanguage("en")
+
+                            setTimeout(()=>{   RNRestart.Restart()},200)
+
                         }} style={{
                             padding: 9,
-                            backgroundColor:this.state.language=="er"?colors.fieldBackgroundColor:colors.lightPrimaryToPrimary ,
+                            backgroundColor:this.state.language=="en"?colors.fieldBackgroundColor:colors.lightPrimaryToPrimary ,
                             paddingHorizontal: 15,
                             borderRadius: 20,
                         }}>
                             <Text style={{
-                                color: this.state.language=="er" ? colors.languageTextColor : colors.InactivelanguageTextColor,
+                                color: this.state.language=="en" ? colors.languageTextColor : colors.InactivelanguageTextColor,
                                 fontSize: 12,
                                 fontFamily: Constants.fontFamilyRegular,
                             }}>English</Text>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => {
                             this.setState({ language: "ur" })
+                            this.props.changeLanguage("ur")
+
+                            setTimeout(()=>{   RNRestart.Restart()},200)
                         }} style={{
                             padding: 9,
                             backgroundColor:this.state.language=="ur"?colors.fieldBackgroundColor:colors.lightPrimaryToPrimary ,
@@ -223,7 +233,7 @@ class NavigationDrawerContainer extends Component<Props> {
                                         includeFontPadding: false,
                                         fontFamily: Constants.fontFamilyBold,
 
-                                        color: '#fff'}}>{item.title}</Text>
+                                        color: '#fff'}}>{t(`L:${item.title}`)}</Text>
 
                                 }/>
 

@@ -105,7 +105,7 @@ class ServiceStoreScreen extends React.Component {
                 <View style={{flex:1}}>
                     <FlatList contentContainerStyle={{paddingBottom:40}} showsVerticalScrollIndicator={false} data={this.state.arr}
                               renderItem={({item, index}) =>
-                        <ServiceComponent onPressAddCart={()=>{this.props.navigation.navigate("AddToCartScreen")}} index={index} item={item} Props={this.props.value}/>
+                        <ServiceComponent onPress={()=>{this.props.navigation.navigate("DetailScreen")}} onPressAddCart={()=>{this.props.navigation.navigate("AddToCartScreen")}} index={index} item={item} Props={this.props.value}/>
                     }/>
                 </View>
 
@@ -118,35 +118,40 @@ class ServiceStoreScreen extends React.Component {
 
 export default withLanguage(ServiceStoreScreen)
 
-function ServiceComponent({Props, item, index,onPressAddCart}) {
+function ServiceComponent({Props, item,onPress, index,onPressAddCart}) {
     const {t, language,themeColor} = Props
     const {colors}=themeColor
     return (
-        <View style={{
+        <TouchableOpacity onPress={onPress} style={{
             flexDirection: "row",
             paddingHorizontal: 20,
             paddingVertical: 5,
         }}>
+
             <Image source={item.image} resizeMode={"contain"}
-                   style={{height: 90, width: 90, borderRadius: 5}}/>
-            <View style={{marginLeft: 10, marginVertical: 5,flex:1}}>
+                   style={{height: 100, width: 100,aspectRatio:1, borderRadius: 5}}/>
+            <View style={{marginLeft: 10, marginVertical: 5,flex:1,justifyContent:'space-between'}}>
+               <View>
                 <Text style={{fontSize: 14, fontFamily: Constants.fontFamilyMedium, color: colors.blackAndWhite}}>Hair Color Balyage</Text>
-                <Text style={{fontSize: 12, fontFamily: Constants.fontFamilyMedium, color: colors.greyToWhite,}}>Lorem Ipsum is simply dummy text of the
+                <Text numberOfLines={2} style={{fontSize: 12, fontFamily: Constants.fontFamilyMedium, color: colors.greyToWhite,}}>Lorem Ipsum is simply dummy text of the
                     printing and typesetting industry.</Text>
-               <View style={{flex:1,flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-                   <Text style={{fontSize:12,fontFamily:Constants.fontFamilyMedium,color:colors.RedToTheme}}>250 SAR</Text>
+               </View>
+               <View style={{flex:1,flexDirection:"row",alignItems:"center",marginTop:5}}>
+                   <Text style={{fontSize:12,fontFamily:Constants.fontFamilyMedium,color:colors.RedToTheme,flex:1}}>250 SAR</Text>
                 <TouchableOpacity onPress={onPressAddCart} style={{
                     paddingVertical: 2,
-                    paddingLeft: 5,
+                    paddingHorizontal: 5,
                     borderRadius: 5,
                     flexDirection:"row",
                     alignItems:"center",
                     backgroundColor:Color.primary,
                 }}>
-                    <Image source={require("../../images/CartImage.png")} resizeMode={"contain"} style={{height:undefined,width:"20%",aspectRatio:1}}/>
+                    <Image source={require("../../images/CartImage.png")} resizeMode={"cover"} style={{height:20,width:20}}/>
                     <Text style={{
-                        fontSize: 12,
-
+                        fontSize: 10,
+includeFontPadding:false,
+                        marginRight:5,
+                        padding:0,
                         fontFamily: Constants.fontFamilyMedium,
                         color: "#fff",
                         marginLeft:5,
@@ -156,7 +161,7 @@ function ServiceComponent({Props, item, index,onPressAddCart}) {
             </View>
 
 
-        </View>
+        </TouchableOpacity>
     )
 }
 

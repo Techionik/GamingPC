@@ -12,7 +12,7 @@ export default function SettingsComponent({toogle,onTogglePress,leftTitle,rightT
             {toogle==true?
                 <ToggleButton
 
-                    onPress={(newState) => onTogglePress(newState)}
+                    onPress={onTogglePress}
                 trackBar={trackBar??{
                 height:15,
                 width:35,

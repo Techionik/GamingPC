@@ -130,7 +130,21 @@ const homeStack = () => {
             <Stack.Screen name={"HomeScreen"} component={HomeScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"ServicesScreen"} component={ServicesScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"ServiceStoreScreen"} component={ServiceStoreScreen} options={{headerShown: false}}/>
-
+            <Stack.Screen name={"AddToCartScreen"} component={AddToCartScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"DetailScreen"} component={DetailScreen}
+                          options={{headerShown: false}}/>
+            <Stack.Screen name={"RattingReviewsScreen"} component={RattingReviewsScreen}
+                          options={{headerShown: false}}/>
+            <Stack.Screen name={"NotificationScreen"} component={NotificationScreen}
+                          options={{headerShown: false}}/>
+            <Stack.Screen name={"AppointmentScreen"} component={AppointmentScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"CehckOutScreen"} component={CehckOutScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"BookingRequestScreen"} component={BookingRequestScreen}
+                          options={{headerShown: false}}/>
+            <Stack.Screen name={"OffersScreen"} component={OffersScreen}
+                          options={{headerShown: false}}/>
+            <Stack.Screen name={"PaymentMethodScreen"} component={PaymentMethodScreen}
+                          options={{headerShown: false}}/>
         </Stack.Navigator>
     )
 }
@@ -151,24 +165,11 @@ const AppStack = ({props}) => {
             {/*<Stack.Screen name={"ShareFriendsScreen"} component={ShareFriendsScreen} options={{headerShown: false}}/>*/}
             {/*<Stack.Screen name={"ContactUsScreen"} component={ContactUsScreen} options={{headerShown: false}}/>*/}
             {/*<Stack.Screen name={"TermConditionScreen"} component={TermConditionScreen} options={{headerShown: false}}/>*/}
-            <Stack.Screen name={"AddToCartScreen"} component={AddToCartScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"RattingReviewsScreen"} component={RattingReviewsScreen}
-                          options={{headerShown: false}}/>
-            <Stack.Screen name={"NotificationScreen"} component={NotificationScreen}
-                          options={{headerShown: false}}/>
-            <Stack.Screen name={"AppointmentScreen"} component={AppointmentScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"CehckOutScreen"} component={CehckOutScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"BookingRequestScreen"} component={BookingRequestScreen}
-                          options={{headerShown: false}}/>
-            <Stack.Screen name={"OffersScreen"} component={OffersScreen}
-                          options={{headerShown: false}}/>
-            <Stack.Screen name={"PaymentMethodScreen"} component={PaymentMethodScreen}
-                          options={{headerShown: false}}/>
+
             {/*<Stack.Screen name={"PaymentHistoryScreen"} component={PaymentHistoryScreen}*/}
             {/*              options={{headerShown: false}}/>*/}
             {/*<Stack.Screen name={"AboutUsScreen"} component={AboutUsScreen} options={{headerShown: false}}/>*/}
-            <Stack.Screen name={"DetailScreen"} component={DetailScreen}
-                          options={{headerShown: false}}/>
+
 
         </Stack.Navigator>
     )

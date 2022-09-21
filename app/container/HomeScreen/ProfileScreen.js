@@ -2,7 +2,7 @@ import React from 'react'
 import {
     FlatList,
     Image,
-    ImageBackground, Text, TouchableOpacity,
+    ImageBackground, StatusBar, Text, TouchableOpacity,
     View
 
 } from 'react-native'
@@ -26,6 +26,7 @@ class ProfileScreen extends React.Component {
         const {colors}=themeColor
         return (
             <View style={{flex: 1,backgroundColor:colors.screenBackgroundColor}}>
+                <StatusBar backgroundColor={Color.primary} barStyle={'light-content'}/>
                 <ImageBackground source={require('../../images/BackgroundLarge.png')}
                                  style={{height: undefined, width: "100%", aspectRatio: 1.3}}>
                     <HeaderComponent titleStyle={{color: "#fff"}} title={t("L:Profile")} Drawer={true}

@@ -33,7 +33,11 @@ export default function HeaderComponent({Props,backColor, title,Drawer,Location,
                     }}>{t("L:WelcomeBack")}</Text>
                 </View>
                 <View style={{flex:1}}/>
-                <Image source={require('../../images/NotficationICon.png')} resizeMode={"contain"} style={{height:undefined,width:"10%",marginRight:10,aspectRatio:1}}/></>}
+                   <TouchableOpacity onPress={()=>{navigation.navigate('NotificationScreen')}}>
+                <Image source={require('../../images/NotficationICon.png')} resizeMode={"contain"} style={{height:40,width:40,marginRight:10,aspectRatio:1}}/>
+                   </TouchableOpacity>
+                   </>}
+
             {Location===false||back===true?
                  <TouchableOpacity onPress={()=>{
                      navigation.pop()

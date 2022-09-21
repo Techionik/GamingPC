@@ -239,7 +239,7 @@ class DetailScreen extends React.Component {
 
                         </View>
                     </View>
-                    <ButtonComponent Style={{flex: 1, marginLeft: 5,marginVertical:0}} title={t('L:BookNow')}/>
+                    <ButtonComponent onPress={()=>{this.props.navigation.navigate("AddToCartScreen")}} Style={{flex: 1, marginLeft: 5,marginVertical:0}} title={t('L:BookNow')}/>
                 </View>
 
             </View>

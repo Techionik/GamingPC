@@ -23,8 +23,10 @@ class GenderSelectionScreen extends React.Component {
         const {t, language, themeColor} = this.props.value
         const {colors} = themeColor
         return (
-            <ScrollView contentContainerStyle={{paddingBottom:20}} style={{flex: 1, backgroundColor: colors.screenBackgroundColor, paddingHorizontal: 15}}>
-                <HeaderComponent Props={this.props.value}/>
+            <View style={{flex:1,backgroundColor: colors.screenBackgroundColor,}}>
+                <HeaderComponent  Props={this.props.value}/>
+            <ScrollView contentContainerStyle={{paddingBottom:20}} style={{flex: 1,  paddingHorizontal: 15}}>
+
                 <Image source={require("../../images/GenderImage.png")} resizeMode={"contain"}
                        style={{height: undefined, width: "50%", aspectRatio: 1, alignSelf: "center"}}/>
                 <Text style={{
@@ -61,6 +63,7 @@ class GenderSelectionScreen extends React.Component {
                     this.props.navigation.navigate("HomeScreen")
                 }} title={t("L:Select")}/>
             </ScrollView>
+        </View>
 
         );
     }

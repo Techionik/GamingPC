@@ -2,7 +2,7 @@ import * as actions from './actions'
 import {CommonActions} from '@react-navigation/native'
 
 import store from './../../store/configureStore'
-import * as globals from '../../../globals'
+
 import {toast} from '../../Omni'
 import * as DeviceInfo from 'react-native-device-info'
 import RestApi from "../../services/restclient/RestApi";
@@ -12,9 +12,7 @@ export const initialApp = () => (dispatch) => {
     dispatch(saveDeviceInfo())
 }
 
-export const switchLanguage = (isRtl) => (dispatch) => {
-    dispatch(actions.changeLanguage({lang: isRtl === true ? 'ur' : 'en', rtl: isRtl}))
-}
+
 
 
 export const saveDeviceInfo = () => async (dispatch) => {
