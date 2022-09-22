@@ -2,30 +2,31 @@ import React from 'react'
 import {
     FlatList,
     Image,
-    ImageBackground, Text, TouchableOpacity,
+    ImageBackground, ScrollView, Text, TouchableOpacity,
     View
 
 } from 'react-native'
 import withLanguage from "../../config/withLanguage";
 import {Color, Constants} from "../../common";
-import HeaderComponent from "../Components/HeaderComponent";
+// import HeaderComponent from "../Components/HeaderComponent";
 import AntDesign from "react-native-vector-icons/AntDesign";
+import HeaderWihBackground from "../Components/HeaderWihBackground";
 
 
-class MyWalletScreen extends React.Component {
+class EarningScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            list: [{font: "L", title: "The Tease Beauty ", price: "SAR 695.05"}, {
+            list: [{font: "L", title: "Tina Khan", price: "SAR 695.05"}, {
                 font: "L",
-                title: "The Tease Beauty ",
+                title: "Talish Sim",
                 price: "SAR 695.05"
-            }, {font: "L", title: "The Tease Beauty ", price: "SAR 695.05"}, {
+            }, {font: "L", title: "Talish Sim", price: "SAR 695.05"}, {
                 font: "L",
-                title: "The Tease Beauty ",
+                title: "Talish Kahan",
                 price: "SAR 695.05"
-            }, {font: "L", title: "The Tease Beauty ", price: "SAR 695.05"},
-                {font: "L", title: "The Tease Beauty ", price: "SAR 695.05"},
+            }, {font: "L", title: "Talish Sim", price: "SAR 695.05"},
+                {font: "L", title: "Talish Kahan", price: "SAR 695.05"},
             ]
         }
     }
@@ -35,58 +36,21 @@ class MyWalletScreen extends React.Component {
         const {colors} = themeColor
         return (
             <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
-                <View style={{flex: 0.42, backgroundColor: Color.primary}}>
-                    <HeaderComponent Props={this.props.value} Drawer={true} Location={false} title={t("L:MyWallet")} titleStyle={{color:"#fff"}}/>
-                    <Text style={{
-                        fontSize: 14,
-                        textAlign: "center",
-                        fontFamily: Constants.fontFamilyBold,
-                        color: colors.whiteToDark,
-                        marginTop: 10
-                    }}>{t("L:TOTALBALANCE")}</Text>
-                    <Text style={{
-                        fontSize: 26,
-                        textAlign: "center",
-                        fontFamily: Constants.fontFamilyBold,
-                        color: colors.whiteToDark
-                    }}>2,456 SAR</Text>
-                </View>
-                <View
-                    style={{marginHorizontal: 10,zIndex:2,top:-40,elevation:2, padding: 10, borderRadius: 10, backgroundColor: colors.whiteToDark}}>
-                    <View style={{flexDirection: "row", alignItems: "center", justifyContent: "space-between"}}>
-                        <TouchableOpacity style={{
-                            borderRadius: 20,
-                            flexDirection: "row",
-                            alignItems: "center",
-                            paddingVertical: 5,
-                            paddingHorizontal: 10,
-                            backgroundColor: colors.fieldBackgroundColor
-                        }}>
-                            <Text style={{
-                                fontSize: 14,
-                                fontFamily: Constants.Bold,
-                                color: colors.greenBorder,
-                                marginRight: 5
-                            }}>{t("L:Thisweek")}</Text>
-                            <AntDesign name={"right"} color={colors.greenBorder} size={15}/>
-                        </TouchableOpacity>
-                        <Text style={{fontSize: 12, fontFamily: Constants.fontFamilyBold, color: colors.greyToWhite}}>07
-                            July - 14 July</Text>
+
+                <HeaderWihBackground isBack={true} title={"Earning"} colors={colors}  Props={this.props.value}/>
+
+                <ScrollView contentContainerStyle={{flexGrow: 1,paddingHorizontal:15,marginBottom:20}}>
+
+                    <View style={{backgroundColor:colors.dullGreenBackgroundColor,marginVertical:20,borderRadius:15,paddingVertical:35,alignItems:'center'}}>
+                        <Text style={{color: "#fff", fontSize: 15, includeFontPadding:false,fontFamily: Constants.fontFamilyRegular}}>TOTAL EARNING</Text>
+                        <Text style={{color: "#fff", fontSize: 26,includeFontPadding:false, fontFamily: Constants.fontFamilyBold}}>1,004 SAR</Text>
                     </View>
-                    <View style={{flexDirection: "row",justifyContent:"center", alignItems: "center", marginVertical: 10}}>
-                        <WalletComponent type={t("L:Deposit")} Props={this.props.value} colors={colors} style={{backgroundColor: "#5E0BB1"}} icon={"arrowdown"}/>
-                        <WalletComponent type={t("L:Used")} Props={this.props.value} colors={colors} style={{backgroundColor: "red", marginLeft: 15}}
-                                         icon={"arrowup"}/>
-                    </View>
-                </View>
-                <View style={{flex: 1,top:-40}}>
                     <View style={{
-                        paddingVertical: 10,
+                        paddingVertical: 15,
                         paddingHorizontal:15,
-                        marginTop: 40,
-                        marginHorizontal: 10,
-                        backgroundColor: colors.lightGreentoDark,
-                        borderRadius: 10
+                        backgroundColor: colors.whiteToDark,
+                        borderRadius: 10,
+                        elevation:2
                     }}>
                         <View style={{flexDirection: "row", alignItems: "center"}}>
                             <Text style={{
@@ -94,15 +58,15 @@ class MyWalletScreen extends React.Component {
                                 flex: 1,
                                 fontFamily: Constants.fontFamilyMedium,
                                 color: colors.blackAndWhite
-                            }}>{t("L:Transaction")}</Text>
-                            <Text style={{
-                                fontSize: 14,
-                                fontFamily: Constants.fontFamilyMedium,
-                                color: colors.greyToWhite
-                            }}> 14 July</Text>
+                            }}>Earnings</Text>
+                            <View style={{backgroundColor:colors.lightGreenToGreen,borderRadius:30,padding:5,paddingHorizontal:8,flexDirection:'row',alignItems:'center'}}>
+                                <Text style={{color:colors.greenBorder,fontSize:10,includeFontPadding:false,padding:0,fontFamily:Constants.fontFamilyMedium}}>This Week</Text>
+                                <AntDesign name={"down"} color={colors.greenBorder} size={11} style={{marginLeft:3}}/>
+
+                            </View>
 
                         </View>
-                        <FlatList showsVerticalScrollIndicator={false} data={this.state.list} renderItem={({item, index}) =>
+                        <FlatList style={{marginTop:20}} showsVerticalScrollIndicator={false} data={this.state.list} renderItem={({item, index}) =>
                             <View style={{flexDirection: "row", alignItems: "center", marginVertical: 5}}>
                                 <View style={{
                                     height: 50,
@@ -136,7 +100,7 @@ class MyWalletScreen extends React.Component {
                         }/>
                     </View>
 
-                </View>
+                </ScrollView>
 
             </View>
 
@@ -144,7 +108,7 @@ class MyWalletScreen extends React.Component {
     }
 }
 
-export default withLanguage(MyWalletScreen)
+export default withLanguage(EarningScreen)
 
 function WalletComponent({style,Props, icon, colors,type}) {
     const {t,language}=Props

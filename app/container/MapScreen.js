@@ -27,11 +27,7 @@ class MapScreen extends React.Component {
             <View style={{flex: 1,}}>
                 <ImageBackground source={require('../images/MapBackground.png')} style={{flex: 1}}>
                     <View style={{backgroundColor: colors.screenBackgroundColor, borderBottomLeftRadius: 30, borderBottomRightRadius: 30}}>
-                        <FieldComponent theme={colors} value={this.state.Search} onChangeText={(text) => {
-                            this.setState({Search: text})
-                        }} Placeholder={t("L:Searchlocation")} Icon={require('../images/SearchIcon.png')}
-                                        Style={{marginHorizontal: 20, marginTop: 20}}
-                                        IconStyle={{width: "6%", marginRight: 0}}/>
+
                         <View style={{padding: 20}}>
                            <Location colors={colors} Props={this.props.value} address={"St-14, Newcity Mall , FC Jersey Road , London."} status={"CurrentAddress"}/>
                            <Location colors={colors}  Props={this.props.value} address={"St-14, Newcity Mall , FC Jersey Road , London."} status={"PreviousAddress"}/>

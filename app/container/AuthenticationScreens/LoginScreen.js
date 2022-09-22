@@ -1,7 +1,7 @@
 import React from 'react'
 import {
     Image,
-    ImageBackground, Text, TextInput, TouchableOpacity,
+    ImageBackground, ScrollView, Text, TextInput, TouchableOpacity,
     View
 
 } from 'react-native'
@@ -25,13 +25,19 @@ class LoginScreen extends React.Component {
 
         return (
             <View style={{flex: 1, backgroundColor:colors.screenBackgroundColor , paddingTop: 30, paddingHorizontal: 15}}>
-                <ImageBackground  source={require('../../images/LoginImage.png')} resizeMode={"contain"}
-                                 style={{aspectRatio: 1.5, width: "100%", height: undefined}}>
-                    <SkipButton  Props={this.props?.value}/>
-                </ImageBackground>
+
+                <View style={{flex:0.5,justifyContent:'center'}}>
+                <Image style={{
+                    height:130,
+                    width:130,
+                    alignSelf:'center',
+                }}  source={require('../../images/SplashLogo.png')}/>
+                </View>
+
+                <ScrollView showsVerticalScrollIndicator={false} style={{marginHorizontal:5,flex:1}}>
                 <Text
                     style={{color:  colors?.blackAndWhite, fontFamily: Constants.fontFamilyBold, fontSize: 22}}>{t("Auth:Login")}</Text>
-                <Text style={{color: colors?.fieldTextColor, fontFamily: Constants.fontFamilyBold, fontSize: 12}}>Lorem Ipsum is
+                <Text style={{color: colors?.fieldTextColor, fontFamily: Constants.fontFamilyRegular, fontSize: 12}}>Lorem Ipsum is
                     simply dummy text of the printing and typesetting industry. Lorem Ipsum</Text>
                 <View style={{marginTop: 20}}>
                     <FieldComponent theme={colors}  Icon={require('../../images/MailIcon.png')} Placeholder={t("Auth:EmailField")}/>
@@ -44,7 +50,7 @@ class LoginScreen extends React.Component {
                         color: Color.primary,
                         alignSelf: "flex-end"
                     }}>{t("Auth:ForgetPassword")}</Text>
-                    <ButtonComponent onPress={()=>{this.props.navigation.navigate("MapScreen")}} title={t("Auth:Login")}/>
+                    <ButtonComponent onPress={()=>{this.props.navigation.navigate("HomeScreen")}} title={t("Auth:Login")}/>
                 </View>
                 <View style={{flex: 1}}/>
                 <OrLoginWith Props={this.props.value}/>
@@ -65,6 +71,8 @@ class LoginScreen extends React.Component {
                     fontFamily: Constants.fontFamilyBold,
                     color: Color.primary
                 }}>{" " + t("Auth:SignUp")}</Text></Text>
+
+                </ScrollView>
             </View>
 
         );

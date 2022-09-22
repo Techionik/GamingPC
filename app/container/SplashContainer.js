@@ -11,7 +11,7 @@ class SplashContainer extends React.Component {
     }
     componentDidMount() {
         setTimeout(()=>{
-            this.props.navigation.replace('AuthStack');
+            this.props.navigation.replace('LoginScreen');
         },1000)
     }
 
