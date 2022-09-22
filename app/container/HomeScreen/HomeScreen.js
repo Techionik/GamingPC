@@ -32,7 +32,7 @@ class HomeScreen extends React.Component {
                     </View>
 
                     <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-evenly',marginTop:20}}>
-                        <HomeComponent image={require("../../images/jobsImage.png")} title={"Jobs"} colors={colors}/>
+                        <HomeComponent onPress={()=>{this.props.navigation.navigate("JobsScreen")}} image={require("../../images/jobsImage.png")} title={"Jobs"} colors={colors}/>
                         <HomeComponent onPress={()=>{this.props.navigation.navigate("EarningScreen")}} image={require("../../images/earningImage.png")} title={"Earning"} colors={colors}/>
 
                     </View>

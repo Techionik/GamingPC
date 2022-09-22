@@ -110,36 +110,3 @@ class EarningScreen extends React.Component {
 
 export default withLanguage(EarningScreen)
 
-function WalletComponent({style,Props, icon, colors,type}) {
-    const {t,language}=Props
-    return (
-        <View style={{flexDirection: "row", alignItems: "center"}}>
-            <View style={[{
-                height: 50,
-                width: 50,
-                borderRadius: 25,
-                backgroundColor: "red",
-                justifyContent: "center",
-                alignItems: "center"
-            }, style]}>
-                <AntDesign name={icon} size={25} color={"#fff"}/>
-            </View>
-            <View style={{marginLeft: 10}}>
-                <Text style={{
-                    includeFontPadding: false,
-                    padding: 0,
-                    fontFamily: Constants.fontFamilyBold,
-                    fontSize: 12,
-                    color: colors.lightGreyToWhite
-                }}>{type}</Text>
-                <Text style={{
-                    includeFontPadding: false,
-                    padding: 0,
-                    fontFamily: Constants.fontFamilyBold,
-                    fontSize: 12,
-                    color: colors.darKToWhite
-                }}>SAR 487.12</Text>
-            </View>
-        </View>
-    )
-}

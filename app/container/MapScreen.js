@@ -17,6 +17,12 @@ class MapScreen extends React.Component {
         this.state = {
             Search: "",
 
+            image:require("../images/B2.png"),
+                name:"Vikal Hush",
+            jobTitle:"Hydra Facial Spa",
+            time:"15 mins Left",
+
+
         }
     }
 
@@ -25,13 +31,16 @@ class MapScreen extends React.Component {
         const {colors}=themeColor
         return (
             <View style={{flex: 1,}}>
-                <ImageBackground source={require('../images/MapBackground.png')} style={{flex: 1}}>
-                    <View style={{backgroundColor: colors.screenBackgroundColor, borderBottomLeftRadius: 30, borderBottomRightRadius: 30}}>
+                <ImageBackground source={require('../images/MapBackground.png')} style={{flex: 1,justifyContent:'flex-end'}}>
+                    <View style={{backgroundColor: colors.screenBackgroundColor, borderRadius: 10, margin:30}}>
 
-                        <View style={{padding: 20}}>
-                           <Location colors={colors} Props={this.props.value} address={"St-14, Newcity Mall , FC Jersey Road , London."} status={"CurrentAddress"}/>
-                           <Location colors={colors}  Props={this.props.value} address={"St-14, Newcity Mall , FC Jersey Road , London."} status={"PreviousAddress"}/>
-                             <ButtonComponent onPress={()=>{this.props.navigation.replace("homeStack")}} title={t("L:Saved")} Style={{backgroundColor:colors.lightGreyToBackground,marginHorizontal:40}} titleStyle={{color:colors.greyToWhite}}/>
+                        <View style={{}}>
+
+
+                            <JobDetail Props={this.props.value} colors={colors} time={this.state.time} name={this.state.name} image={this.state.image} jobTitle={this.state.jobTitle} />
+                            <View style={{borderBottomWidth:1,borderBottomColor:colors.languageTextColor}}></View>
+
+                             <ButtonComponent  title={"Direction"} Style={{backgroundColor:colors.blackToGreen,marginHorizontal:40}} titleStyle={{color:"#fff"}}/>
                         </View>
                     </View>
 
@@ -43,20 +52,31 @@ class MapScreen extends React.Component {
 }
 
 export default withLanguage(MapScreen)
-function Location({style,onPress,status,address,Props,colors}){
+function JobDetail({image,name,jobTitle,time,Props,colors}){
     const {t,language}=Props
     return(
-        <TouchableOpacity onPress={onPress} style={[{marginBottom:10},style]}>
-            <Text style={{
-                fontSize: 14,
-                fontFamily: Constants.fontFamilyRegular,
-                color: colors.blackAndWhite
-            }}>{t(`L:${status}`)}</Text>
-            <View style={{flexDirection: "row",marginTop:5, alignItems: "center"}}>
-                <Image source={require('../images/MarkerPin.png')} resizeMode={"contain"}
-                       style={{height: undefined, width: "5%",alignSelf:"flex-start", aspectRatio: 1}}/>
-                <Text style={{fontSize:12,fontFamily:Constants.fontFamilyRegular,color:colors.blackAndWhite,marginLeft:5,width:"70%"}}>{address}</Text>
+        <View style={{flexDirection:'row',paddingTop:10,alignItems:'center',justifyContent:'space-between',paddingHorizontal:15,paddingVertical:12,margin:8,borderRadius:10}}>
+            <View style={{flexDirection:'row',alignItems:'center'}}>
+                <Image style={{height:50,width:50,borderRadius:60}} resizeMode={"contain"} source={image} />
+                <View style={{marginLeft:10}}>
+                    <Text style={{fontSize:16,fontFamily:Constants.fontFamilyRegular,color:colors.blackAndWhite}}>{name}</Text>
+                    <Text style={{fontSize:12,fontFamily:Constants.fontFamilyRegular,color:colors.blackAndWhite}}>{jobTitle}</Text>
+                </View>
+
             </View>
-        </TouchableOpacity>
+            <View>
+                <Text style={{fontSize:12,fontFamily:Constants.fontFamilyBold,color:colors.redOrGreen}}>{time}</Text>
+
+                <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between'}}>
+                    <TouchableOpacity>
+                        <Image style={{height:20,width:20}} resizeMode={"contain"} source={require("../images/whatsappImage.png")}/>
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <Image style={{height:20,width:20}} resizeMode={"contain"} source={require("../images/callImage.png")}/>
+                    </TouchableOpacity>
+                </View>
+
+            </View>
+        </View>
     )
 }

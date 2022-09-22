@@ -13,6 +13,7 @@ import MyWalletScreen from "../container/HomeScreen/EarningScreen";
 import HomeScreen from "../container/HomeScreen/HomeScreen";
 import EarningScreen from "../container/HomeScreen/EarningScreen";
 import SettingsScreen from "../container/HomeScreen/SettingsScreen";
+import JobsScreen from "../container/HomeScreen/JobsScreen";
 
 //
 // const mapStateToProps2 = ({app}) => ({
@@ -36,6 +37,7 @@ const AppStack = ({}) => {
             <Stack.Screen name={"MapScreen"} component={MapScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"EarningScreen"} component={EarningScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"SettingsScreen"} component={SettingsScreen} options={{headerShown: false}}/>
+                <Stack.Screen name={"JobsScreen"} component={JobsScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"HomeScreen"} component={HomeScreen} options={{headerShown: false}}/>
         </Stack.Navigator>
     )
