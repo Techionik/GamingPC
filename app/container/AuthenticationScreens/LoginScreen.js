@@ -18,6 +18,7 @@ class LoginScreen extends React.Component {
         super(props);
     }
 
+
     render() {
         const {t, language,themeColor} = this.props?.value
         const {colors}=themeColor
@@ -37,8 +38,7 @@ class LoginScreen extends React.Component {
                 <ScrollView showsVerticalScrollIndicator={false} style={{marginHorizontal:5,flex:1}}>
                 <Text
                     style={{color:  colors?.blackAndWhite, fontFamily: Constants.fontFamilyBold, fontSize: 22}}>{t("Auth:Login")}</Text>
-                <Text style={{color: colors?.fieldTextColor, fontFamily: Constants.fontFamilyRegular, fontSize: 12}}>Lorem Ipsum is
-                    simply dummy text of the printing and typesetting industry. Lorem Ipsum</Text>
+                <Text style={{color: colors?.fieldTextColor, fontFamily: Constants.fontFamilyRegular, fontSize: 12}}>{t("L:DummyText")}</Text>
                 <View style={{marginTop: 20}}>
                     <FieldComponent theme={colors}  Icon={require('../../images/MailIcon.png')} Placeholder={t("Auth:EmailField")}/>
                     <FieldComponent theme={colors} secureTextEntry={true} Icon={require('../../images/PasswordIcon.png')}
@@ -60,17 +60,17 @@ class LoginScreen extends React.Component {
                     <SocialButton Icon={require('../../images/FacebookIcon.png')} Style={{marginHorizontal: 20}}/>
                     <SocialButton Icon={require('../../images/AppleIcon.png')}  IconStyle={{left: -1,tintColor:colors?.blackAndWhite}}/>
                 </View>
-                <Text style={{
-                    marginBottom: 10,
-                    fontSize: 14,
-                    fontFamily: Constants.fontFamilyRegular,
-                    color: colors?.blackAndWhite,
-                    alignSelf: "center"
-                }}>{t("Auth:AnotherAccount")}<Text onPress={()=>{this.props.navigation.navigate("SignupScreen")}} style={{
-                    fontSize: 16,
-                    fontFamily: Constants.fontFamilyBold,
-                    color: Color.primary
-                }}>{" " + t("Auth:SignUp")}</Text></Text>
+                {/*<Text style={{*/}
+                {/*    marginBottom: 10,*/}
+                {/*    fontSize: 14,*/}
+                {/*    fontFamily: Constants.fontFamilyRegular,*/}
+                {/*    color: colors?.blackAndWhite,*/}
+                {/*    alignSelf: "center"*/}
+                {/*}}>{t("Auth:AnotherAccount")}<Text onPress={()=>{this.props.navigation.navigate("SignupScreen")}} style={{*/}
+                {/*    fontSize: 16,*/}
+                {/*    fontFamily: Constants.fontFamilyBold,*/}
+                {/*    color: Color.primary*/}
+                {/*}}>{" " + t("Auth:SignUp")}</Text></Text>*/}
 
                 </ScrollView>
             </View>

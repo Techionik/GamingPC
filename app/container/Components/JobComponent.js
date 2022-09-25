@@ -16,7 +16,7 @@ export default function JobComponent({Style, image,name,jobTitle,time,status,col
            </View>
             <View>
                 <Text style={{fontSize:12,fontFamily:Constants.fontFamilyBold,color:colors.redOrGreen}}>{time}</Text>
-                <Text style={{fontFamily:Constants.fontFamilySemiBold,fontSize:11,textAlign:'center',includeFontPadding:false,padding:0,color:"#fff",borderRadius:5,paddingHorizontal:12,paddingVertical:6,backgroundColor:colors.greenBorder,marginTop:4}}>{status}</Text>
+                <Text style={{fontFamily:Constants.fontFamilySemiBold,fontSize:11,textAlign:'center',includeFontPadding:false,padding:0,color:"#fff",borderRadius:5,paddingHorizontal:12,paddingVertical:6,backgroundColor:"#40E0D0",marginTop:4}}>{status}</Text>
             </View>
         </View>
     )

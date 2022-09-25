@@ -14,6 +14,8 @@ import HomeScreen from "../container/HomeScreen/HomeScreen";
 import EarningScreen from "../container/HomeScreen/EarningScreen";
 import SettingsScreen from "../container/HomeScreen/SettingsScreen";
 import JobsScreen from "../container/HomeScreen/JobsScreen";
+import ForgotPasswordScreen from "../container/AuthenticationScreens/ForgotPasswordScreen";
+import VerificationScreen from "../container/AuthenticationScreens/VerifiactionScreen";
 
 //
 // const mapStateToProps2 = ({app}) => ({
@@ -35,6 +37,8 @@ const AppStack = ({}) => {
             <Stack.Screen name={"SplashContainer"} component={SplashContainer} options={{headerShown: false}}/>
             <Stack.Screen name={"LoginScreen"} component={LoginScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"MapScreen"} component={MapScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"ForgotPasswordScreen"} component={ForgotPasswordScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"VerificationScreen"} component={VerificationScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"EarningScreen"} component={EarningScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"SettingsScreen"} component={SettingsScreen} options={{headerShown: false}}/>
                 <Stack.Screen name={"JobsScreen"} component={JobsScreen} options={{headerShown: false}}/>

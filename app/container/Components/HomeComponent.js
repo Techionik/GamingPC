@@ -7,7 +7,7 @@ export default function HomeComponent({Style,title,titleStyle,onPress,image,colo
     return (
         <TouchableOpacity onPress={onPress} style={[{
             borderRadius: 10,
-            backgroundColor: colors.componentBackground,
+            backgroundColor: colors.fieldBackgroundColor,
             justifyContent:"center",
             alignItems:"center",
             height:130,

@@ -8,38 +8,32 @@ import {useNavigation} from "@react-navigation/native";
 
 
 
-export default function HeaderWihBackground({title,Props,children,colors,isBack}){
+export default function HeaderWihBackground({title,Props,children,colors,isBack,t}){
     const navigation=useNavigation()
     return(
         <View>
-            <StatusBar backgroundColor={Color.primary} barStyle={'light-content'}/>
-        <ImageBackground resizeMode={"cover"} source={require('../../images/headerBackgroundImage.png')}
-                         style={{height: undefined, width: "100%", aspectRatio: 2.1,justifyContent:'center'}}>
+            {/*<StatusBar backgroundColor={Color.primary} barStyle={'light-content'}/>*/}
+        <View style={{paddingBottom:30,backgroundColor:Color.primary,borderBottomRightRadius:25,borderBottomLeftRadius:25,paddingTop:10,justifyContent:'flex-start'}}>
 
 
             <View style={{flexDirection:'row',justifyContent:"space-between",marginHorizontal:20,alignItems:'center'}}>
                 {isBack ?
 
                     <View style={{justifyContent:'space-between'}}>
-                        <AntDesign onPress={()=>{navigation.pop()}} name={"arrowleft"} color={"#fff"} size={25}/>
-                        <Text style={{color: "#fff", fontSize: 20,marginTop:30, fontFamily: Constants.fontFamilyBold}}>{title}</Text>
+                        <AntDesign onPress={()=>{navigation.pop()}} name={"arrowleft"} color={"#fff"} size={35}/>
+                        <Text style={{color: "#fff",includeFontPadding:false,padding:0, fontSize: 20,marginTop:30, fontFamily: Constants.fontFamilyBold}}>{title}</Text>
                     </View>
                     :
 
                     <View>
-                        <Text style={{color: "#fff", fontSize: 20, fontFamily: Constants.fontFamilyBold}}>Hi , Expert
-                            !</Text>
-                        <Text style={{color: "#fff", fontSize: 15, fontFamily: Constants.fontFamilyRegular}}>Welcome to
-                            Ahla</Text>
+                        <Text style={{color: "#fff", fontSize: 20, fontFamily: Constants.fontFamilyBold}}>{t("L:HiExpert")}</Text>
+                        <Text style={{color: "#fff", fontSize: 15, fontFamily: Constants.fontFamilyRegular}}>{t("L:WelcometoAhla")}</Text>
                     </View>
                 }
 
-                <View>
-                <Image style={{height:70,width:70}} resizeMode={"cover"} source={require("../../images/defaultLogo.png")}/>
-                <Text onPress={()=>{navigation.navigate("SettingsScreen")}} style={{fontFamily:Constants.fontFamilySemiBold,fontSize:14,color:'#fff',marginTop:10}}>Settings</Text>
-                </View>
+                <Image style={{height:70,width:70}} resizeMode={"cover"} source={require("../../images/B3.png")}/>
             </View>
-        </ImageBackground>
+        </View>
         </View>
     )
 }

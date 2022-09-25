@@ -156,6 +156,19 @@
     "Service": "خدمة",
     "Wallet": "محفظة",
     "Verification": "تَحَقّق",
+    "Earning": "كسب",
+    "DummyText": "لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة والتنضيد. لوريم إيبسوم",
+    "TotalEarning": "مجموع الأرباح",
+    "ThisWeek": "هذا الاسبوع",
+    "Jobs": "وظائف",
+    "JobsLocation": "موقع الوظائف",
+    "Settings": "إعدادات",
+    "EnglishToArabic": "من الإنجليزية إلى العربية",
+    "LightToDark": "من الضوء إلى الظلام",
+    "YourInsights": "رؤيتك",
+    "HiExpert": "مرحبًا أيها الخبير",
+    "WelcometoAhla": "مرحبا بك في أحلى",
+    "Direction": "اتجاه"
 
   }
 }

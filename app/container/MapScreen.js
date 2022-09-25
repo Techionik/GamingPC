@@ -40,7 +40,7 @@ class MapScreen extends React.Component {
                             <JobDetail Props={this.props.value} colors={colors} time={this.state.time} name={this.state.name} image={this.state.image} jobTitle={this.state.jobTitle} />
                             <View style={{borderBottomWidth:1,borderBottomColor:colors.languageTextColor}}></View>
 
-                             <ButtonComponent  title={"Direction"} Style={{backgroundColor:colors.blackToGreen,marginHorizontal:40}} titleStyle={{color:"#fff"}}/>
+                             <ButtonComponent  title={t("L:Direction")} Style={{backgroundColor:colors.blackToGreen,marginHorizontal:40}} titleStyle={{color:"#fff"}}/>
                         </View>
                     </View>
 

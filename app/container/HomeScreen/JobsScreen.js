@@ -64,7 +64,7 @@ class JobsScreen extends React.Component {
         return (
             <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
 
-                <HeaderWihBackground isBack={true} title={"Jobs"} colors={colors}  Props={this.props.value}/>
+                <HeaderWihBackground isBack={true} title={t("L:Jobs")} colors={colors}  Props={this.props.value}/>
 
                 <View style={{flex: 1,paddingHorizontal:10,paddingTop:20,}}>
 

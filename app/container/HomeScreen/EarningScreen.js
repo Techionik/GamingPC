@@ -37,12 +37,12 @@ class EarningScreen extends React.Component {
         return (
             <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
 
-                <HeaderWihBackground isBack={true} title={"Earning"} colors={colors}  Props={this.props.value}/>
+                <HeaderWihBackground isBack={true} title={t("L:Earning")} colors={colors}  Props={this.props.value}/>
 
                 <ScrollView contentContainerStyle={{flexGrow: 1,paddingHorizontal:15,marginBottom:20}}>
 
                     <View style={{backgroundColor:colors.dullGreenBackgroundColor,marginVertical:20,borderRadius:15,paddingVertical:35,alignItems:'center'}}>
-                        <Text style={{color: "#fff", fontSize: 15, includeFontPadding:false,fontFamily: Constants.fontFamilyRegular}}>TOTAL EARNING</Text>
+                        <Text style={{color: "#fff", fontSize: 15, includeFontPadding:false,fontFamily: Constants.fontFamilyRegular}}>{t("L:TotalEarning")}</Text>
                         <Text style={{color: "#fff", fontSize: 26,includeFontPadding:false, fontFamily: Constants.fontFamilyBold}}>1,004 SAR</Text>
                     </View>
                     <View style={{
@@ -58,9 +58,9 @@ class EarningScreen extends React.Component {
                                 flex: 1,
                                 fontFamily: Constants.fontFamilyMedium,
                                 color: colors.blackAndWhite
-                            }}>Earnings</Text>
+                            }}>{t("L:Earning")}</Text>
                             <View style={{backgroundColor:colors.lightGreenToGreen,borderRadius:30,padding:5,paddingHorizontal:8,flexDirection:'row',alignItems:'center'}}>
-                                <Text style={{color:colors.greenBorder,fontSize:10,includeFontPadding:false,padding:0,fontFamily:Constants.fontFamilyMedium}}>This Week</Text>
+                                <Text style={{color:colors.greenBorder,fontSize:10,includeFontPadding:false,padding:0,fontFamily:Constants.fontFamilyMedium}}>{t("L:ThisWeek")}</Text>
                                 <AntDesign name={"down"} color={colors.greenBorder} size={11} style={{marginLeft:3}}/>
 
                             </View>

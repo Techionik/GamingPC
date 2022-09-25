@@ -157,7 +157,19 @@
     "Service": "Service",
     "Wallet": "Wallet",
     "Verification": "Verification",
-
+    "Earning": "Earning",
+    "DummyText": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum",
+    "TotalEarning": "TOTAL EARNING",
+    "ThisWeek": "This Week",
+    "Jobs": "Jobs",
+    "JobsLocation": "Jobs Location",
+    "Settings": "Settings",
+    "EnglishToArabic": "English To Arabic",
+    "LightToDark": "Light To Dark",
+    "YourInsights": "Your Insights",
+    "HiExpert": "Hi , Expert",
+    "WelcometoAhla": "Welcome to Ahla",
+    "Direction": "Direction"
 
   }
 }
