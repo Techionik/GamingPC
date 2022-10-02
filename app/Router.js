@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {BackHandler, Linking, StatusBar, View} from 'react-native';
+import {BackHandler, Linking, SafeAreaView, StatusBar, View} from 'react-native';
 import {Config, Device, Styles} from './common';
 import Color, {darkTheme, lightTheme} from "./common/Color";
 import {useTranslation} from "react-i18next";
@@ -44,11 +44,13 @@ const Router = (props) => {
 
         <View style={Styles.Common.appContainer}>
             <StatusBar backgroundColor={barStyle} barStyle={theme === 'light'?"dark-content":'light-content'}/>
+            <SafeAreaView style={{flex:1,backgroundColor:theme === 'light'?"white":'#263238'}}>
             <LanguageProvider value={{...languageObj}}>
                 <Navigation/>
                 <MyNotificationContainer/>
                 <MyToast/>
             </LanguageProvider>
+            </SafeAreaView>
         </View>
 
     );
