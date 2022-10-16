@@ -20,7 +20,7 @@ class RateAndReviewScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            option:"StartJob"
+            option:""
         }
     }
 
@@ -30,9 +30,7 @@ class RateAndReviewScreen extends React.Component {
         const {option}=this.state
         return (
             <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
-
                 <HeaderWihBackground isBack={true} title={t("L:Jobs")} colors={colors} Props={this.props.value}/>
-
                 <View style={{flex: 1, paddingHorizontal: 10, paddingTop: 20,}}>
                     <Text style={{
                         fontSize: 14,
@@ -54,51 +52,41 @@ class RateAndReviewScreen extends React.Component {
                             </View>
                         }
                     />
-                    <Text style={{
-                        fontSize: 14,
-                        fontFamily: Constants.fontFamilySemiBold,
-                        color: "#0D9C8E",
-                        margin: 10,
 
-                    }}>{t("L:RateAndReview")} :</Text>
-                    <Card
-                        outerstyles={{borderRadius: 10,padding:10,}}
-                        children={
-                            <View>
-                                <View style={{flexDirection: "row", alignItems: "center"}}>
-                                    <Text style={{
-                                        fontSize: 14,
-                                        flex: 1,
-                                        includeFontPadding: false,
-                                        padding: 0,
-                                        fontFamily: Constants.fontFamilySemiBold,
-                                        color: "#0D9C8E",
-                                        marginVertical: 10
-                                    }}>{t("L:Customer’sRating")} :</Text>
-                                    <Image source={require('../../images/Rate.png')}
-                                           style={{height: undefined, width: "35%", aspectRatio: 5}}/>
-                                </View>
-                                <Text style={{
-                                    fontSize: 14,
-                                    includeFontPadding: false,
-                                    padding: 0,
-                                    fontFamily: Constants.fontFamilySemiBold,
-                                    color: "#0D9C8E",
-                                    marginVertical: 10
-                                }}>{t("L:Review")} :</Text>
-                                <TextInput placeholder={t("L:Additional")} placeholderTextColor={colors.greyToWhite} style={{paddingLeft:10,textAlignVertical:"top",height:100,borderRadius:10,borderWidth:0.5,borderColor:colors.greyToWhite}}/>
-                            </View>
-                        }
-                    />
                     <View style={{margin:10,flexDirection:"row",alignItems:"center"}}>
                         <AntDesign name={"infocirlceo"} size={15} color={Color.primary} />
                         <Text style={{fontSize:10,fontFamily:Constants.fontFamilyRegular,color:colors.blackAndWhite,marginLeft:10,padding:0,includeFontPadding:false}}>Once you Complete your job , marked the complete button. </Text>
                     </View>
+                    {this.state.option=="Completed"?<RatingView colors={colors} t={t}/>:null}
                     <View style={{flex:1}}/>
-                    <View style={{flexDirection:"row",alignItems:"center",marginBottom:20}}>
-                        <ButtonComponent  onPress={()=>{this.setState({option:"StartJob"})}} title={t("L:StartJob")} titleStyle={{color:option=="StartJob"?"#fff":colors.greyToWhite,fontSize:13}} Style={{flex:1,borderRadius:5,marginRight:10,marginVertical:0,backgroundColor:option=="StartJob"?Color.primary:colors.lightgreyToDark}}/>
-                        <ButtonComponent onPress={()=>{this.setState({option:"Completed"})}} title={t("L:Completed")} titleStyle={{color:option=="Completed"?"#fff":colors.greyToWhite,fontSize:13}} Style={{flex:1,borderRadius:5,marginVertical:0,backgroundColor:option=="Completed"?Color.primary:colors.lightgreyToDark}} />
-                    </View>
+                    {this.state.option=="Completed"?
+
+                        <ButtonComponent onPress={()=>{this.props.navigation.navigate("JobsScreen")}} title={t("L:Submit")}/>
+                        :<View style={{flexDirection: "row", alignItems: "center", marginBottom: 20}}>
+                        <ButtonComponent onPress={() => {
+                            this.setState({option: "StartJob"})
+                        }} title={t("L:StartService")} titleStyle={{
+                            color: option == "StartJob" ? "#fff" : colors.greyToWhite,
+                            fontSize: 13
+                        }} Style={{
+                            flex: 1,
+                            borderRadius: 5,
+                            marginRight: 10,
+                            marginVertical: 0,
+                            backgroundColor: option == "StartJob" ? Color.primary : colors.lightgreyToDark
+                        }}/>
+                        <ButtonComponent onPress={() => {
+                            this.setState({option: "Completed"})
+                        }} title={t("L:Completed")} titleStyle={{
+                            color: option == "Completed" ? "#fff" : colors.greyToWhite,
+                            fontSize: 13
+                        }} Style={{
+                            flex: 1,
+                            borderRadius: 5,
+                            marginVertical: 0,
+                            backgroundColor: option == "Completed" ? Color.primary : colors.lightgreyToDark
+                        }}/>
+                    </View>}
                 </View>
 
             </View>
@@ -108,7 +96,48 @@ class RateAndReviewScreen extends React.Component {
 }
 
 export default withLanguage(RateAndReviewScreen)
+function RatingView({t,colors}){
+    return(
+        <>
+        <Text style={{
+            fontSize: 14,
+            fontFamily: Constants.fontFamilySemiBold,
+            color: "#0D9C8E",
+            margin: 10,
 
+        }}>{t("L:RateAndReview")} :</Text>
+    <Card
+        outerstyles={{borderRadius: 10,padding:10,}}
+        children={
+            <View>
+                <View style={{flexDirection: "row", alignItems: "center"}}>
+                    <Text style={{
+                        fontSize: 14,
+                        flex: 1,
+                        includeFontPadding: false,
+                        padding: 0,
+                        fontFamily: Constants.fontFamilySemiBold,
+                        color: "#0D9C8E",
+                        marginVertical: 10
+                    }}>{t("L:Customer’sRating")} :</Text>
+                    <Image source={require('../../images/Rate.png')}
+                           style={{height: undefined, width: "35%", aspectRatio: 5}}/>
+                </View>
+                <Text style={{
+                    fontSize: 14,
+                    includeFontPadding: false,
+                    padding: 0,
+                    fontFamily: Constants.fontFamilySemiBold,
+                    color: "#0D9C8E",
+                    marginVertical: 10
+                }}>{t("L:Review")} :</Text>
+                <TextInput placeholder={t("L:Additional")} placeholderTextColor={colors.greyToWhite} style={{paddingLeft:10,textAlignVertical:"top",height:100,borderRadius:10,borderWidth:0.5,borderColor:colors.greyToWhite}}/>
+            </View>
+        }
+    />
+        </>
+    )
+}
 
 function RowComponent({title1, title2, colors, image}) {
     return (

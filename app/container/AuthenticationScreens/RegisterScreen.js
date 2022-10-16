@@ -100,7 +100,7 @@ class SignupScreen extends React.Component {
                             }}/>
                             <ButtonComponent onPress={() => {
                                 this.setState({type: "Home"})
-                            }} title={t("L:Home")} titleStyle={{fontSize: 12}} Style={{
+                            }} title={t("L:Freelancer")} titleStyle={{fontSize: 12}} Style={{
                                 backgroundColor: type == "Home" ? Color.primary : colors.darKToPrimary,
                                 marginVertical: 0,
                                 flex: 1,

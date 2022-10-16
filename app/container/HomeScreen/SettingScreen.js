@@ -88,7 +88,7 @@ class SettingScreen extends React.Component {
                         }} Props={this.props.value} style={{marginBottom: 10}} title={t("L:DarkMode")} toogle={true}
                                            colors={colors}/>
                         <SettingsComponent onPress={()=>{this.props.navigation.navigate("AgrementScreen")}} Props={this.props.value} style={{marginBottom: 10}}
-                                           title={t("L:UserAgrement")} colors={colors}/>
+                                           title={t("L:JobScenario")} colors={colors}/>
                         <Text style={{
                             fontSize: 12,
                             fontFamily: Constants.fontFamilyMedium,
