@@ -41,7 +41,7 @@ class EarningScreen extends React.Component {
 
                 <ScrollView contentContainerStyle={{flexGrow: 1,paddingHorizontal:15,marginBottom:20}}>
 
-                    <View style={{backgroundColor:colors.dullGreenBackgroundColor,marginVertical:20,borderRadius:15,paddingVertical:35,alignItems:'center'}}>
+                    <View style={{backgroundColor:"#22C9B8",marginVertical:20,borderRadius:15,paddingVertical:35,alignItems:'center'}}>
                         <Text style={{color: "#fff", fontSize: 15, includeFontPadding:false,fontFamily: Constants.fontFamilyRegular}}>{t("L:TotalEarning")}</Text>
                         <Text style={{color: "#fff", fontSize: 26,includeFontPadding:false, fontFamily: Constants.fontFamilyBold}}>1,004 SAR</Text>
                     </View>
