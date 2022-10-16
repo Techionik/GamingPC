@@ -20,7 +20,7 @@ class RateAndReviewScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            option:""
+            option:"initial"
         }
     }
 
@@ -62,31 +62,23 @@ class RateAndReviewScreen extends React.Component {
                     {this.state.option=="Completed"?
 
                         <ButtonComponent onPress={()=>{this.props.navigation.navigate("JobsScreen")}} title={t("L:Submit")}/>
-                        :<View style={{flexDirection: "row", alignItems: "center", marginBottom: 20}}>
+                        :this.state.option=="initial"?
                         <ButtonComponent onPress={() => {
                             this.setState({option: "StartJob"})
-                        }} title={t("L:StartService")} titleStyle={{
-                            color: option == "StartJob" ? "#fff" : colors.greyToWhite,
-                            fontSize: 13
-                        }} Style={{
-                            flex: 1,
+                        }} title={t("L:StartService")}  Style={{
+
                             borderRadius: 5,
-                            marginRight: 10,
-                            marginVertical: 0,
-                            backgroundColor: option == "StartJob" ? Color.primary : colors.lightgreyToDark
-                        }}/>
+
+                            backgroundColor:Color.primary
+                        }}/>:
+                            this.state.option=="StartJob"?
                         <ButtonComponent onPress={() => {
                             this.setState({option: "Completed"})
-                        }} title={t("L:Completed")} titleStyle={{
-                            color: option == "Completed" ? "#fff" : colors.greyToWhite,
-                            fontSize: 13
-                        }} Style={{
-                            flex: 1,
+                        }} title={t("L:Completed")}  Style={{
                             borderRadius: 5,
-                            marginVertical: 0,
-                            backgroundColor: option == "Completed" ? Color.primary : colors.lightgreyToDark
-                        }}/>
-                    </View>}
+                            backgroundColor: Color.primary
+                        }}/>:null
+                    }
                 </View>
 
             </View>
