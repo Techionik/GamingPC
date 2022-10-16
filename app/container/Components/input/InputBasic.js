@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
       android: {
         textAlign: I18nManager.isRTL ? 'right' : 'left',
       },
+
       ios: {
         writingDirection: I18nManager.isRTL ? 'rtl' : 'ltr',
       },

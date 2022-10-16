@@ -8,8 +8,10 @@ import {
 import withLanguage from "../../config/withLanguage";
 import {Color, Constants} from "../../common";
 import ButtonComponent from "../Components/ButtonComponent";
-import HeaderWihBackground from "../Components/HeaderWihBackground";
+
 import HomeComponent from "../Components/HomeComponent";
+import HeaderWihBackground from "../Components/HeaderWihBackground";
+import HeaderComponent from "../Components/HeaderComponent";
 
 
 class HomeScreen extends React.Component {
@@ -23,7 +25,7 @@ class HomeScreen extends React.Component {
         const {colors} = themeColor
         return (
             <View style={{flex:1,backgroundColor: colors.screenBackgroundColor,}}>
-                <HeaderWihBackground t={t} colors={colors}  Props={this.props.value}/>
+                <HeaderWihBackground Style={{paddingTop:30,paddingBottom:40}}  t={t}   Props={this.props.value}/>
                 <ScrollView showsVerticalScrollIndicator={false}  contentContainerStyle={{flexGrow: 1,paddingHorizontal:15,marginBottom:20 }}>
                     <Text style={{color:colors.blackAndWhite,fontSize:15,fontFamily:Constants.fontFamilyRegular,marginVertical:20}}>{t("L:YourInsights")}</Text>
 
@@ -39,8 +41,10 @@ class HomeScreen extends React.Component {
 
                     <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-evenly',marginTop:20}}>
                     <HomeComponent onPress={()=>{this.props.navigation.navigate("MapScreen")}} image={require("../../images/jobLocationImage.png")} title={t("L:JobsLocation")} colors={colors}/>
-                    <HomeComponent onPress={()=>{this.props.navigation.navigate("SettingsScreen")}} image={require("../../images/setting.png")} title={t("L:Settings")} colors={colors}/>
+                    <HomeComponent onPress={()=>{this.props.navigation.navigate("AnalyseScreen")}} image={require("../../images/jobLocationImage.png")} title={t("L:Analysis")} colors={colors}/>
+
                     </View>
+                    <HomeComponent onPress={()=>{this.props.navigation.navigate("SettingScreen")}} image={require("../../images/setting.png")} title={t("L:Settings")} colors={colors}/>
 
                 </ScrollView>
             </View>

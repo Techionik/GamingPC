@@ -69,6 +69,13 @@ export default (state = initialState, action) => {
         theme: payload
       }
     }
+    case types.RTL_CHANGE: {
+      return {
+        ...state,
+        rtl:payload.value
+
+      }
+    }
 
     case types.NOTIFICATION_DISABLE: {
       return {

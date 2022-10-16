@@ -12,10 +12,18 @@ import MapScreen from "../container/MapScreen";
 import MyWalletScreen from "../container/HomeScreen/EarningScreen";
 import HomeScreen from "../container/HomeScreen/HomeScreen";
 import EarningScreen from "../container/HomeScreen/EarningScreen";
-import SettingsScreen from "../container/HomeScreen/SettingsScreen";
+import SettingsScreen from "../container/HomeScreen/AgrementScreen";
 import JobsScreen from "../container/HomeScreen/JobsScreen";
 import ForgotPasswordScreen from "../container/AuthenticationScreens/ForgotPasswordScreen";
 import VerificationScreen from "../container/AuthenticationScreens/VerifiactionScreen";
+import RateAndReviewScreen from "../container/HomeScreen/RateAndReviewScreen";
+import SettingScreen from "../container/HomeScreen/SettingScreen";
+import ContactUsScreen from "../container/HomeScreen/ContactUsScreen";
+import TermConditionScreen from "../container/HomeScreen/TermConditionScreen";
+import ProfileScreen from "../container/HomeScreen/ProfileScreen";
+import AgrementScreen from "../container/HomeScreen/AgrementScreen";
+import AnalyseScreen from "../container/HomeScreen/AnalyseScreen";
+import SignupScreen from "../container/AuthenticationScreens/RegisterScreen";
 
 //
 // const mapStateToProps2 = ({app}) => ({
@@ -40,9 +48,16 @@ const AppStack = ({}) => {
             <Stack.Screen name={"ForgotPasswordScreen"} component={ForgotPasswordScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"VerificationScreen"} component={VerificationScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"EarningScreen"} component={EarningScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"SettingsScreen"} component={SettingsScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"AgrementScreen"} component={AgrementScreen} options={{headerShown: false}}/>
                 <Stack.Screen name={"JobsScreen"} component={JobsScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"HomeScreen"} component={HomeScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"RateAndReviewScreen"} component={RateAndReviewScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"SettingScreen"} component={SettingScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"ContactUsScreen"} component={ContactUsScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"TermConditionScreen"} component={TermConditionScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"ProfileScreen"} component={ProfileScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"AnalyseScreen"} component={AnalyseScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"SignupScreen"} component={SignupScreen} options={{headerShown: false}}/>
         </Stack.Navigator>
     )
 }

@@ -168,7 +168,36 @@
     "YourInsights": "رؤيتك",
     "HiExpert": "مرحبًا أيها الخبير",
     "WelcometoAhla": "مرحبا بك في أحلى",
-    "Direction": "اتجاه"
+    "Direction": "اتجاه",
+    "StartJob": "بدء الوظيفة",
+    "Additional":"تعليقات اضافية ......",
+    "Review": "إعادة النظر",
+    "CustomersRating": "تصنيف العميل",
+    "RateAndReview": "مراجعة معدل",
+    "Job": "مهنة",
+    "Receivedby": "استلمت من قبل",
+    "Location": "موقع",
+    "Time": "زمن",
+    "Date": "تاريخ",
+    "JobInformation": "معلومات مهمة",
+    "UserAgrement": "اتفاقية المستخدم",
+    "UserProfile": "ملف تعريفي للمستخدم",
+    "TheHairStore": "متجر الشعر",
+    "Contact": "اتصال",
+    "BusinessDays": "أيام عمل",
+    "BusinessHours": "ساعات العمل",
+    "ServiceTypes": "أنواع الخدمة",
+    "EmailAddress": "عنوان البريد الالكترونى",
+    "AcceptingOrders": "قبول الطلبات",
+    "Analysis": "التحليلات",
+    "AgrementText": "هل توافق على تقديم الخدمات على مستوى العميل موقع ؟",
+    "SaloonText": "ما هو الحد الأدنى للسعر الذي تقبله للأوامر؟",
+    "ApproxLocation": "الموقع التقريبي (على سبيل المثال: كم)",
+    "MinimumPrice": "ما هو الحد الأدنى للسعر الذي تقبله للأوامر؟",
+    "MentionApproxLocation": "اذكر الموقع التقريبي",
+    "Approxlocation": "التقريب",
+    "MinimumPriceRange": "نطاق السعر الأدنى"
+
 
   }
 }

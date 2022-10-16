@@ -8,12 +8,12 @@ import {useNavigation} from "@react-navigation/native";
 
 
 
-export default function HeaderWihBackground({title,Props,children,colors,isBack,t}){
+export default function HeaderWihBackground({title,Props,children,colors,isBack,t,Style}){
     const navigation=useNavigation()
     return(
         <View>
             {/*<StatusBar backgroundColor={Color.primary} barStyle={'light-content'}/>*/}
-        <View style={{paddingBottom:30,backgroundColor:Color.primary,borderBottomRightRadius:25,borderBottomLeftRadius:25,paddingTop:10,justifyContent:'flex-start'}}>
+        <View style={[{paddingBottom:30,backgroundColor:Color.primary,borderBottomRightRadius:25,borderBottomLeftRadius:25,paddingTop:10,justifyContent:'flex-start'},Style]}>
 
 
             <View style={{flexDirection:'row',justifyContent:"space-between",marginHorizontal:20,alignItems:'center'}}>
@@ -31,7 +31,7 @@ export default function HeaderWihBackground({title,Props,children,colors,isBack,
                     </View>
                 }
 
-                <Image style={{height:70,width:70}} resizeMode={"cover"} source={require("../../images/B3.png")}/>
+                <Image style={{height:60,width:60}} resizeMode={"cover"} source={require("../../images/B3.png")}/>
             </View>
         </View>
         </View>

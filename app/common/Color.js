@@ -370,7 +370,11 @@ export const lightTheme = {
     lightGreyToBackground:"#D9D9D9",
     greyToExtraDark:"#D9D9D9",
     darKToWhite:"#263238",
-    lightPrimaryToPrimary:"#74FEF0"
+    lightPrimaryToPrimary:"#74FEF0",
+    DarkToLight:"#263238",
+    PrimaryToWhite:"#74FEF0",
+    ScreenColorToDark:"#fAfAfA",
+    darKToPrimary:"#263238"
 
   }
 }
@@ -407,12 +411,17 @@ export const darkTheme = {
     lightGreentoDark:"#6A7F91",
     whiteToDark:"#6A7F91",
     greyToDark:"#6A7F91",
+    DarkToLight:"#6A7F91",
     redToWhite:"#fff",
     lightGreyToBackground:"#6A7F91",
     greyToExtraDark:"#263238",
     darKToWhite:"#fff",
     lightgreyToDark:"#263238",
-    lightPrimaryToPrimary:"#40E0D0"
+    lightPrimaryToPrimary:"#40E0D0",
+    PrimaryToWhite:"#fff",
+    darKToPrimary:"#40E0D0",
+
+    ScreenColorToDark:"#263238",
 
   }
 }

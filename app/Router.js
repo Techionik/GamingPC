@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {BackHandler, Linking, SafeAreaView, StatusBar, View} from 'react-native';
+import {BackHandler, I18nManager, Linking, SafeAreaView, StatusBar, View} from 'react-native';
 import {Config, Device, Styles} from './common';
 import Color, {darkTheme, lightTheme} from "./common/Color";
 import {useTranslation} from "react-i18next";
@@ -15,7 +15,8 @@ import { changeLanguage } from "./redux/app/actions";
 const Router = (props) => {
     const dispatch = useDispatch();
     const userInfo = useSelector(state => state.user.userInfo);
-    const {languagee, theme} = useSelector(state => state.app)
+    const {languagee, theme,rtl} = useSelector(state => state.app)
+    I18nManager.forceRTL(rtl)
     //
     // useEffect(()=>{
     //     dispatch(changeLanguage('en'))

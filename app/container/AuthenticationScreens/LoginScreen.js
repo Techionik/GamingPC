@@ -60,17 +60,17 @@ class LoginScreen extends React.Component {
                     <SocialButton Icon={require('../../images/FacebookIcon.png')} Style={{marginHorizontal: 20}}/>
                     <SocialButton Icon={require('../../images/AppleIcon.png')}  IconStyle={{left: -1,tintColor:colors?.blackAndWhite}}/>
                 </View>
-                {/*<Text style={{*/}
-                {/*    marginBottom: 10,*/}
-                {/*    fontSize: 14,*/}
-                {/*    fontFamily: Constants.fontFamilyRegular,*/}
-                {/*    color: colors?.blackAndWhite,*/}
-                {/*    alignSelf: "center"*/}
-                {/*}}>{t("Auth:AnotherAccount")}<Text onPress={()=>{this.props.navigation.navigate("SignupScreen")}} style={{*/}
-                {/*    fontSize: 16,*/}
-                {/*    fontFamily: Constants.fontFamilyBold,*/}
-                {/*    color: Color.primary*/}
-                {/*}}>{" " + t("Auth:SignUp")}</Text></Text>*/}
+                <Text style={{
+                    marginBottom: 10,
+                    fontSize: 14,
+                    fontFamily: Constants.fontFamilyRegular,
+                    color: colors?.blackAndWhite,
+                    alignSelf: "center"
+                }}>{t("Auth:AnotherAccount")}<Text onPress={()=>{this.props.navigation.navigate("SignupScreen")}} style={{
+                    fontSize: 16,
+                    fontFamily: Constants.fontFamilyBold,
+                    color: Color.primary
+                }}>{" " + t("Auth:SignUp")}</Text></Text>
 
                 </ScrollView>
             </View>
@@ -82,7 +82,7 @@ class LoginScreen extends React.Component {
 
 export default withLanguage(LoginScreen)
 
-function OrLoginWith( {
+export function OrLoginWith( {
     Props
 }
 

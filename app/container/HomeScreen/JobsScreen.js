@@ -18,41 +18,41 @@ class JobsScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            jobsLsit:[
+            jobsLsit: [
                 {
-                    image:require("../../images/B1.png"),
-                    name:"Dim Claudia",
-                    jobTitle:"Hydra Facial Spa",
-                    time:"5 mins Ago",
-                    status:"Start Job"
+                    image: require("../../images/B1.png"),
+                    name: "Dim Claudia",
+                    jobTitle: "Hydra Facial Spa",
+                    time: "5 mins Ago",
+                    status: "Start Job"
                 },
                 {
-                    image:require("../../images/B2.png"),
-                    name:"Mike Gill",
-                    jobTitle:"Manicure & Pedicure",
-                    time:"25 mins Ago",
-                    status:"Start Job"
+                    image: require("../../images/B2.png"),
+                    name: "Mike Gill",
+                    jobTitle: "Manicure & Pedicure",
+                    time: "25 mins Ago",
+                    status: "Start Job"
                 },
                 {
-                    image:require("../../images/B3.png"),
-                    name:"Dim Claudia",
-                    jobTitle:"Hydra Facial Spa",
-                    time:"5 mins Ago",
-                    status:"Start Job"
+                    image: require("../../images/B3.png"),
+                    name: "Dim Claudia",
+                    jobTitle: "Hydra Facial Spa",
+                    time: "5 mins Ago",
+                    status: "Start Job"
                 },
                 {
-                    image:require("../../images/B1.png"),
-                    name:"Rimsha Khan",
-                    jobTitle:"Hydra Facial Spa",
-                    time:"Monday",
-                    status:"Completed"
+                    image: require("../../images/B1.png"),
+                    name: "Rimsha Khan",
+                    jobTitle: "Hydra Facial Spa",
+                    time: "Monday",
+                    status: "Completed"
                 },
                 {
-                    image:require("../../images/B2.png"),
-                    name:"Vikal Hush",
-                    jobTitle:"Hydra Facial Spa",
-                    time:"Monday",
-                    status:"Completed"
+                    image: require("../../images/B2.png"),
+                    name: "Vikal Hush",
+                    jobTitle: "Hydra Facial Spa",
+                    time: "Monday",
+                    status: "Completed"
                 }
             ]
         }
@@ -64,14 +64,16 @@ class JobsScreen extends React.Component {
         return (
             <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
 
-                <HeaderWihBackground isBack={true} title={t("L:Jobs")} colors={colors}  Props={this.props.value}/>
+                <HeaderWihBackground isBack={true} title={t("L:Jobs")} colors={colors} Props={this.props.value}/>
 
-                <View style={{flex: 1,paddingHorizontal:10,paddingTop:20,}}>
+                <View style={{flex: 1, paddingHorizontal: 10, paddingTop: 20,}}>
 
 
-                        <FlatList style={{}} showsVerticalScrollIndicator={false} data={this.state.jobsLsit} renderItem={({item, index}) =>
-                            <JobComponent colors={colors} jobTitle={item.jobTitle} image={item.image} name={item.name} time={item.time} status={item.status} />
-                        }/>
+                    <FlatList style={{}} showsVerticalScrollIndicator={false} data={this.state.jobsLsit}
+                              renderItem={({item, index}) =>
+                                  <JobComponent colors={colors} jobTitle={item.jobTitle} image={item.image}
+                                                name={item.name} time={item.time} status={item.status}/>
+                              }/>
 
 
                 </View>
