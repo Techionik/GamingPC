@@ -376,6 +376,7 @@ export const lightTheme = {
     ScreenColorToDark:"#fAfAfA",
     darKToPrimary:"#263238"
 
+
   }
 }
 

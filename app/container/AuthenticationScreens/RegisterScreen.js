@@ -245,13 +245,13 @@ class SignupScreen extends React.Component {
                                 marginHorizontal: 15
                             }}/>
                             <View style={{flexDirection: "row", alignItems: "center"}}>
-                                <AntDesign name={"pluscircle"} color={colors.darkToPrimary} size={30}/>
+                                <AntDesign name={"pluscircle"} color={colors.darKToPrimary} size={30}/>
                                 <Text style={{
                                     fontSize: 12,
                                     fontFamily: Constants.fontFamilyBold,
                                     color: colors.blackAndWhite,
                                     marginLeft: 10
-                                }}>{t("Auth:Addmore")}</Text>
+                                }}>{t("L:Addmore")}</Text>
                             </View>
                         </View>
                         <PickLocation colors={colors} t={t} onPress={()=>{this.props.navigation.navigate("MapScreen")}}/>
@@ -262,9 +262,9 @@ class SignupScreen extends React.Component {
                             color: colors.greyToWhite,
                             marginTop: 10,
                             marginHorizontal: 20
-                        }}>{t("Auth:TermText")}
-                            <Text  style={{color: Color.primary}}> {t("Auth:Termofuse")}</Text>
-                            <Text> {t("Auth:and")} </Text>
+                        }}>{t("L:TermText")}
+                            <Text  style={{color: Color.primary}}> {t("L:Termofuse")}</Text>
+                            <Text> {t("L:and")} </Text>
                             <Text   style={{color: Color.primary}}>{t("L:PrivacyPolicy")}</Text>
 
                         </Text>
@@ -346,7 +346,7 @@ function PickLocation({colors, t,onPress}) {
                 padding: 0,
                 marginLeft: 10,
 
-            }}>{t("Auth:PickLocation")}</Text>
+            }}>{t("L:PickLocation")}</Text>
         </TouchableOpacity>
     )
 }

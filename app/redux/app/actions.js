@@ -39,7 +39,7 @@ export const changeLanguage = (value) => ({
 })
 
 export const changeRtl = (value) => ({
-  type: types.LANGUAGE_CHANGE,
+  type: types.RTL_CHANGE,
   payload: {
     value
   }

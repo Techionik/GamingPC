@@ -9,6 +9,7 @@ const initialState = {
     lang: 'en',
     rtl: false
   },
+  rtl: false,
   isOpenSidemenu: false,
   netInfoConnected: true,
   toast: {

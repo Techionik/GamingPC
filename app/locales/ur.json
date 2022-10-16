@@ -196,8 +196,11 @@
     "MinimumPrice": "ما هو الحد الأدنى للسعر الذي تقبله للأوامر؟",
     "MentionApproxLocation": "اذكر الموقع التقريبي",
     "Approxlocation": "التقريب",
-    "MinimumPriceRange": "نطاق السعر الأدنى"
-
-
+    "MinimumPriceRange": "نطاق السعر الأدنى",
+    "TermText": "بالتسجيل في Ahla Beauty & Care ، فإنك توافق على",
+    "Termofuse": "شروط الاستخدام",
+    "and": "و",
+    "PickLocation": "اختر موقع الصالون الخاص بك لمساعدة العملاء\nانتقل إلى متجرك",
+    "Addmore": "أضف المزيد"
   }
 }

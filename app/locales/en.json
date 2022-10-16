@@ -197,7 +197,11 @@
     "MinimumPrice": "What Minimum Price do you accept for orders ?",
     "MentionApproxLocation": "Mention the Approx Location ",
     "Approxlocation": "Approx Location",
-    "MinimumPriceRange": "Minimum Price Range"
-
+    "MinimumPriceRange": "Minimum Price Range",
+    "TermText": "By Registering to Ahla Beauty & Care, you agree to our",
+    "Termofuse": "Term of Use",
+    "and": "and",
+    "PickLocation": "Pick your salon location to help customers \nnavigate to your shop",
+    "Addmore": "Add more"
   }
 }
