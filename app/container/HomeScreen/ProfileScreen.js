@@ -76,7 +76,7 @@ class ProfileScreen extends React.Component {
                         <RowComponent colors={colors} title1={"Last Name"} title2={"Masood"}/>
                         <RowComponent colors={colors} title1={"Role"} title2={"Manager"}/>
                         <RowComponent colors={colors} title1={"Shift Time"} title2={"2 pm - 11 pm"}/>
-                        <RowComponent colors={colors} title1={t("L:EmailAddress")}   title2={"Mudassir@gmail.com"}/>
+                        <RowComponent colors={colors} title1={t("L:EmailAddress")} title2Style={{color:Color.primary}}   title2={"Mudassir@gmail.com"}/>
                     </View>
                 </ScrollView>
 

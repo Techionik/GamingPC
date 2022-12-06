@@ -37,13 +37,13 @@ class ContactUsScreen extends React.Component {
 
                 <View style={{flexGrow:1}}>
                 <View style={{borderRadius:30,marginTop:30,backgroundColor:colors.BackgroundView,marginHorizontal:20,paddingHorizontal:10,paddingBottom:40}}>
-                    <View style={{backgroundColor:colors.whiteToGreen,borderRadius:10,paddingVertical:10,marginHorizontal:20,zIndex:2,elevation:2,top:-30,justifyContent:"center",alignItems:"center"}}>
+                    <View style={{backgroundColor:Color.primary,borderRadius:10,paddingVertical:10,marginHorizontal:20,zIndex:2,elevation:2,top:-30,justifyContent:"center",alignItems:"center"}}>
                         <Text style={{color:colors.blackAndWhite,fontSize:16,fontFamily:Constants.fontFamilyMedium}}>{t("L:SendusaMessage")}</Text>
                         <Text style={{color:colors.blackAndWhite,fontSize:12,fontFamily:Constants.fontFamilyMedium}}>{t("L:HelpText")}</Text>
                     </View>
                     <View style={{paddingHorizontal:20}}>
-                  <ProfileFieldComponent title={t("L:Name")} placeholder={"Mitchels Galeria"} colors={colors}/>
-                  <ProfileFieldComponent title={t("L:Email")} placeholder={"MitchelsGaleria@example.com"} colors={colors}/>
+                  <ProfileFieldComponent title={t("L:Name")} placeholder={"Mudassir"} colors={colors}/>
+                  <ProfileFieldComponent title={t("L:Email")} placeholder={"Mudassir@gmail.com"} colors={colors}/>
                   <ProfileFieldComponent title={t("L:Message")} placeholder={"Hey I just wanted to say that I’m new on Ahla and I’m just loving your services."} colors={colors}/>
                     </View>
                 </View>

@@ -11,7 +11,7 @@ export default function HomeComponent({Style,title,titleStyle,onPress,image,colo
             justifyContent:"center",
             alignItems:"center",
             height:130,
-            flex:1,
+            width:140,
             margin:10
         }, Style]}>
 

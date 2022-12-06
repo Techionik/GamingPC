@@ -46,9 +46,9 @@ class HomeScreen extends React.Component {
                         justifyContent: 'space-evenly',
                         marginTop: 20
                     }}>
-                        <HomeComponent image={require("../../images/jobsImage.png")} title={"Attendance"}
+                        <HomeComponent  image={require("../../images/jobsImage.png")} title={"Attendance"}
                                        colors={colors}/>
-                        <HomeComponent image={require("../../images/Leave.png")} title={"Leave"} colors={colors}/>
+                        <HomeComponent onPress={()=>{this.props.navigation.navigate("AttendenceScreen")}} image={require("../../images/Leave.png")} title={"Leave"} colors={colors}/>
                     </View>
 
                     <View style={{
@@ -56,13 +56,16 @@ class HomeScreen extends React.Component {
                         alignItems: 'center',
                         justifyContent: 'space-evenly',
                     }}>
+                        <HomeComponent image={require("../../images/coffee-break.png")} title={"Break Time"}
+                                       colors={colors}/>
                         <HomeComponent image={require("../../images/earningImage.png")} title={"Pay Report"}
                                        colors={colors}/>
-                        <HomeComponent onPress={() => {
-                            this.props.navigation.navigate("SettingScreen")
-                        }} image={require("../../images/setting.png")} title={t("L:Settings")} colors={colors}/>
+
 
                     </View>
+                    <HomeComponent Style={{marginLeft:25}} onPress={() => {
+                        this.props.navigation.navigate("SettingScreen")
+                    }} image={require("../../images/setting.png")} title={t("L:Settings")} colors={colors}/>
 
                 </ScrollView>
             </View>

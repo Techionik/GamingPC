@@ -22,8 +22,9 @@ import ContactUsScreen from "../container/HomeScreen/ContactUsScreen";
 import TermConditionScreen from "../container/HomeScreen/TermConditionScreen";
 import ProfileScreen from "../container/HomeScreen/ProfileScreen";
 import AgrementScreen from "../container/HomeScreen/AgrementScreen";
-import AnalyseScreen from "../container/HomeScreen/AnalyseScreen";
+
 import SignupScreen from "../container/AuthenticationScreens/RegisterScreen";
+import AttendenceScreen from "../container/HomeScreen/AttendanceScreen";
 
 //
 // const mapStateToProps2 = ({app}) => ({
@@ -56,7 +57,8 @@ const AppStack = ({}) => {
             <Stack.Screen name={"ContactUsScreen"} component={ContactUsScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"TermConditionScreen"} component={TermConditionScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"ProfileScreen"} component={ProfileScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"AnalyseScreen"} component={AnalyseScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"AttendenceScreen"} component={AttendenceScreen} options={{headerShown: false}}/>
+
             <Stack.Screen name={"SignupScreen"} component={SignupScreen} options={{headerShown: false}}/>
         </Stack.Navigator>
     )

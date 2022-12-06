@@ -31,7 +31,7 @@ export default function HeaderWihBackground({title,Props,children,colors,isBack,
                     </View>
                 }
 
-                <Image style={{height:60,width:60}} resizeMode={"cover"} source={require("../../images/B3.png")}/>
+                <Image style={{height:60,width:60,borderRadius:30}} resizeMode={"cover"} source={require("../../images/ProfileImage.png")}/>
             </View>
         </View>
         </View>

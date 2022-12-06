@@ -25,7 +25,7 @@ export default function DropdownComponent({onPress,Icon,withoutIcon,theme, title
                     style={[{
                         aspectRatio: 1,
                         height: undefined,
-                        width: "8%",
+                        width: "5%",
 
                         paddingRight:20,
                     }, IconStyle]}/>

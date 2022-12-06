@@ -51,7 +51,7 @@ class SettingScreen extends React.Component {
                 }}>
                     <HeaderComponent title={t("L:Settings")} Props={this.props.value}/>
                 </View>
-                <ScrollView style={{
+                <ScrollView contentContainerStyle={{flex:1}} style={{
                     flex: 1,
                     backgroundColor: colors.screenBackgroundColor,
                     zIndex: 2,
@@ -73,11 +73,17 @@ class SettingScreen extends React.Component {
                             color: colors.greyToTheme
                         }}>{t("L:AccountSettings")}</Text>
                         <SettingsComponent Props={this.props.value} style={{marginBottom: 10}}
-                        onPress={()=>{this.props.navigation.navigate("ProfileScreen")}}        title={t("L:EditProfile")} colors={colors}/>
-                        <SettingsComponent Props={this.props.value} style={{marginBottom: 10}}
-                                           title={t("L:ChangePassword")} colors={colors}/>
-                        <SettingsComponent Props={this.props.value} style={{marginBottom: 10}}
-                                           title={t("L:Pushnotifications")} toogle={true} colors={colors}/>
+                        onPress={()=>{this.props.navigation.navigate("ProfileScreen")}}        title={"Profile"} colors={colors}/>
+
+
+
+
+
+                        <Text style={{
+                            fontSize: 12,
+                            fontFamily: Constants.fontFamilyMedium,
+                            color: colors.greyToTheme
+                        }}>{t("L:OtherSettings")}</Text>
 
                         <SettingsComponent value={this.props.app?.theme == 'dark' ? true : false} onTogglePress={() => {
                             if (this.props.app?.theme == 'dark') {
@@ -87,61 +93,32 @@ class SettingScreen extends React.Component {
                             }
                         }} Props={this.props.value} style={{marginBottom: 10}} title={t("L:DarkMode")} toogle={true}
                                            colors={colors}/>
-                        <SettingsComponent onPress={()=>{this.props.navigation.navigate("AgrementScreen")}} Props={this.props.value} style={{marginBottom: 10}}
-                                           title={t("L:JobScenario")} colors={colors}/>
-                        <Text style={{
-                            fontSize: 12,
-                            fontFamily: Constants.fontFamilyMedium,
-                            color: colors.greyToTheme
-                        }}>{t("L:OtherSettings")}</Text>
-                        <SettingsComponent Props={this.props.value} style={{marginBottom: 10}}
-                                           title={t("L:AcceptingOrders")} toogle={true} colors={colors}/>
-
                         <SettingsComponent Props={this.props.value}  style={{marginBottom: 10}} title={t("L:PrivacyPolicy")} colors={colors}/>
-                        <SettingsComponent Props={this.props.value} onPress={() => {
-                            this.props.navigation.navigate("TermConditionScreen")
-                        }} style={{marginBottom: 10}} title={t("L:TermsandConditions")} colors={colors}/>
+                        <SettingsComponent Props={this.props.value}  style={{marginBottom: 10}} title={t("L:TermsandConditions")} colors={colors}/>
                         <SettingsComponent Props={this.props.value} onPress={() => {
                             this.props.navigation.navigate("ContactUsScreen")
                         }} style={{marginBottom: 10}} title={t("L:Contact")} colors={colors}/>
-                        <SettingsComponent Props={this.props.value} value={this.state.language} onTogglePress={() => {
 
-                            if (language == "en") {
-                                this.props.changeLanguage("ur")
-                                this.props.changeRtl(true)
-
-
-                            } else {
-                                this.props.changeLanguage("en")
-                                this.props.changeRtl(false)
-                            }
-                            setTimeout(() => {
-                                RNRestart.Restart()
-                            }, 200)
-
-                        }} style={{marginBottom: 10}} title={t("L:Language")}
-                                           toogle={true} colors={colors}/>
-                        <SettingsComponent Props={this.props.value} onPress={() => {
-                            this.props.navigation.navigate("AboutUsScreen")
-                        }} style={{marginBottom: 10}} title={t("L:Aboutus")} colors={colors}/>
+                        <SettingsComponent Props={this.props.value} style={{marginBottom: 10}} title={t("L:Aboutus")} colors={colors}/>
                         <SettingsComponent Props={this.props.value} title={t("L:Logout")} colors={colors}/>
-                        <View style={{
-                            flexDirection: "row",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            marginTop: 10
-                        }}>
-                            <Image source={require('../../images/Bin.png')} style={{height: 20, width: 20}}/>
-                            <Text style={{
-                                fontSize: 12,
-                                includeFontPadding: false,
-                                padding: 0,
-                                fontFamily: Constants.fontFamilyBold,
-                                color: colors.redToWhite,
-                                marginLeft: 5
-                            }}>{t("L:DeleteAccount")}</Text>
-                        </View>
 
+                    </View>
+                    <View style={{flex:1}}/>
+                    <View style={{
+                        flexDirection: "row",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        marginTop: 10
+                    }}>
+                        <Image source={require('../../images/Bin.png')} style={{height: 20, width: 20}}/>
+                        <Text style={{
+                            fontSize: 12,
+                            includeFontPadding: false,
+                            padding: 0,
+                            fontFamily: Constants.fontFamilyBold,
+                            color: colors.redToWhite,
+                            marginLeft: 5
+                        }}>{t("L:DeleteAccount")}</Text>
                     </View>
                 </ScrollView>
             </View>
