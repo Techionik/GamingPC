@@ -42,7 +42,7 @@ class VerificationScreen extends React.Component{
                         // editable={!isLoading}
                     />
                     </View>
-                <ButtonComponent onPress={()=>{this.props.navigation.replace("homeStack")}} title={t("Auth:Send")}/>
+                <ButtonComponent onPress={()=>{this.props.navigation.replace("HomeScreen")}} title={t("Auth:Send")}/>
                 </View>
             </View>
 

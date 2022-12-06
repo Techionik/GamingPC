@@ -55,28 +55,7 @@ class ProfileScreen extends React.Component {
                             fontSize: 20,
                             fontFamily: Constants.fontFamilyMedium,
                             color: colors.blackAndWhite
-                        }}>{t("L:TheHairStore")}</Text>
-                        <View style={{
-                            flexDirection: "row",
-                            alignItems: "center",
-                            paddingHorizontal: 10,
-                            paddingVertical: 5,
-                            alignSelf: "center",
-                            backgroundColor: "#B9FEF7",
-                            borderRadius: 10
-                        }}>
-                            <Image source={require('../../images/MarkerPin.png')}
-                                   style={{height: undefined, width: "5%", aspectRatio: 0.84}}/>
-                            <Text style={{
-                                textAlign: "center",
-                                fontSize: 12,
-                                includeFontPadding: false,
-                                padding: 0,
-                                marginLeft: 5,
-                                fontFamily: Constants.fontFamilyMedium,
-                                color: Color.primary
-                            }}>1.8 km</Text>
-                        </View>
+                        }}>{"Mudassir Masood"}</Text>
                         <View style={{height: 1, marginVertical: 10, backgroundColor: colors.greyToWhite}}></View>
                         <Text style={{
                             fontSize: 12,
@@ -85,6 +64,7 @@ class ProfileScreen extends React.Component {
                             color: colors.greyToWhite
                         }}>1-2-3 Building, Jamsith Road, Tokyo</Text>
                     </View>
+
                     <View style={{
                         borderRadius: 15,
                         backgroundColor: colors.whiteToDark,
@@ -92,42 +72,11 @@ class ProfileScreen extends React.Component {
                         paddingVertical: 15,
                         paddingHorizontal: 20
                     }}>
-                        <View style={{flexDirection: "row", alignItems: "center"}}>
-                            <Text style={{
-                                fontSize: 10,
-                                flex: 1,
-                                fontFamily: Constants.fontFamilyBold,
-                                color: colors.greyToWhite
-                            }}>{t("L:Description")}</Text>
-                            <MaterialIcons name={"edit"} color={Color.primary} size={12}/>
-                            <Text style={{
-                                fontSize: 10,
-                                marginLeft: 3,
-                                fontFamily: Constants.fontFamilyBold,
-                                color: Color.primary
-                            }}>{t("L:Edit")}</Text>
-                        </View>
-                        <Text style={{
-                            fontSize: 10,
-                            marginTop: 5,
-                            fontFamily: Constants.fontFamilyRegular,
-                            color: colors.blackAndWhite
-                        }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry s standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley of type and scrambled it to make a type specimen book.</Text>
-                    </View>
-                    <View style={{
-                        borderRadius: 15,
-                        backgroundColor: colors.whiteToDark,
-                        marginBottom: 10,
-                        paddingVertical: 15,
-                        paddingHorizontal: 20
-                    }}>
-                        <RowComponent colors={colors} title1={t("L:Contact")} title2Style={{color:Color.primary}} title2={"001-27349-839"}/>
-                        <RowComponent colors={colors} title1={t("L:BusinessDays")} title2={t("L:Monday-Friday")}/>
-                        <RowComponent colors={colors} title1={t("L:BusinessHours")} title2={"12 pm - 10 pm"}/>
-                        <RowComponent colors={colors} title1={t("L:ServiceTypes")} title2={t("L:HomeService")}/>
-                        <RowComponent colors={colors} title1={t("L:EmailAddress")} title2Style={{color:Color.primary}}  title2={"AhlaServieceProvider.com"}/>
+                        <RowComponent colors={colors} title1={"First Name"}  title2={"Mudassir"}/>
+                        <RowComponent colors={colors} title1={"Last Name"} title2={"Masood"}/>
+                        <RowComponent colors={colors} title1={"Role"} title2={"Manager"}/>
+                        <RowComponent colors={colors} title1={"Shift Time"} title2={"2 pm - 11 pm"}/>
+                        <RowComponent colors={colors} title1={t("L:EmailAddress")}   title2={"Mudassir@gmail.com"}/>
                     </View>
                 </ScrollView>
 
@@ -151,13 +100,13 @@ function RowComponent({colors, title1, title2Style, title2, title1Style}) {
             borderColor: colors.greyToWhite
         }}>
             <Text style={[{
-                fontSize: 10,
+                fontSize: 12,
                 flex: 1,
                 fontFamily: Constants.fontFamilyBold,
                 color: colors.greyToWhite
             }, title1Style]}>{title1}</Text>
             <Text style={[{
-                fontSize: 10,
+                fontSize: 12,
                 fontFamily: Constants.fontFamilyBold,
                 color: colors.darKToWhite
             }, title2Style]}>{title2}</Text>

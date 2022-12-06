@@ -53,7 +53,7 @@ class SettingScreen extends React.Component {
                 </View>
                 <ScrollView style={{
                     flex: 1,
-                    backgroundColor: colors.ScreenColorToDark,
+                    backgroundColor: colors.screenBackgroundColor,
                     zIndex: 2,
                     top: -25,
                     borderTopLeftRadius: 30,

@@ -26,8 +26,8 @@ export default function HeaderWihBackground({title,Props,children,colors,isBack,
                     :
 
                     <View>
-                        <Text style={{color: "#fff", fontSize: 20, fontFamily: Constants.fontFamilyBold}}>{t("L:HiExpert")}</Text>
-                        <Text style={{color: "#fff", fontSize: 15, fontFamily: Constants.fontFamilyRegular}}>{t("L:WelcometoAhla")}</Text>
+                        <Text style={{color: "#fff", fontSize: 20, fontFamily: Constants.fontFamilyBold}}>{"Hi!"}</Text>
+                        <Text style={{color: "#fff", fontSize: 15, fontFamily: Constants.fontFamilyRegular}}>{"Welcome to TECHIONIK"}</Text>
                     </View>
                 }
 

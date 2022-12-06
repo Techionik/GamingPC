@@ -11,7 +11,7 @@ export default function HomeComponent({Style,title,titleStyle,onPress,image,colo
             justifyContent:"center",
             alignItems:"center",
             height:130,
-            width:140,
+            flex:1,
             margin:10
         }, Style]}>
 
@@ -19,7 +19,7 @@ export default function HomeComponent({Style,title,titleStyle,onPress,image,colo
             <View style={{alignItems:'center',}}>
 
                 <View style={{height:40,width:40,borderRadius:40,backgroundColor:Color.primary,justifyContent:'center'}}>
-                    <Image style={{height:20,width:20,alignSelf:'center'}} resizeMode={"cover"} source={image}/>
+                    <Image style={{height:20,width:20,alignSelf:'center',tintColor:"#fff"}} resizeMode={"cover"} source={image}/>
                 </View>
 
                 <Text style={[{fontSize:15,marginTop:10,fontFamily:Constants.fontFamilySemiBold,color:colors.blackAndWhite,includeFontPadding:false,padding:0},titleStyle]}>{title}</Text>

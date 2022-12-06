@@ -77,197 +77,26 @@ class SignupScreen extends React.Component {
                             fontFamily: Constants.fontFamilyBold,
                             fontSize: 22
                         }}>{t("Auth:RegisterVendor")}</Text>
-                    <Text style={{color: colors.greyToWhite, fontFamily: Constants.fontFamilyBold, fontSize: 12}}>Lorem
-                        Ipsum is
-                        simply dummy text of the printing and typesetting industry. Lorem Ipsum</Text>
+
                     <View style={{marginTop: 20}}>
-                        <View style={{flex: 1, flexDirection: "row", alignItems: "center"}}>
-                            <ButtonComponent onPress={() => {
-                                this.setState({type: "Salon"})
-                            }} title={t("Auth:Salon")} titleStyle={{fontSize: 12}} Style={{
-                                backgroundColor: type == "Salon" ? Color.primary : colors.darKToPrimary,
-                                marginVertical: 0,
-                                flex: 1,
-                                marginHorizontal: 0
-                            }}/>
-                            <ButtonComponent onPress={() => {
-                                this.setState({type: "Expert"})
-                            }} title={t("Auth:Expert")} titleStyle={{fontSize: 12}} Style={{
-                                backgroundColor: type == "Expert" ? Color.primary : colors.darKToPrimary,
-                                marginVertical: 0,
-                                flex: 1,
-                                marginHorizontal: 15
-                            }}/>
-                            <ButtonComponent onPress={() => {
-                                this.setState({type: "Home"})
-                            }} title={t("L:Freelancer")} titleStyle={{fontSize: 12}} Style={{
-                                backgroundColor: type == "Home" ? Color.primary : colors.darKToPrimary,
-                                marginVertical: 0,
-                                flex: 1,
-                                marginHorizontal: 0
-                            }}/>
-                        </View>
-                        {type=="Salon"?
-                            <>
-                            <FieldComponent theme={colors} Icon={require('../../images/ProfileIcon.png')}
-                                         Placeholder={t("Auth:ProfileName")}/>
-                            <FieldComponent theme={colors} withoutIcon={true} Placeholder={t("Auth:LicenseNumber")}/>
-                            </>:null}
-
-                        <FieldComponent theme={colors} Icon={require('../../images/Store.png')}
-                                        Placeholder={t("Auth:SalonName")}/>
-                        <FieldComponent arabic={true} theme={colors}
-                                        children={
-                                        <Image source={require('../../images/Store.png')} resizeMode={"contain"}
-                                                                       style={{
-                                                                           aspectRatio: 1,
-                                                                           height: undefined,
-                                                                           width: "8%",
-                                                                           marginHorizontal: 10,
-                                                                           tintColor: colors?.fieldTextColor
-                                                                       }}/>}
-
-                                        Placeholder={"اسم الصالون (In Arabic)"}/>
+                        <FieldComponent theme={colors} Icon={require('../../images/ProfileIcon.png')}
+                                        Placeholder={"First Name"}/>
+                        <FieldComponent theme={colors} Icon={require('../../images/ProfileIcon.png')}
+                                        Placeholder={"Last Name"}/>
                         <FieldComponent theme={colors} secureTextEntry={true}
                                         Icon={require('../../images/MailIcon.png')}
-                                        Placeholder={t("Auth:EmailAddress")}/>
+                                        Placeholder={"Email Address"}/>
                         <FieldComponent theme={colors} Icon={require('../../images/PhoneIcon.png')}
-                                        children={<Text style={{
-                                            marginRight: 10,
-                                            fontSize: 12,
-                                            fontFamily: Constants.Bold,
-                                            color: Color.primary
-                                        }}>{t("Auth:Verify")}</Text>} Placeholder={t("Auth:PhoneNumber")}/>
+                                   Placeholder={"Phone Number"}/>
                         <FieldComponent theme={colors} secureTextEntry={true}
                                         Icon={require('../../images/PasswordIcon.png')} IconStyle={{bottom: -4}}
-                                        Placeholder={t("Auth:Password")}/>
+                                        Placeholder={"Password"}/>
                         <FieldComponent theme={colors} secureTextEntry={true}
                                         Icon={require('../../images/PasswordIcon.png')} IconStyle={{bottom: -4}}
-                                        Placeholder={t("Auth:ConfirmPassword")}/>
-                        <FieldComponent theme={colors} withoutIcon={true}
-                                        Placeholder={t("Auth:CommercialRegistrationNumber")}/>
-                        <DropdownComponent withoutIcon={true} theme={colors} title={t("Auth:UploadCertificate")}
+                                        Placeholder={"Confirm Password"}/>
 
-                                           children={
-                                               <AntDesign name={"upload"} size={16} color={colors.fieldTextColor}/>
-                                           }
-                        />
-                        <DropdownComponent withoutIcon={true} theme={colors} title={t("Auth:Category")}/>
-                        <FieldComponent withoutIcon={true} theme={colors} Placeholder={t("Auth:IBAN")}/>
-                        <View style={{flexDirection: "row",}}>
-                            <DropdownComponent theme={colors} Icon={require('../../images/FlagIcon.png')}
-                                               IconStyle={{width: "15%"}} Style={{marginRight: 20, flex: 1}}
-                                               title={t("Auth:Country")}/>
-                            <DropdownComponent theme={colors} withoutIcon={true} Style={{flex: 1}}
-                                               title={t("Auth:City")}/>
-                        </View>
-                        <DropdownComponent theme={colors} withoutIcon={true} title={t("Auth:AveragedailyOrders")}/>
-                        <Text style={{
-                            fontSize: 14,
-                            fontFamily: Constants.fontFamilyMedium,
-                            color: colors.darKToWhite,
-                            marginVertical: 10,
-                            alignSelf: "center"
-                        }}>{t("Auth:SelectServiceProvider")}</Text>
+                        <DropdownComponent withoutIcon={true} theme={colors} title={"Role"}/>
 
-                        <View style={{flex: 1, flexDirection: "row", alignItems: "center"}}>
-                            <ButtonComponent onPress={() => {
-                                this.setState({service: "Salon"})
-                            }} title={t("Auth:Salon")} titleStyle={{
-                                fontSize: 12,
-                                color: service == "Salon" ? "#fff" : colors.greyToWhite
-                            }} Style={{
-                                backgroundColor: service == "Salon" ? Color.primary : colors.fieldBackgroundColor,
-                                marginVertical: 0,
-                                flex: 1,
-                                marginHorizontal: 0
-                            }}/>
-                            <ButtonComponent onPress={() => {
-                                this.setState({service: "Home"})
-                            }} title={t("L:Freelancer")} titleStyle={{
-                                fontSize: 12,
-                                color: service == "Home" ? "#fff" : colors.greyToWhite
-                            }} Style={{
-                                backgroundColor: service == "Home" ? Color.primary : colors.fieldBackgroundColor,
-                                marginVertical: 0,
-                                flex: 1,
-                                marginHorizontal: 15
-                            }}/>
-                            <ButtonComponent onPress={() => {
-                                this.setState({service: "Both"})
-                            }} title={t("Auth:Both")} titleStyle={{
-                                fontSize: 12,
-                                color: service == "Both" ? "#fff" : colors.greyToWhite
-                            }} Style={{
-                                backgroundColor: service == "Both" ? Color.primary : colors.fieldBackgroundColor,
-                                marginVertical: 0,
-                                flex: 1,
-                                marginHorizontal: 0
-                            }}/>
-                        </View>
-                        <Text style={{
-                            fontSize: 14,
-                            includeFontPadding: false,
-                            fontFamily: Constants.fontFamilyMedium,
-                            color: colors.darKToWhite,
-                            marginVertical: 10,
-                            alignSelf: "center"
-                        }}>{t("Auth:OpenDays")}</Text>
-                        <View style={{marginVertical: 10}}>
-                            <FlatList horizontal={true} showsHorizontalScrollIndicator={false}
-                                      contentContainerStyle={{flex: 1, justifyContent: "center"}} data={this.state.days}
-                                      renderItem={({item, index}) =>
-
-                                          <StripComponent colors={colors} item={item}/>
-                                      }/>
-                        </View>
-                        <View style={{flex: 1, flexDirection: "row", marginVertical: 10, alignItems: "center"}}>
-                            <ButtonComponent onPress={() => {
-                                this.setState({shift: "Shift1"})
-                            }} title={t("Auth:Shift") + 1} titleStyle={{
-                                fontSize: 12,
-                                color: shift == "Shift1" ? "#fff" : colors.greyToWhite
-                            }} Style={{
-                                backgroundColor: shift == "Shift1" ? Color.primary : colors.fieldBackgroundColor,
-                                marginVertical: 0,
-                                flex: 1,
-                                marginHorizontal: 0
-                            }}/>
-                            <ButtonComponent onPress={() => {
-                                this.setState({shift: "Shift2"})
-                            }} title={t("Auth:Shift") + 2} titleStyle={{
-                                fontSize: 12,
-                                color: shift == "Shift2" ? "#fff" : colors.greyToWhite
-                            }} Style={{
-                                backgroundColor: shift == "Shift2" ? Color.primary : colors.fieldBackgroundColor,
-                                marginVertical: 0,
-                                flex: 1,
-                                marginHorizontal: 15
-                            }}/>
-                            <View style={{flexDirection: "row", alignItems: "center"}}>
-                                <AntDesign name={"pluscircle"} color={colors.darKToPrimary} size={30}/>
-                                <Text style={{
-                                    fontSize: 12,
-                                    fontFamily: Constants.fontFamilyBold,
-                                    color: colors.blackAndWhite,
-                                    marginLeft: 10
-                                }}>{t("L:Addmore")}</Text>
-                            </View>
-                        </View>
-                        <PickLocation colors={colors} t={t} onPress={()=>{this.props.navigation.navigate("MapScreen")}}/>
-                        <Text style={{
-                            textAlign: "center",
-                            fontSize: 12,
-                            fontFamily: Constants.fontFamilyMedium,
-                            color: colors.greyToWhite,
-                            marginTop: 10,
-                            marginHorizontal: 20
-                        }}>{t("L:TermText")}
-                            <Text  style={{color: Color.primary}}> {t("L:Termofuse")}</Text>
-                            <Text> {t("L:and")} </Text>
-                            <Text   style={{color: Color.primary}}>{t("L:PrivacyPolicy")}</Text>
-
-                        </Text>
 
                         <ButtonComponent onPress={()=>{this.props.navigation.replace("HomeScreen")}} theme={colors} title={t("Auth:Register")}/>
                         <OrLoginWith Props={this.props.value}/>

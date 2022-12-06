@@ -24,27 +24,45 @@ class HomeScreen extends React.Component {
         const {t, language, themeColor} = this.props.value
         const {colors} = themeColor
         return (
-            <View style={{flex:1,backgroundColor: colors.screenBackgroundColor,}}>
-                <HeaderWihBackground Style={{paddingTop:30,paddingBottom:40}}  t={t}   Props={this.props.value}/>
-                <ScrollView showsVerticalScrollIndicator={false}  contentContainerStyle={{flexGrow: 1,paddingHorizontal:15,marginBottom:20 }}>
-                    <Text style={{color:colors.blackAndWhite,fontSize:15,fontFamily:Constants.fontFamilyRegular,marginVertical:20}}>{t("L:YourInsights")}</Text>
+            <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor,}}>
+                <HeaderWihBackground Style={{paddingTop: 30, paddingBottom: 40}} t={t} Props={this.props.value}/>
+                <ScrollView showsVerticalScrollIndicator={false}
+                            contentContainerStyle={{flexGrow: 1, paddingHorizontal: 15, marginBottom: 20}}>
+                    <Text style={{
+                        color: colors.blackAndWhite,
+                        fontSize: 15,
+                        fontFamily: Constants.fontFamilyRegular,
+                        marginVertical: 20
+                    }}>{t("L:YourInsights")}</Text>
 
-                    <View style={{backgroundColor:colors.whiteToDark,elevation:2,borderRadius:10,padding:30,}}>
-                        <Image style={{height:undefined,width:"100%",aspectRatio:2.543}} resizeMode={"cover"} source={require("../../images/graphImage.png")}/>
+                    <View style={{backgroundColor: colors.whiteToDark, elevation: 2, borderRadius: 10, padding: 30,}}>
+                        <Image style={{height: undefined, width: "100%", aspectRatio: 2.543}} resizeMode={"cover"}
+                               source={require("../../images/graphImage.png")}/>
                     </View>
 
-                    <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-evenly',marginTop:20}}>
-                        <HomeComponent onPress={()=>{this.props.navigation.navigate("JobsScreen")}} image={require("../../images/jobsImage.png")} title={t("L:Jobs")} colors={colors}/>
-                        <HomeComponent onPress={()=>{this.props.navigation.navigate("EarningScreen")}} image={require("../../images/earningImage.png")} title={t("L:Earning")} colors={colors}/>
-
+                    <View style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        justifyContent: 'space-evenly',
+                        marginTop: 20
+                    }}>
+                        <HomeComponent image={require("../../images/jobsImage.png")} title={"Attendance"}
+                                       colors={colors}/>
+                        <HomeComponent image={require("../../images/Leave.png")} title={"Leave"} colors={colors}/>
                     </View>
 
-                    <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-evenly',marginTop:20}}>
-                    <HomeComponent onPress={()=>{this.props.navigation.navigate("MapScreen")}} image={require("../../images/jobLocationImage.png")} title={t("L:JobsLocation")} colors={colors}/>
-                    <HomeComponent onPress={()=>{this.props.navigation.navigate("AnalyseScreen")}} image={require("../../images/jobLocationImage.png")} title={t("L:Analysis")} colors={colors}/>
+                    <View style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        justifyContent: 'space-evenly',
+                    }}>
+                        <HomeComponent image={require("../../images/earningImage.png")} title={"Pay Report"}
+                                       colors={colors}/>
+                        <HomeComponent onPress={() => {
+                            this.props.navigation.navigate("SettingScreen")
+                        }} image={require("../../images/setting.png")} title={t("L:Settings")} colors={colors}/>
 
                     </View>
-                    <HomeComponent onPress={()=>{this.props.navigation.navigate("SettingScreen")}} image={require("../../images/setting.png")} title={t("L:Settings")} colors={colors}/>
 
                 </ScrollView>
             </View>

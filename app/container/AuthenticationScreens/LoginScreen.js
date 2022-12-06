@@ -29,16 +29,16 @@ class LoginScreen extends React.Component {
 
                 <View style={{flex:0.5,justifyContent:'center'}}>
                 <Image style={{
-                    height:130,
-                    width:130,
+                    height:undefined,
+                    width:"100%",
+                    aspectRatio:2,
                     alignSelf:'center',
-                }}  source={require('../../images/SplashLogo.png')}/>
+                }}  source={require('../../images/LoginLogo.png')}/>
                 </View>
 
-                <ScrollView showsVerticalScrollIndicator={false} style={{marginHorizontal:5,flex:1}}>
+                <ScrollView contentContainerStyle={{flex:1}} showsVerticalScrollIndicator={false} style={{marginHorizontal:5,flex:1}}>
                 <Text
                     style={{color:  colors?.blackAndWhite, fontFamily: Constants.fontFamilyBold, fontSize: 22}}>{t("Auth:Login")}</Text>
-                <Text style={{color: colors?.fieldTextColor, fontFamily: Constants.fontFamilyRegular, fontSize: 12}}>{t("L:DummyText")}</Text>
                 <View style={{marginTop: 20}}>
                     <FieldComponent theme={colors}  Icon={require('../../images/MailIcon.png')} Placeholder={t("Auth:EmailField")}/>
                     <FieldComponent theme={colors} secureTextEntry={true} Icon={require('../../images/PasswordIcon.png')}

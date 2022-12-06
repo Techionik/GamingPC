@@ -16,7 +16,7 @@ export default {
   main: '#fff',
   primaryDark: '#0097a7',
   rippleColor: '#0556a0',
-  primary: '#40E0D0',
+  primary: '#5D83E2',
   redColor:"#E50027",
 
   primaryLight: 'rgba(64, 224, 208, 0.27)',
@@ -384,7 +384,7 @@ export const darkTheme = {
   key: 'dark',
   colors: {
 
-    screenBackgroundColor:'#263238',
+    screenBackgroundColor:'#000',
     fieldBackgroundColor:'#6A7F91',
     fieldTextColor:'#FFFFFF',
     blackAndWhite:'#FFFFFF',
