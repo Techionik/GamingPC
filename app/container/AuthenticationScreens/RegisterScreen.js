@@ -17,7 +17,6 @@ import SocialButton from "../Components/SocialButton";
 import {OrLoginWith} from "./LoginScreen";
 
 
-
 class SignupScreen extends React.Component {
     constructor(props) {
         super(props);
@@ -87,7 +86,7 @@ class SignupScreen extends React.Component {
                                         Icon={require('../../images/MailIcon.png')}
                                         Placeholder={"Email Address"}/>
                         <FieldComponent theme={colors} Icon={require('../../images/PhoneIcon.png')}
-                                   Placeholder={"Phone Number"}/>
+                                        Placeholder={"Phone Number"}/>
                         <FieldComponent theme={colors} secureTextEntry={true}
                                         Icon={require('../../images/PasswordIcon.png')} IconStyle={{bottom: -4}}
                                         Placeholder={"Password"}/>
@@ -98,7 +97,9 @@ class SignupScreen extends React.Component {
                         <DropdownComponent withoutIcon={true} theme={colors} title={"Role"}/>
 
 
-                        <ButtonComponent onPress={()=>{this.props.navigation.replace("HomeScreen")}} theme={colors} title={t("Auth:Register")}/>
+                        <ButtonComponent onPress={() => {
+                            this.props.navigation.replace("HomeScreen")
+                        }} theme={colors} title={t("Auth:Register")}/>
                         <OrLoginWith Props={this.props.value}/>
                         <BottomSocialButtons colors={colors}/>
 
@@ -152,33 +153,6 @@ function StripComponent({item, colors}) {
     )
 }
 
-function PickLocation({colors, t,onPress}) {
-    return (
-        <TouchableOpacity onPress={onPress} style={{flexDirection: "row", marginTop: 10, alignItems: "flex-start"}}>
-            <View style={{
-                height: 35,
-                width: 35,
-
-                borderRadius: 17,
-                backgroundColor: Color.primary,
-                alignItems: "center",
-                justifyContent: "center"
-            }}>
-                <Image source={require('../../images/PickLocation.png')} resizeMode={"contain"}
-                       style={{height: 15, width: 15,}}/>
-            </View>
-            <Text style={{
-                fontSize: 12,
-                fontFamily: Constants.fontFamilyMedium,
-                color: colors.blackAndWhite,
-                includeFontPadding: false,
-                padding: 0,
-                marginLeft: 10,
-
-            }}>{t("L:PickLocation")}</Text>
-        </TouchableOpacity>
-    )
-}
 
 export function BottomSocialButtons({colors}) {
     return (
@@ -192,8 +166,6 @@ export function BottomSocialButtons({colors}) {
             <SocialButton Icon={require('../../images/GoogleIcon.png')}/>
             <SocialButton Icon={require('../../images/FacebookIcon.png')}
                           Style={{marginHorizontal: 20}}/>
-            <SocialButton Icon={require('../../images/AppleIcon.png')}
-                          IconStyle={{left: -1, tintColor: colors?.blackAndWhite}}/>
         </View>
     )
 }
