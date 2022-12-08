@@ -25,6 +25,8 @@ import AgrementScreen from "../container/HomeScreen/AgrementScreen";
 
 import SignupScreen from "../container/AuthenticationScreens/RegisterScreen";
 import AttendenceScreen from "../container/HomeScreen/AttendanceScreen";
+import LeaveScreen from "../container/HomeScreen/LeaveScreen";
+import BreakTimeScreen from "../container/HomeScreen/BreakTimeScreen";
 
 //
 // const mapStateToProps2 = ({app}) => ({
@@ -58,6 +60,8 @@ const AppStack = ({}) => {
             <Stack.Screen name={"TermConditionScreen"} component={TermConditionScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"ProfileScreen"} component={ProfileScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"AttendenceScreen"} component={AttendenceScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"LeaveScreen"} component={LeaveScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"BreakTimeScreen"} component={BreakTimeScreen} options={{headerShown: false}}/>
 
             <Stack.Screen name={"SignupScreen"} component={SignupScreen} options={{headerShown: false}}/>
         </Stack.Navigator>

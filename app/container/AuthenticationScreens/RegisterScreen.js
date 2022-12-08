@@ -100,8 +100,8 @@ class SignupScreen extends React.Component {
                         <ButtonComponent onPress={() => {
                             this.props.navigation.replace("HomeScreen")
                         }} theme={colors} title={t("Auth:Register")}/>
-                        <OrLoginWith Props={this.props.value}/>
-                        <BottomSocialButtons colors={colors}/>
+
+
 
                     </View>
                     <Text style={{

@@ -1,4 +1,4 @@
-package com.ahlacustomer;
+package com.techionik;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

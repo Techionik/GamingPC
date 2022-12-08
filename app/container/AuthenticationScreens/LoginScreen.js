@@ -66,8 +66,7 @@ class LoginScreen extends React.Component {
                         }} title={t("Auth:Login")}/>
                     </View>
                     <View style={{flex: 1}}/>
-                    <OrLoginWith Props={this.props.value}/>
-                    <BottomSocialButtons colors={colors}/>
+
                     <Text style={{
                         marginBottom: 10,
                         fontSize: 14,

@@ -19,9 +19,10 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.EmptyReactNativeConfig;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.ahlacustomer.BuildConfig;
 import com.ahlacustomer.newarchitecture.components.MainComponentsRegistry;
 import com.ahlacustomer.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.techionik.BuildConfig;
+
 import java.util.ArrayList;
 import java.util.List;
 
