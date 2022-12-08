@@ -38,8 +38,8 @@ class ContactUsScreen extends React.Component {
                 <View style={{flexGrow:1}}>
                 <View style={{borderRadius:30,marginTop:30,backgroundColor:colors.BackgroundView,marginHorizontal:20,paddingHorizontal:10,paddingBottom:40}}>
                     <View style={{backgroundColor:Color.primary,borderRadius:10,paddingVertical:10,marginHorizontal:20,zIndex:2,elevation:2,top:-30,justifyContent:"center",alignItems:"center"}}>
-                        <Text style={{color:colors.blackAndWhite,fontSize:16,fontFamily:Constants.fontFamilyMedium}}>{t("L:SendusaMessage")}</Text>
-                        <Text style={{color:colors.blackAndWhite,fontSize:12,fontFamily:Constants.fontFamilyMedium}}>{t("L:HelpText")}</Text>
+                        <Text style={{color:"#fff",fontSize:16,fontFamily:Constants.fontFamilyMedium}}>{t("L:SendusaMessage")}</Text>
+                        <Text style={{color:"#fff",fontSize:12,fontFamily:Constants.fontFamilyMedium}}>{t("L:HelpText")}</Text>
                     </View>
                     <View style={{paddingHorizontal:20}}>
                   <ProfileFieldComponent title={t("L:Name")} placeholder={"Mudassir"} colors={colors}/>

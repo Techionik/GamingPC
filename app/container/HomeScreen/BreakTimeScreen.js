@@ -44,10 +44,10 @@ class BreakTimeScreen extends React.Component {
                 <View style={{padding: 10}}>
                     <TouchableComponent disabled={this.state.checkin} onPress={() => {
                         this.setState({visibleTimePicker: true, time: "30"})
-                    }} title={"30 minutes"} Icon={require('../../images/TimeIcon.png')} Style={{backgroundColor:this.state.time=="30"?Color.primary:colors.fieldBackgroundColor}} theme={colors}/>
+                    }} title={"30 minutes"} Icon={require('../../images/TimeIcon.png')} IconStyle={{tintColor:this.state.time=="30"?"#fff":colors.fieldTextColor}} titleStyle={{color:this.state.time=="30"?"#fff":colors.fieldTextColor}} Style={{backgroundColor:this.state.time=="30"?Color.primary:colors.fieldBackgroundColor}} theme={colors}/>
                     <TouchableComponent disabled={this.state.checkin} onPress={() => {
                         this.setState({visibleTimePicker: true, time: "60"})
-                    }} title={"60 minutes"} Icon={require('../../images/TimeIcon.png')} Style={{backgroundColor:this.state.time=="60"?Color.primary:colors.fieldBackgroundColor}} theme={colors}/>
+                    }} title={"60 minutes"} Icon={require('../../images/TimeIcon.png')} IconStyle={{tintColor:this.state.time=="60"?"#fff":colors.fieldTextColor}} titleStyle={{color:this.state.time=="60"?"#fff":colors.fieldTextColor}} Style={{backgroundColor:this.state.time=="60"?Color.primary:colors.fieldBackgroundColor}} theme={colors}/>
                 </View>
                 <View style={{flex: 1, justifyContent: "center",}}>
                     { this.state.showTimer &&
