@@ -3,6 +3,8 @@ import * as types from './types'
 
 const initialState = {
     userInfo: undefined,
+    brakeTime:[],
+    checkIn:undefined,
     accessToken: null,
     expiresAt: null,
     isFetching: false,
@@ -54,22 +56,26 @@ export default (state = initialState, action) => {
         }
 
         case types.LOGIN_SUCCESS: {
-            return Object.assign({}, {
+            return {
                 ...state,
                 userInfo: payload,
                 isFetching: false,
-                isSocialLogin: false,
-                error: null
-            })
-
-            // return {
-            //   ...state,
-            //   userInfo: payload,
-            //   isFetching: false,
-            //   isSocialLogin:false,
-            //   error: null,
-            // };
+                error: null,
+            };
         }
+        case types.GET_BRAKETIMES: {
+            return {
+                ...state,
+                brakeTime: payload,
+            };
+        }
+        case types.CHECK_IN: {
+            return {
+                ...state,
+                checkIn: payload,
+            };
+        }
+
         case types.FILIP_FLOP_FETCHING: {
             return Object.assign({}, {
                 ...state,
@@ -124,7 +130,7 @@ export default (state = initialState, action) => {
         case types.USER_INFO_SUCCESS: {
             return {
                 ...state,
-                userInfo: payload.user,
+                userInfo: payload,
                 isFetching: false,
                 isSocialLogin: false,
                 error: null

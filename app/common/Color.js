@@ -16,7 +16,7 @@ export default {
   main: '#fff',
   primaryDark: '#0097a7',
   rippleColor: '#0556a0',
-  primary: '#5D83E2',
+  primary: '#118dff',
   redColor:"#E50027",
 
   primaryLight: 'rgba(64, 224, 208, 0.27)',
@@ -39,7 +39,7 @@ export default {
   borderColor: '#f2f4f5',
   heading_color: '#003761',
   regular_text_color: '#949494',
-  theme_color: '#1476d1',
+  theme_color: '#118dff',
   light_orange: '#fde1b8',
   dark_orange: '#f38d5b',
   yellow: '#c9b62c',

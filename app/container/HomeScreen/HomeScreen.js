@@ -12,13 +12,31 @@ import ButtonComponent from "../Components/ButtonComponent";
 import HomeComponent from "../Components/HomeComponent";
 import HeaderWihBackground from "../Components/HeaderWihBackground";
 import HeaderComponent from "../Components/HeaderComponent";
+import {connect} from "react-redux";
+import {getData} from "../../redux/user/operations";
+import axios from "axios";
+const mapStateToProps = ({app, user}) => ({
+    app,
+    user,
+    userInfo:user?.userInfo
+});
 
+
+@connect(
+    mapStateToProps,
+    {getData},
+)
 
 class HomeScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {}
     }
+
+componentDidMount() {
+
+
+}
 
     render() {
         const {t, language, themeColor} = this.props.value
@@ -27,46 +45,41 @@ class HomeScreen extends React.Component {
             <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor,}}>
                 <HeaderWihBackground Style={{paddingTop: 30, paddingBottom: 40}} t={t} Props={this.props.value}/>
                 <ScrollView showsVerticalScrollIndicator={false}
-                            contentContainerStyle={{flexGrow: 1, paddingHorizontal: 15, marginBottom: 20}}>
-                    <Text style={{
-                        color: colors.blackAndWhite,
-                        fontSize: 15,
-                        fontFamily: Constants.fontFamilyRegular,
-                        marginVertical: 20
-                    }}>{t("L:YourInsights")}</Text>
+                            contentContainerStyle={{flexGrow: 1,justifyContent:"center", paddingHorizontal: 15, marginBottom: 20}}>
+                    <View>
+                      <Image source={require('../../images/WaterMark.png')} style={{aspectRatio:0.9,marginVertical:10,height:undefined,width:"100%"}}/>
 
-                    <View style={{backgroundColor: colors.whiteToDark, elevation: 2, borderRadius: 10, padding: 30,}}>
-                        <Image style={{height: undefined, width: "100%", aspectRatio: 2.543}} resizeMode={"cover"}
-                               source={require("../../images/graphImage.png")}/>
+                        <ButtonComponent onPress={()=>{this.props.navigation.navigate("AttendenceScreen")}}  title={"Attendance"}/>
+                        <ButtonComponent onPress={()=>{this.props.navigation.navigate("BreakTimeScreen")}} title={"Brake"}/>
+                        <ButtonComponent onPress={()=>{this.props.navigation.navigate("LeaveScreen")}} title={"Leave"}/>
+                        <ButtonComponent title={"Pay Roll"}/>
+                    {/*<View style={{*/}
+                    {/*    flexDirection: 'row',*/}
+                    {/*    alignItems: 'center',*/}
+                    {/*    justifyContent: 'space-evenly',*/}
+                    {/*    marginTop: 20,*/}
+
+                    {/*}}>*/}
+
+                    {/*    <HomeComponent onPress={()=>{this.props.navigation.navigate("AttendenceScreen")}}  image={require("../../images/jobsImage.png")} title={"Attendance"}*/}
+                    {/*                   colors={colors}/>*/}
+                    {/*    <HomeComponent onPress={()=>{this.props.navigation.navigate("LeaveScreen")}} image={require("../../images/Leave.png")} title={"Leave"} colors={colors}/>*/}
+                    {/*</View>*/}
+
+                    {/*<View style={{*/}
+                    {/*    flexDirection: 'row',*/}
+                    {/*    alignItems: 'center',*/}
+                    {/*    justifyContent: 'space-evenly',*/}
+                    {/*}}>*/}
+                    {/*    <HomeComponent onPress={()=>{this.props.navigation.navigate("BreakTimeScreen")}} image={require("../../images/coffee-break.png")} title={"Break Time"}*/}
+                    {/*                   colors={colors}/>*/}
+                    {/*    <HomeComponent image={require("../../images/earningImage.png")} title={"Pay Report"}*/}
+                    {/*                   colors={colors}/>*/}
+
+
+                    {/*</View>*/}
+
                     </View>
-
-                    <View style={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        justifyContent: 'space-evenly',
-                        marginTop: 20
-                    }}>
-                        <HomeComponent onPress={()=>{this.props.navigation.navigate("AttendenceScreen")}}  image={require("../../images/jobsImage.png")} title={"Attendance"}
-                                       colors={colors}/>
-                        <HomeComponent onPress={()=>{this.props.navigation.navigate("LeaveScreen")}} image={require("../../images/Leave.png")} title={"Leave"} colors={colors}/>
-                    </View>
-
-                    <View style={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        justifyContent: 'space-evenly',
-                    }}>
-                        <HomeComponent onPress={()=>{this.props.navigation.navigate("BreakTimeScreen")}} image={require("../../images/coffee-break.png")} title={"Break Time"}
-                                       colors={colors}/>
-                        <HomeComponent image={require("../../images/earningImage.png")} title={"Pay Report"}
-                                       colors={colors}/>
-
-
-                    </View>
-                    <HomeComponent Style={{marginLeft:25}} onPress={() => {
-                        this.props.navigation.navigate("SettingScreen")
-                    }} image={require("../../images/setting.png")} title={t("L:Settings")} colors={colors}/>
-
                 </ScrollView>
             </View>
 

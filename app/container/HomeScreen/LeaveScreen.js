@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+    ActivityIndicator,
     FlatList,
     Image,
     ImageBackground, ScrollView, Text, TouchableOpacity,
@@ -18,8 +19,19 @@ import DateTimePicker from 'react-native-modal-datetime-picker';
 import moment from "moment";
 import TouchableComponent from "../Components/TouchableComponent";
 import {Color} from "../../common";
+import {connect} from "react-redux";
+import {getData, leave, login} from "../../redux/user/operations";
 
-const LeaveOptions = [{value: "Normal Leave"}, {value: "Urgent Base Leave"}, {value: "Sick Leave"}, {value: "Company Leave"},];
+const mapStateToProps = ({app, user}) => ({
+    app,
+    user,
+});
+
+
+@connect(
+    mapStateToProps,
+    {leave}
+)
 
 
 class LeaveScreen extends React.Component {
@@ -27,12 +39,55 @@ class LeaveScreen extends React.Component {
         super(props);
         this.state = {
             selectedOption: "Chose Leave Type",
-            date: "",
+            date:"" ,
             StartDatePicker: false,
-            startDate: "",
+            startDate: moment().format("DD/mm/yyyy"),
             endDate: "",
             Option: "",
-            discription:""
+            discription:"",
+            noOfLeaves:0,
+            loading:false
+        }
+
+    }
+
+    validation(){
+        if(this.state.startDate==""){
+            alert("please insert date")
+        }
+        else if (this.state.noOfLeaves==""){
+            alert("please insert end date")
+
+        } else if (this.state.selectedOption==""){
+            alert("please insert leave type")
+        }
+        else if(this.state.discription==""){
+            alert("please insert discription")
+        }else {
+            const data={
+                ID: this.props?.user?.userInfo?.ID,
+                Full_Name: this.props?.user?.userInfo?.Full_Name,
+                Date: this.state.startDate,
+                Designation: this.props?.user?.userInfo?.Designation,
+                Number_of_Leaves:(parseInt(this.state.endDate.substring(0,2)-parseInt(this.state.startDate.substring(0,2)))),
+                Description: this.state.discription,
+                Response: "Send"
+            }
+            this.setState({loading:true})
+
+            this.props.leave(data).then(res=>{
+                console.log(res)
+                if(res){
+                    this.setState({loading:false})
+                    this.props.navigation.pop()
+                }else {
+                    this.setState({loading:false})
+                }
+            }).catch(err=>{
+                this.setState({loading:false})
+                alert("Some thing went wrong please try again")
+            })
+
         }
     }
 
@@ -45,43 +100,57 @@ class LeaveScreen extends React.Component {
                 <HeaderWihBackground isBack={true} title={"Leave"} colors={colors} Props={this.props.value}/>
 
                 <ScrollView contentContainerStyle={{flexGrow: 1, paddingHorizontal: 15, marginBottom: 20}}>
-                    {/*<DropdownComponent title={"Start time"} Icon={require('../../images/TimeIcon.png')} theme={colors}/>*/}
-                    {/*<DropdownComponent title={"End time"} Icon={require('../../images/TimeIcon.png')} theme={colors}/>*/}
+                    <Image source={require('../../images/WaterMark.png')} style={{aspectRatio:0.9,marginVertical:10,alignSelf:"center",height:undefined,width:"70%"}}/>
                     <TouchableComponent onPress={() => {
                         this.setState({visibleDatePicker: true, Option: "StartDate"})
                     }} theme={colors} title={this.state.startDate ? this.state.startDate : "Start Date"}
                                         IconStyle={{width: "6%"}} Icon={require('../../images/calendar.png')}/>
-                    <TouchableComponent onPress={() => {
-                        this.setState({visibleDatePicker: true, Option: "EndDate"})
-                    }} theme={colors} title={this.state.endDate ? this.state.endDate : "End Date"} IconStyle={{width: "6%"}}
-                                        Icon={require('../../images/calendar.png')}/>
-                    <Dropdown
-                        itemColor={colors.blackAndWhite}
-                        itemTextStyle={{color: colors.blackAndWhite}}
-                        lineWidth={0}
-                        pickerStyle={{backgroundColor: colors.BackgroundView, borderRadius: 10}}
-                        color={colors.blackAndWhite}
-                        fontSize={13}
-                        placeholder={this.state.selectedOption}
-                        baseColor={colors.blackAndWhite}
-                        customTickIcon={<AntDesign name={"caretdown"} color={"#fff"}/>}
-                        value={this.state.selectedOption}
-                        placeholderTextColor={"grey"}
-                        dropdownOffset={{top: 10, right: -10, left: -17}}
-                        rippleCentered={true}
-                        onChangeText={(value) => {
 
-                            this.setState({selectedOption: value})
-                        }}
-                        containerStyle={{
-                            paddingLeft: 20,
-                            marginTop: 5,
-                            backgroundColor: colors.fieldBackgroundColor,
-                            borderRadius: 10,
-                            width: "100%",
-                        }}
-                        data={LeaveOptions}
-                    />
+                    <TouchableComponent onPress={() => {
+                        this.setState({visibleDatePicker: true, Option: "End Date"})
+                    }} theme={colors} title={this.state.endDate ? this.state.endDate : "End Date"}
+                                        IconStyle={{width: "6%"}} Icon={require('../../images/calendar.png')}/>
+
+                    {/*<View style={{      flexDirection: "row",*/}
+                    {/*    borderRadius: 10,*/}
+                    {/*    alignItems:"center",*/}
+                    {/*    backgroundColor: colors.fieldBackgroundColor,*/}
+                    {/*    paddingVertical: 10,*/}
+                    {/*    justifyContent:"space-between",*/}
+                    {/*    paddingLeft: 20,*/}
+                    {/*    paddingRight:10,*/}
+                    {/*    marginTop: 10}}>*/}
+                    {/*    <AntDesign onPress={()=>{this.setState({noOfLeaves:this.state.noOfLeaves-1})}} name={"minussquare"} color={colors.primaryLight} size={30}/>*/}
+                    {/*    <Text style={{fontSize:18,color:colors.blackAndWhite}}>{this.state.noOfLeaves<=0?0:this.state.noOfLeaves}</Text>*/}
+                    {/*    <AntDesign  onPress={()=>{this.state.noOfLeaves>=18?null:(this.setState({noOfLeaves:this.state.noOfLeaves+1}))}} name={"plussquare"} color={colors.primaryLight}  size={30}/>*/}
+                    {/*</View>*/}
+                    {/*<Dropdown*/}
+                    {/*    itemColor={colors.blackAndWhite}*/}
+                    {/*    itemTextStyle={{color: colors.blackAndWhite}}*/}
+                    {/*    lineWidth={0}*/}
+                    {/*    pickerStyle={{backgroundColor: colors.BackgroundView, borderRadius: 10}}*/}
+                    {/*    color={colors.blackAndWhite}*/}
+                    {/*    fontSize={13}*/}
+                    {/*    placeholder={this.state.selectedOption}*/}
+                    {/*    baseColor={colors.blackAndWhite}*/}
+                    {/*    customTickIcon={<AntDesign name={"caretdown"} color={"#fff"}/>}*/}
+                    {/*    value={this.state.selectedOption}*/}
+                    {/*    placeholderTextColor={"grey"}*/}
+                    {/*    dropdownOffset={{top: 10, right: -10, left: -17}}*/}
+                    {/*    rippleCentered={true}*/}
+                    {/*    onChangeText={(value) => {*/}
+
+                    {/*        this.setState({selectedOption: value})*/}
+                    {/*    }}*/}
+                    {/*    containerStyle={{*/}
+                    {/*        paddingLeft: 20,*/}
+                    {/*        marginTop: 5,*/}
+                    {/*        backgroundColor: colors.fieldBackgroundColor,*/}
+                    {/*        borderRadius: 10,*/}
+                    {/*        width: "100%",*/}
+                    {/*    }}*/}
+                    {/*    data={LeaveOptions}*/}
+                    {/*/>*/}
                     {this.state.Option == "StartDate" ? <DateTimePicker
                         isVisible={this.state.visibleDatePicker}
                         showIcon={false}
@@ -153,7 +222,9 @@ class LeaveScreen extends React.Component {
                     <FieldComponent value={this.state.discription} onChangeText={(text)=>{this.setState({discription:text})}} nolines={6} Placeholder={"Description"} FieldStyle={{textAlignVertical: "top"}}
                                     theme={colors} Icon={false}/>
                     <View style={{flex: 1}}/>
-                    <ButtonComponent onPress={()=>{alert(JSON.stringify(this.state))}}  title={"Submit"}/>
+                    {!this.state.loading?<ButtonComponent onPress={() => {
+                        this.validation()
+                    }} title={"Submit"}/>:<ActivityIndicator color={Color.primary} size={"large"} style={{alignSelf:"center"}}/>}
                 </ScrollView>
             </View>
 

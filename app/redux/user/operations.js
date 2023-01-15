@@ -2,18 +2,88 @@ import * as actions from "./actions";
 import {loginSuccess, registerFailure} from "./actions";
 import RestApi from "../../services/restclient/RestApi";
 import {toast} from "../../Omni";
+import axios from "axios";
 
 
 export const login = (data) => (dispatch) => {
+
     try {
         dispatch(actions.loginPending());
-        return RestApi.getInstanceV2().post('users/auth/login', data)
+        return RestApi.getInstanceV2().post('/login', data)
             .then((json) => {
-                dispatch(actions.loginFailure(""));
-                return json.data;
+                data=json.data
+
+                if(data.HasError==false){
+                    const userData=data?.Result?.Item
+                    dispatch(actions.loginSuccess(userData))
+                    return data;
+                }else {
+                    alert(JSON.stringify(data.ResultMessage[0].Message))
+                    return undefined;
+
+                }
             })
             .catch((err) => {
-                apiError(err)
+                alert(JSON.stringify(err))
+                dispatch(actions.loginFailure(""));
+                return undefined;
+            });
+    } catch (error) {
+        apiError(error)
+        dispatch(actions.loginFailure(error));
+        return undefined;
+    }
+};
+
+export const leave = (data) => (dispatch) => {
+
+    try {
+        dispatch(actions.loginPending());
+        return RestApi.getInstanceV2().post('/leave', data)
+            .then((json) => {
+                data=json.data
+
+                if(data.HasError==false){
+                    const userData=data?.Result?.Item
+                    dispatch(actions.loginSuccess(userData))
+                    return data;
+                }else {
+                    alert(JSON.stringify(data.ResultMessage[0].Message))
+                    return undefined;
+
+                }
+            })
+            .catch((err) => {
+                alert(JSON.stringify(err))
+                dispatch(actions.loginFailure(""));
+                return undefined;
+            });
+    } catch (error) {
+        apiError(error)
+        dispatch(actions.loginFailure(error));
+        return undefined;
+    }
+};
+
+export const attendance = (data) => (dispatch) => {
+
+    try {
+        console.log(JSON.stringify(data))
+        dispatch(actions.loginPending());
+        return RestApi.getInstanceV2().post('/attendence', data)
+            .then((json) => {
+                data=json.data
+
+                if(data.HasError==false){
+                    const userData=data?.Result?.Item
+                    dispatch(actions.loginSuccess(userData))
+                    return data;
+                }else {
+                    alert(JSON.stringify(data.ResultMessage[0].Message))
+                    return undefined;
+                }
+            })
+            .catch((err) => {
                 dispatch(actions.loginFailure(""));
                 return undefined;
             });
@@ -83,6 +153,27 @@ export const verifyOtp = (data) => (dispatch) => {
     }
 };
 
+export const getData = () => (dispatch) => {
+    const data={
+        Email: "wewe@gmail.com",
+        Password: "1234567890"
+    }
+    try {
+        dispatch(actions.loginPending());
+        return axios.get('https://ogng1bfsil.execute-api.us-east-1.amazonaws.com/Attendence_App/login',data)
+            .then((json) => {
+                alert(JSON.stringify(json))
+            })
+            .catch((err) => {
+                alert(JSON.stringify(err))
+                return undefined;
+            });
+    } catch (error) {
+        alert("cvv")
+        return undefined;
+    }
+};
+
 
 
 export const editProfile = (data, userInfo) => (dispatch) => {
@@ -116,6 +207,13 @@ export const editProfile = (data, userInfo) => (dispatch) => {
 
 export const logout = () => (dispatch) => {
     dispatch(actions.logoutUser());
+};
+
+export const BrakeTimes = (data) => (dispatch) => {
+    dispatch(actions.BrakeTimes(data));
+};
+export const CheckInData = (data) => (dispatch) => {
+    dispatch(actions.checkIn(data));
 };
 
 

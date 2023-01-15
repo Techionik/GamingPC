@@ -74,11 +74,6 @@ class SettingScreen extends React.Component {
                         }}>{t("L:AccountSettings")}</Text>
                         <SettingsComponent Props={this.props.value} style={{marginBottom: 10}}
                         onPress={()=>{this.props.navigation.navigate("ProfileScreen")}}        title={"Profile"} colors={colors}/>
-
-
-
-
-
                         <Text style={{
                             fontSize: 12,
                             fontFamily: Constants.fontFamilyMedium,
@@ -100,7 +95,7 @@ class SettingScreen extends React.Component {
                         }} style={{marginBottom: 10}} title={t("L:Contact")} colors={colors}/>
 
                         <SettingsComponent Props={this.props.value} style={{marginBottom: 10}} title={t("L:Aboutus")} colors={colors}/>
-                        <SettingsComponent Props={this.props.value} title={t("L:Logout")} colors={colors}/>
+                        <SettingsComponent onPress={()=>{this.props.logout();this.props.navigation.replace("SplashContainer")}} Props={this.props.value} title={t("L:Logout")} colors={colors}/>
 
                     </View>
                     <View style={{flex:1}}/>

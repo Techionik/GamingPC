@@ -16,10 +16,23 @@ export const logoutUser = () => ({
 });
 
 
-export const loginSuccess = (data) => ({
+export const loginSuccess = (data) => (
+    {
   type: types.LOGIN_SUCCESS,
   payload: data,
 });
+
+export const BrakeTimes = (data) => (
+    {
+      type: types.GET_BRAKETIMES,
+      payload: data,
+    });
+
+export const checkIn = (data) => (
+    {
+        type: types.CHECK_IN,
+        payload: data,
+    });
 
 export const loginFailure = (error) => ({
   type: types.LOGIN_FAILURE,

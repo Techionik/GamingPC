@@ -12,7 +12,7 @@ import HeaderWihBackground from "../Components/HeaderWihBackground";
 import ToggleSwitch from "toggle-switch-react-native";
 import {connect} from "react-redux";
 import RNRestart from "react-native-restart";
-import {logout} from "../../redux/user/operations";
+
 import {changeLanguage, changeTheme} from "../../redux/app/actions";
 const mapStateToProps=({user,app})=>({
     user,
@@ -22,7 +22,7 @@ const mapStateToProps=({user,app})=>({
 })
 @connect(
     mapStateToProps,
-    {logout,changeTheme,changeLanguage}
+    {changeTheme,changeLanguage}
 )
 
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+    ActivityIndicator,
     Image,
     ImageBackground, ScrollView, Text, TextInput, TouchableOpacity,
     View
@@ -9,16 +10,59 @@ import withLanguage from "../../config/withLanguage";
 import {Color, Constants} from "../../common";
 import FieldComponent from "../Components/FieldComponent";
 import ButtonComponent from "../Components/ButtonComponent";
-import SocialButton from "../Components/SocialButton";
-import SkipButton from "../Components/SkipButton";
-import {BottomSocialButtons} from "./RegisterScreen";
+import {connect} from "react-redux";
+import {getData, login} from "../../redux/user/operations";
+import {toast} from "../../Omni";
+const mapStateToProps = ({app, user}) => ({
+    app,
+    user,
+});
 
+
+@connect(
+    mapStateToProps,
+    {login,getData}
+)
 
 class LoginScreen extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state={
+            email:"",
+            password:"123456789",
+            loading:false
+        }
     }
 
+
+    validation(){
+        if(this.state.email==""){
+            alert("Please enter your email")
+        } else if(this.state.password==""){
+            alert("Please enter your password")
+
+        }else {
+            this.setState({loading:true})
+            const data={
+                Email: this.state.email,
+                Password: this.state.password
+            }
+            this.props.login(data).then(res=>{
+                console.log(res)
+                if(res){
+                    this.setState({loading:false})
+                    this.props.navigation.replace("HomeScreen")
+                }else {
+                    this.setState({loading:false})
+                }
+            }).catch(err=>{
+                this.setState({loading:false})
+                alert("Some thing went wrong please try again")
+            })
+
+        }
+    }
 
     render() {
         const {t, language, themeColor} = this.props?.value
@@ -33,7 +77,7 @@ class LoginScreen extends React.Component {
                     <Image style={{
                         height: undefined,
                         width: "100%",
-                        aspectRatio: 2,
+                        aspectRatio: 6.28,
                         alignSelf: 'center',
                     }} source={require('../../images/LoginLogo.png')}/>
                 </View>
@@ -47,9 +91,9 @@ class LoginScreen extends React.Component {
                             fontSize: 22
                         }}>{t("Auth:Login")}</Text>
                     <View style={{marginTop: 20}}>
-                        <FieldComponent theme={colors} Icon={require('../../images/MailIcon.png')}
+                        <FieldComponent value={this.state.email} onChangeText={(text)=>{this.setState({email:text})}} theme={colors} Icon={require('../../images/MailIcon.png')}
                                         Placeholder={t("Auth:EmailField")}/>
-                        <FieldComponent theme={colors} secureTextEntry={true}
+                        <FieldComponent value={this.state.password} onChangeText={(text)=>{this.setState({password:text})}}  theme={colors} secureTextEntry={true}
                                         Icon={require('../../images/PasswordIcon.png')}
                                         IconStyle={{bottom: -4}} Placeholder={t("Auth:Password")}/>
                         <Text onPress={() => {
@@ -61,25 +105,29 @@ class LoginScreen extends React.Component {
                             color: Color.primary,
                             alignSelf: "flex-end"
                         }}>{t("Auth:ForgetPassword")}</Text>
+                        {this.state.loading?<ActivityIndicator style={{alignSelf:"center"}} size={"large"} color={Color.theme_color}/>:
                         <ButtonComponent onPress={() => {
-                            this.props.navigation.navigate("HomeScreen")
-                        }} title={t("Auth:Login")}/>
+                            this.validation()
+                        }} title={t("Auth:Login")}/>}
                     </View>
-                    <View style={{flex: 1}}/>
 
-                    <Text style={{
-                        marginBottom: 10,
-                        fontSize: 14,
-                        fontFamily: Constants.fontFamilyRegular,
-                        color: colors?.blackAndWhite,
-                        alignSelf: "center"
-                    }}>{t("Auth:AnotherAccount")}<Text onPress={() => {
-                        this.props.navigation.navigate("SignupScreen")
-                    }} style={{
-                        fontSize: 16,
-                        fontFamily: Constants.fontFamilyBold,
-                        color: Color.primary
-                    }}>{" " + t("Auth:SignUp")}</Text></Text>
+
+
+
+
+                    {/*<Text style={{*/}
+                    {/*    marginBottom: 10,*/}
+                    {/*    fontSize: 14,*/}
+                    {/*    fontFamily: Constants.fontFamilyRegular,*/}
+                    {/*    color: colors?.blackAndWhite,*/}
+                    {/*    alignSelf: "center"*/}
+                    {/*}}>{t("Auth:AnotherAccount")}<Text onPress={() => {*/}
+                    {/*    this.props.navigation.navigate("SignupScreen")*/}
+                    {/*}} style={{*/}
+                    {/*    fontSize: 16,*/}
+                    {/*    fontFamily: Constants.fontFamilyBold,*/}
+                    {/*    color: Color.primary*/}
+                    {/*}}>{" " + t("Auth:SignUp")}</Text></Text>*/}
 
                 </ScrollView>
             </View>

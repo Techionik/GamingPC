@@ -19,21 +19,33 @@ import moment from "moment";
 import TouchableComponent from "../Components/TouchableComponent";
 import {Color, Constants} from "../../common";
 import CountDown from "react-native-countdown-component";
+import {connect, useDispatch} from "react-redux";
+import {BrakeTimes} from "../../redux/user/actions";
+const mapStateToProps = ({app, user}) => ({
+    app,
+    user,
+    brakeTime: user?.brakeTime,
+});
 
 
+@connect(
+    mapStateToProps,
+    {BrakeTimes}
+)
 class BreakTimeScreen extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
             StartTime: "",
-            option: "",
-            visibleTimePicker: false,
             EndTime: "",
-            showTimer: false,
-            checkin:false,
-            time:""
+            time:"",
+            data:[],
+            submit:true
+
         }
     }
+
 
     render() {
         const {t, language, themeColor} = this.props.value
@@ -42,54 +54,24 @@ class BreakTimeScreen extends React.Component {
             <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
                 <HeaderWihBackground isBack={true} title={"Break Time"} colors={colors} Props={this.props.value}/>
                 <View style={{padding: 10}}>
+                    <Image source={require('../../images/WaterMark.png')} style={{aspectRatio:0.9,marginVertical:10,alignSelf:"center",height:undefined,width:"70%"}}/>
                     <TouchableComponent disabled={this.state.checkin} onPress={() => {
-                        this.setState({visibleTimePicker: true, time: "30"})
-                    }} title={"30 minutes"} Icon={require('../../images/TimeIcon.png')} IconStyle={{tintColor:this.state.time=="30"?"#fff":colors.fieldTextColor}} titleStyle={{color:this.state.time=="30"?"#fff":colors.fieldTextColor}} Style={{backgroundColor:this.state.time=="30"?Color.primary:colors.fieldBackgroundColor}} theme={colors}/>
+                        this.setState({StartTime:moment(moment()).format("HH:MM"),time:"30"})
+                    }} title={"Start Time"} Icon={require('../../images/TimeIcon.png')} IconStyle={{tintColor:this.state.time=="30"?"#fff":colors.fieldTextColor}} titleStyle={{color:this.state.time=="30"?"#fff":colors.fieldTextColor}} Style={{backgroundColor:this.state.time=="30"?Color.primary:colors.fieldBackgroundColor}} theme={colors}/>
                     <TouchableComponent disabled={this.state.checkin} onPress={() => {
-                        this.setState({visibleTimePicker: true, time: "60"})
-                    }} title={"60 minutes"} Icon={require('../../images/TimeIcon.png')} IconStyle={{tintColor:this.state.time=="60"?"#fff":colors.fieldTextColor}} titleStyle={{color:this.state.time=="60"?"#fff":colors.fieldTextColor}} Style={{backgroundColor:this.state.time=="60"?Color.primary:colors.fieldBackgroundColor}} theme={colors}/>
+                        this.setState({EndTime:moment(moment()).format("HH:MM"),time:"60" ,submit:false})
+                    }} title={"End Time"} Icon={require('../../images/TimeIcon.png')} IconStyle={{tintColor:this.state.time=="60"?"#fff":colors.fieldTextColor}} titleStyle={{color:this.state.time=="60"?"#fff":colors.fieldTextColor}} Style={{backgroundColor:this.state.time=="60"?Color.primary:colors.fieldBackgroundColor}} theme={colors}/>
                 </View>
                 <View style={{flex: 1, justifyContent: "center",}}>
-                    { this.state.showTimer &&
-                        <>
-                            <Text style={{
-                                color: colors.blackAndWhite,
-                                fontSize: 16,
-                                marginVertical: 20,
-                                fontFamily: Constants.fontFamilyRegular,
-                                textAlign: "center"
-                            }}>Your Brake Will be over after</Text>
-                            {this.state.time=="60"?<CountDown
-                                until={1 * 60 * 60}
-                                onFinish={() => {
-                                    this.setState({showTimer: false})
-                                }}
-                                // onPress={() => alert('hello')}
-                                digitStyle={{backgroundColor: Color.primary}}
-                                digitTxtStyle={{color: "#fff"}}
-                                timeToShow={['H', 'M', 'S']}
-                                size={40}
-                            />:<CountDown
-                                until={0.5 * 60 * 60}
-                                onFinish={() => {
-                                    this.setState({showTimer: false})
-                                }}
-                                // onPress={() => alert('hello')}
-                                digitStyle={{backgroundColor: Color.primary}}
-                                digitTxtStyle={{color: "#fff"}}
-                                timeToShow={[ 'M', 'S']}
-                                size={40}
-                            />}
-                        </>}
+
                 </View>
+                        <ButtonComponent disable={this.state.submit} onPress={() => {
+                           const data=this.state.data
+                            const newdata=[...data,{time:{startBrake:this.state.StartTime,endBrake:this.state.EndTime}}]
+                             this.props.BrakeTimes(newdata)
+                            this.props.navigation.pop()
+                        }} title={"Submit"}/>
 
-
-                {this.state.showTimer == false && this.state.time!=""&&
-                    <>
-                        <ButtonComponent onPress={() => {
-                            this.setState({showTimer: true,checkin:true})
-                        }} title={"Start"}/>
-                    </>}
             </View>
 
         );
