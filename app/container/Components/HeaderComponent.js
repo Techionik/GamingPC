@@ -65,7 +65,7 @@ export default function HeaderComponent({Props, Toogle, title,onPress, style}) {
                     }}>{toggle ? t("L:Open") : t("L:close")}</Text>
                 </View> :
                 <Image source={require('../../images/ProfileImage.png')}
-                       style={{height: 60, alignSelf: "center", width: 60, borderRadius: 30}}/>
+                       style={{height: 60, alignSelf: "center",borderWidth:2,borderColor:"#fff", width: 60, borderRadius: 30}}/>
             }
         </View>
             <Text style={{fontSize:20,fontFamily:Constants.fontFamilyBold,color:"#fff",margin:30}}>{title}</Text>

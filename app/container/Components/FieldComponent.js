@@ -3,7 +3,7 @@ import React from "react";
 import {Color} from "../../common";
 
 
-export default function FieldComponent({Icon,theme,nolines, Placeholder, Style, IconStyle, value, onChangeText,secureTextEntry,FieldStyle}) {
+export default function FieldComponent({Icon,multiline,theme,nolines, Placeholder, Style, IconStyle, value, onChangeText,secureTextEntry,FieldStyle}) {
 
     return (
         <View style={[{
@@ -23,7 +23,7 @@ export default function FieldComponent({Icon,theme,nolines, Placeholder, Style, 
                         marginRight: 10,
                         tintColor: theme?.fieldTextColor
                     }, IconStyle]}/>:null}
-            <TextInput numberOfLines={nolines} multiline={true} secureTextEntry={secureTextEntry} style={[{flex: 1, paddingVertical: 0, color: theme?.fieldTextColor},FieldStyle]} placeholderTextColor={theme?.fieldTextColor}
+            <TextInput multiline={multiline?multiline:false}  numberOfLines={nolines}  secureTextEntry={secureTextEntry} style={[{flex: 1, paddingVertical: 0, color: theme?.fieldTextColor},FieldStyle]} placeholderTextColor={theme?.fieldTextColor}
                        value={value} onChangeText={onChangeText} placeholder={Placeholder}></TextInput>
         </View>
     )

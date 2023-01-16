@@ -3,16 +3,27 @@ import {Text, StyleSheet, Image, View} from 'react-native'
 import {scale} from '../ScalingUtils'
 import Constants from '../common/Constants'
 import withLanguage from "../config/withLanguage";
+import {connect} from "react-redux";
+import {getData, login} from "../redux/user/operations";
+const mapStateToProps = ({app, user}) => ({
+    app,
+    user,
+    userInfo:user?.userInfo
+});
 
 
+@connect(
+    mapStateToProps,
+)
 class SplashContainer extends React.Component {
     constructor(props) {
         super(props);
     }
 
     componentDidMount() {
+
         setTimeout(() => {
-            if (this.props?.user?.userInfo===""||this.props?.user?.userInfo===undefined) {
+            if (this.props?.userInfo?.Email===""||this.props?.userInfo===undefined) {
                 this.props.navigation.replace('LoginScreen');
             } else {
                 this.props.navigation.replace('HomeScreen')

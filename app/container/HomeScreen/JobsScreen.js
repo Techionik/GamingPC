@@ -11,7 +11,7 @@ import {Color, Constants} from "../../common";
 // import HeaderComponent from "../Components/HeaderComponent";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import HeaderWihBackground from "../Components/HeaderWihBackground";
-import JobComponent from "../Components/JobComponent";
+import PayRoleComponent from "../Components/PayRoleComponent";
 
 
 class JobsScreen extends React.Component {
@@ -71,8 +71,8 @@ class JobsScreen extends React.Component {
 
                     <FlatList style={{}} showsVerticalScrollIndicator={false} data={this.state.jobsLsit}
                               renderItem={({item, index}) =>
-                                  <JobComponent colors={colors} jobTitle={item.jobTitle} image={item.image}
-                                                name={item.name} time={item.time} status={item.status}/>
+                                  <PayRoleComponent colors={colors} jobTitle={item.jobTitle} image={item.image}
+                                                    name={item.name} time={item.time} status={item.status}/>
                               }/>
 
 

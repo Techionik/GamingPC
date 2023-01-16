@@ -75,6 +75,12 @@ export default (state = initialState, action) => {
                 checkIn: payload,
             };
         }
+        case types.CLEAR_DATA: {
+            return {
+                ...state,
+                checkIn: payload,
+            };
+        }
 
         case types.FILIP_FLOP_FETCHING: {
             return Object.assign({}, {

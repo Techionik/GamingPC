@@ -33,6 +33,11 @@ export const checkIn = (data) => (
         type: types.CHECK_IN,
         payload: data,
     });
+export const clearData = (data) => (
+    {
+        type: types.CLEAR_DATA,
+        payload: data,
+    });
 
 export const loginFailure = (error) => ({
   type: types.LOGIN_FAILURE,

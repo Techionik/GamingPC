@@ -47,12 +47,12 @@ componentDidMount() {
                 <ScrollView showsVerticalScrollIndicator={false}
                             contentContainerStyle={{flexGrow: 1,justifyContent:"center", paddingHorizontal: 15, marginBottom: 20}}>
                     <View>
-                      <Image source={require('../../images/WaterMark.png')} style={{aspectRatio:0.9,marginVertical:10,height:undefined,width:"100%"}}/>
+                      <Image source={require('../../images/WaterMark.png')} style={{aspectRatio:0.9,marginTop:10,height:undefined,width:"100%"}}/>
 
                         <ButtonComponent onPress={()=>{this.props.navigation.navigate("AttendenceScreen")}}  title={"Attendance"}/>
-                        <ButtonComponent onPress={()=>{this.props.navigation.navigate("BreakTimeScreen")}} title={"Brake"}/>
+                        <ButtonComponent onPress={()=>{this.props.navigation.navigate("BreakTimeScreen")}} title={"Break"}/>
                         <ButtonComponent onPress={()=>{this.props.navigation.navigate("LeaveScreen")}} title={"Leave"}/>
-                        <ButtonComponent title={"Pay Roll"}/>
+                        {/*<ButtonComponent onPress={()=>{this.props.navigation.navigate("JobsScreen")}} title={"Pay Roll"}/>*/}
                     {/*<View style={{*/}
                     {/*    flexDirection: 'row',*/}
                     {/*    alignItems: 'center',*/}

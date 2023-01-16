@@ -13,7 +13,7 @@ import ButtonComponent from "../Components/ButtonComponent";
 import MapView, {PROVIDER_GOOGLE} from "react-native-maps";
 import GetLocation from "react-native-get-location";
 import {connect} from "react-redux";
-import {attendance, checkIn, CheckIn, CheckInData, leave} from "../../redux/user/operations";
+import {attendance, checkIn, CheckIn, CheckInData, cleeardata, leave} from "../../redux/user/operations";
 import moment from "moment";
 const mapStateToProps = ({app, user}) => ({
     app,
@@ -24,7 +24,7 @@ const mapStateToProps = ({app, user}) => ({
 
 @connect(
     mapStateToProps,
-    {CheckInData,attendance}
+    {CheckInData,attendance,cleeardata}
 )
 
 class AttendenceScreen extends React.Component {
@@ -39,11 +39,11 @@ class AttendenceScreen extends React.Component {
             checkin:false,
 
         }
+
     }
 
 
-
-   checkInLoction = () => {
+    checkInLoction = () => {
         GetLocation.getCurrentPosition({
             enableHighAccuracy: true,
             timeout: 150000,
@@ -87,10 +87,7 @@ class AttendenceScreen extends React.Component {
             timeout: 150000,
         })
             .then(location => {
-
-
                 this.checkOut(location.latitude,location.longitude)
-
                 })
             .catch(ex => {
                 const {code, message} = ex;
@@ -125,22 +122,26 @@ class AttendenceScreen extends React.Component {
                 CheckIn: this.props?.user?.checkIn?.CheckInTime,
                 Break:this.props.brakeTime ,
                 CheckOut:moment().format("DD/MM/YYYY")+"/"+moment().format("HH:MM") ,
-                CheckIn_Lat: this.props?.user?.checkIn?.CheckIn_Lat,
-                CheckIn_Lon: this.props?.user?.checkIn?.CheckIn_Lon,
-                CheckOut_Lat: lat,
-                CheckOut_Lon: long,
+                CheckIn_Lat: this.props?.user?.checkIn?.CheckIn_Lat.toString(),
+                CheckIn_Lon: this.props?.user?.checkIn?.CheckIn_Lon.toString(),
+                CheckOut_Lat: lat.toString(),
+                CheckOut_Lon: long.toString(),
                 Working_Hours: "10"}
+        alert(JSON.stringify(data))
             this.props.attendance(data).then(res=>{
-                console.log(res)
                 if(res){
                     this.setState({loading:false})
                     this.props.navigation.pop()
+                    this.props.cleeardata()
+
                 }else {
+                    this.props.cleeardata()
                     this.setState({loading:false})
                 }
             }).catch(err=>{
                 this.setState({loading:false})
                 this.props.navigation.pop()
+                this.props.cleeardata()
                 alert("Some thing went wrong please try again")
             })
     }
@@ -153,10 +154,10 @@ class AttendenceScreen extends React.Component {
             <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
                 <HeaderWihBackground isBack={true} title={"Attendance"} colors={colors} Props={this.props.value}/>
                 <Image source={require('../../images/WaterMark.png')} style={{aspectRatio:0.9,marginVertical:10,alignSelf:"center",height:undefined,width:"70%"}}/>
-                <ButtonComponent disable={this.state.checkin}  onPress={() => {
+                <ButtonComponent disable={this.props?.user?.checkIn?.CheckInTime?true:false}  onPress={() => {
                     this.checkInLoction();
                 }} title={"check in"}/>
-                <ButtonComponent  onPress={() => {
+                <ButtonComponent disable={this.props?.user?.checkIn?.CheckInTime?false:true}  onPress={() => {
                     this.checkOutLoction()
                 }} title={"check out"}/>
                 <View style={{flex: 1}}/>

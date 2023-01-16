@@ -219,7 +219,7 @@ class LeaveScreen extends React.Component {
                         }}
                     />}
 
-                    <FieldComponent value={this.state.discription} onChangeText={(text)=>{this.setState({discription:text})}} nolines={6} Placeholder={"Description"} FieldStyle={{textAlignVertical: "top"}}
+                    <FieldComponent multiline={true} value={this.state.discription} onChangeText={(text)=>{this.setState({discription:text})}} nolines={6} Placeholder={"Description"} FieldStyle={{textAlignVertical: "top"}}
                                     theme={colors} Icon={false}/>
                     <View style={{flex: 1}}/>
                     {!this.state.loading?<ButtonComponent onPress={() => {

@@ -11,12 +11,25 @@ import {Color, Constants} from "../../common";
 import HeaderComponent from "../Components/HeaderComponent";
 
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import {connect} from "react-redux";
+import {getData} from "../../redux/user/operations";
+const mapStateToProps = ({app, user}) => ({
+    app,
+    user,
+    userInfo:user?.userInfo
+});
+
+
+@connect(
+    mapStateToProps,
+)
 
 
 class ProfileScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {}
+
     }
 
     render() {
@@ -55,14 +68,14 @@ class ProfileScreen extends React.Component {
                             fontSize: 20,
                             fontFamily: Constants.fontFamilyMedium,
                             color: colors.blackAndWhite
-                        }}>{"Mudassir Masood"}</Text>
+                        }}>{this.props?.userInfo?.Full_Name}</Text>
                         <View style={{height: 1, marginVertical: 10, backgroundColor: colors.greyToWhite}}></View>
                         <Text style={{
                             fontSize: 12,
                             fontFamily: Constants.fontFamilyMedium,
                             alignSelf: "center",
                             color: colors.greyToWhite
-                        }}>1-2-3 Building, Jamsith Road, Tokyo</Text>
+                        }}>Address not provided yet</Text>
                     </View>
 
                     <View style={{
@@ -72,11 +85,11 @@ class ProfileScreen extends React.Component {
                         paddingVertical: 15,
                         paddingHorizontal: 20
                     }}>
-                        <RowComponent colors={colors} title1={"First Name"}  title2={"Mudassir"}/>
-                        <RowComponent colors={colors} title1={"Last Name"} title2={"Masood"}/>
-                        <RowComponent colors={colors} title1={"Role"} title2={"Manager"}/>
+                        <RowComponent colors={colors} title1={"First Name"}  title2={this.props?.userInfo?.Full_Name.split(" ")[0]}/>
+                        <RowComponent colors={colors} title1={"Last Name"} title2={this.props?.userInfo?.Full_Name.split(" ")[1]}/>
+                        <RowComponent colors={colors} title1={"Role"} title2={this.props?.userInfo?.Designation}/>
                         <RowComponent colors={colors} title1={"Shift Time"} title2={"2 pm - 11 pm"}/>
-                        <RowComponent colors={colors} title1={t("L:EmailAddress")} title2Style={{color:Color.primary}}   title2={"Mudassir@gmail.com"}/>
+                        <RowComponent colors={colors} title1={t("L:EmailAddress")}    title2={this.props?.userInfo?.Email}/>
                     </View>
                 </ScrollView>
 

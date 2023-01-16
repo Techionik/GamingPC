@@ -10,17 +10,17 @@ import MyToast from "./container/MyToastContainer";
 import Navigation from "./navigation/AppNavigator"
 import { useDispatch, useSelector } from "react-redux";
 import './config-i18n'
-import { changeLanguage } from "./redux/app/actions";
+import {changeLanguage, changeTheme} from "./redux/app/actions";
 
 const Router = (props) => {
     const dispatch = useDispatch();
     const userInfo = useSelector(state => state.user.userInfo);
     const {languagee, theme,rtl} = useSelector(state => state.app)
     I18nManager.forceRTL(rtl)
-    //
-    // useEffect(()=>{
-    //     dispatch(changeLanguage('en'))
-    // },[])
+
+    useEffect(()=>{
+        dispatch(changeTheme("dark "))
+    },[])
 
 
 

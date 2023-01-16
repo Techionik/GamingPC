@@ -99,22 +99,15 @@ class SettingScreen extends React.Component {
 
                     </View>
                     <View style={{flex:1}}/>
-                    <View style={{
-                        flexDirection: "row",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        marginTop: 10
-                    }}>
-                        <Image source={require('../../images/Bin.png')} style={{height: 20, width: 20}}/>
+
                         <Text style={{
                             fontSize: 12,
                             includeFontPadding: false,
-                            padding: 0,
+                            padding: 0,alignSelf:"center",
                             fontFamily: Constants.fontFamilyBold,
-                            color: colors.redToWhite,
+                            color: Color.primary,
                             marginLeft: 5
-                        }}>{t("L:DeleteAccount")}</Text>
-                    </View>
+                        }}>Powered by TECHIONIK</Text>
                 </ScrollView>
             </View>
 

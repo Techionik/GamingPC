@@ -11,7 +11,7 @@ import {Color, Constants} from "../../common";
 // import HeaderComponent from "../Components/HeaderComponent";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import HeaderWihBackground from "../Components/HeaderWihBackground";
-import JobComponent from "../Components/JobComponent";
+import PayRoleComponent from "../Components/PayRoleComponent";
 import Card from "../Components/Card";
 import ButtonComponent from "../Components/ButtonComponent";
 

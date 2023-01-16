@@ -30,9 +30,12 @@ class LoginScreen extends React.Component {
 
         this.state={
             email:"",
-            password:"123456789",
+            password:"",
             loading:false
         }
+    }
+
+    componentDidMount() {
     }
 
 
@@ -49,7 +52,6 @@ class LoginScreen extends React.Component {
                 Password: this.state.password
             }
             this.props.login(data).then(res=>{
-                console.log(res)
                 if(res){
                     this.setState({loading:false})
                     this.props.navigation.replace("HomeScreen")
@@ -57,6 +59,7 @@ class LoginScreen extends React.Component {
                     this.setState({loading:false})
                 }
             }).catch(err=>{
+
                 this.setState({loading:false})
                 alert("Some thing went wrong please try again")
             })
@@ -93,7 +96,7 @@ class LoginScreen extends React.Component {
                     <View style={{marginTop: 20}}>
                         <FieldComponent value={this.state.email} onChangeText={(text)=>{this.setState({email:text})}} theme={colors} Icon={require('../../images/MailIcon.png')}
                                         Placeholder={t("Auth:EmailField")}/>
-                        <FieldComponent value={this.state.password} onChangeText={(text)=>{this.setState({password:text})}}  theme={colors} secureTextEntry={true}
+                        <FieldComponent   value={this.state.password} onChangeText={(text)=>{this.setState({password:text})}}  theme={colors} secureTextEntry={true}
                                         Icon={require('../../images/PasswordIcon.png')}
                                         IconStyle={{bottom: -4}} Placeholder={t("Auth:Password")}/>
                         <Text onPress={() => {
@@ -128,6 +131,16 @@ class LoginScreen extends React.Component {
                     {/*    fontFamily: Constants.fontFamilyBold,*/}
                     {/*    color: Color.primary*/}
                     {/*}}>{" " + t("Auth:SignUp")}</Text></Text>*/}
+                    <View style={{flex:1}}/>
+
+                    <Text style={{
+                        fontSize: 12,
+                        includeFontPadding: false,
+                        padding: 0,alignSelf:"center",
+                        fontFamily: Constants.fontFamilyBold,
+                        color: Color.primary,
+                        marginLeft: 5
+                    }}>Powered by TECHIONIK</Text>
 
                 </ScrollView>
             </View>

@@ -1,5 +1,5 @@
 import * as actions from "./actions";
-import {loginSuccess, registerFailure} from "./actions";
+import {clearData, loginSuccess, registerFailure} from "./actions";
 import RestApi from "../../services/restclient/RestApi";
 import {toast} from "../../Omni";
 import axios from "axios";
@@ -75,9 +75,8 @@ export const attendance = (data) => (dispatch) => {
                 data=json.data
 
                 if(data.HasError==false){
-                    const userData=data?.Result?.Item
-                    dispatch(actions.loginSuccess(userData))
                     return data;
+                    alert(JSON.stringify(data.ResultMessage[0].Message))
                 }else {
                     alert(JSON.stringify(data.ResultMessage[0].Message))
                     return undefined;
@@ -214,6 +213,10 @@ export const BrakeTimes = (data) => (dispatch) => {
 };
 export const CheckInData = (data) => (dispatch) => {
     dispatch(actions.checkIn(data));
+};
+
+export const cleeardata = () => (dispatch) => {
+    dispatch(actions.clearData());
 };
 
 
