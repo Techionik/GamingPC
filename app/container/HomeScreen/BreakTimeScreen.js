@@ -21,6 +21,7 @@ import {Color, Constants} from "../../common";
 import CountDown from "react-native-countdown-component";
 import {connect, useDispatch} from "react-redux";
 import {BrakeTimes} from "../../redux/user/actions";
+
 const mapStateToProps = ({app, user}) => ({
     app,
     user,
@@ -39,9 +40,9 @@ class BreakTimeScreen extends React.Component {
         this.state = {
             StartTime: "",
             EndTime: "",
-            time:"",
-            data:[],
-            submit:true
+            time: "",
+            data: [],
+            submit: true
 
         }
     }
@@ -54,26 +55,39 @@ class BreakTimeScreen extends React.Component {
             <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
                 <HeaderWihBackground isBack={true} title={"Break Time"} colors={colors} Props={this.props.value}/>
                 <View style={{padding: 10}}>
-                    <Image source={require('../../images/WaterMark.png')} style={{aspectRatio:0.9,marginVertical:10,alignSelf:"center",height:undefined,width:"70%"}}/>
+                    <Image source={require('../../images/WaterMark.png')} style={{
+                        aspectRatio: 0.9,
+                        marginVertical: 10,
+                        alignSelf: "center",
+                        height: undefined,
+                        width: "70%"
+                    }}/>
                     <TouchableComponent disabled={this.state.checkin} onPress={() => {
-                        this.setState({StartTime:moment(moment()).format("HH:MM"),time:"30"})
-                    }} title={"Start Time"} Icon={require('../../images/TimeIcon.png')} IconStyle={{tintColor:this.state.time=="30"?"#fff":colors.fieldTextColor}} titleStyle={{color:this.state.time=="30"?"#fff":colors.fieldTextColor}} Style={{backgroundColor:this.state.time=="30"?Color.primary:colors.fieldBackgroundColor}} theme={colors}/>
+                        alert("Your break time is started now.")
+                        this.setState({StartTime: moment(moment()).format("HH:MM"), time: "30"})
+                    }} title={"Start Time"} Icon={require('../../images/TimeIcon.png')}
+                                        IconStyle={{tintColor: this.state.time == "30" ? "#fff" : colors.fieldTextColor}}
+                                        titleStyle={{color: this.state.time == "30" ? "#fff" : colors.fieldTextColor}}
+                                        Style={{backgroundColor: this.state.time == "30" ? Color.primary : colors.fieldBackgroundColor}}
+                                        theme={colors}/>
                     <TouchableComponent disabled={this.state.checkin} onPress={() => {
-                        this.setState({EndTime:moment(moment()).format("HH:MM"),time:"60" ,submit:false})
-                    }} title={"End Time"} Icon={require('../../images/TimeIcon.png')} IconStyle={{tintColor:this.state.time=="60"?"#fff":colors.fieldTextColor}} titleStyle={{color:this.state.time=="60"?"#fff":colors.fieldTextColor}} Style={{backgroundColor:this.state.time=="60"?Color.primary:colors.fieldBackgroundColor}} theme={colors}/>
+                        alert("Your break time is over now.")
+                        this.setState({EndTime: moment(moment()).format("HH:MM"), time: "60", submit: false})
+                    }} title={"End Time"} Icon={require('../../images/TimeIcon.png')}
+                                        IconStyle={{tintColor: this.state.time == "60" ? "#fff" : colors.fieldTextColor}}
+                                        titleStyle={{color: this.state.time == "60" ? "#fff" : colors.fieldTextColor}}
+                                        Style={{backgroundColor: this.state.time == "60" ? Color.primary : colors.fieldBackgroundColor}}
+                                        theme={colors}/>
                 </View>
                 <View style={{flex: 1, justifyContent: "center",}}>
-
                 </View>
-                        <ButtonComponent disable={this.state.submit} onPress={() => {
-                           const data=this.state.data
-                            const newdata=[...data,{time:{startBrake:this.state.StartTime,endBrake:this.state.EndTime}}]
-                             this.props.BrakeTimes(newdata)
-                            this.props.navigation.pop()
-                        }} title={"Submit"}/>
-
+                <ButtonComponent disable={this.state.submit} onPress={() => {
+                    const data = this.state.data
+                    const newdata = [...data, {time: {startBrake: this.state.StartTime, endBrake: this.state.EndTime}}]
+                    this.props.BrakeTimes(newdata)
+                    this.props.navigation.pop()
+                }} title={"Submit"}/>
             </View>
-
         );
     }
 }

@@ -36,6 +36,8 @@ class AttendenceScreen extends React.Component {
             checkInlongitude:"",
             checkOutlatitude:"",
             checkOutlongitude:"",
+            checkIn_time:"",
+            checkOut_time:"",
             checkin:false,
 
         }
@@ -49,14 +51,14 @@ class AttendenceScreen extends React.Component {
             timeout: 150000,
         })
             .then(location => {
-                const timeandDate=moment().format("DD/MM/YYYY")+"/"+moment().format("HH:MM")
+                const timeandDate=moment().format("DD/MM/YYYY")+"/"+moment().format("hh:MM")
                 const data={
                     CheckInTime:timeandDate,
                     CheckIn_Lat:location.latitude,
                     CheckIn_Lon:location.longitude
                 }
                 this.props.CheckInData(data)
-
+                alert(JSON.stringify("You are check in Successfully"))
                 this.setState({checkin:true})
                 })
             .catch(ex => {
@@ -114,25 +116,24 @@ class AttendenceScreen extends React.Component {
 
 
     checkOut(lat,long){
-
             const data={
                 ID: this.props?.user?.userInfo?.ID,
                 Name:this.props?.user?.userInfo?.Full_Name ,
                 Designation: this.props?.user?.userInfo?.Designation,
                 CheckIn: this.props?.user?.checkIn?.CheckInTime,
                 Break:this.props.brakeTime ,
-                CheckOut:moment().format("DD/MM/YYYY")+"/"+moment().format("HH:MM") ,
+                CheckOut:this.state.checkOut_time ,
                 CheckIn_Lat: this.props?.user?.checkIn?.CheckIn_Lat.toString(),
                 CheckIn_Lon: this.props?.user?.checkIn?.CheckIn_Lon.toString(),
                 CheckOut_Lat: lat.toString(),
                 CheckOut_Lon: long.toString(),
                 Working_Hours: "10"}
-        alert(JSON.stringify(data))
             this.props.attendance(data).then(res=>{
                 if(res){
                     this.setState({loading:false})
                     this.props.navigation.pop()
                     this.props.cleeardata()
+                    alert(JSON.stringify("Pack your bag and go to home."))
 
                 }else {
                     this.props.cleeardata()
