@@ -85,7 +85,7 @@ class ProfileScreen extends React.Component {
                         paddingVertical: 15,
                         paddingHorizontal: 20
                     }}>
-                        <RowComponent colors={colors} title1={"First Name"}  title2={this.props?.userInfo?.Full_Name.split(" ")[0]}/>
+                        <RowComponent   colors={colors} title1={"First Name"}  title2={this.props?.userInfo?.Full_Name.split(" ")[0]}/>
                         <RowComponent colors={colors} title1={"Last Name"} title2={this.props?.userInfo?.Full_Name.split(" ")[1]}/>
                         <RowComponent colors={colors} title1={"Role"} title2={this.props?.userInfo?.Designation}/>
                         <RowComponent colors={colors} title1={"Shift Time"} title2={"2 pm - 11 pm"}/>
@@ -102,7 +102,7 @@ class ProfileScreen extends React.Component {
 
 export default withLanguage(ProfileScreen)
 
-function RowComponent({colors, title1, title2Style, title2, title1Style}) {
+export function RowComponent({colors, title1, title2Style, title2, title1Style}) {
     return (
         <View style={{
             flexDirection: "row",

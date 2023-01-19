@@ -20,7 +20,7 @@ import moment from "moment";
 import TouchableComponent from "../Components/TouchableComponent";
 import {Color} from "../../common";
 import {connect} from "react-redux";
-import {getData, leave, login} from "../../redux/user/operations";
+import {getData, leave, login, sendleave} from "../../redux/user/operations";
 
 const mapStateToProps = ({app, user}) => ({
     app,
@@ -30,7 +30,7 @@ const mapStateToProps = ({app, user}) => ({
 
 @connect(
     mapStateToProps,
-    {leave}
+    {sendleave}
 )
 
 
@@ -55,11 +55,9 @@ class LeaveScreen extends React.Component {
         if(this.state.startDate==""){
             alert("please insert date")
         }
-        else if (this.state.noOfLeaves==""){
+        else if (this.state.endDate==""){
             alert("please insert end date")
 
-        } else if (this.state.selectedOption==""){
-            alert("please insert leave type")
         }
         else if(this.state.discription==""){
             alert("please insert discription")
@@ -67,15 +65,17 @@ class LeaveScreen extends React.Component {
             const data={
                 ID: this.props?.user?.userInfo?.ID,
                 Full_Name: this.props?.user?.userInfo?.Full_Name,
-                Date: this.state.startDate,
+                Date: this.state.startDate+moment().format("HH:mm:ss"),
+                Start_Date:this.state.startDate,
+                Ending_Date:this.state.endDate,
                 Designation: this.props?.user?.userInfo?.Designation,
                 Number_of_Leaves:(parseInt(this.state.endDate.substring(0,2)-parseInt(this.state.startDate.substring(0,2)))),
                 Description: this.state.discription,
-                Response: "Send"
+                Status:"Pending"
             }
             this.setState({loading:true})
 
-            this.props.leave(data).then(res=>{
+            this.props.sendleave(data).then(res=>{
                 console.log(res)
                 if(res){
                     this.setState({loading:false})

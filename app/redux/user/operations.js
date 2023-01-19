@@ -11,13 +11,13 @@ export const login = (data) => (dispatch) => {
         dispatch(actions.loginPending());
         return RestApi.getInstanceV2().post('/login', data)
             .then((json) => {
-                data=json.data
+                data = json.data
 
-                if(data.HasError==false){
-                    const userData=data?.Result?.Item
+                if (data.HasError == false) {
+                    const userData = data?.Result?.Item
                     dispatch(actions.loginSuccess(userData))
                     return data;
-                }else {
+                } else {
                     alert(JSON.stringify(data.ResultMessage[0].Message))
                     return undefined;
 
@@ -35,26 +35,183 @@ export const login = (data) => (dispatch) => {
     }
 };
 
-export const leave = (data) => (dispatch) => {
+
+export const forgetPassword = (data) => (dispatch) => {
+
+    try {
+        dispatch(actions.loginPending());
+        return RestApi.getInstanceV2().patch('/forgetpassword', data)
+            .then((json) => {
+                data = json.data
+                if (data.HasError == false) {
+                    return data;
+                } else {
+                    alert(JSON.stringify(data.ResultMessage[0].Message))
+                    return undefined;
+
+                }
+            })
+            .catch((err) => {
+                alert(JSON.stringify(err))
+                dispatch(actions.loginFailure(""));
+                return undefined;
+            });
+    } catch (error) {
+        apiError(error)
+        dispatch(actions.loginFailure(error));
+        return undefined;
+    }
+};
+
+export const verifyOtp = (data) => (dispatch) => {
+    try {
+        dispatch(actions.loginPending());
+        return RestApi.getInstanceV2().post('/verifyotp', data)
+            .then((json) => {
+                data = json.data
+                if (data.HasError == false) {
+                    return data;
+                } else {
+                    alert(JSON.stringify(data.ResultMessage[0].Message))
+                    return undefined;
+                }
+            })
+            .catch((err) => {
+                alert(JSON.stringify(err))
+                dispatch(actions.loginFailure(""));
+                return undefined;
+            });
+    } catch (error) {
+        apiError(error)
+        dispatch(actions.loginFailure(error));
+        return undefined;
+    }
+};
+
+
+export const updatePassword = (data) => (dispatch) => {
+    try {
+        dispatch(actions.loginPending());
+        return RestApi.getInstanceV2().patch('/updatepassword', data)
+            .then((json) => {
+                data = json.data
+                if (data.HasError == false) {
+                    return data;
+                } else {
+                    alert(JSON.stringify(data.ResultMessage[0].Message))
+                    return undefined;
+                }
+            })
+            .catch((err) => {
+                alert(JSON.stringify(err))
+                dispatch(actions.loginFailure(""));
+                return undefined;
+            });
+    } catch (error) {
+        apiError(error)
+        dispatch(actions.loginFailure(error));
+        return undefined;
+    }
+};
+
+
+export const attendance = (data) => (dispatch) => {
+
+    try {
+
+        dispatch(actions.loginPending());
+        return RestApi.getInstanceV2().post('/attendence', data)
+            .then((json) => {
+                data = json.data
+
+                if (data.HasError == false) {
+                    return data;
+                    alert(JSON.stringify(data.ResultMessage[0].Message))
+                } else {
+                    alert(JSON.stringify(data.ResultMessage[0].Message))
+                    return undefined;
+                }
+            })
+            .catch((err) => {
+                dispatch(actions.loginFailure(""));
+                return undefined;
+            });
+    } catch (error) {
+        apiError(error)
+        dispatch(actions.loginFailure(error));
+        return undefined;
+    }
+};
+
+export const acceptLeave = (data) => (dispatch) => {
+
+    try {
+        dispatch(actions.loginPending());
+        return RestApi.getInstanceV2().patch('/updateleave', data)
+            .then((json) => {
+                data = json.data
+
+                if (data.HasError == false) {
+                    return data;
+                } else {
+                    alert(JSON.stringify(data.ResultMessage[0].Message))
+                    return undefined;
+                }
+            })
+            .catch((err) => {
+                dispatch(actions.loginFailure(""));
+                return undefined;
+            });
+    } catch (error) {
+        apiError(error)
+        dispatch(actions.loginFailure(error));
+        return undefined;
+    }
+};
+
+
+export const rejectLeave = (data) => (dispatch) => {
+
+    try {
+        dispatch(actions.loginPending());
+        return RestApi.getInstanceV2().patch('/updateleave', data)
+            .then((json) => {
+                data = json.data
+
+                if (data.HasError == false) {
+                    return data;
+                } else {
+                    alert(JSON.stringify(data.ResultMessage[0].Message))
+                    return undefined;
+                }
+            })
+            .catch((err) => {
+                dispatch(actions.loginFailure(""));
+                return undefined;
+            });
+    } catch (error) {
+        apiError(error)
+        dispatch(actions.loginFailure(error));
+        return undefined;
+    }
+};
+
+export const sendleave = (data) => (dispatch) => {
 
     try {
         dispatch(actions.loginPending());
         return RestApi.getInstanceV2().post('/leave', data)
             .then((json) => {
-                data=json.data
-
-                if(data.HasError==false){
-                    const userData=data?.Result?.Item
-                    dispatch(actions.loginSuccess(userData))
+                data = json.data
+                if (data.HasError == false) {
                     return data;
-                }else {
+                } else {
                     alert(JSON.stringify(data.ResultMessage[0].Message))
                     return undefined;
-
                 }
             })
             .catch((err) => {
-                alert(JSON.stringify(err))
+                // alert(JSON.stringify(err))
                 dispatch(actions.loginFailure(""));
                 return undefined;
             });
@@ -65,19 +222,20 @@ export const leave = (data) => (dispatch) => {
     }
 };
 
-export const attendance = (data) => (dispatch) => {
 
+export const getLeaves = () => (dispatch) => {
+    const   obj={
+        Date: ""
+    }
     try {
-        console.log(JSON.stringify(data))
         dispatch(actions.loginPending());
-        return RestApi.getInstanceV2().post('/attendence', data)
+        return RestApi.getInstanceV2().post('/getleave', obj)
             .then((json) => {
-                data=json.data
+                let data = json.data
+                if (data.HasError == false) {
 
-                if(data.HasError==false){
                     return data;
-                    alert(JSON.stringify(data.ResultMessage[0].Message))
-                }else {
+                } else {
                     alert(JSON.stringify(data.ResultMessage[0].Message))
                     return undefined;
                 }
@@ -92,6 +250,10 @@ export const attendance = (data) => (dispatch) => {
         return undefined;
     }
 };
+
+
+
+
 export const register = (data) => (dispatch) => {
     try {
         const {name, phoneNumber, email, password, iso, fcmToken, refer_user_id, countryCode, deviceInfo} = data;
@@ -130,48 +292,6 @@ export const register = (data) => (dispatch) => {
     }
 }
 
-
-export const verifyOtp = (data) => (dispatch) => {
-    try {
-        dispatch(actions.loginPending());
-        return RestApi.getInstanceV2().post('users/auth/verifyOTP', data)
-            .then((json) => {
-
-                return json.data;
-            })
-            .catch((err) => {
-                apiError(err)
-
-                dispatch(actions.loginFailure(err));
-                return undefined;
-            });
-    } catch (error) {
-        apiError(error)
-        dispatch(actions.loginFailure(error));
-        return undefined;
-    }
-};
-
-export const getData = () => (dispatch) => {
-    const data={
-        Email: "wewe@gmail.com",
-        Password: "1234567890"
-    }
-    try {
-        dispatch(actions.loginPending());
-        return axios.get('https://ogng1bfsil.execute-api.us-east-1.amazonaws.com/Attendence_App/login',data)
-            .then((json) => {
-                alert(JSON.stringify(json))
-            })
-            .catch((err) => {
-                alert(JSON.stringify(err))
-                return undefined;
-            });
-    } catch (error) {
-        alert("cvv")
-        return undefined;
-    }
-};
 
 
 

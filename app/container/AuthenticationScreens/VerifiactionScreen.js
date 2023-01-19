@@ -10,13 +10,49 @@ import {Color, Constants} from "../../common";
 import ButtonComponent from "../Components/ButtonComponent";
 import InputVerify from "../Components/input/InputVerify";
 import InputCode from "../Components/input/InputCode";
+import {connect} from "react-redux";
+import { verifyOtp} from "../../redux/user/operations";
+const mapStateToProps = ({app, user}) => ({
+    app,
+    user,
+});
 
+
+@connect(
+    mapStateToProps,
+    {verifyOtp}
+)
 
 class VerificationScreen extends React.Component{
     constructor(props) {
         super(props);
         this.state={
             code:"",
+        }
+    }
+
+    validation(){
+        if(this.state.code==""){
+            alert("Please enter OTP")
+        } else {
+            this.setState({loading:true})
+            const data={
+                Email:this.props?.route.params?.Email ,
+                OTP: this.state.code,
+            }
+            this.props.verifyOtp(data).then(res=>{
+                if(res){
+                    this.setState({loading:false})
+                    this.props.navigation.navigate("AddNewPassword",{Email:this.props?.route.params?.Email})
+                }else {
+                    this.setState({loading:false})
+                }
+            }).catch(err=>{
+
+                this.setState({loading:false})
+                alert("Some thing went wrong please try again")
+            })
+
         }
     }
     render() {
@@ -42,7 +78,7 @@ class VerificationScreen extends React.Component{
                         // editable={!isLoading}
                     />
                     </View>
-                <ButtonComponent onPress={()=>{this.props.navigation.replace("HomeScreen")}} title={t("Auth:Send")}/>
+                <ButtonComponent onPress={()=>{this.validation()}} title={t("Auth:Send")}/>
                 </View>
             </View>
 

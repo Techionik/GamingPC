@@ -11,8 +11,9 @@ import {Color, Constants} from "../../common";
 import FieldComponent from "../Components/FieldComponent";
 import ButtonComponent from "../Components/ButtonComponent";
 import {connect} from "react-redux";
-import {getData, login} from "../../redux/user/operations";
+import {login} from "../../redux/user/operations";
 import {toast} from "../../Omni";
+
 const mapStateToProps = ({app, user}) => ({
     app,
     user,
@@ -21,46 +22,44 @@ const mapStateToProps = ({app, user}) => ({
 
 @connect(
     mapStateToProps,
-    {login,getData}
+    {login}
 )
 
 class LoginScreen extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state={
-            email:"",
-            password:"",
-            loading:false
+        this.state = {
+            email: "",
+            password: "",
+            loading: false
         }
     }
 
-    componentDidMount() {
-    }
 
 
-    validation(){
-        if(this.state.email==""){
+    validation() {
+        if (this.state.email == "") {
             alert("Please enter your email")
-        } else if(this.state.password==""){
+        } else if (this.state.password == "") {
             alert("Please enter your password")
 
-        }else {
-            this.setState({loading:true})
-            const data={
+        } else {
+            this.setState({loading: true})
+            const data = {
                 Email: this.state.email,
                 Password: this.state.password
             }
-            this.props.login(data).then(res=>{
-                if(res){
-                    this.setState({loading:false})
+            this.props.login(data).then(res => {
+                if (res) {
+                    this.setState({loading: false})
                     this.props.navigation.replace("HomeScreen")
-                }else {
-                    this.setState({loading:false})
+                } else {
+                    this.setState({loading: false})
                 }
-            }).catch(err=>{
+            }).catch(err => {
 
-                this.setState({loading:false})
+                this.setState({loading: false})
                 alert("Some thing went wrong please try again")
             })
 
@@ -94,9 +93,13 @@ class LoginScreen extends React.Component {
                             fontSize: 22
                         }}>{t("Auth:Login")}</Text>
                     <View style={{marginTop: 20}}>
-                        <FieldComponent value={this.state.email} onChangeText={(text)=>{this.setState({email:text})}} theme={colors} Icon={require('../../images/MailIcon.png')}
+                        <FieldComponent value={this.state.email} onChangeText={(text) => {
+                            this.setState({email: text})
+                        }} theme={colors} Icon={require('../../images/MailIcon.png')}
                                         Placeholder={t("Auth:EmailField")}/>
-                        <FieldComponent   value={this.state.password} onChangeText={(text)=>{this.setState({password:text})}}  theme={colors} secureTextEntry={true}
+                        <FieldComponent value={this.state.password} onChangeText={(text) => {
+                            this.setState({password: text})
+                        }} theme={colors} secureTextEntry={true}
                                         Icon={require('../../images/PasswordIcon.png')}
                                         IconStyle={{bottom: -4}} Placeholder={t("Auth:Password")}/>
                         <Text onPress={() => {
@@ -108,14 +111,12 @@ class LoginScreen extends React.Component {
                             color: Color.primary,
                             alignSelf: "flex-end"
                         }}>{t("Auth:ForgetPassword")}</Text>
-                        {this.state.loading?<ActivityIndicator style={{alignSelf:"center"}} size={"large"} color={Color.theme_color}/>:
-                        <ButtonComponent onPress={() => {
-                            this.validation()
-                        }} title={t("Auth:Login")}/>}
+                        {this.state.loading ? <ActivityIndicator style={{alignSelf: "center"}} size={"large"}
+                                                                 color={Color.theme_color}/> :
+                            <ButtonComponent onPress={() => {
+                                this.validation()
+                            }} title={t("Auth:Login")}/>}
                     </View>
-
-
-
 
 
                     {/*<Text style={{*/}
@@ -131,12 +132,13 @@ class LoginScreen extends React.Component {
                     {/*    fontFamily: Constants.fontFamilyBold,*/}
                     {/*    color: Color.primary*/}
                     {/*}}>{" " + t("Auth:SignUp")}</Text></Text>*/}
-                    <View style={{flex:1}}/>
+                    <View style={{flex: 1}}/>
 
                     <Text style={{
                         fontSize: 12,
                         includeFontPadding: false,
-                        padding: 0,alignSelf:"center",
+                        padding: 0, alignSelf: "center",
+                        marginBottom: 20,
                         fontFamily: Constants.fontFamilyBold,
                         color: Color.primary,
                         marginLeft: 5
@@ -152,10 +154,7 @@ class LoginScreen extends React.Component {
 
 export default withLanguage(LoginScreen)
 
-export function OrLoginWith({
-                                Props
-                            }
-) {
+export function OrLoginWith({Props}) {
     const {t, language, themeColor} = Props
 
     return (

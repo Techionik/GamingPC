@@ -45,13 +45,14 @@ class AttendenceScreen extends React.Component {
     }
 
 
+
     checkInLoction = () => {
         GetLocation.getCurrentPosition({
             enableHighAccuracy: true,
             timeout: 150000,
         })
             .then(location => {
-                const timeandDate=moment().format("DD/MM/YYYY")+"/"+moment().format("hh:MM")
+                const timeandDate=moment().format("DD/MM/YYYY")+"/"+moment().format("hh:mm:ss")
                 const data={
                     CheckInTime:timeandDate,
                     CheckIn_Lat:location.latitude,
@@ -113,21 +114,27 @@ class AttendenceScreen extends React.Component {
             });
     };
 
-
+  checkOutTime=()=>{
+          return (
+              this.setState({checkOut_time:moment().format("DD/MM/YYYY")+"/"+moment().format("hh:mm:ss")})
+          )
+  }
 
     checkOut(lat,long){
+      this.checkOutTime()
             const data={
                 ID: this.props?.user?.userInfo?.ID,
                 Name:this.props?.user?.userInfo?.Full_Name ,
                 Designation: this.props?.user?.userInfo?.Designation,
                 CheckIn: this.props?.user?.checkIn?.CheckInTime,
                 Break:this.props.brakeTime ,
-                CheckOut:this.state.checkOut_time ,
+                CheckOut:this.state.checkOut_time,
                 CheckIn_Lat: this.props?.user?.checkIn?.CheckIn_Lat.toString(),
                 CheckIn_Lon: this.props?.user?.checkIn?.CheckIn_Lon.toString(),
                 CheckOut_Lat: lat.toString(),
                 CheckOut_Lon: long.toString(),
                 Working_Hours: "10"}
+        alert(JSON.stringify(this.state.checkOut_time))
             this.props.attendance(data).then(res=>{
                 if(res){
                     this.setState({loading:false})
