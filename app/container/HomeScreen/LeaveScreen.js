@@ -151,7 +151,7 @@ class LeaveScreen extends React.Component {
                             borderRadius: 10,
                             width: "100%",
                         }}
-                        data={[{value: "Late Leave"},{value: "Sick Leave"},{value: "Bereavement Leave"}]}
+                        data={[{value: "Late Leave"},{value: "Sick Leave"},{value: "Bereavement Leave"},{value: "Other"}]}
                     />
                     {this.state.Option == "StartDate" ? <DateTimePicker
                         isVisible={this.state.visibleDatePicker}
