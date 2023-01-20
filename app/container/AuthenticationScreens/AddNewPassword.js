@@ -83,9 +83,9 @@ class AddNewPassword extends React.Component {
                     fontSize: 12
                 }}>{t("L:DummyText")}</Text>
                 <View style={{marginTop: 20}}>
-                    <FieldComponent multiline={true} value={this.state.NewPassword} onChangeText={(text)=>{this.setState({NewPassword:text})}} theme={colors} Style={{paddingLeft:10}} IconStyle={{marginRight: 0}}
+                    <FieldComponent secureTextEntry={true} value={this.state.NewPassword} onChangeText={(text)=>{this.setState({NewPassword:text})}} theme={colors} Style={{paddingLeft:10}} IconStyle={{marginRight: 0}}
                                     Placeholder={"New Password"}/>
-                    <FieldComponent multiline={true} value={this.state.ConfirmPassword} onChangeText={(text)=>{this.setState({ConfirmPassword:text})}} theme={colors} Style={{paddingLeft:10}} IconStyle={{marginRight: 0}}
+                    <FieldComponent secureTextEntry={true} value={this.state.ConfirmPassword} onChangeText={(text)=>{this.setState({ConfirmPassword:text})}} theme={colors} Style={{paddingLeft:10}} IconStyle={{marginRight: 0}}
                                     Placeholder={"Confirm Password"}/>
                     <ButtonComponent onPress={() => {
                        this.validation()

@@ -164,10 +164,10 @@ class AttendenceScreen extends React.Component {
                 <Image source={require('../../images/WaterMark.png')} style={{aspectRatio:0.9,marginVertical:10,alignSelf:"center",height:undefined,width:"70%"}}/>
                 <ButtonComponent disable={this.props?.user?.checkIn?.CheckInTime?true:false}  onPress={() => {
                     this.checkInLoction();
-                }} title={"check in"}/>
+                }} title={"Check In"}/>
                 <ButtonComponent disable={this.props?.user?.checkIn?.CheckInTime?false:true}  onPress={() => {
                     this.checkOutLoction()
-                }} title={"check out"}/>
+                }} title={"Check Out"}/>
                 <View style={{flex: 1}}/>
             </View>
 

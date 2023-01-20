@@ -71,7 +71,8 @@ class LeaveScreen extends React.Component {
                 Designation: this.props?.user?.userInfo?.Designation,
                 Number_of_Leaves:(parseInt(this.state.endDate.substring(0,2)-parseInt(this.state.startDate.substring(0,2)))),
                 Description: this.state.discription,
-                Status:"Pending"
+                Status:"Pending",
+                Leave_Type:this.state.selectedOption
             }
             this.setState({loading:true})
 
@@ -124,33 +125,34 @@ class LeaveScreen extends React.Component {
                     {/*    <Text style={{fontSize:18,color:colors.blackAndWhite}}>{this.state.noOfLeaves<=0?0:this.state.noOfLeaves}</Text>*/}
                     {/*    <AntDesign  onPress={()=>{this.state.noOfLeaves>=18?null:(this.setState({noOfLeaves:this.state.noOfLeaves+1}))}} name={"plussquare"} color={colors.primaryLight}  size={30}/>*/}
                     {/*</View>*/}
-                    {/*<Dropdown*/}
-                    {/*    itemColor={colors.blackAndWhite}*/}
-                    {/*    itemTextStyle={{color: colors.blackAndWhite}}*/}
-                    {/*    lineWidth={0}*/}
-                    {/*    pickerStyle={{backgroundColor: colors.BackgroundView, borderRadius: 10}}*/}
-                    {/*    color={colors.blackAndWhite}*/}
-                    {/*    fontSize={13}*/}
-                    {/*    placeholder={this.state.selectedOption}*/}
-                    {/*    baseColor={colors.blackAndWhite}*/}
-                    {/*    customTickIcon={<AntDesign name={"caretdown"} color={"#fff"}/>}*/}
-                    {/*    value={this.state.selectedOption}*/}
-                    {/*    placeholderTextColor={"grey"}*/}
-                    {/*    dropdownOffset={{top: 10, right: -10, left: -17}}*/}
-                    {/*    rippleCentered={true}*/}
-                    {/*    onChangeText={(value) => {*/}
+                    <Dropdown
+                        itemColor={colors.blackAndWhite}
+                        itemTextStyle={{color: colors.blackAndWhite}}
+                        lineWidth={0}
+                        pickerStyle={{backgroundColor: colors.BackgroundView, borderRadius: 10}}
+                        color={colors.blackAndWhite}
+                        fontSize={13}
+                        placeholder={this.state.selectedOption}
+                        baseColor={colors.blackAndWhite}
+                        customTickIcon={<AntDesign name={"caretdown"} color={"#fff"}/>}
+                        value={this.state.selectedOption}
+                        placeholderTextColor={colors.blackAndWhite}
+                        dropdownOffset={{top: 10, right: -10, left: -17}}
+                        rippleCentered={true}
+                        textColor={colors.blackAndWhite}
+                        onChangeText={(value) => {
 
-                    {/*        this.setState({selectedOption: value})*/}
-                    {/*    }}*/}
-                    {/*    containerStyle={{*/}
-                    {/*        paddingLeft: 20,*/}
-                    {/*        marginTop: 5,*/}
-                    {/*        backgroundColor: colors.fieldBackgroundColor,*/}
-                    {/*        borderRadius: 10,*/}
-                    {/*        width: "100%",*/}
-                    {/*    }}*/}
-                    {/*    data={LeaveOptions}*/}
-                    {/*/>*/}
+                            this.setState({selectedOption: value})
+                        }}
+                        containerStyle={{
+                            paddingLeft: 20,
+                            marginTop: 5,
+                            backgroundColor: colors.fieldBackgroundColor,
+                            borderRadius: 10,
+                            width: "100%",
+                        }}
+                        data={[{value: "Late Leave"},{value: "Sick Leave"},{value: "Bereavement Leave"}]}
+                    />
                     {this.state.Option == "StartDate" ? <DateTimePicker
                         isVisible={this.state.visibleDatePicker}
                         showIcon={false}
