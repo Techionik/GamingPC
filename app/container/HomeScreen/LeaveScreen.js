@@ -34,7 +34,6 @@ class LeaveScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            Leaves: [],
             refreshData: false,
         }
     }
@@ -52,8 +51,6 @@ class LeaveScreen extends React.Component {
         this.props.getUserLeaves(data).then(res => {
             if (res) {
                 this.setState({refreshData: false})
-                this.setState({Leaves: res})
-
             }
         }).catch(err => {
             this.setState({refreshData: false})
@@ -74,7 +71,7 @@ class LeaveScreen extends React.Component {
                     <FlatList refreshing={this.state.refreshData} onRefresh={()=>{
                         this.GetLeaves()
                     }} contentContainerStyle={{flex: 1}} showsVerticalScrollIndicator={false}
-                              data={this.state.Leaves}
+                              data={this.props.Leaves}
                               renderItem={({item, index}) =>
                                   <EmployLeaveComponent item={item} colors={colors}/>
                     }/>

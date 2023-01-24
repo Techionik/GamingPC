@@ -13,7 +13,7 @@ const initialState = {
     error: null,
     selectedResponse: undefined,
     stories: {},
-    Leaves:undefined
+    Leaves:[]
 }
 
 export default (state = initialState, action) => {

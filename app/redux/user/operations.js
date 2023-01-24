@@ -40,6 +40,7 @@ export const getUserLeaves = (data) => (dispatch) => {
         return RestApi.getInstanceV2().post('/getuserleaves', data)
             .then((json) => {
                 data = json.data
+                dispatch(actions.getLeaves(data))
                 return data;
             })
             .catch((err) => {
