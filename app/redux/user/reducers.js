@@ -12,7 +12,8 @@ const initialState = {
     flipCardLoader: false,
     error: null,
     selectedResponse: undefined,
-    stories: {}
+    stories: {},
+    Leaves:undefined
 }
 
 export default (state = initialState, action) => {
@@ -61,6 +62,13 @@ export default (state = initialState, action) => {
                 userInfo: payload,
                 isFetching: false,
                 error: null,
+            };
+        }
+
+        case types.GET_LEAVES: {
+            return {
+                ...state,
+                Leaves: payload,
             };
         }
         case types.GET_BRAKETIMES: {

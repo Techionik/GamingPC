@@ -19,7 +19,8 @@ import {connect} from "react-redux";
 const mapStateToProps = ({app, user}) => ({
     app,
     user,
-    userInfo: user?.userInfo
+    userInfo: user?.userInfo,
+
 });
 
 
@@ -81,7 +82,7 @@ class LeavesScreen extends React.Component {
                                            <LeaveComponent colors={colors} item={item}/>:null
                                    }/>
                     </View>
-                     <Text style={{fontSize:18,color:Color.grey}}>Accepted Leaves</Text>
+                     <Text style={{fontSize:18,color:colors.blackAndWhite}}>Accepted Leaves</Text>
                     <View>
                     <FlatList  contentContainerStyle={{flex:1}} refreshing={this.state.refreshData} onRefresh={() => {
                         this.getFreshLeaves()
@@ -92,7 +93,7 @@ class LeavesScreen extends React.Component {
                               }/>
                     </View>
 
-                    <Text style={{fontSize:18,color:Color.grey}}>Rejected Leaves</Text>
+                    <Text style={{fontSize:18,color:colors.blackAndWhite}}>Rejected Leaves</Text>
                     <View>
                     <FlatList  contentContainerStyle={{flex:1}} refreshing={this.state.refreshData} onRefresh={() => {
                         this.getFreshLeaves()

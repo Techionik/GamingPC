@@ -12,7 +12,6 @@ export const login = (data) => (dispatch) => {
         return RestApi.getInstanceV2().post('/login', data)
             .then((json) => {
                 data = json.data
-
                 if (data.HasError == false) {
                     const userData = data?.Result?.Item
                     dispatch(actions.loginSuccess(userData))
@@ -20,8 +19,28 @@ export const login = (data) => (dispatch) => {
                 } else {
                     alert(JSON.stringify(data.ResultMessage[0].Message))
                     return undefined;
-
                 }
+            })
+            .catch((err) => {
+                alert(JSON.stringify(err))
+                dispatch(actions.loginFailure(""));
+                return undefined;
+            });
+    } catch (error) {
+        apiError(error)
+        dispatch(actions.loginFailure(error));
+        return undefined;
+    }
+};
+
+
+export const getUserLeaves = (data) => (dispatch) => {
+    try {
+        dispatch(actions.loginPending());
+        return RestApi.getInstanceV2().post('/getuserleaves', data)
+            .then((json) => {
+                data = json.data
+                return data;
             })
             .catch((err) => {
                 alert(JSON.stringify(err))

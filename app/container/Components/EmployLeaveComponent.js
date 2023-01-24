@@ -5,23 +5,9 @@ import {useNavigation} from "@react-navigation/native";
 import email from 'react-native-email'
 
 
-export default function LeaveComponent({Style, item, colors}) {
-    const navigation = useNavigation()
-    const handleEmail = () => {
-        const to = "mubasharmasood30@gmail.com" // string or array of email addresses
-        email(to, {
-            // Optional additional arguments
-            cc: ['mudassirmasood0805@gmail.com'], // string or array of email addresses
-            // bcc: 'mee@mee.com', // string or array of email addresses
-            subject: 'Pay Role',
-            body: 'Some body right here',
-            checkCanOpen: false // Call Linking.canOpenURL prior to Linking.openURL
-        }).catch(console.error)
-    }
+export default function EmployLeaveComponent({Style, item, colors}) {
     return (
-        <TouchableOpacity onPress={() => {
-            navigation.navigate("ViewCurrentLeave", {data: item})
-        }} style={{
+        <TouchableOpacity disabled={true}  style={{
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-between',

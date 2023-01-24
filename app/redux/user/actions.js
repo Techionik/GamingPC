@@ -22,6 +22,12 @@ export const loginSuccess = (data) => (
   payload: data,
 });
 
+export const getLeaves = (data) => (
+    {
+        type: types.GET_LEAVES,
+        payload: data,
+    });
+
 export const BrakeTimes = (data) => (
     {
       type: types.GET_BRAKETIMES,

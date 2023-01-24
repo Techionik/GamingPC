@@ -19,7 +19,7 @@ import axios from "axios";
 const mapStateToProps = ({app, user}) => ({
     app,
     user,
-    userInfo: user?.userInfo
+    userInfo: user?.userInfo,
 });
 
 
@@ -35,6 +35,7 @@ class HomeScreen extends React.Component {
     }
 
     componentDidMount() {
+
 
     }
 

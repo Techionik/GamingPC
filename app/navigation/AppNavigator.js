@@ -31,6 +31,7 @@ import PendingScreen from "../container/HomeScreen/AdminScreens/PendingScreen";
 import PayRoleScreen from "../container/HomeScreen/AdminScreens/PayRoleScreen";
 import ViewCurrentLeave from "../container/HomeScreen/AdminScreens/ViewCurrentLeave";
 import AddNewPassword from "../container/AuthenticationScreens/AddNewPassword";
+import SendLeaveScreen from "../container/HomeScreen/SendLeaveScreen";
 
 
 
@@ -45,8 +46,7 @@ const AppStack = ({}) => {
             <Stack.Screen name={"SplashContainer"} component={SplashContainer} options={{headerShown: false}}/>
             <Stack.Screen name={"LoginScreen"} component={LoginScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"MapScreen"} component={MapScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"ForgotPasswordScreen"} component={ForgotPasswordScreen}
-                          options={{headerShown: false}}/>
+            <Stack.Screen name={"ForgotPasswordScreen"} component={ForgotPasswordScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"VerificationScreen"} component={VerificationScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"EarningScreen"} component={EarningScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"AgrementScreen"} component={AgrementScreen} options={{headerShown: false}}/>
@@ -65,7 +65,7 @@ const AppStack = ({}) => {
             <Stack.Screen name={"PayRoleScreen"} component={PayRoleScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"ViewCurrentLeave"} component={ViewCurrentLeave} options={{headerShown: false}}/>
             <Stack.Screen name={"AddNewPassword"} component={AddNewPassword} options={{headerShown: false}}/>
-
+            <Stack.Screen name={"SendLeaveScreen"} component={SendLeaveScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"SignupScreen"} component={SignupScreen} options={{headerShown: false}}/>
         </Stack.Navigator>
     )

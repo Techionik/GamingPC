@@ -50,7 +50,7 @@ class BreakTimeScreen extends React.Component {
     brake(){
         setTimeout(()=>{
             const data = this.state.data
-            const newdata = [...data, {time: {startBrake: this.state.StartTime, endBrake: this.state.EndTime}}]
+            const newdata = [...data, {startBrake: this.state.StartTime, endBrake: this.state.EndTime}]
             this.props.BrakeTimes(newdata)
             this.props.navigation.pop()
         },1000)
