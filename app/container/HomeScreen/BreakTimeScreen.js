@@ -47,6 +47,15 @@ class BreakTimeScreen extends React.Component {
         }
     }
 
+    brake(){
+        setTimeout(()=>{
+            const data = this.state.data
+            const newdata = [...data, {time: {startBrake: this.state.StartTime, endBrake: this.state.EndTime}}]
+            this.props.BrakeTimes(newdata)
+            this.props.navigation.pop()
+        },1000)
+    }
+
 
     render() {
         const {t, language, themeColor} = this.props.value
@@ -73,20 +82,14 @@ class BreakTimeScreen extends React.Component {
                     <TouchableComponent disabled={this.state.checkin} onPress={() => {
                         alert("Your break time is over now.")
                         this.setState({EndTime: moment(moment()).format("HH:MM"), time: "60", submit: false})
+                        this.brake()
                     }} title={"End Time"} Icon={require('../../images/TimeIcon.png')}
                                         IconStyle={{tintColor: this.state.time == "60" ? "#fff" : colors.fieldTextColor}}
                                         titleStyle={{color: this.state.time == "60" ? "#fff" : colors.fieldTextColor}}
                                         Style={{backgroundColor: this.state.time == "60" ? Color.primary : colors.fieldBackgroundColor}}
                                         theme={colors}/>
                 </View>
-                <View style={{flex: 1, justifyContent: "center",}}>
-                </View>
-                <ButtonComponent disable={this.state.submit} onPress={() => {
-                    const data = this.state.data
-                    const newdata = [...data, {time: {startBrake: this.state.StartTime, endBrake: this.state.EndTime}}]
-                    this.props.BrakeTimes(newdata)
-                    this.props.navigation.pop()
-                }} title={"Submit"}/>
+
             </View>
         );
     }
