@@ -72,9 +72,6 @@ class HomeScreen extends React.Component {
                                     <ButtonComponent onPress={() => {
                                         this.props.navigation.navigate("LeavesScreen")
                                     }} title={"Leaves"}/>
-                                    <ButtonComponent onPress={() => {
-                                        this.props.navigation.navigate("PendingScreen")
-                                    }} title={"Pending Leaves"}/>
 
                                 </> :this.props?.user?.userInfo?.Role === "Super Admin" ?
 
