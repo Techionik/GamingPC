@@ -125,6 +125,7 @@ class AttendenceScreen extends React.Component {
 
     checkOut(lat,long){
       this.checkOutTime()
+        const WorkingHours=(parseFloat(this.state.checkOutTime).toFixed(2))-(parseFloat(this.props?.user?.checkIn?.Time).toFixed(2))
             const data={
                 ID: this.props?.user?.userInfo?.ID,
                 Name:this.props?.user?.userInfo?.Full_Name ,
@@ -136,7 +137,7 @@ class AttendenceScreen extends React.Component {
                 CheckIn_Lon: this.props?.user?.checkIn?.CheckIn_Lon.toString(),
                 CheckOut_Lat: lat.toString(),
                 CheckOut_Lon: long.toString(),
-                Working_Hours: (parseFloat(this.state.checkOutTime).toFixed(2))-(parseFloat(this.props?.user?.checkIn?.Time).toFixed(2))}
+                Working_Hours: WorkingHours.toString()}
         this.props.attendance(data).then(res=>{
                 if(res){
                     this.setState({loading:false})
@@ -155,7 +156,6 @@ class AttendenceScreen extends React.Component {
                 alert("Some thing went wrong please try again")
             })
     }
-
 
     render() {
         const {t, language, themeColor} = this.props.value
