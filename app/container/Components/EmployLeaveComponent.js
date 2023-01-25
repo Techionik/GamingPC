@@ -1,13 +1,15 @@
 import {Image, Text, TextInput, TouchableOpacity, View} from "react-native";
 import {Color, Constants} from "../../common";
-import React from "react";
+import React, {useState} from "react";
 import {useNavigation} from "@react-navigation/native";
 import email from 'react-native-email'
 
 
 export default function EmployLeaveComponent({Style, item, colors}) {
+    const [showNotes,setShowNotes]=useState(false)
     return (
-        <TouchableOpacity disabled={true}  style={{
+        <TouchableOpacity onPress={()=>{setShowNotes(!showNotes)}} style={{  margin: 8,borderRadius:10,backgroundColor:colors.fieldBackgroundColor}}>
+        <View   style={{
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -15,7 +17,7 @@ export default function EmployLeaveComponent({Style, item, colors}) {
             paddingVertical: 12,
             backgroundColor: colors.fieldBackgroundColor,
             elevation: 2,
-            margin: 8,
+
             borderRadius: 10
         }}>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
@@ -32,7 +34,7 @@ export default function EmployLeaveComponent({Style, item, colors}) {
                         <Text style={{
                             fontSize: 12,
                             fontFamily: Constants.fontFamilyBold,
-                            color: item?.Statuss == "Accept" ? colors.blackAndWhite : "red"
+                            color: item?.Statuss === "Accept" ? colors.blackAndWhite : "red"
                         }}>{item?.Statuss}</Text>
                     </View>
                     <Text style={{
@@ -49,9 +51,15 @@ export default function EmployLeaveComponent({Style, item, colors}) {
                 </View>
             </View>
             <View>
-
                 <Text>{item.Number_of_Leaves}</Text>
             </View>
+        </View>
+            {item.Notes!==""&&showNotes&&<Text style={{
+                fontFamily: Constants.fontFamilyRegular,
+                includeFontPadding: false,
+                padding: 0,
+                margin: 5
+            }}>{item.Notes}</Text>}
         </TouchableOpacity>
     )
 }

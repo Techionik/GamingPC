@@ -40,9 +40,7 @@ class LeaveScreen extends React.Component {
 
     componentDidMount() {
         this.GetLeaves()
-
     }
-
     GetLeaves() {
         this.setState({refreshData: true})
         const data = {

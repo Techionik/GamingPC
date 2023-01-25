@@ -32,7 +32,7 @@ class LeavesScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            jobsLsit: [],
+            Leaves: [],
             refreshData: false,
         }
     }
@@ -41,8 +41,7 @@ class LeavesScreen extends React.Component {
         this.setState({refreshData: true})
 
         this.props.getLeaves().then((res) => {
-            this.setState({jobsLsit: res?.Result})
-            console.log(JSON.stringify(res))
+            this.setState({Leaves: res?.Result})
             this.setState({refreshData: false})
         }).catch((err) => {
             this.setState({refreshData: false})
@@ -56,7 +55,7 @@ class LeavesScreen extends React.Component {
             Date: ""
         }
         this.props.getLeaves(obj).then((res) => {
-            this.setState({jobsLsit: res?.Result})
+            this.setState({Leaves: res?.Result})
             this.setState({refreshData: false})
         }).catch((err) => {
             this.setState({refreshData: false})
@@ -76,32 +75,31 @@ class LeavesScreen extends React.Component {
                     <View>
                         <FlatList  contentContainerStyle={{flex:1}} refreshing={this.state.refreshData} onRefresh={() => {
                             this.getFreshLeaves()
-                        }} showsVerticalScrollIndicator={false} data={this.state.jobsLsit}
+                        }} showsVerticalScrollIndicator={false} data={this.state.Leaves}
                                    renderItem={({item, index}) =>
                                        item.Statuss=="Pending"?
                                            <LeaveComponent colors={colors} item={item}/>:null
                                    }/>
                     </View>
-                     <Text style={{fontSize:18,color:colors.blackAndWhite}}>Accepted Leaves</Text>
+                    {this.state.Leaves.filter(item=>item.Statuss==="Accept")[0]?<Text style={{fontSize: 18, color: colors.blackAndWhite}}>Accepted Leaves</Text>:false}
                     <View>
                     <FlatList  contentContainerStyle={{flex:1}} refreshing={this.state.refreshData} onRefresh={() => {
                         this.getFreshLeaves()
-                    }} showsVerticalScrollIndicator={false} data={this.state.jobsLsit}
+                    }} showsVerticalScrollIndicator={false} data={this.state.Leaves}
                               renderItem={({item, index}) =>
                                   item.Statuss=="Accept"?
                                   <LeaveComponent colors={colors} item={item}/>:null
                               }/>
                     </View>
-
-                    <Text style={{fontSize:18,color:colors.blackAndWhite}}>Rejected Leaves</Text>
+                    {this.state.Leaves.filter(item=>item.Statuss==="Reject")[0]?<Text style={{fontSize: 18, color: colors.blackAndWhite}}>Rejected Leaves</Text>:null}
                     <View>
-                    <FlatList  contentContainerStyle={{flex:1}} refreshing={this.state.refreshData} onRefresh={() => {
-                        this.getFreshLeaves()
-                    }} showsVerticalScrollIndicator={false} data={this.state.jobsLsit}
-                              renderItem={({item, index}) =>
-                                  item.Statuss=="Reject"?
-                                      <LeaveComponent colors={colors} item={item}/>:null
-                              }/>
+                        <FlatList  contentContainerStyle={{flex:1}} refreshing={this.state.refreshData} onRefresh={() => {
+                            this.getFreshLeaves()
+                        }} showsVerticalScrollIndicator={false} data={this.state.Leaves}
+                                   renderItem={({item, index}) =>
+                                       item.Statuss==="Reject"?
+                                           <LeaveComponent colors={colors} item={item}/>:null
+                                   }/>
                     </View>
                 </View>
 

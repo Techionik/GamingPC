@@ -42,6 +42,9 @@ class ViewCurrentLeave extends React.Component {
             modalVisible2:false,
             Notes:""
         }
+
+    }
+    componentDidMount() {
     }
 
 
@@ -50,6 +53,7 @@ class ViewCurrentLeave extends React.Component {
         const obj = {
             Date: this.props?.route?.params?.data?.Date,
             Status: "Accept",
+            Email:this.props?.route?.params?.data?.Email,
             Notes:this.state.Notes?this.state.Notes:""
         }
         this.props.acceptLeave(obj).then((res) => {
@@ -69,6 +73,7 @@ class ViewCurrentLeave extends React.Component {
         const obj = {
             Date: this.props?.route?.params?.data?.Date,
             Status: "Reject",
+            Email:this.props?.route?.params?.data?.Email,
             Notes:this.state.Notes?this.state.Notes:""
         }
         this.props.rejectLeave(obj).then((res) => {
@@ -210,7 +215,6 @@ class ViewCurrentLeave extends React.Component {
                                     }}>
                                         <AntDesign name={"close"} size={30} color={"#fff"}/>
                                     </TouchableOpacity>
-
                                     <TextInput value={this.state.Notes} onChangeText={(text)=>{this.setState({Notes:text})}} numberOfLines={3} placeholder={"Write Notes..."} placeholderTextColor={colors.blackAndWhite} style={{textAlignVertical:"top",borderColor:colors.blackAndWhite,fontSize:18,borderRadius:20,borderWidth:0.5,padding:7,paddingTop:10,color:colors.blackAndWhite,marginVertical:10}}>
                                     </TextInput>
 
