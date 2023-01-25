@@ -32,6 +32,7 @@ import PayRoleScreen from "../container/HomeScreen/AdminScreens/PayRoleScreen";
 import ViewCurrentLeave from "../container/HomeScreen/AdminScreens/ViewCurrentLeave";
 import AddNewPassword from "../container/AuthenticationScreens/AddNewPassword";
 import SendLeaveScreen from "../container/HomeScreen/SendLeaveScreen";
+import UpdatePasswordScreen from "../container/HomeScreen/UpdatePasswordScreen";
 
 
 
@@ -67,6 +68,7 @@ const AppStack = ({}) => {
             <Stack.Screen name={"AddNewPassword"} component={AddNewPassword} options={{headerShown: false}}/>
             <Stack.Screen name={"SendLeaveScreen"} component={SendLeaveScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"SignupScreen"} component={SignupScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"UpdatePasswordScreen"} component={UpdatePasswordScreen} options={{headerShown: false}}/>
         </Stack.Navigator>
     )
 }

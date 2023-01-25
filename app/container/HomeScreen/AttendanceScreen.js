@@ -39,6 +39,7 @@ class AttendenceScreen extends React.Component {
             checkIn_time:"",
             checkOut_time:"",
             checkin:false,
+            checkOutTime:""
 
         }
 
@@ -53,10 +54,12 @@ class AttendenceScreen extends React.Component {
         })
             .then(location => {
                 const timeandDate=moment().format("DD/MM/YYYY")+"/"+moment().format("hh:mm:ss")
+                const Time=moment().format("hh.mm")
                 const data={
                     CheckInTime:timeandDate,
                     CheckIn_Lat:location.latitude,
-                    CheckIn_Lon:location.longitude
+                    CheckIn_Lon:location.longitude,
+                    Time:Time,
                 }
                 this.props.CheckInData(data)
                 alert(JSON.stringify("You are check in Successfully"))
@@ -116,7 +119,7 @@ class AttendenceScreen extends React.Component {
 
   checkOutTime=()=>{
           return (
-              this.setState({checkOut_time:moment().format("DD/MM/YYYY")+"/"+moment().format("hh:mm:ss")})
+              this.setState({checkOut_time:moment().format("DD/MM/YYYY")+"/"+moment().format("hh:mm:ss"),checkOutTime:moment().format("hh.mm")})
           )
   }
 
@@ -133,9 +136,8 @@ class AttendenceScreen extends React.Component {
                 CheckIn_Lon: this.props?.user?.checkIn?.CheckIn_Lon.toString(),
                 CheckOut_Lat: lat.toString(),
                 CheckOut_Lon: long.toString(),
-                Working_Hours: "10"}
-        alert(JSON.stringify(this.state.checkOut_time))
-            this.props.attendance(data).then(res=>{
+                Working_Hours: (parseFloat(this.state.checkOutTime).toFixed(2))-(parseFloat(this.props?.user?.checkIn?.Time).toFixed(2))}
+        this.props.attendance(data).then(res=>{
                 if(res){
                     this.setState({loading:false})
                     this.props.navigation.pop()
