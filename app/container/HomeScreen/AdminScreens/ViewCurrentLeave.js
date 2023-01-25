@@ -215,7 +215,7 @@ class ViewCurrentLeave extends React.Component {
                                     }}>
                                         <AntDesign name={"close"} size={30} color={"#fff"}/>
                                     </TouchableOpacity>
-                                    <TextInput value={this.state.Notes} onChangeText={(text)=>{this.setState({Notes:text})}} numberOfLines={3} placeholder={"Write Notes..."} placeholderTextColor={colors.blackAndWhite} style={{textAlignVertical:"top",borderColor:colors.blackAndWhite,fontSize:18,borderRadius:20,borderWidth:0.5,padding:7,paddingTop:10,color:colors.blackAndWhite,marginVertical:10}}>
+                                    <TextInput value={this.state.Notes} onChangeText={(text)=>{this.setState({Notes:text})}} multiline={true} numberOfLines={3} placeholder={"Write Notes..."} placeholderTextColor={colors.blackAndWhite} style={{textAlignVertical:"top",borderColor:colors.blackAndWhite,fontSize:18,borderRadius:20,borderWidth:0.5,padding:7,paddingTop:10,color:colors.blackAndWhite,marginVertical:10}}>
                                     </TextInput>
 
                                     <ButtonComponent onPress={() => {
@@ -268,7 +268,7 @@ class ViewCurrentLeave extends React.Component {
                                         <AntDesign name={"close"} size={30} color={"#fff"}/>
                                     </TouchableOpacity>
 
-                                    <TextInput value={this.state.Notes} onChangeText={(text)=>{this.setState({Notes:text})}} numberOfLines={3} placeholder={"Write Notes..."} placeholderTextColor={colors.blackAndWhite} style={{textAlignVertical:"top",borderColor:colors.blackAndWhite,fontSize:18,borderRadius:20,borderWidth:0.5,padding:7,paddingTop:10,color:colors.blackAndWhite,marginVertical:10}}>
+                                    <TextInput value={this.state.Notes} onChangeText={(text)=>{this.setState({Notes:text})}} multiline={true} numberOfLines={3} placeholder={"Write Notes..."} placeholderTextColor={colors.blackAndWhite} style={{textAlignVertical:"top",borderColor:colors.blackAndWhite,fontSize:18,borderRadius:20,borderWidth:0.5,padding:7,paddingTop:10,color:colors.blackAndWhite,marginVertical:10}}>
                                     </TextInput>
 
                                     <ButtonComponent onPress={() => {

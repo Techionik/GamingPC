@@ -74,7 +74,7 @@ class BreakTimeScreen extends React.Component {
                     <TouchableComponent disabled={this.state.checkin} onPress={() => {
                         alert("Your break time is started now.")
                         this.setState({StartTime: moment(moment()).format("HH:MM"), time: "30"})
-                    }} title={"Start Time"} Icon={require('../../images/TimeIcon.png')}
+                    }} title={"Break In Time"} Icon={require('../../images/TimeIcon.png')}
                                         IconStyle={{tintColor: this.state.time == "30" ? "#fff" : colors.fieldTextColor}}
                                         titleStyle={{color: this.state.time == "30" ? "#fff" : colors.fieldTextColor}}
                                         Style={{backgroundColor: this.state.time == "30" ? Color.primary : colors.fieldBackgroundColor}}
@@ -83,7 +83,7 @@ class BreakTimeScreen extends React.Component {
                         alert("Your break time is over now.")
                         this.setState({EndTime: moment(moment()).format("HH:MM"), time: "60", submit: false})
                         this.brake()
-                    }} title={"End Time"} Icon={require('../../images/TimeIcon.png')}
+                    }} title={"Break Out Time"} Icon={require('../../images/TimeIcon.png')}
                                         IconStyle={{tintColor: this.state.time == "60" ? "#fff" : colors.fieldTextColor}}
                                         titleStyle={{color: this.state.time == "60" ? "#fff" : colors.fieldTextColor}}
                                         Style={{backgroundColor: this.state.time == "60" ? Color.primary : colors.fieldBackgroundColor}}

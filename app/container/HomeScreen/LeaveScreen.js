@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+    ActivityIndicator,
     FlatList,
     Image,
     ImageBackground, ScrollView, Text, TouchableOpacity,
@@ -35,11 +36,24 @@ class LeaveScreen extends React.Component {
         super(props);
         this.state = {
             refreshData: false,
+            loading:false
         }
     }
 
     componentDidMount() {
-        this.GetLeaves()
+        this.setState({loading: true})
+        const data = {
+
+            Email: this.props?.userInfo?.Email
+        }
+        this.props.getUserLeaves(data).then(res => {
+            if (res) {
+                this.setState({loading: false})
+            }
+        }).catch(err => {
+            this.setState({loading: false})
+            alert("Some thing went wrong please try again")
+        })
     }
     GetLeaves() {
         this.setState({refreshData: true})
@@ -60,8 +74,12 @@ class LeaveScreen extends React.Component {
         const {t, language, themeColor} = this.props.value
         const {colors} = themeColor
         return (
-            <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
 
+            <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
+                {this.state.loading&&    <View style={{position:'absolute',top:0,bottom:0,left:0,right:0,zIndex:10,backgroundColor:'rgba(0,0,0,0.5)',justifyContent:"center",alignItems:"center"}}>
+                    <ActivityIndicator size={"large"} color={Color.primary}/>
+
+                </View>}
                 <HeaderWihBackground isBack={true} title={"Leaves"} colors={colors} Props={this.props.value}/>
 
                 <View style={{flex: 1, paddingHorizontal: 10, paddingTop: 20,}}>

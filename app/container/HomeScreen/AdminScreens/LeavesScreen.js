@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+    ActivityIndicator,
     FlatList,
     Image,
     ImageBackground, ScrollView, Text, TouchableOpacity,
@@ -34,17 +35,18 @@ class LeavesScreen extends React.Component {
         this.state = {
             Leaves: [],
             refreshData: false,
+            loading:false
         }
     }
 
     componentDidMount() {
-        this.setState({refreshData: true})
+        this.setState({loading: true})
 
         this.props.getLeaves().then((res) => {
             this.setState({Leaves: res?.Result})
-            this.setState({refreshData: false})
+            this.setState({loading: false})
         }).catch((err) => {
-            this.setState({refreshData: false})
+            this.setState({loading: false})
             alert("Something went wrong please try again")
         })
     }
@@ -68,7 +70,10 @@ class LeavesScreen extends React.Component {
         const {colors} = themeColor
         return (
             <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
+                {this.state.loading&&    <View style={{position:'absolute',top:0,bottom:0,left:0,right:0,zIndex:10,backgroundColor:'rgba(0,0,0,0.5)',justifyContent:"center",alignItems:"center"}}>
+                    <ActivityIndicator size={"large"} color={Color.primary}/>
 
+                </View>}
                 <HeaderWihBackground isBack={true} title={"Leaves"} colors={colors} Props={this.props.value}/>
 
                 <View style={{flex: 1, paddingHorizontal: 10, paddingTop: 20,}}>
@@ -85,7 +90,7 @@ class LeavesScreen extends React.Component {
                     <View>
                     <FlatList  contentContainerStyle={{flex:1}} refreshing={this.state.refreshData} onRefresh={() => {
                         this.getFreshLeaves()
-                    }} showsVerticalScrollIndicator={false} data={this.state.Leaves}
+                    }}  showsVerticalScrollIndicator={false} data={this.state.Leaves}
                               renderItem={({item, index}) =>
                                   item.Statuss=="Accept"?
                                   <LeaveComponent colors={colors} item={item}/>:null
@@ -93,9 +98,9 @@ class LeavesScreen extends React.Component {
                     </View>
                     {this.state.Leaves.filter(item=>item.Statuss==="Reject")[0]?<Text style={{fontSize: 18, color: colors.blackAndWhite}}>Rejected Leaves</Text>:null}
                     <View>
-                        <FlatList  contentContainerStyle={{flex:1}} refreshing={this.state.refreshData} onRefresh={() => {
+                        <FlatList  contentContainerStyle={{flex:1}}   showsVerticalScrollIndicator={false} data={this.state.Leaves} refreshing={this.state.refreshData} onRefresh={() => {
                             this.getFreshLeaves()
-                        }} showsVerticalScrollIndicator={false} data={this.state.Leaves}
+                        }}
                                    renderItem={({item, index}) =>
                                        item.Statuss==="Reject"?
                                            <LeaveComponent colors={colors} item={item}/>:null
