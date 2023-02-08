@@ -33,6 +33,8 @@ import ViewCurrentLeave from "../container/HomeScreen/AdminScreens/ViewCurrentLe
 import AddNewPassword from "../container/AuthenticationScreens/AddNewPassword";
 import SendLeaveScreen from "../container/HomeScreen/SendLeaveScreen";
 import UpdatePasswordScreen from "../container/HomeScreen/UpdatePasswordScreen";
+import ComplainsScreen from "../container/HomeScreen/AdminScreens/ComplainsScreen";
+import ViewCurrentComplain from "../container/HomeScreen/AdminScreens/ViewCurrentComplain";
 
 
 
@@ -69,6 +71,8 @@ const AppStack = ({}) => {
             <Stack.Screen name={"SendLeaveScreen"} component={SendLeaveScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"SignupScreen"} component={SignupScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"UpdatePasswordScreen"} component={UpdatePasswordScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"ComplainsScreen"} component={ComplainsScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"ViewCurrentComplain"} component={ViewCurrentComplain} options={{headerShown: false}}/>
         </Stack.Navigator>
     )
 }

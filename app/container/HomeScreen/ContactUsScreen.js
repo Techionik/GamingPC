@@ -11,15 +11,54 @@ import {Color, Constants} from "../../common";
 
 import ButtonComponent from "../Components/ButtonComponent";
 import ProfileFieldComponent from "../Components/ProfileFieldComponent";
+import {connect} from "react-redux";
+import {getComplains, PostComplain} from "../../redux/user/operations";
+import moment from "moment";
+
+const mapStateToProps = ({app, user}) => ({
+    app,
+    user,
+    userInfo: user?.userInfo,
+
+});
 
 
+@connect(
+    mapStateToProps,
+    {PostComplain},
+)
 
 class ContactUsScreen extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            message:""
+        }
     }
+    validation(){
+        if(this.state.message===""){
+            alert(JSON.stringify("Please Enter Message"))
+        }else {
+            const data={
+                Email:this.props?.user?.userInfo?.Email,
+                Name:this.props?.user?.userInfo?.Full_Name,
+                Complain_ID:moment(),
+                Complain:this.state.message,
+                Designation:this.props?.user?.userInfo?.Designation,
+                Statuss:"Pending"
+            }
+           this.props.PostComplain(data).then(res=>{
+               if(res.ResultMessage[0].MessageType==="SUCCESS"){
+                   alert(JSON.stringify(res.ResultMessage[0].Message))
+                  this.props.navigation.pop()
+               }else {
 
+               }
+           }).catch(err=>{
+               alert("Something went wrong please try again")
+           })
+        }
+    }
     render() {
         const {t, language, themeColor} = this.props.value
         const {colors} = themeColor
@@ -42,13 +81,13 @@ class ContactUsScreen extends React.Component {
                         <Text style={{color:"#fff",fontSize:12,fontFamily:Constants.fontFamilyMedium}}>{t("L:HelpText")}</Text>
                     </View>
                     <View style={{paddingHorizontal:20}}>
-                  <ProfileFieldComponent title={t("L:Name")} placeholder={"Mudassir"} colors={colors}/>
-                  <ProfileFieldComponent title={t("L:Email")} placeholder={"Mudassir@gmail.com"} colors={colors}/>
-                  <ProfileFieldComponent title={t("L:Message")} placeholder={"Hey I just wanted to say that I’m new on Ahla and I’m just loving your services."} colors={colors}/>
+                  <ProfileFieldComponent disable={true} title={t("L:Name")} value={this.props?.user?.userInfo?.Full_Name} placeholder={"Mudassir"} colors={colors}/>
+                  <ProfileFieldComponent disable={true} title={t("L:Email")} value={this.props?.user?.userInfo?.Email} placeholder={"Mudassir@gmail.com"} colors={colors}/>
+                  <ProfileFieldComponent title={t("L:Message")} value={this.state.message} onChangeText={(text)=>{this.setState({message:text})}} placeholder={"Please Enter Your Complain here!"} colors={colors}/>
                     </View>
                 </View>
                 </View>
-                <ButtonComponent Style={{marginBottom:20}} title={t("L:Submit")}/>
+                <ButtonComponent onPress={()=>{this.validation()}} Style={{marginBottom:20}} title={t("L:Submit")}/>
             </View>
 
         );

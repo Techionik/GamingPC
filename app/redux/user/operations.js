@@ -56,6 +56,98 @@ export const getUserLeaves = (data) => (dispatch) => {
 };
 
 
+export const getComplains = (data) => (dispatch) => {
+    try {
+        dispatch(actions.loginPending());
+        return RestApi.getInstanceV2().post('/getcomplains', data)
+            .then((json) => {
+                data = json.data.Result
+                return data;
+            })
+            .catch((err) => {
+                alert(JSON.stringify(err))
+                dispatch(actions.loginFailure(""));
+                return undefined;
+            });
+    } catch (error) {
+        apiError(error)
+        dispatch(actions.loginFailure(error));
+        return undefined;
+    }
+};
+
+export const AcceptComplain = (data) => (dispatch) => {
+    try {
+        dispatch(actions.loginPending());
+        return RestApi.getInstanceV2().patch('/updatecomplain', data)
+            .then((json) => {
+                data = json.data
+
+                if(data.HasError){
+                 alert("Something Went Wrong Please Try again")
+                }else {
+                    alert(JSON.stringify(data.ResultMessage[0].Message))
+                    return data;
+                }
+
+            })
+            .catch((err) => {
+                alert(JSON.stringify(err))
+                dispatch(actions.loginFailure(""));
+                return undefined;
+            });
+    } catch (error) {
+        apiError(error)
+        dispatch(actions.loginFailure(error));
+        return undefined;
+    }
+};
+export const RejectComplain = (data) => (dispatch) => {
+    try {
+        dispatch(actions.loginPending());
+        return RestApi.getInstanceV2().patch('/updatecomplain', data)
+            .then((json) => {
+                data = json.data
+
+                if(data.HasError){
+                    alert("Something Went Wrong Please Try again")
+                }else {
+                    alert(JSON.stringify(data.ResultMessage[0].Message))
+                    return data;
+                }
+
+            })
+            .catch((err) => {
+                alert(JSON.stringify(err))
+                dispatch(actions.loginFailure(""));
+                return undefined;
+            });
+    } catch (error) {
+        apiError(error)
+        dispatch(actions.loginFailure(error));
+        return undefined;
+    }
+};
+export const PostComplain = (data) => (dispatch) => {
+    try {
+        dispatch(actions.loginPending());
+        return RestApi.getInstanceV2().post('/registercomplain', data)
+            .then((json) => {
+                data = json.data
+                return data;
+            })
+            .catch((err) => {
+                alert(JSON.stringify(err))
+                dispatch(actions.loginFailure(""));
+                return undefined;
+            });
+    } catch (error) {
+        apiError(error)
+        dispatch(actions.loginFailure(error));
+        return undefined;
+    }
+};
+
 export const forgetPassword = (data) => (dispatch) => {
 
     try {

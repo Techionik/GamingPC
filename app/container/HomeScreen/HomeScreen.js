@@ -70,15 +70,27 @@ class HomeScreen extends React.Component {
                             </> : this.props?.user?.userInfo?.Role === "Admin" ?
                                 <>
                                     <ButtonComponent onPress={() => {
+                                        this.props.navigation.navigate("AttendenceScreen")
+                                    }} title={"Attendance"}/>
+                                    <ButtonComponent onPress={() => {
+                                        this.props.navigation.navigate("BreakTimeScreen")
+                                    }} title={"Break"}/>
+                                    <ButtonComponent onPress={() => {
+                                        this.props.navigation.navigate("LeaveScreen")
+                                    }} title={"Leave"}/>
+                                    <ButtonComponent onPress={() => {
                                         this.props.navigation.navigate("LeavesScreen")
-                                    }} title={"Leaves"}/>
+                                    }} title={"Employ Leaves"}/>
 
                                 </> :this.props?.user?.userInfo?.Role === "Super Admin" ?
 
                                 <>
                                     <ButtonComponent onPress={() => {
                                         this.props.navigation.navigate("LeavesScreen")
-                                    }} title={"Leaves"}/>
+                                    }} title={"Employ Leaves"}/>
+                                    <ButtonComponent onPress={() => {
+                                        this.props.navigation.navigate("ComplainsScreen")
+                                    }} title={"Complains"}/>
 
                                     <ButtonComponent onPress={() => {
                                         this.props.navigation.navigate("PayRoleScreen")

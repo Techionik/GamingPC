@@ -14,8 +14,9 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 import HeaderWihBackground from "../../Components/HeaderWihBackground";
 import PayRoleComponent from "../../Components/PayRoleComponent";
 import LeaveComponent from "../../Components/LeaveComponent";
-import {getData, getLeaves} from "../../../redux/user/operations";
+import {getComplains} from "../../../redux/user/operations";
 import {connect} from "react-redux";
+import ComplainComponent from "../../Components/ComplainComponent";
 
 const mapStateToProps = ({app, user}) => ({
     app,
@@ -27,13 +28,13 @@ const mapStateToProps = ({app, user}) => ({
 
 @connect(
     mapStateToProps,
-    {getLeaves},
+    {getComplains},
 )
-class LeavesScreen extends React.Component {
+class ComplainsScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            Leaves: [],
+            Complains: [],
             refreshData: false,
             loading:false
         }
@@ -41,9 +42,11 @@ class LeavesScreen extends React.Component {
 
     componentDidMount() {
         this.setState({loading: true})
-
-        this.props.getLeaves().then((res) => {
-            this.setState({Leaves: res?.Result})
+        const obj = {
+            Complain_ID: ""
+        }
+        this.props.getComplains(obj).then((res) => {
+            this.setState({Complains: res})
             this.setState({loading: false})
         }).catch((err) => {
             this.setState({loading: false})
@@ -51,13 +54,13 @@ class LeavesScreen extends React.Component {
         })
     }
 
-    getFreshLeaves() {
+    getFreshData() {
         this.setState({refreshData: true})
         const obj = {
-            Date: ""
+            Complain_ID: ""
         }
-        this.props.getLeaves(obj).then((res) => {
-            this.setState({Leaves: res?.Result})
+        this.props.getComplains(obj).then((res) => {
+            this.setState({Complains: res})
             this.setState({refreshData: false})
         }).catch((err) => {
             this.setState({refreshData: false})
@@ -74,36 +77,34 @@ class LeavesScreen extends React.Component {
                     <ActivityIndicator size={"large"} color={Color.primary}/>
 
                 </View>}
-                <HeaderWihBackground isBack={true} title={"Leaves"} colors={colors} Props={this.props.value}/>
-
+                <HeaderWihBackground isBack={true} title={"Complains"} colors={colors} Props={this.props.value}/>
                 <ScrollView contentContainerStyle={{paddingBottom:20}}  style={{flex: 1, paddingHorizontal: 10, paddingTop: 20,}}>
                     <View>
                         <FlatList  contentContainerStyle={{flex:1}} refreshing={this.state.refreshData} onRefresh={() => {
-                            this.getFreshLeaves()
-                        }} showsVerticalScrollIndicator={false} data={this.state.Leaves}
+                            this.getFreshData()
+                        }} showsVerticalScrollIndicator={false} data={this.state.Complains}
                                    renderItem={({item, index}) =>
-                                       item.Statuss=="Pending"?
-                                           <LeaveComponent colors={colors} item={item}/>:null
+                                       item.Statuss==="Pending"?
+                                           <ComplainComponent colors={colors} item={item}/>:null
                                    }/>
                     </View>
-                    {this.state.Leaves.filter(item=>item.Statuss==="Accept")[0]?<Text style={{fontSize: 18, color: colors.blackAndWhite}}>Accepted Leaves</Text>:false}
+                    {this.state.Complains.filter(item=>item.Statuss==="Accepted")[0]?<Text style={{fontSize: 18, color: colors.blackAndWhite}}>Accepted Complains</Text>:false}
                     <View>
-                    <FlatList  contentContainerStyle={{flex:1}} refreshing={this.state.refreshData} onRefresh={() => {
-                        this.getFreshLeaves()
-                    }}  showsVerticalScrollIndicator={false} data={this.state.Leaves}
-                              renderItem={({item, index}) =>
-                                  item.Statuss=="Accept"?
-                                  <LeaveComponent colors={colors} item={item}/>:null
-                              }/>
-                    </View>
-                    {this.state.Leaves.filter(item=>item.Statuss==="Reject")[0]?<Text style={{fontSize: 18, color: colors.blackAndWhite}}>Rejected Leaves</Text>:null}
-                    <View>
-                        <FlatList  contentContainerStyle={{flex:1}}   showsVerticalScrollIndicator={false} data={this.state.Leaves} refreshing={this.state.refreshData} onRefresh={() => {
-                            this.getFreshLeaves()
-                        }}
+                        <FlatList  contentContainerStyle={{flex:1}} refreshing={this.state.refreshData} onRefresh={() => {
+                            this.getFreshData()
+                        }}  showsVerticalScrollIndicator={false} data={this.state.Complains}
                                    renderItem={({item, index}) =>
-                                       item.Statuss==="Reject"?
-                                           <LeaveComponent colors={colors} item={item}/>:null
+                                       item.Statuss==="Accepted"?
+                                           <ComplainComponent colors={colors} item={item}/>:null
+                                   }/>
+                    </View>
+                    {this.state.Complains.filter(item=>item.Statuss==="Rejected")[0]?<Text style={{fontSize: 18, color: colors.blackAndWhite}}>Rejected Complains</Text>:null}
+                    <View>
+                        <FlatList  contentContainerStyle={{flex:1}}   showsVerticalScrollIndicator={false} data={this.state.Complains} refreshing={this.state.refreshData} onRefresh={() => {
+                            this.getFreshData()
+                        }} renderItem={({item, index}) =>
+                                       item.Statuss==="Rejected"?
+                                           <ComplainComponent colors={colors} item={item}/>:null
                                    }/>
                     </View>
                 </ScrollView>
@@ -114,4 +115,4 @@ class LeavesScreen extends React.Component {
     }
 }
 
-export default withLanguage(LeavesScreen)
+export default withLanguage(ComplainsScreen)
