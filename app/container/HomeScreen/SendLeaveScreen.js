@@ -42,7 +42,7 @@ class SendLeaveScreen extends React.Component {
             selectedOption: "Chose Leave Type",
             date:"" ,
             StartDatePicker: false,
-            startDate: moment().format("DD/mm/yyyy"),
+            startDate: moment(moment()).format("DD/MM/YYYY"),
             endDate: "",
             Option: "",
             discription:"",
@@ -51,6 +51,8 @@ class SendLeaveScreen extends React.Component {
         }
 
     }
+
+
 
     GetLeaves() {
         this.setState({refreshData: true})
@@ -94,7 +96,6 @@ class SendLeaveScreen extends React.Component {
             }
             console.log(JSON.stringify(data))
             this.setState({loading:true})
-
             this.props.sendleave(data).then(res=>{
 
                 if(res){
