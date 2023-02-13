@@ -51,9 +51,6 @@ class SendLeaveScreen extends React.Component {
         }
 
     }
-
-
-
     GetLeaves() {
         this.setState({refreshData: true})
         const data = {
@@ -63,7 +60,6 @@ class SendLeaveScreen extends React.Component {
             if (res) {
                 this.setState({refreshData: false})
                 this.setState({Leaves: res})
-
             }
         }).catch(err => {
             this.setState({refreshData: false})
@@ -76,7 +72,6 @@ class SendLeaveScreen extends React.Component {
         }
         else if (this.state.endDate==""){
             alert("please insert end date")
-
         }
         else if(this.state.discription==""){
             alert("please insert discription")
@@ -97,7 +92,6 @@ class SendLeaveScreen extends React.Component {
             console.log(JSON.stringify(data))
             this.setState({loading:true})
             this.props.sendleave(data).then(res=>{
-
                 if(res){
                     this.GetLeaves()
                     this.setState({loading:false})
@@ -108,9 +102,7 @@ class SendLeaveScreen extends React.Component {
             }).catch(err=>{
                 this.setState({loading:false})
                 alert("Some thing went wrong please try again")
-            })
-
-        }
+            })}
     }
 
     render() {
@@ -118,16 +110,13 @@ class SendLeaveScreen extends React.Component {
         const {colors} = themeColor
         return (
             <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
-
                 <HeaderWihBackground isBack={true} title={"Leave"} colors={colors} Props={this.props.value}/>
-
                 <ScrollView contentContainerStyle={{flexGrow: 1, paddingHorizontal: 15, marginBottom: 20}}>
                     <Image source={require('../../images/WaterMark.png')} style={{aspectRatio:0.9,marginVertical:10,alignSelf:"center",height:undefined,width:"70%"}}/>
                     <TouchableComponent onPress={() => {
                         this.setState({visibleDatePicker: true, Option: "StartDate"})
                     }} theme={colors} title={this.state.startDate ? this.state.startDate : "Start Date"}
                                         IconStyle={{width: "6%"}} Icon={require('../../images/calendar.png')}/>
-
                     <TouchableComponent onPress={() => {
                         this.setState({visibleDatePicker: true, Option: "End Date"})
                     }} theme={colors} title={this.state.endDate ? this.state.endDate : "End Date"}

@@ -67,6 +67,9 @@ class HomeScreen extends React.Component {
                                 <ButtonComponent onPress={() => {
                                     this.props.navigation.navigate("LeaveScreen")
                                 }} title={"Leave"}/>
+                                <ButtonComponent onPress={() => {
+                                    this.props.navigation.navigate("EmployComplainsScreen")
+                                }} title={"Complains"}/>
                             </> : this.props?.user?.userInfo?.Role === "Admin" ?
                                 <>
                                     <ButtonComponent onPress={() => {

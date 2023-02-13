@@ -122,7 +122,6 @@ class AttendenceScreen extends React.Component {
               this.setState({checkOut_time:moment().format("DD/MM/YYYY")+"/"+moment().format("hh:mm:ss"),checkOutTime:moment().format("hh.mm")})
           )
   }
-
     checkOut(lat,long){
       this.checkOutTime()
         const WorkingHours=(parseFloat(this.state.checkOutTime).toFixed(2))-(parseFloat(this.props?.user?.checkIn?.Time).toFixed(2))

@@ -39,7 +39,7 @@ export const getUserLeaves = (data) => (dispatch) => {
         dispatch(actions.loginPending());
         return RestApi.getInstanceV2().post('/getuserleaves', data)
             .then((json) => {
-                data = json.data
+                data = json.data?.Result
                 dispatch(actions.getLeaves(data))
                 return data;
             })
@@ -60,6 +60,27 @@ export const getComplains = (data) => (dispatch) => {
     try {
         dispatch(actions.loginPending());
         return RestApi.getInstanceV2().post('/getcomplains', data)
+            .then((json) => {
+                data = json.data.Result
+                return data;
+            })
+            .catch((err) => {
+                alert(JSON.stringify(err))
+                dispatch(actions.loginFailure(""));
+                return undefined;
+            });
+    } catch (error) {
+        apiError(error)
+        dispatch(actions.loginFailure(error));
+        return undefined;
+    }
+};
+
+
+export const getEmployComplains = (data) => (dispatch) => {
+    try {
+        dispatch(actions.loginPending());
+        return RestApi.getInstanceV2().post('/getusercomplains', data)
             .then((json) => {
                 data = json.data.Result
                 return data;

@@ -5,7 +5,7 @@ import {useNavigation} from "@react-navigation/native";
 import email from 'react-native-email'
 
 
-export default function ComplainComponent({Style, item, colors}) {
+export default function ComplainComponent({Style,disabled, item, colors}) {
     const navigation = useNavigation()
     const handleEmail = () => {
         const to = "mubasharmasood30@gmail.com" // string or array of email addresses
@@ -19,7 +19,7 @@ export default function ComplainComponent({Style, item, colors}) {
         }).catch(console.error)
     }
     return (
-        <TouchableOpacity onPress={() => {
+        <TouchableOpacity disabled={disabled?disabled:false} onPress={() => {
             navigation.navigate("ViewCurrentComplain", {data: item})
         }} style={{
             flexDirection: 'row',
