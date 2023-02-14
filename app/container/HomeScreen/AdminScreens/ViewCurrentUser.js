@@ -61,7 +61,7 @@ class ViewCurrentUser extends React.Component {
 
                 <HeaderWihBackground isBack={true} title={"User Profile"} colors={colors} Props={this.props.value}/>
                  <View style={{flex:1}}>
-                <ScrollView contentContainerStyle={{paddingBottom:20,flex:1}} style={{ paddingHorizontal: 10, paddingTop: 20,}}>
+                <ScrollView contentContainerStyle={{paddingBottom:20,}} style={{ paddingHorizontal: 10, paddingTop: 20,}}>
 
                     <View style={{
                         borderRadius: 15,
@@ -131,15 +131,50 @@ class ViewCurrentUser extends React.Component {
                         paddingVertical: 15,
                         paddingHorizontal: 20
                     }}>
-                        <LeaveViewComponent disable={true} profile={true} title={"ID Card Number"}
+                        <LeaveViewComponent disable={true} profile={true} title={"ID_Card"}
                                             placeholder={data?.ID_Card} colors={colors}/>
                     </View>
 
 
+                    <View style={{
+                        borderRadius: 15,
+                        backgroundColor: colors.fieldBackgroundColor,
+                        marginBottom: 10,
+                        paddingVertical: 15,
+                        paddingHorizontal: 20
+                    }}>
+                        <LeaveViewComponent disable={true} profile={true} title={"Phone Number"}
+                                            placeholder={data?.Phone} colors={colors}/>
+                    </View>
+                    <View style={{
+                        borderRadius: 15,
+                        backgroundColor: colors.fieldBackgroundColor,
+                        marginBottom: 10,
+                        paddingVertical: 15,
+                        paddingHorizontal: 20
+                    }}>
+                        <LeaveViewComponent disable={true} profile={true} title={"Shift"}
+                                            placeholder={data?.Shift} colors={colors}/>
+                    </View>
 
-                    <View style={{flex: 1}}/>
-                    <ButtonComponent title={"Edit"} onPress={()=>{this.props.navigation.navigate("EditProfile",{data:data})}}/>
+                    <View style={{
+                        borderRadius: 15,
+                        backgroundColor: colors.fieldBackgroundColor,
+                        marginBottom: 10,
+                        paddingVertical: 15,
+                        paddingHorizontal: 20
+                    }}>
+                        <LeaveViewComponent disable={true} profile={true} title={"Role"}
+                                            placeholder={data?.Rolee} colors={colors}/>
+                    </View>
+
+
+
+
+
                 </ScrollView>
+
+                     <ButtonComponent title={"Edit"} onPress={()=>{this.props.navigation.navigate("EditProfileScreen",{Data:data})}}/>
                  </View>
             </View>
 

@@ -75,7 +75,7 @@ class ProfileScreen extends React.Component {
                             fontFamily: Constants.fontFamilyMedium,
                             alignSelf: "center",
                             color: colors.greyToWhite
-                        }}>Address not provided yet</Text>
+                        }}>{this.props?.userInfo?.Address}</Text>
                     </View>
 
                     <View style={{
@@ -87,9 +87,14 @@ class ProfileScreen extends React.Component {
                     }}>
                         <RowComponent   colors={colors} title1={"First Name"}  title2={this.props?.userInfo?.Full_Name.split(" ")[0]}/>
                         <RowComponent colors={colors} title1={"Last Name"} title2={this.props?.userInfo?.Full_Name.split(" ")[1]}/>
-                        <RowComponent colors={colors} title1={"Role"} title2={this.props?.userInfo?.Designation}/>
-                        <RowComponent colors={colors} title1={"Shift Time"} title2={"2 pm - 11 pm"}/>
+                        <RowComponent colors={colors} title1={"Designation"} title2={this.props?.userInfo?.Designation}/>
+                        <RowComponent colors={colors} title1={"Shift Time"} title2={this.props?.userInfo?.Shift}/>
+                        <RowComponent colors={colors} title1={"ID_Card"}    title2={this.props?.userInfo?.ID_Card}/>
                         <RowComponent colors={colors} title1={t("L:EmailAddress")}    title2={this.props?.userInfo?.Email}/>
+                        <RowComponent colors={colors} title1={"Phone Number"}    title2={this.props?.userInfo?.Phone}/>
+                        <RowComponent colors={colors} title1={"Pay"}    title2={this.props?.userInfo?.Pay}/>
+
+
                     </View>
                 </ScrollView>
 

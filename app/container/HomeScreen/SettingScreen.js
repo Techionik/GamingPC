@@ -89,7 +89,8 @@ class SettingScreen extends React.Component {
                         }} Props={this.props.value} style={{marginBottom: 10}} title={t("L:DarkMode")} toogle={true}
                                            colors={colors}/>
                         <SettingsComponent Props={this.props.value} onPress={() => {this.props.navigation.navigate("UpdatePasswordScreen")}}  style={{marginBottom: 10}} title={"Update Password"} colors={colors}/>
-                        <SettingsComponent Props={this.props.value} onPress={() => {this.props.navigation.navigate("AllUserScreen")}}  style={{marginBottom: 10}} title={"Update Employee"} colors={colors}/>
+                        {this.props?.user?.userInfo?.Rolee === "Employee" &&this.props?.user?.userInfo?.Rolee === "Employee"?null:
+                        <SettingsComponent Props={this.props.value} onPress={() => {this.props.navigation.navigate("AllUserScreen")}}  style={{marginBottom: 10}} title={"Update Employee"} colors={colors}/>}
                         <SettingsComponent Props={this.props.value}  style={{marginBottom: 10}} title={t("L:PrivacyPolicy")} colors={colors}/>
                         <SettingsComponent Props={this.props.value}  style={{marginBottom: 10}} title={t("L:TermsandConditions")} colors={colors}/>
                         <SettingsComponent Props={this.props.value} onPress={() => {
