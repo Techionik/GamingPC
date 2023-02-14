@@ -63,6 +63,7 @@ class AttendenceScreen extends React.Component {
                 }
                 this.props.CheckInData(data)
                 alert(JSON.stringify("You are check in Successfully"))
+                this.props.navigation.pop()
                 this.setState({checkin:true})
                 })
             .catch(ex => {

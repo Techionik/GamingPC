@@ -119,7 +119,7 @@ class ViewCurrentComplain extends React.Component {
                         paddingVertical: 15,
                         paddingHorizontal: 20
                     }}>
-                        <LeaveViewComponent disable={true} profile={true} title={"Name"} placeholder={data?.Name}
+                        <LeaveViewComponent disable={true} profile={true} title={"Name"} placeholder={data?.Full_Name}
                                             colors={colors}/>
                     </View>
 
