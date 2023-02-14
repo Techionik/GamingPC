@@ -75,6 +75,30 @@ export const getComplains = (data) => (dispatch) => {
         return undefined;
     }
 };
+export const getAllEmployees = (data) => (dispatch) => {
+    try {
+        dispatch(actions.loginPending());
+        return RestApi.getInstanceV2().get('/getall')
+            .then((json) => {
+                data = json.data
+                if (data.HasError == false) {
+                    return data.Result;
+                } else {
+                    alert(JSON.stringify(data.ResultMessage[0].Message))
+                    return undefined;
+                }
+            })
+            .catch((err) => {
+                alert(JSON.stringify(err))
+                dispatch(actions.loginFailure(""));
+                return undefined;
+            });
+    } catch (error) {
+        apiError(error)
+        dispatch(actions.loginFailure(error));
+        return undefined;
+    }
+};
 
 
 export const getEmployComplains = (data) => (dispatch) => {

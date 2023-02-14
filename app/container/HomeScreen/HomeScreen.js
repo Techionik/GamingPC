@@ -56,7 +56,7 @@ class HomeScreen extends React.Component {
                         <Image source={require('../../images/WaterMark.png')}
                                style={{aspectRatio: 0.9, marginTop: 10, height: undefined, width: "100%"}}/>
 
-                        {this.props?.user?.userInfo?.Role === "Employee" ?
+                        {this.props?.user?.userInfo?.Rolee === "Employee" ?
                             <>
                                 <ButtonComponent onPress={() => {
                                     this.props.navigation.navigate("AttendenceScreen")
@@ -70,7 +70,7 @@ class HomeScreen extends React.Component {
                                 <ButtonComponent onPress={() => {
                                     this.props.navigation.navigate("EmployComplainsScreen")
                                 }} title={"Complains"}/>
-                            </> : this.props?.user?.userInfo?.Role === "Admin" ?
+                            </> : this.props?.user?.userInfo?.Rolee === "Admin" ?
                                 <>
                                     <ButtonComponent onPress={() => {
                                         this.props.navigation.navigate("AttendenceScreen")
@@ -85,7 +85,7 @@ class HomeScreen extends React.Component {
                                         this.props.navigation.navigate("LeavesScreen")
                                     }} title={"Employ Leaves"}/>
 
-                                </> :this.props?.user?.userInfo?.Role === "Super Admin" ?
+                                </> :this.props?.user?.userInfo?.Rolee === "Super Admin" ?
 
                                 <>
                                     <ButtonComponent onPress={() => {

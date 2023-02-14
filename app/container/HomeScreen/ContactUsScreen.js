@@ -41,7 +41,7 @@ class ContactUsScreen extends React.Component {
         }else {
             const data={
                 Email:this.props?.user?.userInfo?.Email,
-                Name:this.props?.user?.userInfo?.Full_Name,
+                Full_Name:this.props?.user?.userInfo?.Full_Name,
                 Complain_ID:moment(),
                 Complain:this.state.message,
                 Designation:this.props?.user?.userInfo?.Designation,

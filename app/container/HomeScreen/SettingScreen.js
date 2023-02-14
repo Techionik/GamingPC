@@ -89,12 +89,12 @@ class SettingScreen extends React.Component {
                         }} Props={this.props.value} style={{marginBottom: 10}} title={t("L:DarkMode")} toogle={true}
                                            colors={colors}/>
                         <SettingsComponent Props={this.props.value} onPress={() => {this.props.navigation.navigate("UpdatePasswordScreen")}}  style={{marginBottom: 10}} title={"Update Password"} colors={colors}/>
+                        <SettingsComponent Props={this.props.value} onPress={() => {this.props.navigation.navigate("AllUserScreen")}}  style={{marginBottom: 10}} title={"Update Employee"} colors={colors}/>
                         <SettingsComponent Props={this.props.value}  style={{marginBottom: 10}} title={t("L:PrivacyPolicy")} colors={colors}/>
                         <SettingsComponent Props={this.props.value}  style={{marginBottom: 10}} title={t("L:TermsandConditions")} colors={colors}/>
                         <SettingsComponent Props={this.props.value} onPress={() => {
                             this.props.navigation.navigate("ContactUsScreen")
-                        }} style={{marginBottom: 10}} title={t("L:Contact")} colors={colors}/>
-
+                        }} style={{marginBottom: 10}} title={"Support"} colors={colors}/>
                         <SettingsComponent Props={this.props.value} style={{marginBottom: 10}} title={t("L:Aboutus")} colors={colors}/>
                         <SettingsComponent onPress={()=>{this.props.logout();this.props.navigation.replace("SplashContainer")}} Props={this.props.value} title={t("L:Logout")} colors={colors}/>
 

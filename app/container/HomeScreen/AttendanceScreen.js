@@ -127,7 +127,7 @@ class AttendenceScreen extends React.Component {
         const WorkingHours=(parseFloat(this.state.checkOutTime).toFixed(2))-(parseFloat(this.props?.user?.checkIn?.Time).toFixed(2))
             const data={
                 ID: this.props?.user?.userInfo?.ID,
-                Name:this.props?.user?.userInfo?.Full_Name ,
+                Full_Name:this.props?.user?.userInfo?.Full_Name ,
                 Designation: this.props?.user?.userInfo?.Designation,
                 CheckIn: this.props?.user?.checkIn?.CheckInTime,
                 Break:this.props.brakeTime ,

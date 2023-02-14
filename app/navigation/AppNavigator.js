@@ -36,6 +36,8 @@ import UpdatePasswordScreen from "../container/HomeScreen/UpdatePasswordScreen";
 import ComplainsScreen from "../container/HomeScreen/AdminScreens/ComplainsScreen";
 import ViewCurrentComplain from "../container/HomeScreen/AdminScreens/ViewCurrentComplain";
 import EmployComplainsScreen from "../container/HomeScreen/EmployComplainsScreen";
+import AllUserScreen from "../container/HomeScreen/AdminScreens/AllUserScreen";
+import ViewCurrentUser from "../container/HomeScreen/AdminScreens/ViewCurrentUser";
 
 
 
@@ -75,6 +77,8 @@ const AppStack = ({}) => {
             <Stack.Screen name={"ComplainsScreen"} component={ComplainsScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"ViewCurrentComplain"} component={ViewCurrentComplain} options={{headerShown: false}}/>
             <Stack.Screen name={"EmployComplainsScreen"} component={EmployComplainsScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"AllUserScreen"} component={AllUserScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"ViewCurrentUser"} component={ViewCurrentUser} options={{headerShown: false}}/>
         </Stack.Navigator>
     )
 }
