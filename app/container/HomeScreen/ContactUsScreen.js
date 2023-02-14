@@ -81,8 +81,8 @@ class ContactUsScreen extends React.Component {
                         <Text style={{color:"#fff",fontSize:12,fontFamily:Constants.fontFamilyMedium}}>{t("L:HelpText")}</Text>
                     </View>
                     <View style={{paddingHorizontal:20}}>
-                  <ProfileFieldComponent disable={true} title={t("L:Name")} value={this.props?.user?.userInfo?.Full_Name} placeholder={"Mudassir"} colors={colors}/>
-                  <ProfileFieldComponent disable={true} title={t("L:Email")} value={this.props?.user?.userInfo?.Email} placeholder={"Mudassir@gmail.com"} colors={colors}/>
+                  <ProfileFieldComponent disable={true} title={t("L:Name")} value={this.props?.user?.userInfo?.Full_Name} placeholder={this.props?.userInfo?.Full_Name} colors={colors}/>
+                  <ProfileFieldComponent disable={true} title={t("L:Email")} value={this.props?.user?.userInfo?.Email} placeholder={this.props?.userInfo?.Email} colors={colors}/>
                   <ProfileFieldComponent title={t("L:Message")} value={this.state.message} onChangeText={(text)=>{this.setState({message:text})}} placeholder={"Please Enter Your Complain here!"} colors={colors}/>
                     </View>
                 </View>

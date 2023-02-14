@@ -90,7 +90,7 @@ class ProfileScreen extends React.Component {
                         <RowComponent colors={colors} title1={"Designation"} title2={this.props?.userInfo?.Designation}/>
                         <RowComponent colors={colors} title1={"Shift Time"} title2={this.props?.userInfo?.Shift}/>
                         <RowComponent colors={colors} title1={"ID_Card"}    title2={this.props?.userInfo?.ID_Card}/>
-                        <RowComponent colors={colors} title1={t("L:EmailAddress")}    title2={this.props?.userInfo?.Email}/>
+                        <RowComponent colors={colors} title1={"Email Address"}    title2={this.props?.userInfo?.Email}/>
                         <RowComponent colors={colors} title1={"Phone Number"}    title2={this.props?.userInfo?.Phone}/>
                         <RowComponent colors={colors} title1={"Pay"}    title2={this.props?.userInfo?.Pay}/>
 
