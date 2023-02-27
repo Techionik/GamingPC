@@ -82,7 +82,7 @@ class LeavesScreen extends React.Component {
                             this.getFreshLeaves()
                         }} showsVerticalScrollIndicator={false} data={this.state.Leaves}
                                    renderItem={({item, index}) =>
-                                       item.Statuss=="Pending"?
+                                       item.Statuss==="Pending"?
                                            <LeaveComponent colors={colors} item={item}/>:null
                                    }/>
                     </View>
@@ -92,7 +92,7 @@ class LeavesScreen extends React.Component {
                         this.getFreshLeaves()
                     }}  showsVerticalScrollIndicator={false} data={this.state.Leaves}
                               renderItem={({item, index}) =>
-                                  item.Statuss=="Accept"?
+                                  item.Statuss==="Accept"?
                                   <LeaveComponent colors={colors} item={item}/>:null
                               }/>
                     </View>
