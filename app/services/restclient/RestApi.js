@@ -8,7 +8,7 @@ export default class RestApi {
     static getInstanceV2() {
         if (this.instance == null) {
             this.instance = axios.create({
-                baseURL: 'https://arkifpqbll.execute-api.us-east-1.amazonaws.com/Attendence_App',
+                baseURL: 'https://rso1nn9u4i.execute-api.us-east-1.amazonaws.com/Attendence_App',
                 timeout: 50000,
                 headers: {
                     'Accept': 'application/json',

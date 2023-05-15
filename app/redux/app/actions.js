@@ -49,3 +49,18 @@ export const changeTheme = (value) => ({
   type: types.CHANGE_THEME,
   payload: value
 })
+
+
+export const addToast = (msg, key) => ({
+  type: types.ADD_TOAST,
+  payload: {
+    msg,
+    key
+  }
+})
+
+export const removeToast = (key) => ({
+  type: types.REMOVE_TOAST,
+  payload: {
+    key
+  }})

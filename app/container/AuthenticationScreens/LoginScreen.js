@@ -40,9 +40,9 @@ class LoginScreen extends React.Component {
 
     validation() {
         if (this.state.email == "") {
-            alert("Please enter your email")
+            toast("Please enter your email")
         } else if (this.state.password == "") {
-            alert("Please enter your password")
+            toast("Please enter your password")
 
         } else {
             this.setState({loading: true})
@@ -58,9 +58,8 @@ class LoginScreen extends React.Component {
                     this.setState({loading: false})
                 }
             }).catch(err => {
-
                 this.setState({loading: false})
-                alert("Some thing went wrong please try again")
+                toast("Some thing went wrong please try again")
             })
 
         }
@@ -74,30 +73,30 @@ class LoginScreen extends React.Component {
         return (
             <View
                 style={{flex: 1, backgroundColor: colors.screenBackgroundColor, paddingTop: 30, paddingHorizontal: 15}}>
-
-                <View style={{flex: 0.5, justifyContent: 'center'}}>
                     <Image style={{
                         height: undefined,
                         width: "100%",
+                        marginTop:20,
                         aspectRatio: 6.28,
                         alignSelf: 'center',
                     }} source={require('../../images/LoginLogo.png')}/>
-                </View>
+
 
                 <ScrollView contentContainerStyle={{flex: 1}} showsVerticalScrollIndicator={false}
                             style={{marginHorizontal: 5, flex: 1}}>
+                    <View style={{flex:1}}/>
                     <Text
                         style={{
-                            color: colors?.blackAndWhite,
+                            color: Color.primary,
                             fontFamily: Constants.fontFamilyBold,
-                            fontSize: 22
-                        }}>{t("Auth:Login")}</Text>
-                    <View style={{marginTop: 20}}>
+                            fontSize: 30
+                        }}>Login</Text>
+                    <View s>
                         <FieldComponent value={this.state.email} onChangeText={(text) => {
                             this.setState({email: text})
                         }} theme={colors} Icon={require('../../images/MailIcon.png')}
                                         Placeholder={t("Auth:EmailField")}/>
-                        <FieldComponent value={this.state.password} onChangeText={(text) => {
+                        <FieldComponent Style={{marginTop:20}}  value={this.state.password} onChangeText={(text) => {
                             this.setState({password: text})
                         }} theme={colors} secureTextEntry={true}
                                         Icon={require('../../images/PasswordIcon.png')}
@@ -113,7 +112,7 @@ class LoginScreen extends React.Component {
                         }}>{t("Auth:ForgetPassword")}</Text>
                         {this.state.loading ? <ActivityIndicator style={{alignSelf: "center"}} size={"large"}
                                                                  color={Color.theme_color}/> :
-                            <ButtonComponent onPress={() => {
+                            <ButtonComponent Style={{marginTop:20}} onPress={() => {
                                 this.validation()
                             }} title={t("Auth:Login")}/>}
                     </View>

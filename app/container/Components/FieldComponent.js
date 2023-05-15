@@ -8,10 +8,10 @@ export default function FieldComponent({Icon,multiline,theme,nolines, Placeholde
     return (
         <View style={[{
             flexDirection: "row",
-            borderRadius: 10,
+            borderRadius: 20,
             alignItems:"center",
             backgroundColor: theme?.fieldBackgroundColor,
-            paddingVertical: 10,
+            paddingVertical: 13,
             paddingLeft: 20,
             marginTop: 10
         }, Style]}>

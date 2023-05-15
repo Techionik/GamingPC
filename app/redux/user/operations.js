@@ -17,12 +17,12 @@ export const login = (data) => (dispatch) => {
                     dispatch(actions.loginSuccess(userData))
                     return data;
                 } else {
-                    alert(JSON.stringify(data.ResultMessage[0].Message))
+                    toast(JSON.stringify(data.ResultMessage[0].Message))
                     return undefined;
                 }
             })
             .catch((err) => {
-                alert(JSON.stringify(err))
+                toast(JSON.stringify(err))
                 dispatch(actions.loginFailure(""));
                 return undefined;
             });
@@ -40,15 +40,15 @@ export const updateUser = (data) => (dispatch) => {
             .then((json) => {
                 data = json.data
                 if (data.HasError == false) {
-                    alert(JSON.stringify(data.ResultMessage[0].Message))
+                    toast(JSON.stringify(data.ResultMessage[0].Message))
                     return data;
                 } else {
-                    alert(JSON.stringify(data.ResultMessage[0].Message))
+                    toast(JSON.stringify(data.ResultMessage[0].Message))
                     return undefined;
                 }
             })
             .catch((err) => {
-                alert(JSON.stringify(err))
+                toast(JSON.stringify(err))
                 dispatch(actions.loginFailure(""));
                 return undefined;
             });
@@ -70,7 +70,7 @@ export const getUserLeaves = (data) => (dispatch) => {
                 return data;
             })
             .catch((err) => {
-                alert(JSON.stringify(err))
+                toast(JSON.stringify(err))
                 dispatch(actions.loginFailure(""));
                 return undefined;
             });
@@ -91,7 +91,7 @@ export const getComplains = (data) => (dispatch) => {
                 return data;
             })
             .catch((err) => {
-                alert(JSON.stringify(err))
+                toast(JSON.stringify(err))
                 dispatch(actions.loginFailure(""));
                 return undefined;
             });
@@ -110,12 +110,12 @@ export const getAllEmployees = (data) => (dispatch) => {
                 if (data.HasError == false) {
                     return data.Result;
                 } else {
-                    alert(JSON.stringify(data.ResultMessage[0].Message))
+                    toast(JSON.stringify(data.ResultMessage[0].Message))
                     return undefined;
                 }
             })
             .catch((err) => {
-                alert(JSON.stringify(err))
+                toast(JSON.stringify(err))
                 dispatch(actions.loginFailure(""));
                 return undefined;
             });
@@ -136,7 +136,7 @@ export const getEmployComplains = (data) => (dispatch) => {
                 return data;
             })
             .catch((err) => {
-                alert(JSON.stringify(err))
+                toast(JSON.stringify(err))
                 dispatch(actions.loginFailure(""));
                 return undefined;
             });
@@ -155,15 +155,15 @@ export const AcceptComplain = (data) => (dispatch) => {
                 data = json.data
 
                 if(data.HasError){
-                 alert("Something Went Wrong Please Try again")
+                 toast("Something Went Wrong Please Try again")
                 }else {
-                    alert(JSON.stringify(data.ResultMessage[0].Message))
+                    toast(JSON.stringify(data.ResultMessage[0].Message))
                     return data;
                 }
 
             })
             .catch((err) => {
-                alert(JSON.stringify(err))
+                toast(JSON.stringify(err))
                 dispatch(actions.loginFailure(""));
                 return undefined;
             });
@@ -181,15 +181,15 @@ export const RejectComplain = (data) => (dispatch) => {
                 data = json.data
 
                 if(data.HasError){
-                    alert("Something Went Wrong Please Try again")
+                    toast("Something Went Wrong Please Try again")
                 }else {
-                    alert(JSON.stringify(data.ResultMessage[0].Message))
+                    toast(JSON.stringify(data.ResultMessage[0].Message))
                     return data;
                 }
 
             })
             .catch((err) => {
-                alert(JSON.stringify(err))
+                toast(JSON.stringify(err))
                 dispatch(actions.loginFailure(""));
                 return undefined;
             });
@@ -208,7 +208,7 @@ export const PostComplain = (data) => (dispatch) => {
                 return data;
             })
             .catch((err) => {
-                alert(JSON.stringify(err))
+                toast(JSON.stringify(err))
                 dispatch(actions.loginFailure(""));
                 return undefined;
             });
@@ -229,13 +229,13 @@ export const forgetPassword = (data) => (dispatch) => {
                 if (data.HasError == false) {
                     return data;
                 } else {
-                    alert(JSON.stringify(data.ResultMessage[0].Message))
+                    toast(JSON.stringify(data.ResultMessage[0].Message))
                     return undefined;
 
                 }
             })
             .catch((err) => {
-                alert(JSON.stringify(err))
+                toast(JSON.stringify(err))
                 dispatch(actions.loginFailure(""));
                 return undefined;
             });
@@ -255,12 +255,12 @@ export const verifyOtp = (data) => (dispatch) => {
                 if (data.HasError == false) {
                     return data;
                 } else {
-                    alert(JSON.stringify(data.ResultMessage[0].Message))
+                    toast(JSON.stringify(data.ResultMessage[0].Message))
                     return undefined;
                 }
             })
             .catch((err) => {
-                alert(JSON.stringify(err))
+                toast(JSON.stringify(err))
                 dispatch(actions.loginFailure(""));
                 return undefined;
             });
@@ -281,12 +281,12 @@ export const updatePassword = (data) => (dispatch) => {
                 if (data.HasError == false) {
                     return data;
                 } else {
-                    alert(JSON.stringify(data.ResultMessage[0].Message))
+                    toast(JSON.stringify(data.ResultMessage[0].Message))
                     return undefined;
                 }
             })
             .catch((err) => {
-                alert(JSON.stringify(err))
+                toast(JSON.stringify(err))
                 dispatch(actions.loginFailure(""));
                 return undefined;
             });
@@ -309,9 +309,9 @@ export const attendance = (data) => (dispatch) => {
 
                 if (data.HasError == false) {
                     return data;
-                    alert(JSON.stringify(data.ResultMessage[0].Message))
+                    toast(JSON.stringify(data.ResultMessage[0].Message))
                 } else {
-                    alert(JSON.stringify(data.ResultMessage[0].Message))
+                    toast(JSON.stringify(data.ResultMessage[0].Message))
                     return undefined;
                 }
             })
@@ -337,7 +337,7 @@ export const acceptLeave = (data) => (dispatch) => {
                 if (data.HasError == false) {
                     return data;
                 } else {
-                    alert(JSON.stringify(data.ResultMessage[0].Message))
+                    toast(JSON.stringify(data.ResultMessage[0].Message))
                     return undefined;
                 }
             })
@@ -364,7 +364,7 @@ export const rejectLeave = (data) => (dispatch) => {
                 if (data.HasError == false) {
                     return data;
                 } else {
-                    alert(JSON.stringify(data.ResultMessage[0].Message))
+                    toast(JSON.stringify(data.ResultMessage[0].Message))
                     return undefined;
                 }
             })
@@ -389,12 +389,12 @@ export const sendleave = (data) => (dispatch) => {
                 if (data.HasError == false) {
                     return data;
                 } else {
-                    alert(JSON.stringify(data.ResultMessage[0].Message))
+                    toast(JSON.stringify(data.ResultMessage[0].Message))
                     return undefined;
                 }
             })
             .catch((err) => {
-                // alert(JSON.stringify(err))
+                // toast(JSON.stringify(err))
                 dispatch(actions.loginFailure(""));
                 return undefined;
             });
@@ -419,7 +419,7 @@ export const getLeaves = () => (dispatch) => {
 
                     return data;
                 } else {
-                    alert(JSON.stringify(data.ResultMessage[0].Message))
+                    toast(JSON.stringify(data.ResultMessage[0].Message))
                     return undefined;
                 }
             })

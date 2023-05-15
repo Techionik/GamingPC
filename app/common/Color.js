@@ -339,8 +339,8 @@ export const lightTheme = {
   key: 'light',
   colors: {
     screenBackgroundColor:'white',
-   fieldBackgroundColor:'#F5F5F5',
-   fieldTextColor:'#787676',
+   fieldBackgroundColor:'#6A7F91',
+   fieldTextColor:'#FFFFFF',
    blackAndWhite:'#000000',
     drawerBackgroundColor:'#40E0D0',
     dullGreenBackgroundColor:'#22C9B8',
@@ -385,8 +385,8 @@ export const darkTheme = {
   colors: {
 
     screenBackgroundColor:'#000',
-    fieldBackgroundColor:'#6A7F91',
-    fieldTextColor:'#FFFFFF',
+    fieldBackgroundColor:'#FFFFFF',
+    fieldTextColor:'#787676',
     blackAndWhite:'#FFFFFF',
     drawerBackgroundColor:'#263238',
     dullGreenBackgroundColor:'#263238',

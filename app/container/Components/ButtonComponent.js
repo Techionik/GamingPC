@@ -6,7 +6,7 @@ import React from "react";
 export default function ButtonComponent({disable,Style,title,titleStyle,onPress,}) {
     return (
         <TouchableOpacity disabled={disable} onPress={onPress} style={[{
-            borderRadius: 10,
+            borderRadius: 15,
             backgroundColor: Color.primary,
             paddingVertical: 10,
             justifyContent:"center",
