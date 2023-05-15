@@ -35,8 +35,6 @@ class HomeScreen extends React.Component {
     }
 
     componentDidMount() {
-
-
     }
 
     render() {
@@ -47,29 +45,25 @@ class HomeScreen extends React.Component {
                 <HeaderWihBackground Style={{paddingTop: 30, paddingBottom: 40}} t={t} Props={this.props.value}/>
                 <ScrollView showsVerticalScrollIndicator={false}
                             contentContainerStyle={{
-                                flexGrow: 1,
+                                paddingTop:20,
+
                                 justifyContent: "center",
                                 paddingHorizontal: 15,
                                 marginBottom: 20
                             }}>
                     <View>
                         <Image source={require('../../images/WaterMark.png')}
-                               style={{aspectRatio: 0.9, marginTop: 10, height: undefined, width: "100%"}}/>
-
+                               style={{aspectRatio: 0.9, marginVertical: 15,alignSelf:"center",height: undefined, width: "70%"}}/>
                         {this.props?.user?.userInfo?.Rolee === "Employee" ?
                             <>
-                                <ButtonComponent onPress={() => {
-                                    this.props.navigation.navigate("AttendenceScreen")
-                                }} title={"Attendance"}/>
-                                <ButtonComponent onPress={() => {
-                                    this.props.navigation.navigate("BreakTimeScreen")
-                                }} title={"Break"}/>
-                                <ButtonComponent onPress={() => {
-                                    this.props.navigation.navigate("LeaveScreen")
-                                }} title={"Leave"}/>
-                                <ButtonComponent onPress={() => {
-                                    this.props.navigation.navigate("EmployComplainsScreen")
-                                }} title={"Complains"}/>
+                                <View style={{flexDirection:"row"}}>
+                                    <HomeScreenComponent title={"Attendance"} image={require('../../images/Attendance.png')}  onPress={()=>{this.props.navigation.navigate("AttendenceScreen")}}/>
+                                    <HomeScreenComponent title={"Breaks"} image={require('../../images/Breaks.png')}  onPress={()=>{this.props.navigation.navigate("BreakTimeScreen")}}/>
+                                </View>
+                                <View style={{flexDirection:"row"}}>
+                                    <HomeScreenComponent title={"Leave"} image={require('../../images/Leaves.png')}  onPress={() =>{this.props.navigation.navigate("LeaveScreen")}}/>
+                                    <HomeScreenComponent title={"Complains"} image={require('../../images/Complains.png')}  onPress={()=>{this.props.navigation.navigate("EmployComplainsScreen")}}/>
+                                </View>
                             </> : this.props?.user?.userInfo?.Rolee === "Admin" ?
                                 <>
                                     <ButtonComponent onPress={() => {
@@ -134,4 +128,16 @@ class HomeScreen extends React.Component {
 }
 
 export default withLanguage(HomeScreen)
+
+
+export const HomeScreenComponent=({title,onPress,image})=>{
+    return(
+        <TouchableOpacity onPress={onPress} style={{margin:10,backgroundColor:Color.primary,justifyContent:"center",alignItems:"center",padding:10,borderRadius:15,flex:1}}>
+            <View style={{backgroundColor:"#fff",alignItems:"center",justifyContent:"center",height:50,width:50,borderRadius:25}}>
+                <Image source={image} style={{aspectRatio:1,width:"70%",height:undefined}}/>
+            </View>
+            <Text style={{fontSize:14,color:"#fff",fontFamily:Constants.fontFamilyMedium,marginTop:5}}>{title}</Text>
+        </TouchableOpacity>
+    )
+}
 

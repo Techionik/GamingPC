@@ -164,10 +164,10 @@ class AttendenceScreen extends React.Component {
             <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
                 <HeaderWihBackground isBack={true} title={"Attendance"} colors={colors} Props={this.props.value}/>
                 <Image source={require('../../images/WaterMark.png')} style={{aspectRatio:0.9,marginVertical:10,alignSelf:"center",height:undefined,width:"70%"}}/>
-                <ButtonComponent disable={this.props?.user?.checkIn?.CheckInTime?true:false}  onPress={() => {
+                <ButtonComponent Style={{marginHorizontal:40,backgroundColor:"#fff"}} titleStyle={{color:"#000"}} disable={this.props?.user?.checkIn?.CheckInTime?true:false}  onPress={() => {
                     this.checkInLoction();
                 }} title={"Check In"}/>
-                <ButtonComponent disable={this.props?.user?.checkIn?.CheckInTime?false:true}  onPress={() => {
+                <ButtonComponent Style={{marginHorizontal:40,backgroundColor:"#fff"}} titleStyle={{color:"#000"}} disable={this.props?.user?.checkIn?.CheckInTime?false:true}  onPress={() => {
                     this.checkOutLoction()
                 }} title={"Check Out"}/>
                 <View style={{flex: 1}}/>

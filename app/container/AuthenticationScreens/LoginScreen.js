@@ -37,11 +37,11 @@ class LoginScreen extends React.Component {
     }
 
 
-
+//Validation of fields
     validation() {
-        if (this.state.email == "") {
+        if (this.state.email === "") {
             toast("Please enter your email")
-        } else if (this.state.password == "") {
+        } else if (this.state.password === "") {
             toast("Please enter your password")
 
         } else {
@@ -50,6 +50,7 @@ class LoginScreen extends React.Component {
                 Email: this.state.email,
                 Password: this.state.password
             }
+            //calling api
             this.props.login(data).then(res => {
                 if (res) {
                     this.setState({loading: false})
@@ -68,8 +69,7 @@ class LoginScreen extends React.Component {
     render() {
         const {t, language, themeColor} = this.props?.value
         const {colors} = themeColor
-
-
+            //The View rendering on screen
         return (
             <View
                 style={{flex: 1, backgroundColor: colors.screenBackgroundColor, paddingTop: 30, paddingHorizontal: 15}}>
@@ -116,23 +116,7 @@ class LoginScreen extends React.Component {
                                 this.validation()
                             }} title={t("Auth:Login")}/>}
                     </View>
-
-
-                    {/*<Text style={{*/}
-                    {/*    marginBottom: 10,*/}
-                    {/*    fontSize: 14,*/}
-                    {/*    fontFamily: Constants.fontFamilyRegular,*/}
-                    {/*    color: colors?.blackAndWhite,*/}
-                    {/*    alignSelf: "center"*/}
-                    {/*}}>{t("Auth:AnotherAccount")}<Text onPress={() => {*/}
-                    {/*    this.props.navigation.navigate("SignupScreen")*/}
-                    {/*}} style={{*/}
-                    {/*    fontSize: 16,*/}
-                    {/*    fontFamily: Constants.fontFamilyBold,*/}
-                    {/*    color: Color.primary*/}
-                    {/*}}>{" " + t("Auth:SignUp")}</Text></Text>*/}
                     <View style={{flex: 1}}/>
-
                     <Text style={{
                         fontSize: 12,
                         includeFontPadding: false,
@@ -142,7 +126,6 @@ class LoginScreen extends React.Component {
                         color: Color.primary,
                         marginLeft: 5
                     }}>Powered by TECHIONIK</Text>
-
                 </ScrollView>
             </View>
 
@@ -153,21 +136,6 @@ class LoginScreen extends React.Component {
 
 export default withLanguage(LoginScreen)
 
-export function OrLoginWith({Props}) {
-    const {t, language, themeColor} = Props
 
-    return (
-        <View style={{justifyContent: "center", alignItems: "center", flexDirection: "row"}}>
-            <View style={{height: 0.5, width: 70, backgroundColor: themeColor?.colors?.fieldTextColor}}/>
-            <Text style={{
-                fontSize: 12,
-                fontFamily: Constants.fontFamilyMedium,
-                color: themeColor?.colors?.fieldTextColor,
-                marginHorizontal: 10
-            }}>{t("Auth:Continuewith")}</Text>
-            <View style={{height: 0.5, width: 70, backgroundColor: themeColor?.colors?.fieldTextColor}}/>
-        </View>
-    )
-}
 
 

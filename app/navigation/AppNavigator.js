@@ -22,7 +22,7 @@ import TermConditionScreen from "../container/HomeScreen/TermConditionScreen";
 import ProfileScreen from "../container/HomeScreen/ProfileScreen";
 import AgrementScreen from "../container/HomeScreen/AgrementScreen";
 
-import SignupScreen from "../container/AuthenticationScreens/RegisterScreen";
+
 import AttendenceScreen from "../container/HomeScreen/AttendanceScreen";
 import LeaveScreen from "../container/HomeScreen/LeaveScreen";
 import BreakTimeScreen from "../container/HomeScreen/BreakTimeScreen";
@@ -73,7 +73,7 @@ const AppStack = ({}) => {
             <Stack.Screen name={"ViewCurrentLeave"} component={ViewCurrentLeave} options={{headerShown: false}}/>
             <Stack.Screen name={"AddNewPassword"} component={AddNewPassword} options={{headerShown: false}}/>
             <Stack.Screen name={"SendLeaveScreen"} component={SendLeaveScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"SignupScreen"} component={SignupScreen} options={{headerShown: false}}/>
+
             <Stack.Screen name={"UpdatePasswordScreen"} component={UpdatePasswordScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"ComplainsScreen"} component={ComplainsScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"ViewCurrentComplain"} component={ViewCurrentComplain} options={{headerShown: false}}/>
