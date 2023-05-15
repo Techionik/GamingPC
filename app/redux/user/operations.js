@@ -32,6 +32,60 @@ export const login = (data) => (dispatch) => {
         return undefined;
     }
 };
+
+export const forgetPassword = (data) => (dispatch) => {
+
+    try {
+        dispatch(actions.loginPending());
+        return RestApi.getInstanceV2().patch('/forgetpassword', data)
+            .then((json) => {
+                data = json.data
+                if (data.HasError == false) {
+                    return data;
+                } else {
+                    toast(JSON.stringify(data.ResultMessage[0].Message))
+                    return undefined;
+
+                }
+            })
+            .catch((err) => {
+                toast(JSON.stringify(err))
+                dispatch(actions.loginFailure(""));
+                return undefined;
+            });
+    } catch (error) {
+        apiError(error)
+        dispatch(actions.loginFailure(error));
+        return undefined;
+    }
+};
+
+export const verifyOtp = (data) => (dispatch) => {
+    try {
+        dispatch(actions.loginPending());
+        return RestApi.getInstanceV2().post('/verifyotp', data)
+            .then((json) => {
+                data = json.data
+                if (data.HasError == false) {
+                    return data;
+                } else {
+                    toast(JSON.stringify(data.ResultMessage[0].Message))
+                    return undefined;
+                }
+            })
+            .catch((err) => {
+                toast(JSON.stringify(err))
+                dispatch(actions.loginFailure(""));
+                return undefined;
+            });
+    } catch (error) {
+        apiError(error)
+        dispatch(actions.loginFailure(error));
+        return undefined;
+    }
+};
+
+
 export const updateUser = (data) => (dispatch) => {
 
     try {
@@ -219,57 +273,7 @@ export const PostComplain = (data) => (dispatch) => {
     }
 };
 
-export const forgetPassword = (data) => (dispatch) => {
 
-    try {
-        dispatch(actions.loginPending());
-        return RestApi.getInstanceV2().patch('/forgetpassword', data)
-            .then((json) => {
-                data = json.data
-                if (data.HasError == false) {
-                    return data;
-                } else {
-                    toast(JSON.stringify(data.ResultMessage[0].Message))
-                    return undefined;
-
-                }
-            })
-            .catch((err) => {
-                toast(JSON.stringify(err))
-                dispatch(actions.loginFailure(""));
-                return undefined;
-            });
-    } catch (error) {
-        apiError(error)
-        dispatch(actions.loginFailure(error));
-        return undefined;
-    }
-};
-
-export const verifyOtp = (data) => (dispatch) => {
-    try {
-        dispatch(actions.loginPending());
-        return RestApi.getInstanceV2().post('/verifyotp', data)
-            .then((json) => {
-                data = json.data
-                if (data.HasError == false) {
-                    return data;
-                } else {
-                    toast(JSON.stringify(data.ResultMessage[0].Message))
-                    return undefined;
-                }
-            })
-            .catch((err) => {
-                toast(JSON.stringify(err))
-                dispatch(actions.loginFailure(""));
-                return undefined;
-            });
-    } catch (error) {
-        apiError(error)
-        dispatch(actions.loginFailure(error));
-        return undefined;
-    }
-};
 
 
 export const updatePassword = (data) => (dispatch) => {

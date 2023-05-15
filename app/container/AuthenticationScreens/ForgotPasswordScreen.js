@@ -12,6 +12,7 @@ import FieldComponent from "../Components/FieldComponent";
 import ButtonComponent from "../Components/ButtonComponent";
 import {connect} from "react-redux";
 import { forgetPassword} from "../../redux/user/operations";
+import {toast} from "../../Omni";
 const mapStateToProps = ({app, user}) => ({
     app,
     user,
@@ -31,8 +32,8 @@ class ForgotPasswordScreen extends React.Component {
         }
     }
     validation(){
-        if(this.state.email==""){
-            alert("Please enter your email")
+        if(this.state.email===""){
+            toast("Please enter your email")
         } else {
             this.setState({loading:true})
             const data={
@@ -48,7 +49,7 @@ class ForgotPasswordScreen extends React.Component {
             }).catch(err=>{
 
                 this.setState({loading:false})
-                alert("Some thing went wrong please try again")
+                toast("Some thing went wrong please try again")
             })
 
         }
@@ -60,14 +61,14 @@ class ForgotPasswordScreen extends React.Component {
             <View
                 style={{flex: 1, backgroundColor: colors.screenBackgroundColor, paddingTop: 30, paddingHorizontal: 15}}>
                 <Image source={require('../../images/ForgetImage.png')} resizeMode={"contain"}
-                                 style={{aspectRatio: 1.5, width: "100%", height: undefined}}/>
-
+                                 style={{aspectRatio: 1.5,marginTop:20, width: "100%", height: undefined}}/>
                 <Text
                     style={{
                         color: colors.blackAndWhite,
+                        marginTop:10,
                         fontFamily: Constants.fontFamilyBold,
                         fontSize: 22
-                    }}>{t("Auth:ForgetPassword")}</Text>
+                    }}>Forget Password?</Text>
                 <Text style={{
                     color: colors.greyToWhite,
                     fontFamily: Constants.fontFamilyBold,
@@ -81,6 +82,7 @@ class ForgotPasswordScreen extends React.Component {
                     }} title={t("Auth:Send")}/>
 
                 </View>
+
 
             </View>
 
