@@ -7,20 +7,14 @@ import {
 
 } from 'react-native'
 import withLanguage from "../../config/withLanguage";
-
-import AntDesign from "react-native-vector-icons/AntDesign";
 import HeaderWihBackground from "../Components/HeaderWihBackground";
-import DropdownComponent from "../Components/DropdownComponent";
-import FieldComponent from "../Components/FieldComponent";
-import ButtonComponent from "../Components/ButtonComponent";
-import {Dropdown} from "react-native-material-dropdown";
-import DateTimePicker from 'react-native-modal-datetime-picker';
 import moment from "moment";
 import TouchableComponent from "../Components/TouchableComponent";
 import {Color, Constants} from "../../common";
-import CountDown from "react-native-countdown-component";
 import {connect, useDispatch} from "react-redux";
 import {BrakeTimes} from "../../redux/user/actions";
+import ButtonComponent from "../Components/ButtonComponent";
+import {toast} from "../../Omni";
 
 const mapStateToProps = ({app, user}) => ({
     app,
@@ -62,25 +56,25 @@ class BreakTimeScreen extends React.Component {
         const {colors} = themeColor
         return (
             <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
-                <HeaderWihBackground isBack={true} title={"Break Time"} colors={colors} Props={this.props.value}/>
+                <HeaderWihBackground isBack={true} title={"Break"} colors={colors} Props={this.props.value}/>
                 <View style={{padding: 10}}>
                     <Image source={require('../../images/WaterMark.png')} style={{
                         aspectRatio: 0.9,
-                        marginVertical: 10,
+                        marginVertical: 40,
                         alignSelf: "center",
                         height: undefined,
-                        width: "70%"
+                        width: "50%"
                     }}/>
-                    <TouchableComponent disabled={this.state.checkin} onPress={() => {
-                        alert("Your break time is started now.")
+                    <ButtonComponent disabled={this.state.checkin} onPress={() => {
+                        toast("Your break time is started now.")
                         this.setState({StartTime: moment(moment()).format("HH:MM"), time: "30"})
                     }} title={"Break In Time"} Icon={require('../../images/TimeIcon.png')}
                                         IconStyle={{tintColor: this.state.time == "30" ? "#fff" : colors.fieldTextColor}}
                                         titleStyle={{color: this.state.time == "30" ? "#fff" : colors.fieldTextColor}}
                                         Style={{backgroundColor: this.state.time == "30" ? Color.primary : colors.fieldBackgroundColor}}
                                         theme={colors}/>
-                    <TouchableComponent disabled={this.state.checkin} onPress={() => {
-                        alert("Your break time is over now.")
+                    <ButtonComponent disabled={this.state.checkin} onPress={() => {
+                        toast("Your break time is over now.")
                         this.setState({EndTime: moment(moment()).format("HH:MM"), time: "60", submit: false})
                         this.brake()
                     }} title={"Break Out Time"} Icon={require('../../images/TimeIcon.png')}

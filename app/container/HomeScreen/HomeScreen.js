@@ -34,8 +34,7 @@ class HomeScreen extends React.Component {
         this.state = {}
     }
 
-    componentDidMount() {
-    }
+
 
     render() {
         const {t, language, themeColor} = this.props.value
@@ -53,7 +52,7 @@ class HomeScreen extends React.Component {
                             }}>
                     <View>
                         <Image source={require('../../images/WaterMark.png')}
-                               style={{aspectRatio: 0.9, marginVertical: 15,alignSelf:"center",height: undefined, width: "70%"}}/>
+                               style={{aspectRatio: 0.9, marginVertical: 30,alignSelf:"center",height: undefined, width: "50%"}}/>
                         {this.props?.user?.userInfo?.Rolee === "Employee" ?
                             <>
                                 <View style={{flexDirection:"row"}}>
@@ -93,32 +92,6 @@ class HomeScreen extends React.Component {
                                         this.props.navigation.navigate("PayRoleScreen")
                                     }} title={"Pay Roll"}/>
                                 </>:null}
-                        {/*<View style={{*/}
-                        {/*    flexDirection: 'row',*/}
-                        {/*    alignItems: 'center',*/}
-                        {/*    justifyContent: 'space-evenly',*/}
-                        {/*    marginTop: 20,*/}
-
-                        {/*}}>*/}
-
-                        {/*    <HomeComponent onPress={()=>{this.props.navigation.navigate("AttendenceScreen")}}  image={require("../../images/jobsImage.png")} title={"Attendance"}*/}
-                        {/*                   colors={colors}/>*/}
-                        {/*    <HomeComponent onPress={()=>{this.props.navigation.navigate("LeaveScreen")}} image={require("../../images/Leave.png")} title={"Leave"} colors={colors}/>*/}
-                        {/*</View>*/}
-
-                        {/*<View style={{*/}
-                        {/*    flexDirection: 'row',*/}
-                        {/*    alignItems: 'center',*/}
-                        {/*    justifyContent: 'space-evenly',*/}
-                        {/*}}>*/}
-                        {/*    <HomeComponent onPress={()=>{this.props.navigation.navigate("BreakTimeScreen")}} image={require("../../images/coffee-break.png")} title={"Break Time"}*/}
-                        {/*                   colors={colors}/>*/}
-                        {/*    <HomeComponent image={require("../../images/earningImage.png")} title={"Pay Report"}*/}
-                        {/*                   colors={colors}/>*/}
-
-
-                        {/*</View>*/}
-
                     </View>
                 </ScrollView>
             </View>

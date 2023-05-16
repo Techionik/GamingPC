@@ -117,7 +117,7 @@ export const updateUser = (data) => (dispatch) => {
 export const getUserLeaves = (data) => (dispatch) => {
     try {
         dispatch(actions.loginPending());
-        return RestApi.getInstanceV2().post('/getuserleaves', data)
+        return RestApi.getInstanceV2().post('/getuserleave', data)
             .then((json) => {
                 data = json.data?.Result
                 dispatch(actions.getLeaves(data))

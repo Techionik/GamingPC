@@ -15,6 +15,7 @@ import GetLocation from "react-native-get-location";
 import {connect} from "react-redux";
 import {attendance, checkIn, CheckIn, CheckInData, cleeardata, leave} from "../../redux/user/operations";
 import moment from "moment";
+import {toast} from "../../Omni";
 const mapStateToProps = ({app, user}) => ({
     app,
     user,
@@ -62,7 +63,7 @@ class AttendenceScreen extends React.Component {
                     Time:Time,
                 }
                 this.props.CheckInData(data)
-                alert(JSON.stringify("You are check in Successfully"))
+                toast("You are check in Successfully")
                 this.props.navigation.pop()
                 this.setState({checkin:true})
                 })
@@ -70,13 +71,13 @@ class AttendenceScreen extends React.Component {
                 const {code, message} = ex;
                 console.warn(code, message);
                 if (code === "CANCELLED") {
-                    alert("Location cancelled by user or by another request");
+                    toast("Location cancelled by user or by another request");
                 }
                 if (code === "UNAVAILABLE") {
-                    alert("Location service is disabled or unavailable");
+                    toast("Location service is disabled or unavailable");
                 }
                 if (code === "TIMEOUT") {
-                    alert("Location request timed out");
+                    toast("Location request timed out");
                 }
                 if (code === "UNAUTHORIZED") {
                     // this.setState({ validateModal2: true });
@@ -100,13 +101,13 @@ class AttendenceScreen extends React.Component {
                 const {code, message} = ex;
                 console.warn(code, message);
                 if (code === "CANCELLED") {
-                    alert("Location cancelled by user or by another request");
+                    toast("Location cancelled by user or by another request");
                 }
                 if (code === "UNAVAILABLE") {
-                    alert("Location service is disabled or unavailable");
+                    toast("Location service is disabled or unavailable");
                 }
                 if (code === "TIMEOUT") {
-                    alert("Location request timed out");
+                    toast("Location request timed out");
                 }
                 if (code === "UNAUTHORIZED") {
                     // this.setState({ validateModal2: true });
@@ -143,7 +144,7 @@ class AttendenceScreen extends React.Component {
                     this.setState({loading:false})
                     this.props.navigation.pop()
                     this.props.cleeardata()
-                    alert(JSON.stringify("Pack your bag and go to home."))
+                    toast("Pack your bag and go to home.")
 
                 }else {
                     this.props.cleeardata()
@@ -153,7 +154,7 @@ class AttendenceScreen extends React.Component {
                 this.setState({loading:false})
                 this.props.navigation.pop()
                 this.props.cleeardata()
-                alert("Some thing went wrong please try again")
+                toast("Some thing went wrong please try again")
             })
     }
 
@@ -163,7 +164,7 @@ class AttendenceScreen extends React.Component {
         return (
             <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
                 <HeaderWihBackground isBack={true} title={"Attendance"} colors={colors} Props={this.props.value}/>
-                <Image source={require('../../images/WaterMark.png')} style={{aspectRatio:0.9,marginVertical:10,alignSelf:"center",height:undefined,width:"70%"}}/>
+                <Image source={require('../../images/WaterMark.png')} style={{aspectRatio:0.9,marginVertical:50,alignSelf:"center",height:undefined,width:"50%"}}/>
                 <ButtonComponent Style={{marginHorizontal:40,backgroundColor:"#fff"}} titleStyle={{color:"#000"}} disable={this.props?.user?.checkIn?.CheckInTime?true:false}  onPress={() => {
                     this.checkInLoction();
                 }} title={"Check In"}/>

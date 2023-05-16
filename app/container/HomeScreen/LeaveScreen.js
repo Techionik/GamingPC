@@ -17,6 +17,7 @@ import {connect} from "react-redux";
 import ButtonComponent from "../Components/ButtonComponent";
 import EmployLeaveComponent from "../Components/EmployLeaveComponent";
 import {getUserLeaves} from "../../redux/user/operations";
+import {toast} from "../../Omni";
 
 const mapStateToProps = ({app, user}) => ({
     app,
@@ -36,7 +37,7 @@ class LeaveScreen extends React.Component {
         super(props);
         this.state = {
             refreshData: false,
-            loading:false
+            loading: false
         }
     }
 
@@ -49,12 +50,15 @@ class LeaveScreen extends React.Component {
         this.props.getUserLeaves(data).then(res => {
             if (res) {
                 this.setState({loading: false})
+            } else {
+                this.setState({loading: false})
             }
         }).catch(err => {
             this.setState({loading: false})
-            alert("Some thing went wrong please try again")
+            toast("Some thing went wrong please try again")
         })
     }
+
     GetLeaves() {
         this.setState({refreshData: true})
         const data = {
@@ -66,7 +70,7 @@ class LeaveScreen extends React.Component {
             }
         }).catch(err => {
             this.setState({refreshData: false})
-            alert("Some thing went wrong please try again")
+            toast("Some thing went wrong please try again")
         })
     }
 
@@ -76,7 +80,17 @@ class LeaveScreen extends React.Component {
         return (
 
             <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
-                {this.state.loading&&    <View style={{position:'absolute',top:0,bottom:0,left:0,right:0,zIndex:10,backgroundColor:'rgba(0,0,0,0.5)',justifyContent:"center",alignItems:"center"}}>
+                {this.state.loading && <View style={{
+                    position: 'absolute',
+                    top: 0,
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    zIndex: 10,
+                    backgroundColor: 'rgba(0,0,0,0.5)',
+                    justifyContent: "center",
+                    alignItems: "center"
+                }}>
                     <ActivityIndicator size={"large"} color={Color.primary}/>
 
                 </View>}
@@ -84,19 +98,21 @@ class LeaveScreen extends React.Component {
 
                 <View style={{flex: 1, paddingHorizontal: 10, paddingTop: 20,}}>
                     <View>
-                    <FlatList refreshing={this.state.refreshData} onRefresh={()=>{
-                        this.GetLeaves()
-                    }} contentContainerStyle={{flex: 1}} showsVerticalScrollIndicator={false}
-                              data={this.props.Leaves}
-                              renderItem={({item, index}) =>
-                                  <EmployLeaveComponent item={item} colors={colors}/>
-                    }/>
+                        <FlatList refreshing={this.state.refreshData} onRefresh={() => {
+                            this.GetLeaves()
+                        }} contentContainerStyle={{flex: 1}} showsVerticalScrollIndicator={false}
+                                  data={this.props.Leaves}
+                                  renderItem={({item, index}) =>
+                                      <EmployLeaveComponent item={item} colors={colors}/>
+                                  }/>
                     </View>
                 </View>
-                <ButtonComponent title={"Leave"} onPress={() => {
+                <ButtonComponent title={"Send Leave"} onPress={() => {
                     this.props.navigation.navigate("SendLeaveScreen")
                 }}/>
             </View>
         );
-    }}
+    }
+}
+
 export default withLanguage(LeaveScreen)

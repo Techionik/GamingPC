@@ -6,15 +6,15 @@ import Entypo from "react-native-vector-icons/Entypo";
 
 
 
-export default function TouchableComponent({onPress,disabled,Icon,withoutIcon,theme, title, Style, IconStyle,title2Style, title2,titleStyle}) {
+export default function BreakComponent({onPress,disabled,Icon,withoutIcon,theme, title, Style, IconStyle,title2Style, title2,titleStyle}) {
 
     return (
         <TouchableOpacity disabled={disabled} onPress={onPress} style={[{
             flexDirection: "row",
-            borderRadius: 10,
+            borderRadius: 20,
             alignItems:"center",
             backgroundColor: theme?.fieldBackgroundColor,
-            paddingVertical: 15,
+            paddingVertical: 10,
             paddingLeft: 20,
             paddingRight:10,
             marginTop: 10
@@ -26,7 +26,7 @@ export default function TouchableComponent({onPress,disabled,Icon,withoutIcon,th
                            aspectRatio: 1,
                            height: undefined,
                            width: "5%",
-                           tintColor:theme?.blackAndWhite,
+                           tintColor:theme?.fieldTextColor,
                            paddingRight:20,
                        }, IconStyle]}/>
             }

@@ -21,6 +21,7 @@ import TouchableComponent from "../Components/TouchableComponent";
 import {Color} from "../../common";
 import {connect} from "react-redux";
 import {getData, getUserLeaves, leave, login, sendleave} from "../../redux/user/operations";
+import {toast} from "../../Omni";
 
 const mapStateToProps = ({app, user}) => ({
     app,
@@ -63,18 +64,18 @@ class SendLeaveScreen extends React.Component {
             }
         }).catch(err => {
             this.setState({refreshData: false})
-            alert("Some thing went wrong please try again")
+            toast("Some thing went wrong please try again")
         })
     }
     validation(){
         if(this.state.startDate==""){
-            alert("please insert date")
+            toast("please insert date")
         }
         else if (this.state.endDate==""){
-            alert("please insert end date")
+            toast("please insert end date")
         }
         else if(this.state.discription==""){
-            alert("please insert discription")
+            toast("please insert discription")
         }else {
             const data={
                 ID: this.props?.user?.userInfo?.ID,
@@ -101,7 +102,7 @@ class SendLeaveScreen extends React.Component {
                 }
             }).catch(err=>{
                 this.setState({loading:false})
-                alert("Some thing went wrong please try again")
+                toast("Some thing went wrong please try again")
             })}
     }
 
@@ -112,44 +113,30 @@ class SendLeaveScreen extends React.Component {
             <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
                 <HeaderWihBackground isBack={true} title={"Leave"} colors={colors} Props={this.props.value}/>
                 <ScrollView contentContainerStyle={{flexGrow: 1, paddingHorizontal: 15, marginBottom: 20}}>
-                    <Image source={require('../../images/WaterMark.png')} style={{aspectRatio:0.9,marginVertical:10,alignSelf:"center",height:undefined,width:"70%"}}/>
+                    <Image source={require('../../images/WaterMark.png')} style={{aspectRatio:0.9,marginVertical:30,alignSelf:"center",height:undefined,width:"50%"}}/>
                     <TouchableComponent onPress={() => {
                         this.setState({visibleDatePicker: true, Option: "StartDate"})
                     }} theme={colors} title={this.state.startDate ? this.state.startDate : "Start Date"}
                                         IconStyle={{width: "6%"}} Icon={require('../../images/calendar.png')}/>
                     <TouchableComponent onPress={() => {
                         this.setState({visibleDatePicker: true, Option: "End Date"})
-                    }} theme={colors} title={this.state.endDate ? this.state.endDate : "End Date"}
+                    }} Style={{marginBottom:5}} theme={colors} title={this.state.endDate ? this.state.endDate : "End Date"}
                                         IconStyle={{width: "6%"}} Icon={require('../../images/calendar.png')}/>
-
-                    {/*<View style={{      flexDirection: "row",*/}
-                    {/*    borderRadius: 10,*/}
-                    {/*    alignItems:"center",*/}
-                    {/*    backgroundColor: colors.fieldBackgroundColor,*/}
-                    {/*    paddingVertical: 10,*/}
-                    {/*    justifyContent:"space-between",*/}
-                    {/*    paddingLeft: 20,*/}
-                    {/*    paddingRight:10,*/}
-                    {/*    marginTop: 10}}>*/}
-                    {/*    <AntDesign onPress={()=>{this.setState({noOfLeaves:this.state.noOfLeaves-1})}} name={"minussquare"} color={colors.primaryLight} size={30}/>*/}
-                    {/*    <Text style={{fontSize:18,color:colors.blackAndWhite}}>{this.state.noOfLeaves<=0?0:this.state.noOfLeaves}</Text>*/}
-                    {/*    <AntDesign  onPress={()=>{this.state.noOfLeaves>=18?null:(this.setState({noOfLeaves:this.state.noOfLeaves+1}))}} name={"plussquare"} color={colors.primaryLight}  size={30}/>*/}
-                    {/*</View>*/}
                     <Dropdown
-                        itemColor={colors.blackAndWhite}
-                        itemTextStyle={{color: colors.blackAndWhite}}
+                        itemColor={colors.fieldTextColor}
+                        itemTextStyle={{color: colors.fieldTextColor}}
                         lineWidth={0}
-                        pickerStyle={{backgroundColor: colors.BackgroundView, borderRadius: 10}}
-                        color={colors.blackAndWhite}
+                        pickerStyle={{backgroundColor: colors.fieldBackgroundColor, borderRadius: 20}}
+                        color={colors.fieldTextColor}
                         fontSize={13}
                         placeholder={this.state.selectedOption}
-                        baseColor={colors.blackAndWhite}
+                        baseColor={colors.fieldTextColor}
                         customTickIcon={<AntDesign name={"caretdown"} color={"#fff"}/>}
                         value={this.state.selectedOption}
                         placeholderTextColor={colors.blackAndWhite}
                         dropdownOffset={{top: 10, right: -10, left: -17}}
                         rippleCentered={true}
-                        textColor={colors.blackAndWhite}
+                        textColor={colors.fieldTextColor}
                         onChangeText={(value) => {
 
                             this.setState({selectedOption: value})
@@ -158,7 +145,7 @@ class SendLeaveScreen extends React.Component {
                             paddingLeft: 20,
                             marginTop: 5,
                             backgroundColor: colors.fieldBackgroundColor,
-                            borderRadius: 10,
+                            borderRadius: 20,
                             width: "100%",
                         }}
                         data={[{value: "Late Leave"},{value: "Half Day Leave"},{value: "Sick Leave"},{value: "Bereavement Leave"},{value: "Emergency Leave"},{value: "Other"}]}
@@ -231,7 +218,7 @@ class SendLeaveScreen extends React.Component {
                         }}
                     />}
 
-                    <FieldComponent multiline={true} value={this.state.discription} onChangeText={(text)=>{this.setState({discription:text})}} nolines={6} Placeholder={"Description"} FieldStyle={{textAlignVertical: "top"}}
+                    <FieldComponent multiline={true} value={this.state.discription} onChangeText={(text)=>{this.setState({discription:text})}} nolines={3} Placeholder={"Description"} FieldStyle={{textAlignVertical: "top"}}
                                     theme={colors} Icon={false}/>
                     <View style={{flex: 1}}/>
                     {!this.state.loading?<ButtonComponent onPress={() => {
