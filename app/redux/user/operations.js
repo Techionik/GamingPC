@@ -262,7 +262,7 @@ export const PostComplain = (data) => (dispatch) => {
                 return data;
             })
             .catch((err) => {
-                toast(JSON.stringify(err))
+                toast(err)
                 dispatch(actions.loginFailure(""));
                 return undefined;
             });
@@ -285,12 +285,12 @@ export const updatePassword = (data) => (dispatch) => {
                 if (data.HasError == false) {
                     return data;
                 } else {
-                    toast(JSON.stringify(data.ResultMessage[0].Message))
+                    toast(data.ResultMessage[0].Message)
                     return undefined;
                 }
             })
             .catch((err) => {
-                toast(JSON.stringify(err))
+                toast(err)
                 dispatch(actions.loginFailure(""));
                 return undefined;
             });
@@ -313,9 +313,9 @@ export const attendance = (data) => (dispatch) => {
 
                 if (data.HasError == false) {
                     return data;
-                    toast(JSON.stringify(data.ResultMessage[0].Message))
+                    toast(Jdata.ResultMessage[0].Message)
                 } else {
-                    toast(JSON.stringify(data.ResultMessage[0].Message))
+                    toast(data.ResultMessage[0].Message)
                     return undefined;
                 }
             })
@@ -387,7 +387,7 @@ export const sendleave = (data) => (dispatch) => {
 
     try {
         dispatch(actions.loginPending());
-        return RestApi.getInstanceV2().post('/leave', data)
+        return RestApi.getInstanceV2().post('/sendleave', data)
             .then((json) => {
                 data = json.data
                 if (data.HasError == false) {

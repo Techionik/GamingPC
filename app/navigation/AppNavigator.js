@@ -17,7 +17,7 @@ import ForgotPasswordScreen from "../container/AuthenticationScreens/ForgotPassw
 import VerificationScreen from "../container/AuthenticationScreens/VerifiactionScreen";
 import RateAndReviewScreen from "../container/HomeScreen/RateAndReviewScreen";
 import SettingScreen from "../container/HomeScreen/SettingScreen";
-import ContactUsScreen from "../container/HomeScreen/ContactUsScreen";
+import SendComplain from "../container/HomeScreen/SendComplain";
 import TermConditionScreen from "../container/HomeScreen/TermConditionScreen";
 import ProfileScreen from "../container/HomeScreen/ProfileScreen";
 import AgrementScreen from "../container/HomeScreen/AgrementScreen";
@@ -61,7 +61,7 @@ const AppStack = ({}) => {
             <Stack.Screen name={"HomeScreen"} component={HomeScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"RateAndReviewScreen"} component={RateAndReviewScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"SettingScreen"} component={SettingScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"ContactUsScreen"} component={ContactUsScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"SendComplain"} component={SendComplain} options={{headerShown: false}}/>
             <Stack.Screen name={"TermConditionScreen"} component={TermConditionScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"ProfileScreen"} component={ProfileScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"AttendenceScreen"} component={AttendenceScreen} options={{headerShown: false}}/>

@@ -86,7 +86,7 @@ class SendLeaveScreen extends React.Component {
                 Designation: this.props?.user?.userInfo?.Designation,
                 Number_of_Leaves:(parseInt(this.state.endDate.substring(0,2)-parseInt(this.state.startDate.substring(0,2)))),
                 Description: this.state.discription,
-                Statuss:"Pending",
+                Status:"Pending",
                 Email:this.props?.user?.userInfo?.Email,
                 Leave_Type:this.state.selectedOption
             }

@@ -41,20 +41,23 @@ export default function ComplainComponent({Style,onPress,disabled, item, colors}
                             fontSize: 16,
                             flex: 1,
                             fontFamily: Constants.fontFamilyRegular,
-                            color: colors.blackAndWhite
+                            color: colors.fieldTextColor
                         }}>{item?.Full_Name}</Text>
                         {item.Statuss&&<Text style={{
                             fontSize: 12,
                             fontFamily: Constants.fontFamilyBold,
-                            color: item?.Statuss === "Accepted" ? colors.blackAndWhite : "red"
+                            color: "#fff",
+                            paddingHorizontal:10,
+                            borderRadius:7,
+                            backgroundColor:item?.Statuss === "Accepted" ? colors.blackAndWhite : "red"
                         }}>{item?.Statuss}</Text>}
                     </View>
                     {item.Designation&&<Text style={{
                         fontSize: 12,
                         fontFamily: Constants.fontFamilyRegular,
-                        color: colors.blackAndWhite
+                        color: colors.fieldTextColor
                     }}>{item.Designation}</Text>}
-                    <Text style={{color: "#fff", fontSize: 16, fontWeight: "bold"}}>{item.Email}</Text>
+                    <Text numberOfLines={1} style={{color: "#000", fontSize: 16,marginRight:20, fontWeight: "bold"}}>{item.Email}</Text>
                 </View>
             </View>
 

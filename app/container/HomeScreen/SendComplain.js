@@ -14,6 +14,8 @@ import ProfileFieldComponent from "../Components/ProfileFieldComponent";
 import {connect} from "react-redux";
 import {getComplains, PostComplain} from "../../redux/user/operations";
 import moment from "moment";
+import {toast} from "../../Omni";
+import HeaderWihBackground from "../Components/HeaderWihBackground";
 
 const mapStateToProps = ({app, user}) => ({
     app,
@@ -28,7 +30,7 @@ const mapStateToProps = ({app, user}) => ({
     {PostComplain},
 )
 
-class ContactUsScreen extends React.Component {
+class SendComplain extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -37,7 +39,7 @@ class ContactUsScreen extends React.Component {
     }
     validation(){
         if(this.state.message===""){
-            alert(JSON.stringify("Please Enter Message"))
+            toast("Please Enter Message")
         }else {
             const data={
                 Email:this.props?.user?.userInfo?.Email,
@@ -49,13 +51,13 @@ class ContactUsScreen extends React.Component {
             }
            this.props.PostComplain(data).then(res=>{
                if(res.ResultMessage[0].MessageType==="SUCCESS"){
-                   alert(JSON.stringify(res.ResultMessage[0].Message))
+                   toast(res.ResultMessage[0].Message)
                   this.props.navigation.pop()
                }else {
 
                }
            }).catch(err=>{
-               alert("Something went wrong please try again")
+               toast("Something went wrong please try again")
            })
         }
     }
@@ -64,14 +66,14 @@ class ContactUsScreen extends React.Component {
         const {colors} = themeColor
         return (
             <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
-                <Text style={{fontSize:16,marginVertical:20,fontFamily:Constants.Bold,alignSelf:"center",color:colors.blackAndWhite}}>{t("L:Contactus")}</Text>
+                <HeaderWihBackground isBack={true} title={"Complain"} colors={colors} Props={this.props.value}/>
 
                 <Image source={require('../../images/ContactusImage.png')} style={{
                     height: undefined,
-                    width: "50%",
+                    width: "60%",
                     marginVertical: 10,
                     alignSelf: "center",
-                    aspectRatio: 1
+                    aspectRatio: 1.65
                 }}/>
 
                 <View style={{flexGrow:1}}>
@@ -94,4 +96,4 @@ class ContactUsScreen extends React.Component {
     }
 }
 
-export default withLanguage(ContactUsScreen)
+export default withLanguage(SendComplain)

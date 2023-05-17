@@ -13,6 +13,7 @@ import HeaderComponent from "../Components/HeaderComponent";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import {connect} from "react-redux";
 import {getData} from "../../redux/user/operations";
+import HeaderWihBackground from "../Components/HeaderWihBackground";
 const mapStateToProps = ({app, user}) => ({
     app,
     user,
@@ -43,7 +44,7 @@ class ProfileScreen extends React.Component {
                     borderBottomLeftRadius: 30,
                     borderBottomRightRadius: 30
                 }}>
-                    <HeaderComponent title={t("L:UserProfile")} Props={this.props.value}/>
+                    <HeaderWihBackground isBack={true} title={"Profile"} colors={colors} Props={this.props.value}/>
                 </View>
                 <ScrollView style={{
                     flex: 1,
@@ -54,9 +55,8 @@ class ProfileScreen extends React.Component {
                     borderTopLeftRadius: 30,
                     borderTopRightRadius: 30
                 }}>
-                    <Image source={require('../../images/ProfileImage.png')}
-                           style={{height: 90, alignSelf: "center", marginTop: 20, width: 90, borderRadius: 45,}}/>
                     <View style={{
+                        marginTop:40,
                         borderRadius: 15,
                         backgroundColor: colors.whiteToDark,
                         marginVertical: 10,
@@ -85,7 +85,7 @@ class ProfileScreen extends React.Component {
                         paddingVertical: 15,
                         paddingHorizontal: 20
                     }}>
-                        <RowComponent   colors={colors} title1={"First Name"}  title2={this.props?.userInfo?.Full_Name.split(" ")[0]}/>
+                        <RowComponent colors={colors} title1={"First Name"}  title2={this.props?.userInfo?.Full_Name.split(" ")[0]}/>
                         <RowComponent colors={colors} title1={"Last Name"} title2={this.props?.userInfo?.Full_Name.split(" ")[1]}/>
                         <RowComponent colors={colors} title1={"Designation"} title2={this.props?.userInfo?.Designation}/>
                         <RowComponent colors={colors} title1={"Shift Time"} title2={this.props?.userInfo?.Shift}/>
@@ -93,8 +93,6 @@ class ProfileScreen extends React.Component {
                         <RowComponent colors={colors} title1={"Email Address"}    title2={this.props?.userInfo?.Email}/>
                         <RowComponent colors={colors} title1={"Phone Number"}    title2={this.props?.userInfo?.Phone}/>
                         <RowComponent colors={colors} title1={"Pay"}    title2={this.props?.userInfo?.Pay}/>
-
-
                     </View>
                 </ScrollView>
 

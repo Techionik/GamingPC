@@ -13,6 +13,7 @@ import {getEmployComplains} from "../../redux/user/operations";
 import {connect} from "react-redux";
 import ComplainComponent from "../Components/ComplainComponent";
 import HeaderWihBackground from "../Components/HeaderWihBackground";
+import ButtonComponent from "../Components/ButtonComponent";
 
 const mapStateToProps = ({app, user}) => ({
     app,
@@ -95,7 +96,7 @@ class EmployComplainsScreen extends React.Component {
                                           <ComplainComponent disabled={true} colors={colors} item={item}/> : null
                                   }/>
                     </View>
-                    {this.state.Complains.filter(item => item.Statuss === "Accepted")[0] ?
+                    {this?.state?.Complains.filter(item => item?.Statuss === "Accepted")[0] ?
                         <Text style={{fontSize: 18, color: colors.blackAndWhite}}>Accepted Complains</Text> : false}
                     <View>
                         <FlatList contentContainerStyle={{flex: 1}} refreshing={this.state.refreshData}
@@ -107,7 +108,7 @@ class EmployComplainsScreen extends React.Component {
                                           <ComplainComponent disabled={true} colors={colors} item={item}/> : null
                                   }/>
                     </View>
-                    {this.state.Complains.filter(item => item.Statuss === "Rejected")[0] ?
+                    {this?.state?.Complains.filter(item => item?.Statuss === "Rejected")[0] ?
                         <Text style={{fontSize: 18, color: colors.blackAndWhite}}>Rejected Complains</Text> : null}
                     <View>
                         <FlatList contentContainerStyle={{flex: 1}} showsVerticalScrollIndicator={false}
@@ -119,7 +120,8 @@ class EmployComplainsScreen extends React.Component {
                         }/>
                     </View>
                 </ScrollView>
-
+                <View style={{flex: 1}}/>
+                <ButtonComponent title={"Send Complain"} onPress={() => {this.props.navigation.navigate("SendComplain")}}/>
             </View>
 
         );
