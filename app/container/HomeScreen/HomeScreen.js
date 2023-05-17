@@ -15,6 +15,7 @@ import HeaderComponent from "../Components/HeaderComponent";
 import {connect} from "react-redux";
 import {getData} from "../../redux/user/operations";
 import axios from "axios";
+import {HomeScreenComponent} from "../Components/HomeScreenComponent";
 
 const mapStateToProps = ({app, user}) => ({
     app,
@@ -65,18 +66,15 @@ class HomeScreen extends React.Component {
                                 </View>
                             </> : this.props?.user?.userInfo?.Rolee === "Admin" ?
                                 <>
-                                    <ButtonComponent onPress={() => {
-                                        this.props.navigation.navigate("AttendenceScreen")
-                                    }} title={"Attendance"}/>
-                                    <ButtonComponent onPress={() => {
-                                        this.props.navigation.navigate("BreakTimeScreen")
-                                    }} title={"Break"}/>
-                                    <ButtonComponent onPress={() => {
-                                        this.props.navigation.navigate("LeaveScreen")
-                                    }} title={"Leave"}/>
-                                    <ButtonComponent onPress={() => {
-                                        this.props.navigation.navigate("LeavesScreen")
-                                    }} title={"Employ Leaves"}/>
+                                    <View style={{flexDirection:"row"}}>
+                                        <HomeScreenComponent title={"Attendance"} image={require('../../images/Attendance.png')}  onPress={()=>{this.props.navigation.navigate("AttendenceScreen")}}/>
+                                        <HomeScreenComponent title={"Breaks"} image={require('../../images/Breaks.png')}  onPress={()=>{this.props.navigation.navigate("BreakTimeScreen")}}/>
+                                    </View>
+                                    <View style={{flexDirection:"row"}}>
+                                        <HomeScreenComponent title={"Leave"} image={require('../../images/Leaves.png')}  onPress={() =>{this.props.navigation.navigate("LeaveScreen")}}/>
+                                        <HomeScreenComponent title={"Complains"} image={require('../../images/Complains.png')}  onPress={()=>{this.props.navigation.navigate("EmployComplainsScreen")}}/>
+                                    </View>
+                                    <HomeScreenComponent title={"Employee Leaves"} image={require('../../images/division.png')}  onPress={()=>{this.props.navigation.navigate("LeavesScreen")}}/>
 
                                 </> :this.props?.user?.userInfo?.Rolee === "Super Admin" ?
 
@@ -103,14 +101,5 @@ class HomeScreen extends React.Component {
 export default withLanguage(HomeScreen)
 
 
-export const HomeScreenComponent=({title,onPress,image})=>{
-    return(
-        <TouchableOpacity onPress={onPress} style={{margin:10,backgroundColor:Color.primary,justifyContent:"center",alignItems:"center",padding:10,borderRadius:15,flex:1}}>
-            <View style={{backgroundColor:"#fff",alignItems:"center",justifyContent:"center",height:50,width:50,borderRadius:25}}>
-                <Image source={image} style={{aspectRatio:1,width:"70%",height:undefined}}/>
-            </View>
-            <Text style={{fontSize:14,color:"#fff",fontFamily:Constants.fontFamilyMedium,marginTop:5}}>{title}</Text>
-        </TouchableOpacity>
-    )
-}
+
 

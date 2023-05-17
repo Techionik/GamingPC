@@ -35,7 +35,7 @@ export default function EmployLeaveComponent({Style, item, colors}) {
                             fontFamily: Constants.fontFamilyBold,
                             color: "#fff",
                             paddingHorizontal:10,borderRadius:7,
-                            backgroundColor:item?.Statuss === "Accept" ? "green" : "red"
+                            backgroundColor:item?.Statuss === "Accept" ? "green": item?.Statuss === "Pending"?"orange": "red"
                         }}>{item?.Statuss}</Text>
                     </View>
                     <Text style={{

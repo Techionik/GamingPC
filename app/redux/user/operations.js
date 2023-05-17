@@ -282,10 +282,10 @@ export const updatePassword = (data) => (dispatch) => {
         return RestApi.getInstanceV2().patch('/updatepassword', data)
             .then((json) => {
                 data = json.data
-                if (data.HasError == false) {
+                if (data?.HasError == false) {
                     return data;
                 } else {
-                    toast(data.ResultMessage[0].Message)
+                    toast(data?.ResultMessage[0].Message)
                     return undefined;
                 }
             })
@@ -423,7 +423,7 @@ export const getLeaves = () => (dispatch) => {
 
                     return data;
                 } else {
-                    toast(JSON.stringify(data.ResultMessage[0].Message))
+                    toast(data.ResultMessage[0].Message)
                     return undefined;
                 }
             })

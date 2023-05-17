@@ -49,7 +49,7 @@ export default function ComplainComponent({Style,onPress,disabled, item, colors}
                             color: "#fff",
                             paddingHorizontal:10,
                             borderRadius:7,
-                            backgroundColor:item?.Statuss === "Accepted" ? colors.blackAndWhite : "red"
+                            backgroundColor:item?.Statuss === "Accept" ? "green": item?.Statuss === "Pending"?"orange": "red"
                         }}>{item?.Statuss}</Text>}
                     </View>
                     {item.Designation&&<Text style={{

@@ -30,7 +30,7 @@ export default function HeaderWihBackground({title,Props,children,colors,isBack,
                     :
                     <View style={{marginHorizontal:20}}>
                         <Text style={{color: "#fff", fontSize: 20, fontFamily: Constants.fontFamilyBold}}>{`HI! ${userData?.Full_Name}`}</Text>
-                        <Text style={{color: "#000", fontSize: 20,marginTop:5,paddingHorizontal:15,borderRadius:20,backgroundColor:"#fff", fontFamily: Constants.fontFamilyRegular}}>{userData?.Designation}</Text>
+                        <Text style={{color: "#000", fontSize: 16,marginTop:5,paddingHorizontal:15,borderRadius:20,backgroundColor:"#fff", fontFamily: Constants.fontFamilyRegular}}>{userData?.Designation}</Text>
                     </View>
                 }
                 <TouchableOpacity onPress={()=>{  navigation.navigate("SettingScreen")}}>

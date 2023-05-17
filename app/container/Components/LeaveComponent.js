@@ -41,30 +41,31 @@ export default function LeaveComponent({Style, item, colors}) {
                             fontSize: 16,
                             flex: 1,
                             fontFamily: Constants.fontFamilyRegular,
-                            color: colors.blackAndWhite
+                            color: colors.fieldTextColor
                         }}>{item?.Full_Name}</Text>
                         <Text style={{
                             fontSize: 12,
                             fontFamily: Constants.fontFamilyBold,
-                            color: item?.Statuss == "Accept" ? colors.blackAndWhite : "red"
+                            color: "#fff",
+                            paddingHorizontal:10,
+                            borderRadius:7,
+                            backgroundColor:item?.Statuss === "Accept" ? "green": item?.Statuss === "Pending"?"orange": "red"
                         }}>{item?.Statuss}</Text>
                     </View>
                     <Text style={{
                         fontSize: 12,
                         fontFamily: Constants.fontFamilyRegular,
-                        color: colors.blackAndWhite
+                        color: colors.fieldTextColor
                     }}>{item.Designation}</Text>
                     <Text style={{
                         fontSize: 12,
                         fontFamily: Constants.fontFamilyRegular,
-                        color: colors.blackAndWhite
-                    }}>{item.Start_Date}<Text
+                        color: colors.fieldTextColor
+                    }}>{item?.Start_Date}<Text
                         style={{color: "red", fontSize: 16, fontWeight: "bold"}}> To </Text>{item.Ending_Date}</Text>
                 </View>
             </View>
             <View>
-
-                <Text>{item.Number_of_Leaves}</Text>
             </View>
         </TouchableOpacity>
     )

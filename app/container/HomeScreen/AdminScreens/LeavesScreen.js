@@ -35,7 +35,7 @@ class LeavesScreen extends React.Component {
         this.state = {
             Leaves: [],
             refreshData: false,
-            loading:false
+            loading: false
         }
     }
 
@@ -69,42 +69,58 @@ class LeavesScreen extends React.Component {
         const {t, language, themeColor} = this.props.value
         const {colors} = themeColor
         return (
-            <View  style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
-                {this.state.loading&&    <View style={{position:'absolute',top:0,bottom:0,left:0,right:0,zIndex:10,backgroundColor:'rgba(0,0,0,0.5)',justifyContent:"center",alignItems:"center"}}>
+            <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
+                {this.state.loading && <View style={{
+                    position: 'absolute',
+                    top: 0,
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    zIndex: 10,
+                    backgroundColor: 'rgba(0,0,0,0.5)',
+                    justifyContent: "center",
+                    alignItems: "center"
+                }}>
                     <ActivityIndicator size={"large"} color={Color.primary}/>
 
                 </View>}
                 <HeaderWihBackground isBack={true} title={"Leaves"} colors={colors} Props={this.props.value}/>
 
-                <ScrollView contentContainerStyle={{paddingBottom:20}}  style={{flex: 1, paddingHorizontal: 10, paddingTop: 20,}}>
+                <ScrollView contentContainerStyle={{paddingBottom: 20}}
+                            style={{flex: 1, paddingHorizontal: 10, paddingTop: 20,}}>
                     <View>
-                        <FlatList  contentContainerStyle={{flex:1}} refreshing={this.state.refreshData} onRefresh={() => {
-                            this.getFreshLeaves()
-                        }} showsVerticalScrollIndicator={false} data={this.state.Leaves}
-                                   renderItem={({item, index}) =>
-                                       item.Statuss==="Pending"?
-                                           <LeaveComponent colors={colors} item={item}/>:null
-                                   }/>
+                        <FlatList contentContainerStyle={{flex: 1}} refreshing={this.state.refreshData}
+                                  onRefresh={() => {
+                                      this.getFreshLeaves()
+                                  }} showsVerticalScrollIndicator={false} data={this.state.Leaves}
+                                  renderItem={({item, index}) =>
+                                      item?.Statuss === "Pending" ?
+                                          <LeaveComponent colors={colors} item={item}/> : null
+                                  }/>
                     </View>
-                    {this.state.Leaves.filter(item=>item.Statuss==="Accept")[0]?<Text style={{fontSize: 18, color: colors.blackAndWhite}}>Accepted Leaves</Text>:false}
+                    {this.state?.Leaves?.filter(item => item?.Statuss === "Accept")[0] ?
+                        <Text style={{fontSize: 18, color: colors.blackAndWhite}}>Accepted Leaves</Text> : false}
                     <View>
-                    <FlatList  contentContainerStyle={{flex:1}} refreshing={this.state.refreshData} onRefresh={() => {
-                        this.getFreshLeaves()
-                    }}  showsVerticalScrollIndicator={false} data={this.state.Leaves}
-                              renderItem={({item, index}) =>
-                                  item.Statuss==="Accept"?
-                                  <LeaveComponent colors={colors} item={item}/>:null
-                              }/>
+                        <FlatList contentContainerStyle={{flex: 1}} refreshing={this.state.refreshData}
+                                  onRefresh={() => {
+                                      this.getFreshLeaves()
+                                  }} showsVerticalScrollIndicator={false} data={this.state.Leaves}
+                                  renderItem={({item, index}) =>
+                                      item?.Statuss === "Accept" ?
+                                          <LeaveComponent colors={colors} item={item}/> : null
+                                  }/>
                     </View>
-                    {this.state.Leaves.filter(item=>item.Statuss==="Reject")[0]?<Text style={{fontSize: 18, color: colors.blackAndWhite}}>Rejected Leaves</Text>:null}
+                    {this.state?.Leaves?.filter(item => item?.Statuss === "Reject")[0] ?
+                        <Text style={{fontSize: 18, color: colors.blackAndWhite}}>Rejected Leaves</Text> : null}
                     <View>
-                        <FlatList  contentContainerStyle={{flex:1}}   showsVerticalScrollIndicator={false} data={this.state.Leaves} refreshing={this.state.refreshData} onRefresh={() => {
+                        <FlatList contentContainerStyle={{flex: 1}} showsVerticalScrollIndicator={false}
+                                  data={this.state.Leaves} refreshing={this.state.refreshData} onRefresh={() => {
                             this.getFreshLeaves()
                         }}
-                                   renderItem={({item, index}) =>
-                                       item.Statuss==="Reject"?
-                                           <LeaveComponent colors={colors} item={item}/>:null
-                                   }/>
+                                  renderItem={({item, index}) =>
+                                      item?.Statuss === "Reject" ?
+                                          <LeaveComponent colors={colors} item={item}/> : null
+                                  }/>
                     </View>
                 </ScrollView>
 
