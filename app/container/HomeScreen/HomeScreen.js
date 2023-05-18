@@ -79,16 +79,10 @@ class HomeScreen extends React.Component {
                                 </> :this.props?.user?.userInfo?.Rolee === "Super Admin" ?
 
                                 <>
-                                    <ButtonComponent onPress={() => {
-                                        this.props.navigation.navigate("LeavesScreen")
-                                    }} title={"Employ Leaves"}/>
-                                    <ButtonComponent onPress={() => {
-                                        this.props.navigation.navigate("ComplainsScreen")
-                                    }} title={"Complains"}/>
+                                    <HomeScreenComponent title={" Attendance"} image={require('../../images/verification.png')} />
+                                    <HomeScreenComponent title={"Employee Leaves"} image={require('../../images/division.png')}  onPress={()=>{this.props.navigation.navigate("LeavesScreen")}}/>
+                                    <HomeScreenComponent title={"Complains"} image={require('../../images/businessman.png')}  onPress={()=>{this.props.navigation.navigate("ComplainsScreen")}}/>
 
-                                    <ButtonComponent onPress={() => {
-                                        this.props.navigation.navigate("PayRoleScreen")
-                                    }} title={"Pay Roll"}/>
                                 </>:null}
                     </View>
                 </ScrollView>

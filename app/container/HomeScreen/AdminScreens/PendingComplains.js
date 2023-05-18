@@ -17,7 +17,6 @@ import LeaveComponent from "../../Components/LeaveComponent";
 import {getComplains} from "../../../redux/user/operations";
 import {connect} from "react-redux";
 import ComplainComponent from "../../Components/ComplainComponent";
-import {HomeScreenComponent} from "../../Components/HomeScreenComponent";
 
 const mapStateToProps = ({app, user}) => ({
     app,
@@ -31,7 +30,7 @@ const mapStateToProps = ({app, user}) => ({
     mapStateToProps,
     {getComplains},
 )
-class ComplainsScreen extends React.Component {
+class PendingComplains extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -79,21 +78,14 @@ class ComplainsScreen extends React.Component {
 
                 </View>}
                 <HeaderWihBackground isBack={true} title={"Complains"} colors={colors} Props={this.props.value}/>
-                <View style={{flex: 1, justifyContent: "center"}}>
-                    <View style={{flex: 0.5, paddingHorizontal: 10, paddingTop: 20,}}>
-                        <HomeScreenComponent Style={{backgroundColor: "orange"}} title={"Pending Complains"}
-                                             image={require('../../../images/wallclock.png')} onPress={() => {
-                            this.props.navigation.navigate("PendingComplains")
-                        }}/>
-                        <HomeScreenComponent Style={{backgroundColor: "green"}} title={"Accepted Complains"}
-                                             image={require('../../../images/checkmark.png')} onPress={() => {
-                            this.props.navigation.navigate("AcceptedComplains")
-                        }}/>
-                        <HomeScreenComponent Style={{backgroundColor: "red"}} title={"Rejected Complains"}
-                                             image={require('../../../images/close.png')} onPress={() => {
-                            this.props.navigation.navigate("RejectedComplains")
-                        }}/>
-                    </View>
+                <View>
+                    <FlatList  contentContainerStyle={{flex:1}} refreshing={this.state.refreshData} onRefresh={() => {
+                        this.getFreshData()
+                    }} showsVerticalScrollIndicator={false} data={this.state.Complains}
+                               renderItem={({item, index}) =>
+                                   item.Statuss==="Pending"?
+                                       <ComplainComponent colors={colors} item={item}/>:null
+                               }/>
                 </View>
 
             </View>
@@ -102,4 +94,4 @@ class ComplainsScreen extends React.Component {
     }
 }
 
-export default withLanguage(ComplainsScreen)
+export default withLanguage(PendingComplains)

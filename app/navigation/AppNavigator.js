@@ -43,6 +43,9 @@ import PendingLeaves from "../container/HomeScreen/AdminScreens/PendingLeaves";
 import AcceptedLeaves from "../container/HomeScreen/AdminScreens/AcceptedLeaves";
 import RejectedLeaves from "../container/HomeScreen/AdminScreens/RejectedLeaves";
 import AboutUsScreen from "../container/HomeScreen/AboutUsScreen";
+import PendingComplains from "../container/HomeScreen/AdminScreens/PendingComplains";
+import AcceptedComplains from "../container/HomeScreen/AdminScreens/AcceptedComplains";
+import RejectedComplains from "../container/HomeScreen/AdminScreens/RejectedComplains";
 
 
 
@@ -89,6 +92,9 @@ const AppStack = ({}) => {
             <Stack.Screen name={"AcceptedLeaves"} component={AcceptedLeaves} options={{headerShown: false}}/>
             <Stack.Screen name={"RejectedLeaves"} component={RejectedLeaves} options={{headerShown: false}}/>
             <Stack.Screen name={"AboutUsScreen"} component={AboutUsScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"PendingComplains"} component={PendingComplains} options={{headerShown: false}}/>
+            <Stack.Screen name={"AcceptedComplains"} component={AcceptedComplains} options={{headerShown: false}}/>
+            <Stack.Screen name={"RejectedComplains"} component={RejectedComplains} options={{headerShown: false}}/>
         </Stack.Navigator>
     )
 }
