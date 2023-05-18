@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+    Image,
     Text,
     View
 
@@ -70,14 +71,10 @@ class UpdatePasswordScreen extends React.Component {
             <View
                 style={{flex: 1, backgroundColor: colors.screenBackgroundColor,}}>
                 <HeaderWihBackground isBack={true} title={"Update Password"} colors={colors} Props={this.props.value}/>
-                <View style={{flex: 1}}/>
-                <View style={{paddingHorizontal: 10}}>
-                    <Text
-                        style={{
-                            color: colors.blackAndWhite,
-                            fontFamily: Constants.fontFamilyBold,
-                            fontSize: 22
-                        }}>Update Password</Text>
+                <View style={{flex: 0.5}}/>
+                <Image source={require('../../images/ChangePassword.png')} style={{aspectRatio:1,width:"50%",alignSelf:"center",height:undefined}}/>
+
+                <View style={{paddingHorizontal: 10,marginTop:20}}>
                     <FieldComponent secureTextEntry={true} value={this.state.NewPassword} onChangeText={(text) => {
                         this.setState({NewPassword: text})
                     }} theme={colors} Style={{paddingLeft: 10}} IconStyle={{marginRight: 0}}

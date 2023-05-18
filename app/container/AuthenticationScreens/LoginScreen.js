@@ -68,18 +68,18 @@ class LoginScreen extends React.Component {
 
     render() {
         const {t, language, themeColor} = this.props?.value
-        const {colors} = themeColor
+        const {colors,key} = themeColor
             //The View rendering on screen
         return (
             <View
                 style={{flex: 1, backgroundColor: colors.screenBackgroundColor, paddingTop: 30, paddingHorizontal: 15}}>
-                    <Image style={{
-                        height: undefined,
-                        width: "100%",
-                        marginTop:20,
-                        aspectRatio: 6.28,
-                        alignSelf: 'center',
-                    }} source={require('../../images/LoginLogo.png')}/>
+                <Image style={{
+                    height: undefined,
+                    width: "100%",
+                    marginTop:20,
+                    aspectRatio: 6.28,
+                    alignSelf: 'center',
+                }} source={key!=="light"?require('../../images/LoginLogo.png'):require('../../images/DarkLogo.png')}/>
 
 
                 <ScrollView contentContainerStyle={{flex: 1}} showsVerticalScrollIndicator={false}

@@ -76,15 +76,15 @@ class LeavesScreen extends React.Component {
                 <View style={{flex: 1, justifyContent: "center"}}>
                     <View style={{flex: 0.5, paddingHorizontal: 10, paddingTop: 20,}}>
                         <HomeScreenComponent Style={{backgroundColor: "orange"}} title={"Pending Leaves"}
-                                             image={require('../../../images/Attendance.png')} onPress={() => {
+                                             image={require('../../../images/wallclock.png')} onPress={() => {
                             this.props.navigation.navigate("PendingLeaves")
                         }}/>
                         <HomeScreenComponent Style={{backgroundColor: "green"}} title={"Accepted Leaves"}
-                                             image={require('../../../images/Breaks.png')} onPress={() => {
+                                             image={require('../../../images/checkmark.png')} onPress={() => {
                             this.props.navigation.navigate("AcceptedLeaves")
                         }}/>
                         <HomeScreenComponent Style={{backgroundColor: "red"}} title={"Rejected Leaves"}
-                                             image={require('../../../images/Breaks.png')} onPress={() => {
+                                             image={require('../../../images/close.png')} onPress={() => {
                             this.props.navigation.navigate("RejectedLeaves")
                         }}/>
                     </View>

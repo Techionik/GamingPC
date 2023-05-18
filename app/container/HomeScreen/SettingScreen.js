@@ -80,20 +80,19 @@ class SettingScreen extends React.Component {
                             color: "grey"
                         }}>Settings</Text>
 
-                        <SettingsComponent value={this.props.app?.theme === 'dark' ? true : false} onTogglePress={() => {
+                        <SettingsComponent value={(this.props.app?.theme.key === 'dark' ? true : false)} onTogglePress={() => {
                             if (this.props.app?.theme === 'dark') {
                                 this.props.changeTheme('light')
                             } else {
                                 this.props.changeTheme('dark')
                             }
-                        }} Props={this.props.value} style={{marginBottom: 10}} title={t("L:DarkMode")} toogle={true}
+                        }} Props={this.props.value} style={{marginBottom: 10}} title={"Dark & light Mode"} toogle={true}
                                            colors={colors}/>
                         <SettingsComponent Props={this.props.value} onPress={() => {this.props.navigation.navigate("UpdatePasswordScreen")}}  style={{marginBottom: 10}} title={"Update Password"} colors={colors}/>
                         {this.props?.user?.userInfo?.Rolee === "Employee" &&this.props?.user?.userInfo?.Rolee === "Employee"?null:
                         <SettingsComponent Props={this.props.value} onPress={() => {this.props.navigation.navigate("AllUserScreen")}}  style={{marginBottom: 10}} title={"Update Employee"} colors={colors}/>}
-                        <SettingsComponent Props={this.props.value}  style={{marginBottom: 10}} title={t("L:PrivacyPolicy")} colors={colors}/>
-                        <SettingsComponent Props={this.props.value}  style={{marginBottom: 10}} title={t("L:TermsandConditions")} colors={colors}/>
-                        <SettingsComponent Props={this.props.value} style={{marginBottom: 10}} title={t("L:Aboutus")} colors={colors}/>
+                        <SettingsComponent Props={this.props.value} onPress={()=>{this.props.navigation.navigate("TermConditionScreen")}}  style={{marginBottom: 10}} title={"Terms & Conditions"} colors={colors}/>
+                        <SettingsComponent Props={this.props.value} onPress={()=>{this.props.navigation.navigate("AboutUsScreen")}} style={{marginBottom: 10}} title={"About US"} colors={colors}/>
                         <SettingsComponent onPress={()=>{this.props.logout();this.props.navigation.replace("SplashContainer")}} Props={this.props.value} title={t("L:Logout")} colors={colors}/>
 
                     </View>

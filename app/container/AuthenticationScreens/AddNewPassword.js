@@ -68,7 +68,7 @@ class AddNewPassword extends React.Component {
         return (
             <View
                 style={{flex: 1, backgroundColor: colors.screenBackgroundColor, paddingTop: 30, paddingHorizontal: 15}}>
-                <Image source={require('../../images/ForgetImage.png')} resizeMode={"contain"}
+                <Image source={require('../../images/ChangePassword.png')} resizeMode={"contain"}
                                  style={{aspectRatio: 1.5, width: "100%", height: undefined}}/>
 
                 <Text

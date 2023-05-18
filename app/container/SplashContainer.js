@@ -31,7 +31,7 @@ class SplashContainer extends React.Component {
     render() {
         const {value} = this.props;
         const {t, themeColor} = value;
-        const {colors} = themeColor
+        const {colors,key} = themeColor
 
         return (
             //backGround Image
@@ -42,12 +42,12 @@ class SplashContainer extends React.Component {
                 backgroundColor: colors.screenBackgroundColor
             }}>
                 <View style={{paddingHorizontal:30,justifyContent:"center"}}>
-                <Image style={{
-                    height: undefined,
-                    width: "100%",
-                    aspectRatio: 6.28,
-                    alignSelf: 'center',
-                }} source={require('../images/LoginLogo.png')}/>
+                    <Image style={{
+                        height: undefined,
+                        width: "100%",
+                        aspectRatio: 6.28,
+                        alignSelf: 'center',
+                    }} source={key!=="light"?require('../images/LoginLogo.png'):require('../images/DarkLogo.png')}/>
                 <Text style={{fontSize:14,fontFamily:Constants.fontFamilyRegular,color:colors.blackAndWhite,alignSelf:"center",}}>FROM EXCELLENCE TO INNOVATION</Text>
                 </View>
             </ImageBackground>
