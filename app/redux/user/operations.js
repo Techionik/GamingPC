@@ -94,10 +94,10 @@ export const updateUser = (data) => (dispatch) => {
             .then((json) => {
                 data = json.data
                 if (data.HasError == false) {
-                    toast(JSON.stringify(data.ResultMessage[0].Message))
+                    toast(data.ResultMessage[0].Message)
                     return data;
                 } else {
-                    toast(JSON.stringify(data.ResultMessage[0].Message))
+                    toast(data.ResultMessage[0].Message)
                     return undefined;
                 }
             })
@@ -124,7 +124,7 @@ export const getUserLeaves = (data) => (dispatch) => {
                 return data;
             })
             .catch((err) => {
-                toast(JSON.stringify(err))
+                toast(err)
                 dispatch(actions.loginFailure(""));
                 return undefined;
             });
@@ -158,7 +158,7 @@ export const getComplains = (data) => (dispatch) => {
 export const getAllEmployees = (data) => (dispatch) => {
     try {
         dispatch(actions.loginPending());
-        return RestApi.getInstanceV2().get('/getall')
+        return RestApi.getInstanceV2().get('/getallusers')
             .then((json) => {
                 data = json.data
                 if (data.HasError == false) {

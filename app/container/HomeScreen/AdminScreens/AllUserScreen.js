@@ -3,7 +3,7 @@ import {
     ActivityIndicator,
     FlatList,
     Image,
-    ImageBackground, ScrollView, Text, TouchableOpacity,
+    ImageBackground, ScrollView, Text, toast, TouchableOpacity,
     View
 
 } from 'react-native'
@@ -50,7 +50,7 @@ class AllUserScreen extends React.Component {
             }
         }).catch(err => {
             this.setState({loading: false})
-            alert("Some thing went wrong please try again")
+            toast("Some thing went wrong please try again")
         })
     }
     GetEmployee() {
@@ -62,7 +62,7 @@ class AllUserScreen extends React.Component {
             }
         }).catch(err => {
             this.setState({refreshData: false})
-            alert("Some thing went wrong please try again")
+            toast("Some thing went wrong please try again")
         })
     }
 
@@ -76,7 +76,7 @@ class AllUserScreen extends React.Component {
                     <ActivityIndicator size={"large"} color={Color.primary}/>
 
                 </View>}
-                <HeaderWihBackground isBack={true} title={"Leaves"} colors={colors} Props={this.props.value}/>
+                <HeaderWihBackground isBack={true} title={"User Management"} colors={colors} Props={this.props.value}/>
 
                 <View style={{flex: 1, paddingHorizontal: 10, paddingTop: 20,}}>
                     <View>

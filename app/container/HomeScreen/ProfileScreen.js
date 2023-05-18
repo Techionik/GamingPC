@@ -58,7 +58,7 @@ class ProfileScreen extends React.Component {
                     <View style={{
                         marginTop:40,
                         borderRadius: 15,
-                        backgroundColor: colors.whiteToDark,
+                        backgroundColor: colors.fieldBackgroundColor,
                         marginVertical: 10,
                         paddingVertical: 15,
                         paddingHorizontal: 20
@@ -67,20 +67,20 @@ class ProfileScreen extends React.Component {
                             textAlign: "center",
                             fontSize: 20,
                             fontFamily: Constants.fontFamilyMedium,
-                            color: colors.blackAndWhite
+                            color: colors.whiteToDark
                         }}>{this.props?.userInfo?.Full_Name}</Text>
-                        <View style={{height: 1, marginVertical: 10, backgroundColor: colors.greyToWhite}}></View>
+                        <View style={{height: 1, marginVertical: 10, backgroundColor: colors.whiteToDark}}></View>
                         <Text style={{
                             fontSize: 12,
                             fontFamily: Constants.fontFamilyMedium,
                             alignSelf: "center",
-                            color: colors.greyToWhite
+                            color: colors.whiteToDark
                         }}>{this.props?.userInfo?.Address}</Text>
                     </View>
 
                     <View style={{
                         borderRadius: 15,
-                        backgroundColor: colors.whiteToDark,
+                        backgroundColor: colors.fieldBackgroundColor,
                         marginBottom: 10,
                         paddingVertical: 15,
                         paddingHorizontal: 20
@@ -113,18 +113,18 @@ export function RowComponent({colors, title1, title2Style, title2, title1Style})
             alignItems: "center",
             paddingBottom: 10,
             borderBottomWidth: 1,
-            borderColor: colors.greyToWhite
+            borderColor: colors.whiteToDark
         }}>
             <Text style={[{
                 fontSize: 12,
                 flex: 1,
                 fontFamily: Constants.fontFamilyBold,
-                color: colors.greyToWhite
+                color: colors.whiteToDark
             }, title1Style]}>{title1}</Text>
             <Text style={[{
                 fontSize: 12,
                 fontFamily: Constants.fontFamilyBold,
-                color: colors.darKToWhite
+                color: colors.whiteToDark
             }, title2Style]}>{title2}</Text>
         </View>
     )

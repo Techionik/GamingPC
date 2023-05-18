@@ -339,7 +339,7 @@ export const lightTheme = {
   key: 'light',
   colors: {
     screenBackgroundColor:'white',
-   fieldBackgroundColor:'#6A7F91',
+   fieldBackgroundColor:'rgba(17,141,255,0.5)',
    fieldTextColor:'#FFFFFF',
    blackAndWhite:'#000000',
     drawerBackgroundColor:'#40E0D0',

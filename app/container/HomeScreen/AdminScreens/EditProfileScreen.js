@@ -1,7 +1,7 @@
 import React from 'react'
 import {
     ActivityIndicator,
-    Alert,
+
     FlatList,
     Image,
     ImageBackground, Modal, ScrollView, Text, TextInput, TouchableOpacity,
@@ -19,6 +19,7 @@ import FieldComponent from "../../Components/FieldComponent";
 import ProfileFieldComponent from "../../Components/ProfileFieldComponent";
 import {updateUser} from "../../../redux/user/operations";
 import {Color} from "../../../common";
+import {toast} from "../../../Omni";
 
 const mapStateToProps = ({app, user}) => ({
     app,
@@ -87,7 +88,7 @@ class EditProfileScreen extends React.Component {
         const data = this.props?.route?.params?.Data
         return (
             <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
-                <HeaderWihBackground isBack={true} title={"User Profile"} colors={colors} Props={this.props.value}/>
+                <HeaderWihBackground isBack={true} title={"User Management"} colors={colors} Props={this.props.value}/>
                 <View style={{flex: 1}}>
                     <ScrollView contentContainerStyle={{paddingBottom: 20,}}
                                 style={{flex: 1, paddingHorizontal: 10, paddingTop: 20,}}>

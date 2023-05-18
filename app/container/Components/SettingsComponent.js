@@ -9,7 +9,7 @@ export default function SettingsComponent({toogle,Props,onTogglePress,leftTitle,
     const {t,language}=Props
     return(
         <TouchableOpacity onPress={onPress} style={[{flexDirection:"row",alignItems:"center",marginVertical:5},style]}>
-            <Text style={[{fontSize:14,flex:1,includeFontPadding:false,padding:0,fontFamily:Constants.fontFamilyRegular,color:colors.blackAndWhite},titleStyle]}>{title}</Text>
+            <Text style={[{fontSize:14,flex:1,includeFontPadding:false,padding:0,fontFamily:Constants.fontFamilyRegular,color:colors.whiteToDark},titleStyle]}>{title}</Text>
             {toogle==true?
                 <ToggleButton
 
@@ -31,7 +31,7 @@ export default function SettingsComponent({toogle,Props,onTogglePress,leftTitle,
 
                 value={value}
                 />:
-            <AntDesign name={language=="en"?"right":"left"} size={15} color={colors.greyToTheme}/>
+            <AntDesign name={language=="en"?"right":"left"} size={15} color={colors.whiteToDark}/>
             }
         </TouchableOpacity>
     )

@@ -309,7 +309,7 @@ class ViewCurrentLeave extends React.Component {
                         <View style={{flex: 1}}/>
                         {this.props?.route?.params?.data?.Statuss === "Accept" ? <View style={{
                             borderRadius: 15,
-                            backgroundColor: Color.primary,
+                            backgroundColor: "green",
                             marginBottom: 10,
                             paddingVertical: 15,
                             paddingHorizontal: 20
@@ -326,7 +326,7 @@ class ViewCurrentLeave extends React.Component {
                                 <Text style={{fontWeight: "bold", fontSize: 16, alignSelf: "center"}}>Reject</Text>
                             </View> :
                             <>
-                                <ButtonComponent onPress={() => {
+                                <ButtonComponent Style={{backgroundColor:"green"}} onPress={() => {
                                     this.setState({modalVisible: true});
                                 }} title={"Accept"}/>
                                 <ButtonComponent onPress={() => {

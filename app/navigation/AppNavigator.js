@@ -39,6 +39,9 @@ import EmployComplainsScreen from "../container/HomeScreen/EmployComplainsScreen
 import AllUserScreen from "../container/HomeScreen/AdminScreens/AllUserScreen";
 import ViewCurrentUser from "../container/HomeScreen/AdminScreens/ViewCurrentUser";
 import EditProfileScreen from "../container/HomeScreen/AdminScreens/EditProfileScreen";
+import PendingLeaves from "../container/HomeScreen/AdminScreens/PendingLeaves";
+import AcceptedLeaves from "../container/HomeScreen/AdminScreens/AcceptedLeaves";
+import RejectedLeaves from "../container/HomeScreen/AdminScreens/RejectedLeaves";
 
 
 
@@ -81,6 +84,9 @@ const AppStack = ({}) => {
             <Stack.Screen name={"AllUserScreen"} component={AllUserScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"ViewCurrentUser"} component={ViewCurrentUser} options={{headerShown: false}}/>
             <Stack.Screen name={"EditProfileScreen"} component={EditProfileScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"PendingLeaves"} component={PendingLeaves} options={{headerShown: false}}/>
+            <Stack.Screen name={"AcceptedLeaves"} component={AcceptedLeaves} options={{headerShown: false}}/>
+            <Stack.Screen name={"RejectedLeaves"} component={RejectedLeaves} options={{headerShown: false}}/>
         </Stack.Navigator>
     )
 }

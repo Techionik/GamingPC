@@ -16,7 +16,7 @@ export default function EmployLeaveComponent({Style, item, colors}) {
             paddingHorizontal: 10,
             paddingVertical: 10,
             backgroundColor: colors.fieldBackgroundColor,
-            elevation: 2,
+
             borderRadius: 20
         }}>
             <View style={{flexDirection: 'row',alignItems: 'center'}}>

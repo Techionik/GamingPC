@@ -16,7 +16,6 @@ import PayRoleComponent from "../../Components/PayRoleComponent";
 import LeaveComponent from "../../Components/LeaveComponent";
 import {getData, getLeaves} from "../../../redux/user/operations";
 import {connect} from "react-redux";
-import {HomeScreenComponent} from "../../Components/HomeScreenComponent";
 
 const mapStateToProps = ({app, user}) => ({
     app,
@@ -30,7 +29,7 @@ const mapStateToProps = ({app, user}) => ({
     mapStateToProps,
     {getLeaves},
 )
-class LeavesScreen extends React.Component {
+class RejectedLeaves extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -70,30 +69,35 @@ class LeavesScreen extends React.Component {
         const {t, language, themeColor} = this.props.value
         const {colors} = themeColor
         return (
-            <ImageBackground source={require('../../../images/SplashLogo.png')} style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
-
-                <HeaderWihBackground isBack={true} title={"Leaves"} colors={colors} Props={this.props.value}/>
-                <View style={{flex: 1, justifyContent: "center"}}>
-                    <View style={{flex: 0.5, paddingHorizontal: 10, paddingTop: 20,}}>
-                        <HomeScreenComponent Style={{backgroundColor: "orange"}} title={"Pending Leaves"}
-                                             image={require('../../../images/Attendance.png')} onPress={() => {
-                            this.props.navigation.navigate("PendingLeaves")
-                        }}/>
-                        <HomeScreenComponent Style={{backgroundColor: "green"}} title={"Accepted Leaves"}
-                                             image={require('../../../images/Breaks.png')} onPress={() => {
-                            this.props.navigation.navigate("AcceptedLeaves")
-                        }}/>
-                        <HomeScreenComponent Style={{backgroundColor: "red"}} title={"Rejected Leaves"}
-                                             image={require('../../../images/Breaks.png')} onPress={() => {
-                            this.props.navigation.navigate("RejectedLeaves")
-                        }}/>
+            <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
+                {this.state.loading && <View style={{
+                    position: 'absolute',
+                    top: 0,
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    zIndex: 10,
+                    backgroundColor: 'rgba(0,0,0,0.5)',
+                    justifyContent: "center",
+                    alignItems: "center"
+                }}>
+                    <ActivityIndicator size={"large"} color={Color.primary}/>
+                </View>}
+                <HeaderWihBackground isBack={true} title={"Rejected Leaves"} colors={colors} Props={this.props.value}/>
+                    <View>
+                        <FlatList contentContainerStyle={{flex: 1}} showsVerticalScrollIndicator={false}
+                                  data={this.state.Leaves} refreshing={this.state.refreshData} onRefresh={() => {
+                            this.getFreshLeaves()
+                        }}
+                                  renderItem={({item, index}) =>
+                                      item?.Statuss === "Reject" ?
+                                          <LeaveComponent colors={colors} item={item}/> : null
+                                  }/>
                     </View>
-                </View>
-
-            </ImageBackground>
+            </View>
 
         );
     }
 }
 
-export default withLanguage(LeavesScreen)
+export default withLanguage(RejectedLeaves)

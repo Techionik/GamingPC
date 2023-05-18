@@ -8,13 +8,7 @@ import {
 
 } from 'react-native'
 import withLanguage from "../../../config/withLanguage";
-import {Color, Constants} from "../../../common";
-// import HeaderComponent from "../Components/HeaderComponent";
-import AntDesign from "react-native-vector-icons/AntDesign";
 import HeaderWihBackground from "../../Components/HeaderWihBackground";
-import PayRoleComponent from "../../Components/PayRoleComponent";
-import ProfileFieldComponent from "../../Components/ProfileFieldComponent";
-import {RowComponent} from "../ProfileScreen";
 import ButtonComponent from "../../Components/ButtonComponent";
 import LeaveViewComponent from "../../Components/LeaveViewComponent";
 import {connect} from "react-redux";
@@ -59,7 +53,7 @@ class ViewCurrentUser extends React.Component {
         return (
             <View style={{flex: 1, backgroundColor: colors.screenBackgroundColor}}>
 
-                <HeaderWihBackground isBack={true} title={"User Profile"} colors={colors} Props={this.props.value}/>
+                <HeaderWihBackground isBack={true} title={"User Management"} colors={colors} Props={this.props.value}/>
                  <View style={{flex:1}}>
                 <ScrollView contentContainerStyle={{paddingBottom:20,}} style={{ paddingHorizontal: 10, paddingTop: 20,}}>
 

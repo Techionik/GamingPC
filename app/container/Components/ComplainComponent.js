@@ -28,11 +28,11 @@ export default function ComplainComponent({Style,onPress,disabled, item, colors}
             paddingHorizontal: 15,
             paddingVertical: 12,
             backgroundColor: colors.fieldBackgroundColor,
-            elevation: 2,
+
             margin: 8,
             borderRadius: 10
         }}>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+
                 <Image style={{height: 60, width: 60, borderRadius: 60}} resizeMode={"contain"}
                        source={require('../../images/ProfileImage.png')}/>
                 <View style={{marginLeft: 10, flex: 1}}>
@@ -59,7 +59,7 @@ export default function ComplainComponent({Style,onPress,disabled, item, colors}
                     }}>{item.Designation}</Text>}
                     <Text numberOfLines={1} style={{color: "#000", fontSize: 16,marginRight:20, fontWeight: "bold"}}>{item.Email}</Text>
                 </View>
-            </View>
+
 
         </TouchableOpacity>
     )

@@ -65,23 +65,23 @@ class SettingScreen extends React.Component {
                         marginHorizontal: 10,
                         borderRadius: 15,
                         marginVertical: 20,
-                        backgroundColor: colors.BackgroundView,
+                        backgroundColor: colors.fieldBackgroundColor,
                     }}>
                         <Text style={{
                             fontSize: 12,
                             fontFamily: Constants.fontFamilyMedium,
-                            color: colors.greyToTheme
+                            color: "grey"
                         }}>{t("L:AccountSettings")}</Text>
                         <SettingsComponent Props={this.props.value} style={{marginBottom: 10}}
                         onPress={()=>{this.props.navigation.navigate("ProfileScreen")}}        title={"Profile"} colors={colors}/>
                         <Text style={{
                             fontSize: 12,
                             fontFamily: Constants.fontFamilyMedium,
-                            color: colors.greyToTheme
-                        }}>{t("L:OtherSettings")}</Text>
+                            color: "grey"
+                        }}>Settings</Text>
 
-                        <SettingsComponent value={this.props.app?.theme == 'dark' ? true : false} onTogglePress={() => {
-                            if (this.props.app?.theme == 'dark') {
+                        <SettingsComponent value={this.props.app?.theme === 'dark' ? true : false} onTogglePress={() => {
+                            if (this.props.app?.theme === 'dark') {
                                 this.props.changeTheme('light')
                             } else {
                                 this.props.changeTheme('dark')
@@ -93,9 +93,6 @@ class SettingScreen extends React.Component {
                         <SettingsComponent Props={this.props.value} onPress={() => {this.props.navigation.navigate("AllUserScreen")}}  style={{marginBottom: 10}} title={"Update Employee"} colors={colors}/>}
                         <SettingsComponent Props={this.props.value}  style={{marginBottom: 10}} title={t("L:PrivacyPolicy")} colors={colors}/>
                         <SettingsComponent Props={this.props.value}  style={{marginBottom: 10}} title={t("L:TermsandConditions")} colors={colors}/>
-                        <SettingsComponent Props={this.props.value} onPress={() => {
-                            this.props.navigation.navigate("ContactUsScreen")
-                        }} style={{marginBottom: 10}} title={"Support"} colors={colors}/>
                         <SettingsComponent Props={this.props.value} style={{marginBottom: 10}} title={t("L:Aboutus")} colors={colors}/>
                         <SettingsComponent onPress={()=>{this.props.logout();this.props.navigation.replace("SplashContainer")}} Props={this.props.value} title={t("L:Logout")} colors={colors}/>
 

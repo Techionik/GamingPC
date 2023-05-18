@@ -28,7 +28,6 @@ export default function LeaveComponent({Style, item, colors}) {
             paddingHorizontal: 15,
             paddingVertical: 12,
             backgroundColor: colors.fieldBackgroundColor,
-            elevation: 2,
             margin: 8,
             borderRadius: 10
         }}>
