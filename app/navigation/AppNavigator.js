@@ -7,7 +7,8 @@ import {compose} from "redux";
 import {connect} from "react-redux";
 import {languageSelector, themeSelector} from "../redux/app/selectors";
 import SplashContainer from "../container/SplashContainer";
-import MapScreen from "../container/MapScreen";
+import {SocialSignupScreen} from "../container/AuthScreens/SocialSignupScreen";
+
 
 
 const Stack = createStackNavigator()
@@ -16,6 +17,7 @@ const AppStack = ({}) => {
     return (
         <Stack.Navigator initialRouteName={"SplashContainer"}>
             <Stack.Screen name={"SplashContainer"} component={SplashContainer} options={{headerShown: false}}/>
+            <Stack.Screen name={"SocialSignupScreen"} component={SocialSignupScreen} options={{headerShown: false}}/>
 
         </Stack.Navigator>
     )

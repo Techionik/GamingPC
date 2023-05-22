@@ -3,6 +3,7 @@ import {Text, StyleSheet, Image, View, ImageBackground} from 'react-native'
 import Constants from '../common/Constants'
 import withLanguage from "../config/withLanguage";
 import {connect} from "react-redux";
+import {Color} from "../common";
 const mapStateToProps = ({app, user}) => ({
     app,
     user,
@@ -20,39 +21,36 @@ class SplashContainer extends React.Component {
     componentDidMount() {
 
         setTimeout(() => {
-            if (this.props?.userInfo?.Email===""||this.props?.userInfo===undefined) {
-                this.props.navigation.replace('LoginScreen');
-            } else {
-                this.props.navigation.replace('HomeScreen')
-
-            }
+            this.props.navigation.navigate("SocialSignupScreen")
+            // if (this.props?.userInfo?.Email===""||this.props?.userInfo===undefined) {
+            //     // this.props.navigation.replace('LoginScreen');
+            // } else {
+            //     // this.props.navigation.replace('HomeScreen')
+            //
+            // }
         }, 2000)
     }
     render() {
-        const {value} = this.props;
-        const {t, themeColor} = value;
-        const {colors,key} = themeColor
-
         return (
             //backGround Image
-            <ImageBackground source={require('../images/SplashLogo.png')} style={{
+            <View style={{
                 flex: 1,
                 justifyContent: "center",
                 alignItems: 'center',
-                backgroundColor: colors.screenBackgroundColor
+                backgroundColor: Color.primary
             }}>
                 <View style={{paddingHorizontal:30,justifyContent:"center"}}>
                     <Image style={{
                         height: undefined,
-                        width: "100%",
-                        aspectRatio: 6.28,
+                        width: "50%",
+                        aspectRatio: 0.88,
                         alignSelf: 'center',
-                    }} source={key!=="light"?require('../images/LoginLogo.png'):require('../images/DarkLogo.png')}/>
-                <Text style={{fontSize:14,fontFamily:Constants.fontFamilyRegular,color:colors.blackAndWhite,alignSelf:"center",}}>FROM EXCELLENCE TO INNOVATION</Text>
+                    }} source={require('../images/Logo.png')}/>
+                <Text style={{fontSize:26,fontFamily:Constants.fontFamilyBold,color:"#fff",alignSelf:"center",}}>Enhancer</Text>
                 </View>
-            </ImageBackground>
+            </View>
         )
     }
 }
 
-export default withLanguage(SplashContainer)
+export default SplashContainer;

@@ -16,7 +16,7 @@ export default {
   main: '#fff',
   primaryDark: '#0097a7',
   rippleColor: '#0556a0',
-  primary: '#118dff',
+  primary: '#DE96D1',
   redColor:"#E50027",
 
   primaryLight: 'rgba(64, 224, 208, 0.27)',

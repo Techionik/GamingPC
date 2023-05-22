@@ -2,6 +2,8 @@ package com.ahlacustomer.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
+
+import com.enhancer.BuildConfig;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
@@ -21,7 +23,7 @@ import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.uimanager.ViewManagerRegistry;
 import com.ahlacustomer.newarchitecture.components.MainComponentsRegistry;
 import com.ahlacustomer.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
-import com.techionik.BuildConfig;
+
 
 import java.util.ArrayList;
 import java.util.List;
