@@ -1,10 +1,11 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Image, Text, TouchableOpacity, View} from "react-native";
 import {Color, Constants} from "../../common";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
 
 export const HomeScreen = () => {
+    const [total,setTotal]=useState(1)
     const [currentIndex, setCurrentIndex] = useState(0);
     const items = [{image: require('../../images/shirt.png'),
         Price:"100"
@@ -27,6 +28,9 @@ export const HomeScreen = () => {
             setCurrentIndex(currentIndex - 1);
         }
     };
+    useEffect(()=>{
+        alert(JSON.stringify(total))
+    },[])
     return (
         <View style={{flex: 1, backgroundColor: "#C5E6FF"}}>
             <View style={{flex: 0.55, backgroundColor: Color.Lightprimary}}>
@@ -68,9 +72,8 @@ export const HomeScreen = () => {
             <View style={{padding: 20}}>
                 <PriceComponent title={"Price"} price={`PKR ${items[currentIndex].Price}`}/>
                 <PriceComponent title={"Delivery"} price={"PKR 100"}/>
-                <PriceComponent title={"Total"} price={parseInt(items[currentIndex].Price)+100}/>
-                <CalCulateComponent/>
-
+                <PriceComponent title={"Total"} price={`PKR ${total*(parseInt(items[currentIndex].Price)+100)}`}/>
+                <CalCulateComponent SendBack={(q)=>{setTotal(q)}}/>
                 <View style={{flexDirection: "row", marginTop: 15, justifyContent: "flex-end"}}>
                     <TouchableOpacity style={{padding: 10, borderRadius: 7., backgroundColor: Color.primary}}>
                         <Text style={{color: "#fff", fontSize: 15, fontFamily: Constants.fontFamilyBold}}>Add to Cart</Text>
@@ -90,7 +93,7 @@ const PriceComponent = ({title, price}) => {
         </View>
     )
 }
-const CalCulateComponent = () => {
+const CalCulateComponent = ({SendBack}) => {
     const [Q, sQ] = useState(1)
     return (
         <View style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center",}}>
@@ -107,7 +110,9 @@ const CalCulateComponent = () => {
                 <AntDesign onPress={() => {
                     if (Q > 1) {
                         sQ(Q - 1)
+                        SendBack(Q)
                     }
+
                 }} name={"minus"} color={"#fff"} size={22} style={{marginRight: 10}}/>
                 <Text style={{
                     color: "#fff",
@@ -118,6 +123,7 @@ const CalCulateComponent = () => {
                 }}>{Q}</Text>
                 <AntDesign onPress={() => {
                     sQ(Q + 1)
+                    SendBack(Q)
                 }} name={"plus"} color={"#fff"} size={22} style={{marginLeft: 10}}/>
             </View>
         </View>
