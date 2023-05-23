@@ -8,6 +8,7 @@ import {connect} from "react-redux";
 import {languageSelector, themeSelector} from "../redux/app/selectors";
 import SplashContainer from "../container/SplashContainer";
 import {SocialSignupScreen} from "../container/AuthScreens/SocialSignupScreen";
+import {HomeScreen} from "../container/HomeScreen/HomeScreen";
 
 
 
@@ -18,6 +19,7 @@ const AppStack = ({}) => {
         <Stack.Navigator initialRouteName={"SplashContainer"}>
             <Stack.Screen name={"SplashContainer"} component={SplashContainer} options={{headerShown: false}}/>
             <Stack.Screen name={"SocialSignupScreen"} component={SocialSignupScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"HomeScreen"} component={HomeScreen} options={{headerShown: false}}/>
 
         </Stack.Navigator>
     )
