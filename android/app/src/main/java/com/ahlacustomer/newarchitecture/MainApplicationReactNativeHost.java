@@ -3,7 +3,8 @@ package com.ahlacustomer.newarchitecture;
 import android.app.Application;
 import androidx.annotation.NonNull;
 
-import com.enhancer.BuildConfig;
+
+import com.dhobiwala.BuildConfig;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;

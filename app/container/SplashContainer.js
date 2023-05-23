@@ -42,11 +42,10 @@ class SplashContainer extends React.Component {
                 <View style={{paddingHorizontal:30,justifyContent:"center"}}>
                     <Image style={{
                         height: undefined,
-                        width: "50%",
-                        aspectRatio: 0.88,
+                        width: "90%",
+                        aspectRatio: 8,
                         alignSelf: 'center',
                     }} source={require('../images/Logo.png')}/>
-                <Text style={{fontSize:26,fontFamily:Constants.fontFamilyBold,color:"#fff",alignSelf:"center",}}>Enhancer</Text>
                 </View>
             </View>
         )
