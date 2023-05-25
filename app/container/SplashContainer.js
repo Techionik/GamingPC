@@ -17,7 +17,7 @@ class SplashContainer extends React.Component {
     constructor(props) {
         super(props);
     }
-//this component  check if user already login then the component will move the user on HomeScreen
+//this component  check if user already login then the component will move the user on OrderScreen
     componentDidMount() {
 
         setTimeout(() => {
@@ -25,7 +25,7 @@ class SplashContainer extends React.Component {
             // if (this.props?.userInfo?.Email===""||this.props?.userInfo===undefined) {
             //     // this.props.navigation.replace('LoginScreen');
             // } else {
-            //     // this.props.navigation.replace('HomeScreen')
+            //     // this.props.navigation.replace('OrderScreen')
             //
             // }
         }, 2000)

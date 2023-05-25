@@ -7,7 +7,7 @@ const windowWidth = Dimensions.get('window').width;
 export default function SliderComponent({onLayout}) {
     const [imagesData, setImagesData] = useState([require('../../images/img1.jpg'), require('../../images/img2.jpg'),require('../../images/img3.jpg'),require('../../images/img4.jpg'),require('../../images/img5.jpg'),require('../../images/img6.jpg'),require('../../images/img7.jpg')])
     return (
-        <View style={{flex: 1}}>
+        <View style={{flex: 0.5}}>
             <SliderBox
                 images={imagesData}
                 sliderBoxHeight={"100%"}
