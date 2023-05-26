@@ -12,6 +12,8 @@ import {OrderScreen} from "../container/HomeScreen/OrderScreen";
 import {CartScreen} from "../container/CartScreens/CartScreen";
 import {HomeScreen} from "../container/HomeScreen/HomeScreen";
 import {AddDetailScreen} from "../container/HomeScreen/AddDetailScreen";
+import {LocationScreen} from "../container/HomeScreen/LocationScreen";
+import {AddToCartScreen} from "../container/HomeScreen/AddToCartScreen";
 
 
 
@@ -19,13 +21,15 @@ const Stack = createStackNavigator()
 
 const AppStack = ({}) => {
     return (
-        <Stack.Navigator initialRouteName={"SplashContainer"}>
+        <Stack.Navigator initialRouteName={"AddToCartScreen"}>
             <Stack.Screen name={"SplashContainer"} component={SplashContainer} options={{headerShown: false}}/>
             <Stack.Screen name={"SocialSignupScreen"} component={SocialSignupScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"HomeScreen"} component={HomeScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"OrderScreen"} component={OrderScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"CartScreen"} component={CartScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"AddDetailScreen"} component={AddDetailScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"LocationScreen"} component={LocationScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"AddToCartScreen"} component={AddToCartScreen} options={{headerShown: false}}/>
 
         </Stack.Navigator>
     )
