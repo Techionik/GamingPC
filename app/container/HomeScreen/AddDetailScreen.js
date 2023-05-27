@@ -4,71 +4,57 @@ import {Color, Constants} from "../../common";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import {useNavigation} from "@react-navigation/native";
 import {ButtonComponent} from "../Components/ButtonComponent";
+import {HeaderComponent} from "../Components/HeaderComponent";
+import {RowComponent} from "./OrdersScreen";
 
 
 export const AddDetailScreen = () => {
 
     const navigation = useNavigation()
     const list = [{
+        title: "Shalwar Kameez",
+        Price: "100",
+        image: require('../../images/kurta.png')
+    }, {
         title: "Shirt",
         Price: "100",
         image: require('../../images/shirt.png')
-    }, {
-        title: "Outer Wear",
-        Price: "100",
-        image: require('../../images/clothes.png')
     }, {
         title: "Bottom",
         Price: "100",
         image: require('../../images/jeans.png')
     }, {
-        title: "Dresses",
-        Price: "100",
-        image: require('../../images/wedding-dress.png')
-    }, {
-        title: "Suite",
+        title: "suite",
         Price: "100",
         image: require('../../images/blazer.png')
-    }, {
-        title: "Shlwar-Kameez",
-        Price: "100",
-        image: require('../../images/kurta.png')
-    }, {
-        title: "Others",
-        Price: "100",
-        image: require('../../images/hanger.png')
-    },]
-
+    }]
 
     return (
         <View style={{flex: 1, backgroundColor: Color.primary}}>
             <View style={{paddingHorizontal: 20, marginVertical: 40, flexDirection: "row", alignItems: "center"}}>
-                <AntDesign name={"left"} size={30} color={"#fff"} style={{marginRight: 10}}/>
-                <Text style={{
-                    fontSize: 24,
-                    fontFamily: Constants.fontFamilyBold,
-                    color: "#fff",
-                    includeFontPadding: false,
-                    padding: 0,
-                }}>{"Add Detail "}</Text>
+                <HeaderComponent title={"Add Details"}/>
             </View>
             <View style={{
                 flex: 1,
                 backgroundColor: "#dfdfdf",
-                padding: 20,
+                paddingTop: 20,
                 borderTopLeftRadius: 20,
                 borderTopRightRadius: 20
             }}>
-
                 <FlatList data={list} style={{flex: 1}} renderItem={({item, index}) =>
-                    <DetailComponent item={item}/>
+                    <DetailComponent item={item} setValueBack={(c) => {
+                        console.log(c*(parseInt(item.Price)))
+                    }}/>
                 }/>
-                <ButtonComponent title={"Done"}/>
+
             </View>
+            <ButtonComponent onPress={() => {
+                navigation.navigate("LocationScreen")
+            }} Style={{backgroundColor: Color.primary}} TitleStyle={{color: "#fff"}} title={"Done"}/>
         </View>
     )
 }
-const DetailComponent = ({item}) => {
+const DetailComponent = ({item, setValueBack}) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     return (
         <View style={{
@@ -98,25 +84,31 @@ const DetailComponent = ({item}) => {
                         fontFamily: Constants.fontFamilyBold,
                         color: "red",
                         marginLeft: 10
-                    }}>Price <Text style={{fontFamily: Constants.fontFamilyRegular, color: Color.primary}}>{item?.Price} PKR</Text></Text>
+                    }}>Price <Text
+                        style={{fontFamily: Constants.fontFamilyRegular, color: Color.primary}}>{item?.Price} PKR</Text></Text>
                 </View>
             </View>
-            <View style={{flexDirection: "row", alignItems: "center"}}>
+            <View style={{flexDirection: "row", width: "30%", justifyContent: "space-between", alignItems: "center"}}>
                 <AntDesign onPress={() => {
                     if (currentIndex > 0) {
+                        setValueBack(currentIndex - 1)
                         setCurrentIndex(currentIndex - 1)
                     }
                 }} name={"minus"} color={"#fff"} size={20}
                            style={{padding: 5, borderRadius: 30, backgroundColor: Color.primary}}/>
                 <Text style={{
                     fontSize: 18,
-                    marginHorizontal: 10,
                     fontFamily: Constants.fontFamilyRegular,
                     color: Color.primary,
-                    marginLeft: 10
                 }}>{currentIndex}</Text>
                 <AntDesign onPress={() => {
-                    setCurrentIndex(currentIndex + 1)
+                    if (currentIndex > 0) {
+                        setCurrentIndex(currentIndex + 1)
+                        setValueBack(currentIndex + 1)
+                    } else {
+                        setValueBack(1)
+                        setCurrentIndex(1)
+                    }
                 }} name={"plus"} color={"#fff"} size={20}
                            style={{padding: 5, borderRadius: 30, backgroundColor: Color.primary}}/>
             </View>

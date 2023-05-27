@@ -4,6 +4,7 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 import {Color, Constants} from "../../common";
 import {ButtonComponent} from "../Components/ButtonComponent";
 import {useNavigation} from "@react-navigation/native";
+import {HeaderComponent} from "../Components/HeaderComponent";
 
 
 export const LocationScreen=()=>{
@@ -11,14 +12,7 @@ export const LocationScreen=()=>{
     return(
         <View style={{flex:1,backgroundColor:Color.primary}}>
             <View style={{paddingHorizontal: 20, marginVertical: 40, flexDirection: "row", alignItems: "center"}}>
-                <AntDesign name={"left"} size={30} color={"#fff"} style={{marginRight: 10}}/>
-                <Text style={{
-                    fontSize: 24,
-                    fontFamily: Constants.fontFamilyBold,
-                    color: "#fff",
-                    includeFontPadding: false,
-                    padding: 0,
-                }}>{"Confirm Location "}</Text>
+                <HeaderComponent  title={"Confirm Location"}/>
             </View>
             <View style={{
                 flex: 1,

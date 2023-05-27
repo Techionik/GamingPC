@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "974790027207",
+    "project_id": "dhobiwala-5f178",
+    "storage_bucket": "dhobiwala-5f178.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:974790027207:android:c258fe9bffbf44ad361be2",
+        "android_client_info": {
+          "package_name": "com.dhobiwala"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrU7zbSPHh5DqW3s8Y9v2mIrNv0nKoFrg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

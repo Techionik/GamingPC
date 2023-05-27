@@ -4,6 +4,7 @@ import {FlatList, Image, Text, TouchableOpacity, View} from "react-native";
 import {Color, Constants} from "../../common";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import {useNavigation} from "@react-navigation/native";
+import ImageSliderComponent from "../Components/ImageSliderComponent";
 
 
 export const HomeScreen = () => {
@@ -26,9 +27,10 @@ export const HomeScreen = () => {
                         color: "#fff"
                     }}>{"Hope You Are Doing Well"}</Text>
                 </View>
-                <AntDesign onPress={()=>{navigation.navigate("CartScreen")}} name={"setting"} size={40}/>
             </View>
-            <View style={{flex:0.5}}/>
+            <View style={{margin:10,flex:0.5}}>
+          <ImageSliderComponent/>
+            </View>
             <View style={{flex:1,backgroundColor:"#dfdfdf",padding:20,borderTopLeftRadius:20,borderTopRightRadius:20}}>
                 <View style={{flexDirection:"row",justifyContent:"space-between",alignItems:"center"}}>
                     <ServiceComponent item={services[0]}/>
