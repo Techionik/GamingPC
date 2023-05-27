@@ -4,7 +4,7 @@ import React from "react";
 import {Color} from "../../common";
 
 
-export const CartFieldComponent=({Style,title,icon})=>{
+export const CartFieldComponent=({Style,title,icon,value,onChangeText,FieldStyle})=>{
     return(
         <View style={[{
             flexDirection: "row",
@@ -15,7 +15,7 @@ export const CartFieldComponent=({Style,title,icon})=>{
             marginVertical:10,
             borderWidth: 1,
         },Style]}>
-            <TextInput style={{color:"#fff"}}
+            <TextInput  value={value} onChangeText={onChangeText} style={[{color:Color.primary},FieldStyle]}
                        placeholderTextColor={Color.primary} placeholder={title}></TextInput>
         </View>
     )

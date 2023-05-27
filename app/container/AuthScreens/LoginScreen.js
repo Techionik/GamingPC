@@ -1,29 +1,34 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Image, ImageBackground, Text, TextInput, TouchableOpacity, View} from "react-native";
 import {SocialButtonComponent} from "../Components/SocialButtonComponent";
 import {Color, Constants} from "../../common";
 import SliderComponent from "../Components/SliderComponent";
-import {Colors} from "react-native/Libraries/NewAppScreen";
 import {useNavigation} from "@react-navigation/native";
-import AntDesign from "react-native-vector-icons/AntDesign";
-import Feather from "react-native-vector-icons/Feather";
-import FontAwesome from "react-native-vector-icons/FontAwesome";
 import {TextFieldComponent} from "../Components/TextFieldComponent";
 import {ButtonComponent} from "../Components/ButtonComponent";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import firestore from '@react-native-firebase/firestore';
+import {toast} from "../../Omni";
+import {useDispatch} from "react-redux";
+import * as actions from "../../redux/user/actions";
+import Octicons from "react-native-vector-icons/Octicons";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 
-export const SocialSignupScreen = () => {
+export const LoginScreen = () => {
     const navigation = useNavigation()
+    const [Phone, setPhone] = useState("")
+    const [Password, setPassword] = useState("")
+    const dispatch=useDispatch()
+    useEffect(() => {
+
+    }, [])
 
     return (
         <View style={{
             flex: 1,
             backgroundColor: Color.primary,
-            height: undefined,
-            width: "100%",
-            aspectRatio: 0.479,
-            alignSelf: "center"
+
         }}>
             <SliderComponent/>
             <View style={{
@@ -44,11 +49,27 @@ export const SocialSignupScreen = () => {
                 }} source={require('../../images/Logo.png')}/>
                 <View style={{flex: 1}}/>
                 <View style={{marginHorizontal: 15}}>
-                    <TextFieldComponent title={"Enter Phone Number..."}/>
-                    <TextFieldComponent icon={<Ionicons name={"eye-off"} size={25} color={"#fff"}/>}
-                                        title={"Enter Password..."}/>
-                    <ButtonComponent onPress={()=>{navigation.navigate("HomeScreen")}}
-                    Style={{alignSelf: "center", marginTop: 15, paddingHorizontal: 50}} title={"Sign In"}/>
+                    <TextFieldComponent Style={{marginHorizontal:20}} value={Phone} onChangeText={(text) => {
+                        setPhone(text)
+                    }} title={"Enter Phone Number..."}/>
+                    <ButtonComponent onPress={() => {
+                        firestore()
+                            .collection('Users')
+                            .get()
+                            .then(querySnapshot => {
+                                querySnapshot.forEach(documentSnapshot => {
+                                    if (documentSnapshot.data().PhoneNumber===Phone){
+                                        toast("Logged In")
+                                        dispatch(actions.loginSuccess(documentSnapshot.data()))
+                                       navigation.replace("HomeScreen")
+                                    }else {
+                                        navigation.navigate("SignUpScreen")
+                                        toast("User Not Exist")
+                                    }
+                                });
+                            });}}
+                                     Style={{alignSelf: "center", marginTop: 15, paddingHorizontal: 50}}
+                                     title={"Sign In"}/>
                 </View>
                 <View style={{flex: 1}}/>
                 <View style={{marginHorizontal: 20}}>

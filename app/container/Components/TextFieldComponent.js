@@ -3,7 +3,7 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import React from "react";
 
 
-export const TextFieldComponent=({Style,title,icon})=>{
+export const TextFieldComponent=({Style,title,secureTextEntry,icon,onChangeText,value})=>{
     return(
         <View style={[{
             flexDirection: "row",
@@ -15,7 +15,7 @@ export const TextFieldComponent=({Style,title,icon})=>{
             borderWidth: 1,
         },Style]}>
             {icon?icon:<FontAwesome name={"phone"} size={30} color={"#fff"}/>}
-            <TextInput style={{paddingLeft: 10, marginLeft: 10, borderLeftWidth: 1,color:"#fff", borderColor: "#fff"}}
+            <TextInput secureTextEntry={secureTextEntry?true:false} value={value} onChangeText={onChangeText} style={{paddingLeft: 10, marginLeft: 10, borderLeftWidth: 1,color:"#fff", borderColor: "#fff"}}
                        placeholderTextColor={"#fff"} placeholder={title}></TextInput>
         </View>
     )

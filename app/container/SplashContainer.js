@@ -21,13 +21,13 @@ class SplashContainer extends React.Component {
     componentDidMount() {
 
         setTimeout(() => {
-            this.props.navigation.navigate("SocialSignupScreen")
-            // if (this.props?.userInfo?.Email===""||this.props?.userInfo===undefined) {
-            //     // this.props.navigation.replace('LoginScreen');
-            // } else {
-            //     // this.props.navigation.replace('OrderScreen')
-            //
-            // }
+            this.props.navigation.replace("SocialSignupScreen")
+            if (this.props?.userInfo?.Email===""||this.props?.userInfo===undefined) {
+                this.props.navigation.replace('LoginScreen');
+            } else {
+                this.props.navigation.replace('HomeScreen')
+
+            }
         }, 2000)
     }
     render() {
