@@ -3,6 +3,8 @@ import * as types from './types'
 
 const initialState = {
     userInfo: undefined,
+    currentAddress: "undefined",
+    deliveryAddress: "undefined",
     brakeTime:[],
     checkIn:undefined,
     accessToken: null,
@@ -60,6 +62,22 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 userInfo: payload,
+                isFetching: false,
+                error: null,
+            };
+        }
+        case types.CURRENT_ADDRESS: {
+            return {
+                ...state,
+                currentAddress: payload,
+                isFetching: false,
+                error: null,
+            };
+        }
+        case types.DELIVERY_ADDRESS: {
+            return {
+                ...state,
+                deliveryAddress: payload,
                 isFetching: false,
                 error: null,
             };

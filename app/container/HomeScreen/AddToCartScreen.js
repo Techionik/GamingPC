@@ -1,24 +1,22 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {FlatList, Image, Text, TouchableOpacity, View} from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import {Color, Constants} from "../../common";
 import {ButtonComponent} from "../Components/ButtonComponent";
 import {TextFieldComponent} from "../Components/TextFieldComponent";
 import {CartFieldComponent} from "../Components/CartFieldComponent";
+import {HeaderComponent} from "../Components/HeaderComponent";
+import firestore from "@react-native-firebase/firestore";
+import {toast} from "../../Omni";
 
 
-export const AddToCartScreen = () => {
+export const AddToCartScreen = (props) => {
+    const  Bill= props?.route?.params?.Bill
+
     return (
         <View style={{flex: 1, backgroundColor: Color.primary}}>
             <View style={{paddingHorizontal: 20, marginVertical: 40, flexDirection: "row", alignItems: "center"}}>
-                <AntDesign name={"left"} size={30} color={"#fff"} style={{marginRight: 10}}/>
-                <Text style={{
-                    fontSize: 24,
-                    fontFamily: Constants.fontFamilyBold,
-                    color: "#fff",
-                    includeFontPadding: false,
-                    padding: 0,
-                }}>{"Cart Screen"}</Text>
+                <HeaderComponent title={"Payment Screen"}/>
             </View>
             <View style={{
                 flex: 1,
@@ -28,26 +26,16 @@ export const AddToCartScreen = () => {
                 borderTopRightRadius: 20
             }}>
                 <View style={{padding: 10, backgroundColor: "#fff", borderRadius: 15}}>
-                    <View style={{flexDirection: "row", alignItems: "center"}}>
+
+                    {Bill.cartItems&&Bill.cartItems.map((item, index) => (<View style={{flexDirection: "row", alignItems: "center"}}>
                         <Text style={{
                             fontSize: 18,
                             flex: 1,
                             fontFamily: Constants.fontFamilyRegular,
                             color: Color.primary
-                        }}>Sub Total</Text>
-                        <Text style={{fontSize: 18, fontFamily: Constants.fontFamilyBold, color: Color.primary}}>PKR
-                            200</Text>
-                    </View>
-                    <View style={{flexDirection: "row", alignItems: "center"}}>
-                        <Text style={{
-                            fontSize: 18,
-                            flex: 1,
-                            fontFamily: Constants.fontFamilyRegular,
-                            color: Color.primary
-                        }}>Deliver/Pick Up</Text>
-                        <Text style={{fontSize: 18, fontFamily: Constants.fontFamilyBold, color: Color.primary}}>PKR
-                            200</Text>
-                    </View>
+                        }}>{item?.product}</Text>
+                        <Text style={{fontSize: 18, fontFamily: Constants.fontFamilyBold, color: Color.primary}}>{item?.price} PKR</Text>
+                    </View>))}
                     <View style={{
                         flexDirection: "row",
                         alignItems: "center",
@@ -61,9 +49,21 @@ export const AddToCartScreen = () => {
                             flex: 1,
                             fontFamily: Constants.fontFamilyRegular,
                             color: Color.primary
+                        }}>Delivery Fee</Text>
+                        <Text style={{fontSize: 18, fontFamily: Constants.fontFamilyBold, color: Color.primary}}>{"200"} PKR</Text>
+                    </View>
+                    <View style={{
+                        flexDirection: "row",
+                        alignItems: "center",
+
+                    }}>
+                        <Text style={{
+                            fontSize: 18,
+                            flex: 1,
+                            fontFamily: Constants.fontFamilyRegular,
+                            color: Color.primary
                         }}>Total</Text>
-                        <Text style={{fontSize: 18, fontFamily: Constants.fontFamilyBold, color: Color.primary}}>PKR
-                            200</Text>
+                        <Text style={{fontSize: 18, fontFamily: Constants.fontFamilyBold, color: Color.primary}}>{Bill?.total+200} PKR</Text>
                     </View>
                 </View>
                 <Text style={{
@@ -87,7 +87,16 @@ export const AddToCartScreen = () => {
                 <CartFieldComponent title={"Date"}/>
                 <CartFieldComponent title={"CVC"}/>
                 <View style={{flex: 1}}/>
-                <ButtonComponent title={"Add To Cart"}/>
+                <ButtonComponent onPress={()=>{
+                    firestore()
+                        .collection('Orders')
+                        .add({
+
+                        })
+                        .then(() => {
+                            toast('OrderPlace');
+                        });
+                }} title={"Add To Cart"}/>
             </View>
         </View>
     )

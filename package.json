@@ -55,6 +55,7 @@
     "react-native-screens": "^3.17.0",
     "react-native-snap-carousel": "^3.9.1",
     "react-native-star-rating": "^1.1.0",
+    "react-native-tab-view": "^3.5.1",
     "react-native-toggle-element": "^2.0.1",
     "react-native-vector-icons": "^9.2.0",
     "react-redux": "^8.0.1",

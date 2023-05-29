@@ -26,6 +26,7 @@ import {Iron} from "../container/HomeScreen/Iron";
 import {DryClean} from "../container/HomeScreen/DryClean";
 import {LocationEditScreen} from "../container/HomeScreen/LocationEditScreen";
 
+
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
@@ -87,6 +88,10 @@ const AppStack = ({}) => {
             <Stack.Screen name={"Iron"} component={Iron} options={{headerShown: false}}/>
             <Stack.Screen name={"DryClean"} component={DryClean} options={{headerShown: false}}/>
             <Stack.Screen name={"LocationEditScreen"} component={LocationEditScreen} options={{headerShown: false}}/>
+
+
+
+
         </Stack.Navigator>
     )
 }

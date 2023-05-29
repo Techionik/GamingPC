@@ -21,6 +21,16 @@ export const loginSuccess = (data) => (
   type: types.LOGIN_SUCCESS,
   payload: data,
 });
+export const currentAddress = (data) => (
+    {
+        type: types.CURRENT_ADDRESS,
+        payload: data,
+    });
+export const deliveryAddress = (data) => (
+    {
+        type: types.DELIVERY_ADDRESS,
+        payload: data,
+    });
 
 export const getLeaves = (data) => (
     {
