@@ -1,34 +1,52 @@
 import React, {useEffect, useState} from "react";
-import {Image, ImageBackground, Text, TextInput, TouchableOpacity, View} from "react-native";
+import {Button, Image, ImageBackground, Text, TextInput, TouchableOpacity, View} from "react-native";
 import {SocialButtonComponent} from "../Components/SocialButtonComponent";
 import {Color, Constants} from "../../common";
 import SliderComponent from "../Components/SliderComponent";
 import {useNavigation} from "@react-navigation/native";
 import {TextFieldComponent} from "../Components/TextFieldComponent";
 import {ButtonComponent} from "../Components/ButtonComponent";
-import Ionicons from "react-native-vector-icons/Ionicons";
 import firestore from '@react-native-firebase/firestore';
 import {toast} from "../../Omni";
 import {useDispatch} from "react-redux";
 import * as actions from "../../redux/user/actions";
-import Octicons from "react-native-vector-icons/Octicons";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import auth from '@react-native-firebase/auth';
 
 
 export const LoginScreen = () => {
     const navigation = useNavigation()
     const [Phone, setPhone] = useState("")
-    const [Password, setPassword] = useState("")
-    const dispatch=useDispatch()
-    useEffect(() => {
+    const dispatch = useDispatch()
 
-    }, [])
+    // If null, no SMS has been sent
+    const [confirm, setConfirm] = useState(null);
+
+    // verification code (OTP - One-Time-Passcode)
+    const [code, setCode] = useState('');
+
+
+
+    // Handle the button press
+    async function signInWithPhoneNumber(phoneNumber) {
+        toast("Sending Otp On Your Number")
+        const confirmation = await auth().signInWithPhoneNumber(phoneNumber);
+        setConfirm(confirmation);
+    }
+
+    async function confirmCode() {
+        try {
+            await confirm.confirm(code);
+            toast("Verified")
+        } catch (error) {
+            toast('Invalid code.');
+        }
+    }
+
 
     return (
         <View style={{
             flex: 1,
             backgroundColor: Color.primary,
-
         }}>
             <SliderComponent/>
             <View style={{
@@ -49,27 +67,43 @@ export const LoginScreen = () => {
                 }} source={require('../../images/Logo.png')}/>
                 <View style={{flex: 1}}/>
                 <View style={{marginHorizontal: 15}}>
-                    <TextFieldComponent Style={{marginHorizontal:20}} value={Phone} onChangeText={(text) => {
-                        setPhone(text)
-                    }} title={"Enter Phone Number..."}/>
-                    <ButtonComponent onPress={() => {
-                        firestore()
-                            .collection('Users')
-                            .get()
-                            .then(querySnapshot => {
-                                querySnapshot.forEach(documentSnapshot => {
-                                    if (documentSnapshot.data().PhoneNumber===Phone){
-                                        toast("Logged In")
-                                        dispatch(actions.loginSuccess(documentSnapshot.data()))
-                                       navigation.replace("HomeScreen")
-                                    }else {
-                                        navigation.navigate("SignUpScreen")
-                                        toast("User Not Exist")
-                                    }
-                                });
-                            });}}
-                                     Style={{alignSelf: "center", marginTop: 15, paddingHorizontal: 50}}
-                                     title={"Sign In"}/>
+
+                    {!confirm ?
+                        <>
+                            <TextFieldComponent Style={{marginHorizontal: 20}} value={Phone} onChangeText={(text) => {
+                                setPhone(text)
+                            }} title={"Enter Phone Number..."}/>
+                            <ButtonComponent onPress={() => {
+
+                                firestore()
+                                    .collection('Users')
+                                    .get()
+                                    .then(querySnapshot => {
+                                        querySnapshot.forEach(documentSnapshot => {
+                                            if (documentSnapshot.data().PhoneNumber===Phone){
+                                                toast("Logged In")
+                                                dispatch(actions.loginSuccess(documentSnapshot.data()))
+                                                navigation.replace("HomeScreen")
+                                            }else {
+                                                navigation.navigate("SignUpScreen")
+                                                toast("User Not Exist")
+                                            }
+                                        });
+                                    });
+                                // signInWithPhoneNumber(Phone)
+                            }}
+                                             Style={{alignSelf: "center", marginTop: 15, paddingHorizontal: 50}}
+                                             title={"Sign In"}/>
+                        </> :
+                        <>
+                            <TextFieldComponent Style={{marginHorizontal: 20}} value={code} onChangeText={(text) => {
+                                setCode(text)
+                            }} title={"Enter Pin Code..."}/>
+                            <ButtonComponent onPress={() => {
+                                confirmCode()
+                            }} Style={{alignSelf: "center", marginTop: 15, paddingHorizontal: 50}} title={"Verify"}/>
+                        </>
+                    }
                 </View>
                 <View style={{flex: 1}}/>
                 <View style={{marginHorizontal: 20}}>
@@ -95,3 +129,5 @@ export const LoginScreen = () => {
         </View>
     )
 }
+
+

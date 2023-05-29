@@ -15,8 +15,7 @@ export const TextFieldComponent=({Style,title,secureTextEntry,icon,onChangeText,
             borderWidth: 1,
         },Style]}>
             {icon?icon:<FontAwesome name={"phone"} size={30} color={"#fff"}/>}
-            <TextInput secureTextEntry={secureTextEntry?true:false} value={value} onChangeText={onChangeText} style={{paddingLeft: 10, marginLeft: 10, borderLeftWidth: 1,color:"#fff", borderColor: "#fff"}}
-                       placeholderTextColor={"#fff"} placeholder={title}></TextInput>
+            <TextInput secureTextEntry={secureTextEntry?true:false} value={value} onChangeText={onChangeText} style={{paddingLeft: 10, marginLeft: 10, borderLeftWidth: 1,color:"#fff", borderColor: "#fff"}} placeholderTextColor={"#fff"} placeholder={title}></TextInput>
         </View>
     )
 }
