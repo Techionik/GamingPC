@@ -8,11 +8,12 @@ import {CartFieldComponent} from "../Components/CartFieldComponent";
 import {HeaderComponent} from "../Components/HeaderComponent";
 import firestore from "@react-native-firebase/firestore";
 import {toast} from "../../Omni";
+import {useSelector} from "react-redux";
 
 
 export const AddToCartScreen = (props) => {
-    const  Bill= props?.route?.params?.Bill
-
+    const Bill = props?.route?.params?.Bill
+    const userInfo = useSelector(state => state?.user?.userInfo)
     return (
         <View style={{flex: 1, backgroundColor: Color.primary}}>
             <View style={{paddingHorizontal: 20, marginVertical: 40, flexDirection: "row", alignItems: "center"}}>
@@ -27,15 +28,20 @@ export const AddToCartScreen = (props) => {
             }}>
                 <View style={{padding: 10, backgroundColor: "#fff", borderRadius: 15}}>
 
-                    {Bill.cartItems&&Bill.cartItems.map((item, index) => (<View style={{flexDirection: "row", alignItems: "center"}}>
-                        <Text style={{
-                            fontSize: 18,
-                            flex: 1,
-                            fontFamily: Constants.fontFamilyRegular,
-                            color: Color.primary
-                        }}>{item?.product}</Text>
-                        <Text style={{fontSize: 18, fontFamily: Constants.fontFamilyBold, color: Color.primary}}>{item?.price} PKR</Text>
-                    </View>))}
+                    {Bill.cartItems && Bill.cartItems.map((item, index) => (
+                        <View style={{flexDirection: "row", alignItems: "center"}}>
+                            <Text style={{
+                                fontSize: 18,
+                                flex: 1,
+                                fontFamily: Constants.fontFamilyRegular,
+                                color: Color.primary
+                            }}>{item?.product}</Text>
+                            <Text style={{
+                                fontSize: 18,
+                                fontFamily: Constants.fontFamilyBold,
+                                color: Color.primary
+                            }}>{item?.price} PKR</Text>
+                        </View>))}
                     <View style={{
                         flexDirection: "row",
                         alignItems: "center",
@@ -50,7 +56,11 @@ export const AddToCartScreen = (props) => {
                             fontFamily: Constants.fontFamilyRegular,
                             color: Color.primary
                         }}>Delivery Fee</Text>
-                        <Text style={{fontSize: 18, fontFamily: Constants.fontFamilyBold, color: Color.primary}}>{"200"} PKR</Text>
+                        <Text style={{
+                            fontSize: 18,
+                            fontFamily: Constants.fontFamilyBold,
+                            color: Color.primary
+                        }}>{"200"} PKR</Text>
                     </View>
                     <View style={{
                         flexDirection: "row",
@@ -63,7 +73,11 @@ export const AddToCartScreen = (props) => {
                             fontFamily: Constants.fontFamilyRegular,
                             color: Color.primary
                         }}>Total</Text>
-                        <Text style={{fontSize: 18, fontFamily: Constants.fontFamilyBold, color: Color.primary}}>{Bill?.total+200} PKR</Text>
+                        <Text style={{
+                            fontSize: 18,
+                            fontFamily: Constants.fontFamilyBold,
+                            color: Color.primary
+                        }}>{Bill?.total + 200} PKR</Text>
                     </View>
                 </View>
                 <Text style={{
@@ -87,12 +101,18 @@ export const AddToCartScreen = (props) => {
                 <CartFieldComponent title={"Date"}/>
                 <CartFieldComponent title={"CVC"}/>
                 <View style={{flex: 1}}/>
-                <ButtonComponent onPress={()=>{
+                <ButtonComponent onPress={() => {
+
+                    firestore()
+                        .collection('Users')
+                        .doc(userInfo?.userId)
+                        .update({Items: Bill?.cartItems, Cart: Bill?.total})
+                        .then(() => {
+                            console.log('updated!');
+                        });
                     firestore()
                         .collection('Orders')
-                        .add({
-
-                        })
+                        .add({Items: Bill?.cartItems, Total: Bill?.total})
                         .then(() => {
                             toast('OrderPlace');
                         });

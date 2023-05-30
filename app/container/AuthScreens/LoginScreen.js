@@ -24,24 +24,38 @@ export const LoginScreen = () => {
     // verification code (OTP - One-Time-Passcode)
     const [code, setCode] = useState('');
 
-
-
-    // Handle the button press
     async function signInWithPhoneNumber(phoneNumber) {
-        toast("Sending Otp On Your Number")
-        const confirmation = await auth().signInWithPhoneNumber(phoneNumber);
+        const confirmation = await auth().signInWithPhoneNumber(phoneNumber,).then(res=>{
+            toast("Sending Otp On Your Number")
+            return res;
+
+        }).catch(error =>{
+            navigation.navigate("SignUpScreen")
+            return error;
+        });
         setConfirm(confirmation);
+
     }
 
     async function confirmCode() {
         try {
             await confirm.confirm(code);
-            toast("Verified")
+            firestore()
+                .collection('Users')
+                .where("Phone","==",Phone)
+                .get()
+                .then(querySnapshot => {
+                    querySnapshot.forEach(documentSnapshot => {
+                        const data=documentSnapshot.data()
+                        dispatch(actions.loginSuccess({...data,userId:documentSnapshot.id}))
+                        navigation.navigate('HomeScreen')
+                    });
+                    toast("Verified")
+                })
         } catch (error) {
             toast('Invalid code.');
         }
     }
-
 
     return (
         <View style={{
@@ -74,23 +88,7 @@ export const LoginScreen = () => {
                                 setPhone(text)
                             }} title={"Enter Phone Number..."}/>
                             <ButtonComponent onPress={() => {
-
-                                firestore()
-                                    .collection('Users')
-                                    .get()
-                                    .then(querySnapshot => {
-                                        querySnapshot.forEach(documentSnapshot => {
-                                            if (documentSnapshot.data().PhoneNumber===Phone){
-                                                toast("Logged In")
-                                                dispatch(actions.loginSuccess(documentSnapshot.data()))
-                                                navigation.replace("HomeScreen")
-                                            }else {
-                                                navigation.navigate("SignUpScreen")
-                                                toast("User Not Exist")
-                                            }
-                                        });
-                                    });
-                                // signInWithPhoneNumber(Phone)
+                                signInWithPhoneNumber(Phone)
                             }}
                                              Style={{alignSelf: "center", marginTop: 15, paddingHorizontal: 50}}
                                              title={"Sign In"}/>
