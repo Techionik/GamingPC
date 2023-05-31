@@ -50,7 +50,7 @@ export const DryClean = () => {
                 // Update quantity of existing item in cart
                 const updatedCartItems = cartItems.map((cartItem) => {
                     if (cartItem.product === item.title) {
-                        return { ...cartItem, quantity };
+                        return {...cartItem, quantity};
                     }
                     return cartItem;
                 });
@@ -58,55 +58,72 @@ export const DryClean = () => {
             }
         } else {
             // Add new item to cart
-            const newItem = { product: item.title, price: quantity * parseInt(item.Price), quantity };
+            const newItem = {product: item.title, price: quantity * parseInt(item.Price), quantity};
             setCartItems([...cartItems, newItem]);
         }
     };
 
     return (
-        <View style={{ flex: 1, backgroundColor: Color.primary }}>
-            <View style={{ paddingHorizontal: 20, marginVertical: 40, flexDirection: "row", alignItems: "center" }}>
-                <HeaderComponent title={"Washing & Iron"} />
+        <View style={{flex: 1, backgroundColor: Color.primary}}>
+            <View style={{paddingHorizontal: 20, marginVertical: 40, flexDirection: "row", alignItems: "center"}}>
+                <HeaderComponent title={"Dry Clean"}/>
             </View>
-            <View style={{ flex: 1, backgroundColor: "#dfdfdf", paddingTop: 20, borderTopLeftRadius: 20, borderTopRightRadius: 20 }}>
+            <View style={{
+                flex: 1,
+                backgroundColor: "#dfdfdf",
+                paddingTop: 20,
+                borderTopLeftRadius: 20,
+                borderTopRightRadius: 20
+            }}>
                 <FlatList
                     data={list}
-                    renderItem={({ item }) => <DetailComponent item={item} setValueBack={updateCartItems} />}
+                    renderItem={({item}) => <DetailComponent item={item} setValueBack={updateCartItems}/>}
                 />
             </View>
-            <View style={{marginTop:10}}>
+            <View style={{marginTop: 10}}>
                 {cartItems.map((item, index) => (
-                    <View style={{flexDirection:"row",marginHorizontal:10,justifyContent:"space-between",alignItems:"center"}}>
-                        <Text style={{fontFamily:Constants.fontFamilyBold,color:"#fff"}}>{item?.product}</Text>
-                        <Text style={{fontFamily:Constants.fontFamilyRegular,color:"#fff"}}>{item?.price} PKR</Text>
+                    <View style={{
+                        flexDirection: "row",
+                        marginHorizontal: 10,
+                        justifyContent: "space-between",
+                        alignItems: "center"
+                    }}>
+                        <Text style={{fontFamily: Constants.fontFamilyBold, color: "#fff"}}>{item?.product}</Text>
+                        <Text style={{fontFamily: Constants.fontFamilyRegular, color: "#fff"}}>{item?.price} PKR</Text>
                     </View>
                 ))}
             </View>
-            <View style={{flexDirection:"row",marginHorizontal:10,justifyContent:"space-between",alignItems:"center"}}>
-                <Text style={{fontFamily:Constants.fontFamilyBold,color:"#fff"}}>Total Bill:</Text>
-                <Text style={{fontFamily:Constants.fontFamilyRegular,color:"#fff"}}>{totalBill} PKR</Text>
+            <View style={{
+                flexDirection: "row",
+                marginHorizontal: 10,
+                justifyContent: "space-between",
+                alignItems: "center"
+            }}>
+                <Text style={{fontFamily: Constants.fontFamilyBold, color: "#fff"}}>Total Bill:</Text>
+                <Text style={{fontFamily: Constants.fontFamilyRegular, color: "#fff"}}>{totalBill} PKR</Text>
             </View>
             <ButtonComponent
                 onPress={() => {
-                    if (cartItems.length>0){
-                        navigation.navigate("LocationScreen",{bill:{total:totalBill,cartItems}});}else {
+                    if (cartItems.length > 0) {
+                        navigation.navigate("LocationScreen", {bill: {total: totalBill, cartItems,ServiceType:"Dry Clean"}});
+                    } else {
                         toast("Select at least 1 item...")
                     }
                 }}
-                Style={{ backgroundColor: Color.primary }}
-                TitleStyle={{ color: "#fff" }}
+                Style={{backgroundColor: Color.primary}}
+                TitleStyle={{color: "#fff"}}
                 title={"Done"}
             />
         </View>
     );
 };
 
-const DetailComponent = ({ item, setValueBack }) => {
+const DetailComponent = ({item, setValueBack}) => {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [cart,setcart]=useState(false)
+    const [cart, setcart] = useState(false)
 
     const handleAddToCart = () => {
-        setcart(true)
+        setcart(!cart)
         setValueBack(item, currentIndex);
     };
 
@@ -123,9 +140,9 @@ const DetailComponent = ({ item, setValueBack }) => {
         >
             <Image
                 source={item.image ? item.image : require('../../images/shirt.png')}
-                style={{ aspectRatio: 1, width: "10%", height: undefined }}
+                style={{aspectRatio: 1, width: "10%", height: undefined}}
             />
-            <View style={{ flex: 1 }}>
+            <View style={{flex: 1}}>
                 <Text
                     style={{
                         fontSize: 16,
@@ -138,7 +155,7 @@ const DetailComponent = ({ item, setValueBack }) => {
                 >
                     {item?.title}
                 </Text>
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <View style={{flexDirection: "row", alignItems: "center"}}>
                     <Text
                         style={{
                             fontSize: 16,
@@ -154,9 +171,8 @@ const DetailComponent = ({ item, setValueBack }) => {
                             style={{
                                 fontFamily: Constants.fontFamilyRegular,
                                 color: Color.primary,
-                            }}
-                        >
-                            {item?.Price} PKR
+                            }}>
+                            {currentIndex * parseInt(item?.Price)} PKR
                         </Text>
                     </Text>
                 </View>
@@ -207,7 +223,8 @@ const DetailComponent = ({ item, setValueBack }) => {
                     }}
                 />
             </View>
-            <AntDesign onPress={handleAddToCart} name={"shoppingcart"} size={25} style={{marginLeft:10}}  color={cart===true?Color.primary:"red"}/>
+            <AntDesign onPress={handleAddToCart} name={"shoppingcart"} size={25} style={{marginLeft: 10}}
+                       color={cart === true ? Color.primary : "red"}/>
         </View>
     );
 };

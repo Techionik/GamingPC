@@ -1,8 +1,11 @@
 import React, {useEffect, useState} from "react";
-import {Image, Text, TouchableOpacity, View} from "react-native";
+import {FlatList, Image, Text, TouchableOpacity, View} from "react-native";
 import {Color, Constants} from "../../common";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import {useNavigation} from "@react-navigation/native";
+import firestore from "@react-native-firebase/firestore";
+import * as actions from "../../redux/user/actions";
+import {toast} from "../../Omni";
 
 
 export const OrderScreen = () => {
@@ -22,19 +25,7 @@ export const OrderScreen = () => {
         title:"Suite"
     }]; // Example list of items
 
-    const moveNext = () => {
-        if (currentIndex < items.length - 1) {
-            setCurrentIndex(currentIndex + 1);
-        }
-    };
 
-    const moveBack = () => {
-        if (currentIndex > 0) {
-            setCurrentIndex(currentIndex - 1);
-        }
-    };
-    useEffect(()=>{
-    },[])
     return (
         <View style={{flex: 1, backgroundColor: "#C5E6FF"}}>
             <View style={{flex: 0.6, backgroundColor: Color.Lightprimary}}>

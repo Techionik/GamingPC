@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {FlatList, Image, Text, TouchableOpacity, View} from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import {Color, Constants} from "../../common";
@@ -8,12 +8,37 @@ import {CartFieldComponent} from "../Components/CartFieldComponent";
 import {HeaderComponent} from "../Components/HeaderComponent";
 import firestore from "@react-native-firebase/firestore";
 import {toast} from "../../Omni";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import * as actions from "../../redux/user/actions";
+import moment from "moment";
+import {useNavigation} from "@react-navigation/native";
 
 
 export const AddToCartScreen = (props) => {
     const Bill = props?.route?.params?.Bill
+    const DeliveryTime=props.route?.params?.DeliveryTime
     const userInfo = useSelector(state => state?.user?.userInfo)
+    const  CurrentAddress= useSelector(state => state?.user?.currentAddress)
+    const  DeliveryAddress= useSelector(state => state?.user?.deliveryAddress)
+    const [cart,setCart]=useState([])
+    const [uniqueId,setUniqueId]=useState([])
+    const dispatch=useDispatch()
+    const navigation=useNavigation()
+
+    useEffect(()=>{
+        const timestamp = new Date().getTime(); // Get current timestamp in milliseconds
+        const uniqueId = Math.random().toString(36).substring(2); // Generate a random string
+        setUniqueId(uniqueId+timestamp)
+        firestore()
+            .collection('Users')
+            .doc(userInfo?.userId)
+            .get()
+            .then(res => {
+                const data=res.data()
+                dispatch(actions.loginSuccess({...data,userId:res.id}))
+                setCart(data?.Cart)
+            })
+    },[])
     return (
         <View style={{flex: 1, backgroundColor: Color.primary}}>
             <View style={{paddingHorizontal: 20, marginVertical: 40, flexDirection: "row", alignItems: "center"}}>
@@ -104,16 +129,21 @@ export const AddToCartScreen = (props) => {
                 <ButtonComponent onPress={() => {
 
                     firestore()
-                        .collection('Users')
-                        .doc(userInfo?.userId)
-                        .update({Items: Bill?.cartItems, Cart: Bill?.total})
-                        .then(() => {
-                            console.log('updated!');
-                        });
-                    firestore()
                         .collection('Orders')
-                        .add({Items: Bill?.cartItems, Total: Bill?.total})
+                        .doc(uniqueId)
+                        .set({
+                            Details:{
+                                Order_Id:uniqueId.slice(8),
+                                UserId:userInfo?.userId,
+                                Date_Time:DeliveryTime,
+                                Status:"pending",
+                                Pick_Up_Address:CurrentAddress,
+                                Delivery_Address:DeliveryAddress,
+                                Service_Type:props?.route?.params.ServiceType,
+                            },
+                            Items: Bill?.cartItems, Total: Bill?.total})
                         .then(() => {
+                            navigation.navigate("OrdersScreen")
                             toast('OrderPlace');
                         });
                 }} title={"Add To Cart"}/>

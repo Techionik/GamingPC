@@ -105,7 +105,7 @@ export const WashingIron = () => {
             <ButtonComponent
                 onPress={() => {
                     if (cartItems.length > 0) {
-                        navigation.navigate("LocationScreen", {bill: {total: totalBill, cartItems}});
+                        navigation.navigate("LocationScreen", {bill: {total: totalBill, cartItems,ServiceType:"Washing & Iron"}});
                     } else {
                         toast("Select at least 1 item...")
                     }
@@ -123,7 +123,7 @@ const DetailComponent = ({item, setValueBack}) => {
     const [cart, setcart] = useState(false)
 
     const handleAddToCart = () => {
-        setcart(true)
+        setcart(!cart)
         setValueBack(item, currentIndex);
     };
 
@@ -171,8 +171,7 @@ const DetailComponent = ({item, setValueBack}) => {
                             style={{
                                 fontFamily: Constants.fontFamilyRegular,
                                 color: Color.primary,
-                            }}
-                        >
+                            }}>
                             {currentIndex * parseInt(item?.Price)} PKR
                         </Text>
                     </Text>

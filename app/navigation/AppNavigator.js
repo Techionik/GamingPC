@@ -10,7 +10,7 @@ import SplashContainer from "../container/SplashContainer";
 import {LoginScreen} from "../container/AuthScreens/LoginScreen";
 import {CartScreen} from "../container/CartScreens/CartScreen";
 import {HomeScreen} from "../container/HomeScreen/HomeScreen";
-import {LocationScreen} from "../container/HomeScreen/LocationScreen";
+import {DeliveryAddressSceen} from "../container/HomeScreen/DeliveryAddressSceen";
 import {AddToCartScreen} from "../container/HomeScreen/AddToCartScreen";
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -80,7 +80,7 @@ const AppStack = ({}) => {
             <Stack.Screen name={"SocialSignupScreen"} component={LoginScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"HomeScreen"} component={MyTabs} options={{headerShown: false}}/>
             <Stack.Screen name={"CartScreen"} component={CartScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"LocationScreen"} component={LocationScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"LocationScreen"} component={DeliveryAddressSceen} options={{headerShown: false}}/>
             <Stack.Screen name={"AddToCartScreen"} component={AddToCartScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"SignUpScreen"} component={SignUpScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"ProfileScreen"} component={ProfileScreen} options={{headerShown: false}}/>
