@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {ButtonComponent} from "../Components/ButtonComponent";
 import {useNavigation} from "@react-navigation/native";
 import {useState} from "react";
@@ -62,7 +62,6 @@ export const WashingIron = () => {
             setCartItems([...cartItems, newItem]);
         }
     };
-
     return (
         <View style={{flex: 1, backgroundColor: Color.primary}}>
             <View style={{paddingHorizontal: 20, marginVertical: 40, flexDirection: "row", alignItems: "center"}}>

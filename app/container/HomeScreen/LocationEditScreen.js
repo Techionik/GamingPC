@@ -41,11 +41,11 @@ export const LocationEditScreen = (props) => {
             </View>
             <ButtonComponent onPress={() => {
                 if(back==="Current"){
-                dispatch(currentAddress({Address:address}))
+                dispatch(currentAddress(address))
                     navigation.pop()
                 }
                 else {
-                    dispatch(deliveryAddress({Address:address}))
+                    dispatch(deliveryAddress(address))
                     navigation.pop()
                 }
 

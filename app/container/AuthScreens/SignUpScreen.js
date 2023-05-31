@@ -15,6 +15,7 @@ export const SignUpScreen = () => {
     const [LastName,setLastName]=useState("")
     const [Phone,setPhone]=useState("")
     const [Password,setPassword]=useState("")
+    const [Address,setAddress]=useState("")
     const navigation=useNavigation()
 
 
@@ -42,7 +43,7 @@ export const SignUpScreen = () => {
                 <CartFieldComponent FieldStyle={{color:Color.primary}} value={FirstName} onChangeText={(text)=>{setFirstName(text)}} title={"First Name"}/>
                 <CartFieldComponent FieldStyle={{color:Color.primary}} value={LastName} onChangeText={(text)=>{setLastName(text)}} title={"Last Name"}/>
                 <CartFieldComponent FieldStyle={{color:Color.primary}} value={Phone} onChangeText={(text)=>{setPhone(text)}} title={"Phone Number"}/>
-                <CartFieldComponent FieldStyle={{color:Color.primary}} value={Password} onChangeText={(text)=>{setPassword(text)}} title={"Password"}/>
+                <CartFieldComponent FieldStyle={{color:Color.primary}} value={Address} onChangeText={(text)=>{setAddress(text)}} title={"Address"}/>
                 <View style={{flex: 1}}/>
                 <ButtonComponent onPress={()=>{
                     if (FirstName===""){
@@ -51,16 +52,17 @@ export const SignUpScreen = () => {
                         toast("Enter Last Name")
                     }else if(Phone===""){
                         toast("Enter Phone Number")
-                    }else if (Password===""){
-                        toast("Enter Password")
-                    }else {
+                    }else if(Address===""){
+                        toast("Enter Your Address")
+                    }
+                   else {
                         firestore()
                             .collection('Users')
                             .add({
                                 First_Name: FirstName,
                                 Last_Name: LastName,
                                 PhoneNumber: Phone,
-                                Password:Password
+                                Address:Address,
                             })
                             .then(() => {
                                 navigation.pop()

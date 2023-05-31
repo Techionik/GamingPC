@@ -10,11 +10,12 @@ import {toast} from "../../Omni";
 import DateTimePicker from "react-native-modal-datetime-picker";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import moment from "moment";
+import {currentAddress} from "../../redux/user/actions";
 
 
 export const DeliveryAddressSceen=(props)=>{
     const navigation=useNavigation()
-    const  Bill= props?.route?.params?.bill
+    const  bill= props?.route?.params?.bill
     const  CurrentAddress= useSelector(state => state?.user?.currentAddress)
     const  DeliveryAddress= useSelector(state => state?.user?.deliveryAddress)
     const [deliveryDate,setDeliveryDate]=useState("")
@@ -33,6 +34,7 @@ export const DeliveryAddressSceen=(props)=>{
         setDeliveryDate(moment(date).format("DD-MMM-YYYY"))
         hideDatePicker();
     };
+
 
     return(
         <View style={{flex:1,backgroundColor:Color.primary}}>
@@ -62,19 +64,19 @@ export const DeliveryAddressSceen=(props)=>{
                         <Text style={{fontSize:14,fontFamily:Constants.fontFamilyRegular,color:"#000",width:"60%"}}>{deliveryDate?deliveryDate:"Click For Add Delivery Date.."}</Text>
                     </View>
                 </TouchableOpacity>
-                <AddressComponent title={CurrentAddress.Address?CurrentAddress?.Address:"Enter Your Pick Up Address.."} navigation={()=>{navigation.navigate("LocationEditScreen",{From:"Current"})}}/>
-                <AddressComponent title={DeliveryAddress.Address?DeliveryAddress?.Address:"Enter Your Pick Up Address.."} navigation={()=>{navigation.navigate("LocationEditScreen",{From:"Delivery"})}}/>
+                <AddressComponent title={CurrentAddress?CurrentAddress:"Enter Your Pick Up Address.."} navigation={()=>{navigation.navigate("LocationEditScreen",{From:"Current"})}}/>
+                <AddressComponent title={DeliveryAddress?DeliveryAddress:"Enter Your Pick Up Address.."} navigation={()=>{navigation.navigate("LocationEditScreen",{From:"Delivery"})}}/>
 
                 <View style={{flex:1}}/>
                 <ButtonComponent title={"Add To Cart"} onPress={()=>{
-                    if(DeliveryAddress.Address===""||undefined){
+                    if(DeliveryAddress===""||DeliveryAddress==="undefined"){
                         toast("Enter Delivery Address")
-                    }else if (CurrentAddress.Address===""||undefined){
+                    }else if (CurrentAddress===""||CurrentAddress==="undefined"){
                         toast("Enter Pick Up Address")
                     }else if(deliveryDate===""){
                         toast("Enter Delivery Date")
                     } else {
-                        navigation.navigate("AddToCartScreen",{...props,DeliveryTime:deliveryDate})
+                        navigation.navigate("AddToCartScreen",{bill:bill,DeliveryTime:deliveryDate})
                     }
                 }}/>
             </View>

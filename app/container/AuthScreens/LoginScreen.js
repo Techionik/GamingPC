@@ -25,16 +25,24 @@ export const LoginScreen = () => {
     const [code, setCode] = useState('');
 
     async function signInWithPhoneNumber(phoneNumber) {
-        const confirmation = await auth().signInWithPhoneNumber(phoneNumber,).then(res=>{
-            toast("Sending Otp On Your Number")
-            return res;
+        const userSnapshot = await firestore()
+            .collection('Users')
+            .where("PhoneNumber", "==", phoneNumber)
+            .get();
 
-        }).catch(error =>{
-            navigation.navigate("SignUpScreen")
-            return error;
-        });
-        setConfirm(confirmation);
-
+        if (userSnapshot.empty) {
+            // Phone number doesn't exist, navigate to SignUpScreen
+            navigation.navigate("SignUpScreen");
+        } else {
+            // Phone number exists, send OTP
+            const confirmation = await auth().signInWithPhoneNumber(phoneNumber, true).then(res => {
+                toast("Sending OTP to your number");
+                return res;
+            }).catch(error => {
+                return error;
+            });
+            setConfirm(confirmation);
+        }
     }
 
     async function confirmCode() {
@@ -42,16 +50,19 @@ export const LoginScreen = () => {
             await confirm.confirm(code);
             firestore()
                 .collection('Users')
-                .where("Phone","==",Phone)
+                .where("PhoneNumber", "==", Phone)
                 .get()
                 .then(querySnapshot => {
                     querySnapshot.forEach(documentSnapshot => {
-                        const data=documentSnapshot.data()
-                        dispatch(actions.loginSuccess({...data,userId:documentSnapshot.id}))
-                        navigation.navigate('HomeScreen')
+                        const data = documentSnapshot.data();
+                        dispatch(actions.loginSuccess({ ...data, userId: documentSnapshot.id }));
+                        navigation.navigate('HomeScreen');
+                        toast("Verified");
                     });
-                    toast("Verified")
-                })
+
+                }).catch(err => {
+                navigation.navigate("SignUpScreen");
+            });
         } catch (error) {
             toast('Invalid code.');
         }
