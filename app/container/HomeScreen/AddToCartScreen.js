@@ -45,12 +45,13 @@ export const AddToCartScreen = (props) => {
         Details: {
             Order_Id: uniqueId,
             UserId: userInfo?.userId,
+            User_Name: userInfo?.First_Name,
             Date_Time: DeliveryTime,
-            Status: "pending",
             Pick_Up_Address: CurrentAddress,
             Delivery_Address: DeliveryAddress,
             Service_Type: ServiceType,
         },
+        Status: "pending",
         Items: Bill?.cartItems, Total: Bill?.total
     }
 

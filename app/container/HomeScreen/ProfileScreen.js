@@ -31,7 +31,7 @@ export const ProfileScreen = () => {
                 <View style={{padding: 10,}}>
                     <ProfileFieldComponent title={"First Name"} placeholder={userInfo?.First_Name}/>
                     <ProfileFieldComponent title={"Last Name"} placeholder={userInfo?.Last_Name}/>
-                    <ProfileFieldComponent title={"Phone Number"} placeholder={userInfo?.Phone}/>
+                    <ProfileFieldComponent title={"Phone Number"} placeholder={userInfo?.PhoneNumber}/>
                     <ProfileFieldComponent title={"Address"} placeholder={userInfo?.Address}/>
                 </View>
                 <View style={{flex: 1}}/>
@@ -40,9 +40,7 @@ export const ProfileScreen = () => {
                     dispatch(actions.logoutUser(undefined))
                     navigation.replace("SplashContainer")
                 }} title={"Log Out"}/>
-                <ButtonComponent Style={{backgroundColor:"rgba(253,2,2,0.68)"}} TitleStyle={{color:"#fff"}}  onPress={() => {
-                   alert(JSON.stringify(userInfo.userId))
-                    return
+                <ButtonComponent Style={{backgroundColor:"rgba(253,2,2,0.68)",marginTop:10}} TitleStyle={{color:"#fff"}}  onPress={() => {
                     firestore()
                         .collection('Users')
                         .doc(userInfo?.userId)

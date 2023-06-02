@@ -29,7 +29,6 @@ export const LoginScreen = () => {
             .collection('Users')
             .where("PhoneNumber", "==", phoneNumber)
             .get();
-
         if (userSnapshot.empty) {
             // Phone number doesn't exist, navigate to SignUpScreen
             navigation.navigate("SignUpScreen");
@@ -56,7 +55,11 @@ export const LoginScreen = () => {
                     querySnapshot.forEach(documentSnapshot => {
                         const data = documentSnapshot.data();
                         dispatch(actions.loginSuccess({ ...data, userId: documentSnapshot.id }));
-                        navigation.navigate('HomeScreen');
+                        if(data?.Role==="Customer"){
+                        navigation.replace('HomeScreen');}
+                        else {
+                            navigation.replace("AdminDashboard")
+                        }
                         toast("Verified");
                     });
 
@@ -115,21 +118,7 @@ export const LoginScreen = () => {
                     }
                 </View>
                 <View style={{flex: 1}}/>
-                <View style={{marginHorizontal: 20}}>
-                    <View style={{
-                        flexDirection: "row",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        marginBottom: 10
-                    }}>
-                        <SocialButtonComponent onPress={() => {
-                            navigation.navigate("HomeScreen")
-                        }} image={require('../../images/Google.png')}/>
-                        <SocialButtonComponent onPress={() => {
-                            navigation.navigate("HomeScreen")
-                        }} image={require('../../images/FacebookCircled.png')}/>
-                    </View>
-                </View>
+
                 <Text
                     style={{color: "#fff", textAlign: "center", fontFamily: Constants.fontFamilyRegular, fontSize: 12}}>Powered
                     by TECHIONIK</Text>

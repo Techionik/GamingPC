@@ -8,10 +8,11 @@ import firestore from "@react-native-firebase/firestore";
 import {useSelector} from "react-redux";
 
 
-export const OrdersScreen = () => {
-    const userInfo = useSelector(state => state?.user?.userInfo)
+export const CustomerOrders = (props) => {
+
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(false)
+    const ID=props.route.params.ID
     useEffect(() => {
         GetData()
     }, [])
@@ -26,10 +27,10 @@ export const OrdersScreen = () => {
                 setLoading(false)
                 querySnapshot.forEach(res => {
                     const data = res.data()
-                    if(data?.Details?.UserId===userInfo?.userId){
+                    if(data?.Details?.UserId===ID){
                     dummy.push(data)}
-                    setData(dummy)
                 });
+                setData(dummy)
             }).catch(err => {
             console.log(err)
             setLoading(false)
@@ -50,7 +51,7 @@ export const OrdersScreen = () => {
             }}>
                 <FlatList ListEmptyComponent={
                     <View style={{flex:1,alignItems:"center",justifyContent:"center"}}>
-                        <Text style={{fontSize: 14, fontFamily: Constants.fontFamilyRegular, color: "#000"}}>You Have No
+                        <Text style={{fontSize: 14, fontFamily: Constants.fontFamilyRegular, color: "#000"}}>This User Have No
                             Orders Yet..!</Text>
                     </View>} refreshing={loading} onRefresh={() => {
                     GetData()

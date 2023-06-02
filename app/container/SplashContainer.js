@@ -4,10 +4,11 @@ import Constants from '../common/Constants'
 import withLanguage from "../config/withLanguage";
 import {connect} from "react-redux";
 import {Color} from "../common";
+
 const mapStateToProps = ({app, user}) => ({
     app,
     user,
-    userInfo:user?.userInfo
+    userInfo: user?.userInfo
 });
 
 @connect(
@@ -17,19 +18,25 @@ class SplashContainer extends React.Component {
     constructor(props) {
         super(props);
     }
+
 //this component  check if user already login then the component will move the user on OrderScreen
     componentDidMount() {
 
         setTimeout(() => {
             this.props.navigation.replace("SocialSignupScreen")
-            if (this.props?.userInfo?.Email===""||this.props?.userInfo===undefined) {
+            if (this.props?.userInfo?.Role === "" || this.props?.userInfo === undefined) {
                 this.props.navigation.replace('LoginScreen');
             } else {
-                this.props.navigation.replace('HomeScreen')
+                if (this.props?.userInfo?.Role === "Admin") {
+                    this.props.navigation.replace('AdminDashboard')
+                } else {
+                    this.props.navigation.replace('HomeScreen')
+                }
 
             }
         }, 2000)
     }
+
     render() {
         return (
             //backGround Image
@@ -39,7 +46,7 @@ class SplashContainer extends React.Component {
                 alignItems: 'center',
                 backgroundColor: Color.primary
             }}>
-                <View style={{paddingHorizontal:30,justifyContent:"center"}}>
+                <View style={{paddingHorizontal: 30, justifyContent: "center"}}>
                     <Image style={{
                         height: undefined,
                         width: "90%",

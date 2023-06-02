@@ -16,6 +16,7 @@ export const logoutUser = () => ({
 });
 
 
+
 export const loginSuccess = (data) => (
     {
   type: types.LOGIN_SUCCESS,
@@ -31,7 +32,10 @@ export const deliveryAddress = (data) => (
         type: types.DELIVERY_ADDRESS,
         payload: data,
     });
-
+export const SaveServiceProvider = (data) => ({
+    type: types.ServiceProvider,
+    payload:data
+});
 export const getLeaves = (data) => (
     {
         type: types.GET_LEAVES,

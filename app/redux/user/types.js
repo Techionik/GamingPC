@@ -5,6 +5,7 @@
 
 const LOGIN_FETCHING = "user/LOGIN_FETCHING";
 const LOGIN_SUCCESS = "user/LOGIN_SUCCESS";
+const ServiceProvider = "user/ServiceProvider";
 const LOGIN_FAILURE = "user/LOGIN_FAILURE";
 const GET_BRAKETIMES = "user/GET_BRAKETIMES";
 const CHECK_IN = "user/CHECK_IN";
@@ -84,5 +85,6 @@ export {
   CLEAR_DATA,
   GET_LEAVES,
   CURRENT_ADDRESS,
-  DELIVERY_ADDRESS
+  DELIVERY_ADDRESS,
+  ServiceProvider
 };

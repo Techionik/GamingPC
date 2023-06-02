@@ -1,10 +1,12 @@
 import * as types from './types'
+import {ServiceProvider} from "./actions";
 // import { addAndUpdateUserAddress, deleteUserAddress } from "./utils";
 
 const initialState = {
     userInfo: undefined,
     currentAddress: "undefined",
     deliveryAddress: "undefined",
+    ServiceType: "",
     brakeTime:[],
     checkIn:undefined,
     accessToken: null,
@@ -74,6 +76,7 @@ export default (state = initialState, action) => {
                 error: null,
             };
         }
+
         case types.DELIVERY_ADDRESS: {
             return {
                 ...state,
@@ -83,6 +86,15 @@ export default (state = initialState, action) => {
             };
         }
 
+
+        case types.ServiceProvider: {
+            return {
+                ...state,
+                ServiceType: payload,
+                isFetching: false,
+                error: null,
+            };
+        }
         case types.GET_LEAVES: {
             return {
                 ...state,
