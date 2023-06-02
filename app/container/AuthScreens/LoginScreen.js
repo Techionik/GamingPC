@@ -11,11 +11,15 @@ import {toast} from "../../Omni";
 import {useDispatch} from "react-redux";
 import * as actions from "../../redux/user/actions";
 import auth from '@react-native-firebase/auth';
+import InputMobile from "../Components/input/InputMobile";
+import InputPhoneNumber from "../Components/input/InputPhoneNumber";
+import InputCode from "../Components/input/InputCode";
 
 
 export const LoginScreen = () => {
     const navigation = useNavigation()
     const [Phone, setPhone] = useState("")
+    const [countryCode, setcountryCode] = useState("+92")
     const dispatch = useDispatch()
 
     // If null, no SMS has been sent
@@ -98,23 +102,36 @@ export const LoginScreen = () => {
 
                     {!confirm ?
                         <>
-                            <TextFieldComponent Style={{marginHorizontal: 20}} value={Phone} onChangeText={(text) => {
-                                setPhone(text)
-                            }} title={"Enter Phone Number..."}/>
+
+                            <InputPhoneNumber onCountryCodeChange={(countryCode) => {
+                                   setcountryCode(countryCode)
+                            }}  viewLabelStyle={{marginTop: 20}}
+                                              value={Phone}
+                                         label={"Phone Number"}
+                                              onChangeText={value => {
+                                                 setPhone(value)
+                                              }}
+                            />
+
                             <ButtonComponent onPress={() => {
-                                signInWithPhoneNumber(Phone)
+                                const data=countryCode+Phone;
+                                signInWithPhoneNumber(data)
                             }}
                                              Style={{alignSelf: "center", marginTop: 15, paddingHorizontal: 50}}
                                              title={"Sign In"}/>
                         </> :
-                        <>
-                            <TextFieldComponent Style={{marginHorizontal: 20}} value={code} onChangeText={(text) => {
-                                setCode(text)
-                            }} title={"Enter Pin Code..."}/>
-                            <ButtonComponent onPress={() => {
-                                confirmCode()
-                            }} Style={{alignSelf: "center", marginTop: 15, paddingHorizontal: 50}} title={"Verify"}/>
-                        </>
+                        <View style={{marginHorizontal:20}}>
+                            <InputCode
+                                onFulfill={() => {
+                                    confirmCode()
+                                }}
+                                onCodeChange={value => {
+                                    setCode(value)
+                                    // verifyCode(value)
+                                }}
+                                // editable={!isLoading}
+                            />
+                        </View>
                     }
                 </View>
                 <View style={{flex: 1}}/>
