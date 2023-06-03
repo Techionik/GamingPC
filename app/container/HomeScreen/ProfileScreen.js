@@ -9,6 +9,7 @@ import * as actions from "../../redux/user/actions";
 import {useNavigation} from "@react-navigation/native";
 import firestore from "@react-native-firebase/firestore";
 import {toast} from "../../Omni";
+import auth from "@react-native-firebase/auth";
 
 
 export const ProfileScreen = () => {
@@ -37,6 +38,7 @@ export const ProfileScreen = () => {
                 <View style={{flex: 1}}/>
 
                 <ButtonComponent onPress={() => {
+                    auth().signOut()
                     dispatch(actions.logoutUser(undefined))
                     navigation.replace("SplashContainer")
                 }} title={"Log Out"}/>

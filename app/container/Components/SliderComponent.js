@@ -11,8 +11,6 @@ export default function SliderComponent({onLayout}) {
             <SliderBox
                 images={imagesData}
                 sliderBoxHeight={"100%"}
-
-                ImageComponentStyle={{}}
                 // onCurrentImagePressed={index => console.warn(`image ${index} pressed`)}
                 dotColor="#D9D9D9"
                 dotContainerStyle={{marginHorizontal: 3}}

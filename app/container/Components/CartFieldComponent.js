@@ -15,7 +15,7 @@ export const CartFieldComponent=({Style,title,secureTextEntry,icon,value,onChang
             marginVertical:10,
             borderWidth: 1,
         },Style]}>
-            <TextInput secureTextEntry={secureTextEntry}  value={value} onChangeText={onChangeText} style={[{color:Color.primary},FieldStyle]}
+            <TextInput secureTextEntry={secureTextEntry}  value={value} onChangeText={onChangeText} style={[{flex:1,color:Color.primary},FieldStyle]}
                        placeholderTextColor={Color.primary} placeholder={title}></TextInput>
         </View>
     )

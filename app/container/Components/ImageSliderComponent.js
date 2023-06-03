@@ -4,13 +4,13 @@ import React, { useEffect, useState } from "react";
 const windowWidth = Dimensions.get('window').width;
 export default function ImageSliderComponent({onLayout,data})
 {
-    const [imagesData,setImagesData]=useState([require('../../images/Banner1.png'),require('../../images/Banner2.png'),require('../../images/Banner3.png')])
+    const [imagesData,setImagesData]=useState([require('../../images/Washing.jpeg'),require('../../images/Ironing.jpeg'),require('../../images/Drying.jpeg')])
     return(
         <View style={{flex:1}}>
             <SliderBox
                 images={imagesData}
                 sliderBoxHeight={140}
-                ImageComponentStyle={{borderRadius:20,resizeMode:"cover"}}
+                ImageComponentStyle={{borderRadius:20,}}
                 // onCurrentImagePressed={index => console.warn(`image ${index} pressed`)}
                 dotColor="#D9D9D9"
                 dotContainerStyle={{marginHorizontal:3}}

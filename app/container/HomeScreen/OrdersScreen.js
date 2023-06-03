@@ -28,8 +28,8 @@ export const OrdersScreen = () => {
                     const data = res.data()
                     if(data?.Details?.UserId===userInfo?.userId){
                     dummy.push(data)}
-                    setData(dummy)
                 });
+                setData(dummy)
             }).catch(err => {
             console.log(err)
             setLoading(false)
@@ -113,9 +113,9 @@ export const OrderComponent = ({item,Admin,onPress,title}) => {
                     borderColor: Color.primary,
                     borderStyle: "dashed"
                 }}/>
-                <RowComponent title1={"Total"} title2={item?.Total}/>
+                <RowComponent title1={"Total"} title2={"PKR "+item?.Total}/>
                 <RowComponent title1={"Delivery Charges"} title2={"PKR 100"}/>
-                <RowComponent title1={"Total"} color={"red"} title2={item?.Total + 100}/>
+                <RowComponent title1={"Total"} color={"red"} title2={"PKR "+(item?.Total + 100)}/>
             </TouchableOpacity>
             {detail && item?.Items.length > 0 &&
                 <>

@@ -37,6 +37,7 @@ import {CustomersScreen} from "../container/AdminScreens/CustomersScreen";
 import {CustomerOrders} from "../container/AdminScreens/CustomerOrders";
 import {AddServicesScreen} from "../container/AdminScreens/AddServicesScreen";
 import {TermsConditionsScreen} from "../container/AdminScreens/Terms&ConditionsScreen";
+import {AboutUsScreen} from "../container/AdminScreens/AboutUsScreen";
 
 
 const Tab = createBottomTabNavigator();
@@ -165,10 +166,7 @@ const AppStack = ({}) => {
             <Stack.Screen name={"CustomerOrders"} component={CustomerOrders} options={{headerShown: false}}/>
             <Stack.Screen name={"AddServicesScreen"} component={AddServicesScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"TermsConditionsScreen"} component={TermsConditionsScreen} options={{headerShown: false}}/>
-
-
-
-
+            <Stack.Screen name={"AboutUsScreen"} component={AboutUsScreen} options={{headerShown: false}}/>
         </Stack.Navigator>
     )
 }

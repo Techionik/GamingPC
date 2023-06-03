@@ -32,7 +32,6 @@ export const PendingOrders = (props) => {
                     const data = res.data()
                     if(data?.Status==="pending"&&data?.Details?.Service_Type===service){
                     dummy.push(data)}
-
                 });
                 setData(dummy)
             }).catch(err => {

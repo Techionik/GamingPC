@@ -51,17 +51,18 @@ export const LoginScreen = () => {
     async function confirmCode() {
         try {
             await confirm.confirm(code);
+            const CP=countryCode+Phone
             firestore()
                 .collection('Users')
-                .where("PhoneNumber", "==", Phone)
+                .where("PhoneNumber", "==", CP)
                 .get()
                 .then(querySnapshot => {
                     querySnapshot.forEach(documentSnapshot => {
                         const data = documentSnapshot.data();
-                        dispatch(actions.loginSuccess({ ...data, userId: documentSnapshot.id }));
-                        if(data?.Role==="Customer"){
-                        navigation.replace('HomeScreen');}
-                        else {
+                        dispatch(actions.loginSuccess({...data, userId: documentSnapshot.id}));
+                        if (data?.Role === "Customer") {
+                            navigation.replace('HomeScreen');
+                        } else {
                             navigation.replace("AdminDashboard")
                         }
                         toast("Verified");
@@ -104,33 +105,30 @@ export const LoginScreen = () => {
                         <>
 
                             <InputPhoneNumber onCountryCodeChange={(countryCode) => {
-                                   setcountryCode(countryCode)
-                            }}  viewLabelStyle={{marginTop: 20}}
+                                setcountryCode(countryCode)
+                            }} viewLabelStyle={{marginTop: 20}}
                                               value={Phone}
-                                         label={"Phone Number"}
+                                              label={"Phone Number"}
                                               onChangeText={value => {
-                                                 setPhone(value)
+                                                  setPhone(value)
                                               }}
                             />
 
                             <ButtonComponent onPress={() => {
-                                const data=countryCode+Phone;
+                                const data = countryCode + Phone;
                                 signInWithPhoneNumber(data)
-                            }}
-                                             Style={{alignSelf: "center", marginTop: 15, paddingHorizontal: 50}}
-                                             title={"Sign In"}/>
+                            }} Style={{alignSelf: "center", marginTop: 15, paddingHorizontal: 50}} title={"Sign In"}/>
                         </> :
-                        <View style={{marginHorizontal:20}}>
+                        <View style={{marginHorizontal: 10}}>
                             <InputCode
-                                onFulfill={() => {
-                                    confirmCode()
-                                }}
+                                onFulfill={() => {}}
                                 onCodeChange={value => {
                                     setCode(value)
                                     // verifyCode(value)
                                 }}
                                 // editable={!isLoading}
                             />
+                            <ButtonComponent onPress={() => {confirmCode()}} Style={{alignSelf: "center", marginTop: 15, paddingHorizontal: 50}} title={"Verify"}/>
                         </View>
                     }
                 </View>

@@ -8,31 +8,35 @@ import {FlatList, Image, Text, TouchableOpacity, View} from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import {HeaderComponent} from "../Components/HeaderComponent";
 import {toast} from "../../Omni";
+import firestore from "@react-native-firebase/firestore";
 
 export const WashingIron = () => {
     const navigation = useNavigation();
-    const list = [
-        {
-            title: "Shalwar Kameez",
-            Price: "100",
-            image: require('../../images/kurta.png')
-        },
-        {
-            title: "Shirt",
-            Price: "100",
-            image: require('../../images/shirt.png')
-        },
-        {
-            title: "Bottom",
-            Price: "100",
-            image: require('../../images/jeans.png')
-        },
-        {
-            title: "suite",
-            Price: "100",
-            image: require('../../images/blazer.png')
-        }
-    ];
+const [list,setList]=useState([])
+const [Loading,setLoading]=useState(false)
+
+    useEffect(() => {
+        GetData()
+    }, [])
+
+    function GetData() {
+        setLoading(true)
+        const dummy = []
+        firestore()
+            .collection('Services')
+            .get()
+            .then(querySnapshot => {
+                setLoading(false)
+                querySnapshot.forEach(res => {
+                    const data = res.data()
+                    dummy.push({...data,ServiceID:res?.id})
+                });
+                setData(dummy)
+            }).catch(err => {
+            console.log(err)
+            setLoading(false)
+        })
+    }
 
     const [order, setOrder] = useState([]);
     const [cartItems, setCartItems] = useState([]);
