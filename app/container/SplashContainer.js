@@ -29,7 +29,9 @@ class SplashContainer extends React.Component {
             } else {
                 if (this.props?.userInfo?.Role === "Admin") {
                     this.props.navigation.replace('AdminDashboard')
-                } else {
+                } else if(this.props?.userInfo?.Role === "Rider"){
+                    this.props.navigation.replace('RiderHomeScreen')
+                }else {
                     this.props.navigation.replace('HomeScreen')
                 }
 

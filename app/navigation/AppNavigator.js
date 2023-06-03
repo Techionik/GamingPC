@@ -38,6 +38,11 @@ import {CustomerOrders} from "../container/AdminScreens/CustomerOrders";
 import {AddServicesScreen} from "../container/AdminScreens/AddServicesScreen";
 import {TermsConditionsScreen} from "../container/AdminScreens/Terms&ConditionsScreen";
 import {AboutUsScreen} from "../container/AdminScreens/AboutUsScreen";
+import {RiderHomeScreen} from "../container/RiderScreens/RiderHomeScreen";
+import {AddRiderScreen} from "../container/AdminScreens/AddRiderScreen";
+import {CurrentOrderScreen} from "../container/RiderScreens/CurrentOrderScreen";
+import {DeliveryScreen} from "../container/RiderScreens/DeliveryScreen";
+import {DeliverCurrentOrder} from "../container/RiderScreens/DeliverCurrentOrder";
 
 
 const Tab = createBottomTabNavigator();
@@ -142,6 +147,40 @@ function Orders(props) {
         </Tab.Navigator>
     );
 }
+
+function RiderApp(props) {
+    return (
+        <Tab.Navigator
+            initialRouteName="RiderHomeScreen"
+            screenOptions={{
+                headerShown: false,
+                tabBarActiveTintColor: Color.primary,
+            }}
+            tabBarOptions={{
+                inactiveTintColor: 'rgb(241,85,85)',
+                activeTintColor: '#fff',
+                style: { backgroundColor: 'green' },
+                showLabel: true
+            }}
+        >
+            <Tab.Screen name="RiderHomeScreen" component={RiderHomeScreen} options={{
+                tabBarLabel: 'Home',
+                tabBarIcon: ({ color, size }) => (<MaterialCommunityIcons name="clock-alert-outline" color={color} size={size} />),}}
+            />
+            <Tab.Screen name="ActiveOrders" component={ActiveOrders} options={{
+                tabBarLabel: 'Active',
+                tabBarIcon: ({ color, size }) => (<MaterialCommunityIcons name="clock-check-outline" color={color} size={size} />),}}
+            />
+            <Tab.Screen
+                name="Profile"
+                component={ProfileScreen}
+                options={{
+                    tabBarLabel: 'Profile',
+                    tabBarIcon: ({ color, size }) => (<FontAwesome name="user-o" color={color} size={size} />),}}
+            />
+        </Tab.Navigator>
+    );
+}
 const Stack = createStackNavigator()
 
 const AppStack = ({}) => {
@@ -152,6 +191,7 @@ const AppStack = ({}) => {
             <Stack.Screen name={"HomeScreen"} component={CustomerTabs} options={{headerShown: false}}/>
             <Stack.Screen name={"AdminDashboard"} component={AdminTabs} options={{headerShown: false}}/>
             <Stack.Screen name={"PendingOrders"} component={Orders} options={{headerShown: false}}/>
+            <Stack.Screen name={"RiderHomeScreen"} component={RiderApp} options={{headerShown: false}}/>
             <Stack.Screen name={"CartScreen"} component={CartScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"LocationScreen"} component={DeliveryAddressSceen} options={{headerShown: false}}/>
             <Stack.Screen name={"AddToCartScreen"} component={AddToCartScreen} options={{headerShown: false}}/>
@@ -167,6 +207,10 @@ const AppStack = ({}) => {
             <Stack.Screen name={"AddServicesScreen"} component={AddServicesScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"TermsConditionsScreen"} component={TermsConditionsScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"AboutUsScreen"} component={AboutUsScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"CurrentOrderScreen"} component={CurrentOrderScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"DeliveryScreen"} component={DeliveryScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"DeliverCurrentOrder"} component={DeliverCurrentOrder} options={{headerShown: false}}/>
+
         </Stack.Navigator>
     )
 }

@@ -30,7 +30,7 @@ export const PendingOrders = (props) => {
                 setLoading(false)
                 querySnapshot.forEach(res => {
                     const data = res.data()
-                    if(data?.Status==="pending"&&data?.Details?.Service_Type===service){
+                    if(data?.Status==="Picked Up"&&data?.Details?.Service_Type===service){
                     dummy.push(data)}
                 });
                 setData(dummy)

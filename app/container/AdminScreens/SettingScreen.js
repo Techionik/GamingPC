@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {FlatList, Image, ProgressBarAndroid, Text, TouchableOpacity, View} from "react-native";
+import {FlatList, Image, ProgressBarAndroid, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {Color, Constants} from "../../common";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import {useNavigation} from "@react-navigation/native";
@@ -10,6 +10,7 @@ import * as actions from "../../redux/user/actions";
 import * as Progress from 'react-native-progress';
 import {PieChart} from "react-native-gifted-charts/src/PieChart";
 import firestore from "@react-native-firebase/firestore";
+import {AddRiderScreen} from "./AddRiderScreen";
 
 export const SettingScreen = (props) => {
     const userInfo = useSelector(state => state?.user?.userInfo)
@@ -17,7 +18,7 @@ export const SettingScreen = (props) => {
     const [data,setData]=useState([])
 
     return (
-        <View style={{flex: 1, backgroundColor: Color.primary}}>
+        <ScrollView style={{flex: 1, backgroundColor: Color.primary}}>
             <View style={{paddingHorizontal: 20, marginVertical: 40, flexDirection: "row", alignItems: "center"}}>
                 <View>
                     <Text style={{
@@ -49,6 +50,8 @@ export const SettingScreen = (props) => {
                     <RowComponent onPress={()=>{navigation.navigate("CustomersScreen")}} title={"Customers"}/>
                     <Title title={"Services"}/>
                     <RowComponent onPress={()=>{navigation.navigate("AddServicesScreen")}} title={"Services"}/>
+                    <Title title={"Riders"}/>
+                    <RowComponent onPress={()=>{navigation.navigate("AddRiderScreen")}} title={"Add Rider"}/>
                     <Title title={"Other Settings"}/>
                     <RowComponent onPress={()=>{navigation.navigate("TermsConditionsScreen")}} title={"Terms & Conditions"}/>
                     <RowComponent onPress={()=>{navigation.navigate("AboutUsScreen")}} title={"About Us"}/>
@@ -56,7 +59,7 @@ export const SettingScreen = (props) => {
                 </View>
 
         </View>
-        </View>
+        </ScrollView>
     )
 }
 

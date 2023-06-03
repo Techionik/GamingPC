@@ -12,6 +12,8 @@ import {PieChart} from "react-native-gifted-charts/src/PieChart";
 import firestore from "@react-native-firebase/firestore";
 import {RowComponent} from "../HomeScreen/OrdersScreen";
 import moment from "moment";
+import {ShortOrderComponent} from "../Components/ShortOrderComponent";
+import {ServiceComponent} from "../Components/ServiceComponent";
 
 export const AdminDashboard = () => {
     const userInfo = useSelector(state => state?.user?.userInfo)
@@ -128,50 +130,9 @@ export const AdminDashboard = () => {
                             Orders Yet..!</Text>
                     </View>} sstyle={{marginHorizontal:10,flex:1}}  data={data} renderItem={({item,index})=>
                     item?.Details?.Date_Time===moment().format("DD-MMM-YYYY")?
-                    <TouchableOpacity onPress={()=>{navigation.navigate("PendingOrders")}} style={{marginTop: 10, backgroundColor: "#f5f5f5", borderRadius: 15}}>
-                        <View  style={{padding: 10, backgroundColor: "#fff", borderRadius: 15}}>
-                            <Text style={{
-                                fontSize: 16,
-                                fontFamily: Constants.fontFamilyBold,
-                                color: Color.primary
-                            }}>Order Id: {item?.Details?.Order_Id}</Text>
-                            <Text style={{
-                                fontSize: 14,
-                                fontFamily: Constants.fontFamilyBold,
-                                color: "red"
-                            }}>{item?.Details?.Service_Type}</Text>
-                            <RowComponent title1={"Date"} title2={item?.Details?.Date_Time}/>
-                            <RowComponent title1={"Status"} title2={item?.Status} color={"red"}/>
-                        </View>
-                    </TouchableOpacity>:null
+                    <ShortOrderComponent item={item} onPress={()=>{navigation.navigate("PendingOrders")}} />:null
                 }/>
             </View>
         </ScrollView>
-    )
-}
-const ServiceComponent = ({item, Style}) => {
-    const navigation = useNavigation()
-    const dispatch = useDispatch()
-    return (
-        <TouchableOpacity onPress={() => {
-            dispatch(actions.SaveServiceProvider(item?.title))
-            navigation.navigate(item.navigation)
-        }} style={[{
-            backgroundColor: "#fff",
-            borderRadius: 10,
-            marginRight:10,
-            justifyContent: "center",
-            height: 150,
-            width: 150,
-            alignItems: "center",
-        }, Style]}>
-            <Image source={item.image} style={{height: 60, width: 60}}/>
-            <Text style={{
-                fontSize: 18,
-                fontFamily: Constants.fontFamilyBold,
-                color: Color.primary,
-                marginTop: 5
-            }}>{item.title}</Text>
-        </TouchableOpacity>
     )
 }

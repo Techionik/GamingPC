@@ -8,6 +8,8 @@ import {useSelector} from "react-redux";
 import moment from "moment/moment";
 import {RowComponent} from "./OrdersScreen";
 import firestore from "@react-native-firebase/firestore";
+import {ShortOrderComponent} from "../Components/ShortOrderComponent";
+import {ServiceComponent} from "../Components/ServiceComponent";
 
 
 export const HomeScreen = () => {
@@ -65,7 +67,9 @@ export const HomeScreen = () => {
                 </View>
             </View>
             <View style={{margin: 10,}}>
+                <View style={{flex:0.2}}>
                 <ImageSliderComponent/>
+                </View>
             </View>
             <View style={{
                 flex: 1,
@@ -88,48 +92,11 @@ export const HomeScreen = () => {
                             Orders Yet..!</Text>
                     </View>} sstyle={{marginHorizontal:10,flex:1}}  data={data} renderItem={({item,index})=>
                     item?.Details?.Date_Time===moment().format("DD-MMM-YYYY")?
-                        <TouchableOpacity onPress={()=>{navigation.navigate("OrdersScreen")}} style={{marginTop: 10, backgroundColor: "#f5f5f5", borderRadius: 15}}>
-                            <View  style={{padding: 10, backgroundColor: "#fff", borderRadius: 15}}>
-                                <Text style={{
-                                    fontSize: 16,
-                                    fontFamily: Constants.fontFamilyBold,
-                                    color: Color.primary
-                                }}>Order Id: {item?.Details?.Order_Id}</Text>
-                                <Text style={{
-                                    fontSize: 14,
-                                    fontFamily: Constants.fontFamilyBold,
-                                    color: "red"
-                                }}>{item?.Details?.Service_Type}</Text>
-                                <RowComponent title1={"Date"} title2={item?.Details?.Date_Time}/>
-                                <RowComponent title1={"Status"} title2={item?.Status} color={"red"}/>
-                            </View>
-                        </TouchableOpacity>:null
+                        <ShortOrderComponent onPress={()=>{navigation.navigate("OrdersScreen")}} item={item}/>
+                       :null
                 }/>
             </View>
         </ScrollView>
     )
 }
-const ServiceComponent = ({item, Style}) => {
-    const navigation = useNavigation()
-    return (
-        <TouchableOpacity onPress={() => {
-            navigation.navigate(item.navigation)
-        }} style={[{
-            backgroundColor: "#fff",
-            borderRadius: 10,
-            justifyContent: "center",
-            height: 150,
-            width: 150,
-            marginRight:10,
-            alignItems: "center",
-        }, Style]}>
-            <Image source={item.image} style={{height: 70, width: 70}}/>
-            <Text style={{
-                fontSize: 18,
-                fontFamily: Constants.fontFamilyBold,
-                color: Color.primary,
-                marginTop: 5
-            }}>{item.title}</Text>
-        </TouchableOpacity>
-    )
-}
+

@@ -14,6 +14,7 @@ import auth from '@react-native-firebase/auth';
 import InputMobile from "../Components/input/InputMobile";
 import InputPhoneNumber from "../Components/input/InputPhoneNumber";
 import InputCode from "../Components/input/InputCode";
+import {RiderHomeScreen} from "../RiderScreens/RiderHomeScreen";
 
 
 export const LoginScreen = () => {
@@ -62,7 +63,9 @@ export const LoginScreen = () => {
                         dispatch(actions.loginSuccess({...data, userId: documentSnapshot.id}));
                         if (data?.Role === "Customer") {
                             navigation.replace('HomeScreen');
-                        } else {
+                        } else if(data?.Role === "Rider"){
+                            navigation.navigate("RiderHomeScreen")
+                        }else {
                             navigation.replace("AdminDashboard")
                         }
                         toast("Verified");
