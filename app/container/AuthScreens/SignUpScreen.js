@@ -23,7 +23,8 @@ export const SignUpScreen = (props) => {
     return (
         <View style={{flex: 1, backgroundColor: Color.primary}}>
             <View style={{paddingHorizontal: 20, marginVertical: 40, flexDirection: "row", alignItems: "center"}}>
-                <AntDesign name={"left"} size={30} color={"#fff"} style={{marginRight: 10}}/>
+                <AntDesign name={"left"} onPress={()=>{navigation.pop()}}
+                 size={30} color={"#fff"} style={{marginRight: 10}}/>
                 <Text style={{
                     fontSize: 24,
                     fontFamily: Constants.fontFamilyBold,
