@@ -49,7 +49,7 @@ export const CustomerOrders = (props) => {
                 borderTopLeftRadius: 20,
                 borderTopRightRadius: 20
             }}>
-
+                <View>
                 <FlatList ListEmptyComponent={
                     <View  style={{alignItems:"center",justifyContent:"center"}}>
                         <Text style={{fontSize: 14, fontFamily: Constants.fontFamilyRegular, color: "#000"}}>This User Have No
@@ -62,8 +62,7 @@ export const CustomerOrders = (props) => {
                                   <OrderComponent item={item}/>
                               </>
                           }/>
-
-
+                </View>
             </View>
         </View>
     )
