@@ -10,13 +10,14 @@ import {toast} from "../../Omni";
 import firestore from "@react-native-firebase/firestore";
 
 
-export const SignUpScreen = () => {
+export const SignUpScreen = (props) => {
     const [FirstName,setFirstName]=useState("")
     const [LastName,setLastName]=useState("")
-    const [Phone,setPhone]=useState("")
+    const [Phone,setPhone]=useState(props?.route?.params?.PhoneNumber?props?.route?.params?.PhoneNumber:"")
     const [Password,setPassword]=useState("")
     const [Address,setAddress]=useState("")
     const navigation=useNavigation()
+
 
 
     return (

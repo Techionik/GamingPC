@@ -9,7 +9,7 @@ import {toast} from "../../../Omni";
 import {useNavigation} from "@react-navigation/native";
 
 
-export const PendingOrders = (props) => {
+export const PickedUpOrders = (props) => {
     const userInfo = useSelector(state => state?.user?.userInfo)
     const service = useSelector(state => state?.user?.ServiceType)
     const navigation=useNavigation()
@@ -43,7 +43,7 @@ export const PendingOrders = (props) => {
     return (
         <View style={{flex: 1, backgroundColor: Color.primary}}>
             <View style={{paddingHorizontal: 20, marginVertical: 40, flexDirection: "row", alignItems: "center"}}>
-                <HeaderComponent back={false} title={"Pending Orders"}/>
+                <HeaderComponent back={false} title={"Picked Up Orders"}/>
             </View>
             <View style={{
                 flex: 1,

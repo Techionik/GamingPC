@@ -20,11 +20,11 @@ export const HomeScreen = () => {
     const services = [{
         title: "Washing & Iron",
         image: require('../../images/washingMachine.png'),
-        navigation: "WashingIron"
-    }, {title: "Iron", image: require('../../images/iron.png'), navigation: "Iron"}, {
+        navigation: "AddOrderScreen"
+    }, {title: "Ironing", image: require('../../images/iron.png'), navigation: "AddOrderScreen"}, {
         title: "Dry Cleaning",
         image: require('../../images/dry-cleaning.png'),
-        navigation: "DryClean"
+        navigation: "AddOrderScreen"
     }]
     useEffect(() => {
         GetData()

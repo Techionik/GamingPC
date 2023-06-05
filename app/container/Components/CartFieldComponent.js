@@ -12,7 +12,7 @@ export const CartFieldComponent=({Style,title,secureTextEntry,icon,value,onChang
             paddingHorizontal: 20,
             borderRadius: 10,
             borderColor:Color.primary,
-            marginVertical:10,
+            marginVertical:5,
             borderWidth: 1,
         },Style]}>
             <TextInput secureTextEntry={secureTextEntry}  value={value} onChangeText={onChangeText} style={[{flex:1,color:Color.primary},FieldStyle]}

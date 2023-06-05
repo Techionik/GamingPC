@@ -48,6 +48,13 @@ export const CurrentOrderScreen = (props) => {
                 <Text style={{fontSize:18,marginVertical:10,includeFontPadding:false,padding:0,fontFamily:Constants.fontFamilyBold,color:Color.primary}}>Order Details</Text>
 
                 <OrderComponent item={Details}/>
+                {Details?.PaymentStatus&&
+                    <>
+                    <Text style={{fontSize:18,marginVertical:10,includeFontPadding:false,padding:0,fontFamily:Constants.fontFamilyBold,color:Color.primary}}>Payment Details</Text>
+                    <View style={{backgroundColor: "#fff", borderRadius: 10, padding: 10}}>
+                    <RowComponent title1={"Payment Type"} title2={Details?.PaymentType}/>
+                    <RowComponent title1={"Status"} title2={Details?.PaymentStatus}/>
+                </View></>}
                 <Text style={{fontSize:18,marginVertical:10,includeFontPadding:false,padding:0,fontFamily:Constants.fontFamilyBold,color:Color.primary}}>Customer Details</Text>
                 <View style={{backgroundColor:"#fff",borderRadius:10,padding:10}}>
                     <RowComponent title1={"Name"} title2={CustomerDetails?.First_Name+" "+CustomerDetails?.Last_Name} />

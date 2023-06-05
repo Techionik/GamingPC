@@ -11,6 +11,7 @@ import * as Progress from 'react-native-progress';
 import {PieChart} from "react-native-gifted-charts/src/PieChart";
 import firestore from "@react-native-firebase/firestore";
 import {AddRiderScreen} from "./AddRiderScreen";
+import {HeaderComponent} from "../Components/HeaderComponent";
 
 export const SettingScreen = (props) => {
     const userInfo = useSelector(state => state?.user?.userInfo)
@@ -19,15 +20,8 @@ export const SettingScreen = (props) => {
 
     return (
         <ScrollView style={{flex: 1, backgroundColor: Color.primary}}>
-            <View style={{paddingHorizontal: 20, marginVertical: 40, flexDirection: "row", alignItems: "center"}}>
-                <View>
-                    <Text style={{
-                        fontSize: 24,
-                        fontFamily: Constants.fontFamilyBold,
-                        color: "#fff"
-                    }}>{`Settings`}</Text>
-
-                </View>
+            <View style={{paddingHorizontal: 20, marginVertical: 40, }}>
+                <HeaderComponent title={"Settings"} back={false}/>
             </View>
 
             <View style={{
@@ -43,19 +37,21 @@ export const SettingScreen = (props) => {
                     <Text style={{fontFamily:Constants.fontFamilyBold,includeFontPadding:false,padding:0,color:"#fff",borderRadius:30,paddingVertical:5,paddingHorizontal:20,backgroundColor:Color.primary,fontSize:16}}>{userInfo?.Role}</Text>
                 </View>
                 <View style={{marginTop:20}}>
-                    <Title title={"Profile"}/>
+                    <Title title={"Settings"}/>
                     <RowComponent onPress={()=>{navigation.navigate("ProfileScreen")}} title={"Profile"}/>
                     <Title title={"Manage Orders"}/>
                     <RowComponent onPress={()=>{navigation.navigate("OrderStatus")}} title={"Order Status"}/>
+                    <RowComponent onPress={()=>{navigation.navigate("PendingOrderScreen")}} title={"Pending Orders"}/>
+                    <RowComponent onPress={()=>{navigation.navigate("DeliveredOrders")}} title={"Delivered Orders"}/>
                     <RowComponent onPress={()=>{navigation.navigate("CustomersScreen")}} title={"Customers"}/>
+
                     <Title title={"Services"}/>
                     <RowComponent onPress={()=>{navigation.navigate("AddServicesScreen")}} title={"Services"}/>
-                    <Title title={"Riders"}/>
+                    <Title title={"Manage Riders"}/>
                     <RowComponent onPress={()=>{navigation.navigate("AddRiderScreen")}} title={"Add Rider"}/>
-                    <Title title={"Other Settings"}/>
+                    <Title title={"Other Information"}/>
                     <RowComponent onPress={()=>{navigation.navigate("TermsConditionsScreen")}} title={"Terms & Conditions"}/>
                     <RowComponent onPress={()=>{navigation.navigate("AboutUsScreen")}} title={"About Us"}/>
-
                 </View>
 
         </View>

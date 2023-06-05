@@ -79,17 +79,19 @@ export const OrderStatus = () => {
                                placeholderTextColor={Color.gray}>
                     </TextInput>
                 </View>
+                <View>
                 <FlatList ListEmptyComponent={
-                    <View style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
+                    <View style={{ alignItems: "center", justifyContent: "center"}}>
                         <Text style={{fontSize: 14, fontFamily: Constants.fontFamilyRegular, color: "#000"}}>You Have No
                             Orders Yet..!</Text>
                     </View>} refreshing={loading} onRefresh={() => {
-                    GetData()}} data={filteredData} contentContainerStyle={{flex: 1, paddingTop: 10, paddingBottom: 20}}
+                    GetData()}} data={filteredData} contentContainerStyle={{paddingTop: 10, paddingBottom: 40}}
                           renderItem={({item, index}) =>
                               <>
                                   <OrderComponent item={item}/>
                               </>
                           }/>
+                </View>
             </View>
         </View>
     )

@@ -64,6 +64,7 @@ const App = ({onFulfill, onCodeChange}) => {
                 rootStyle={styles.codeFiledRoot}
                 keyboardType="number-pad"
                 autoFocus={true}
+                secureTextEntry={true}
                 renderCell={({index, symbol, isFocused}) => (
                     <Text
                         key={index}

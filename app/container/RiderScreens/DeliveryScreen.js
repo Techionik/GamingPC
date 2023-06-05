@@ -62,7 +62,7 @@ export const DeliveryScreen = () => {
                 borderTopRightRadius: 20
             }}>
 
-                <FlatList data={data} refreshing={Loading} onRefresh={()=>{GetData()}}  renderItem={({item,index})=>
+                <FlatList data={data} refreshing={Loading} onRefresh={GetData}  renderItem={({item,index})=>
                     <ShortOrderComponent item={item} onPress={()=>{navigation.navigate("DeliverCurrentOrder",{orderDetails:item})}} />
                 }/>
             </View>

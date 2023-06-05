@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {ButtonComponent} from "../Components/ButtonComponent";
 import {useNavigation} from "@react-navigation/native";
 import {useState} from "react";
@@ -8,31 +8,37 @@ import {FlatList, Image, Text, TouchableOpacity, View} from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import {HeaderComponent} from "../Components/HeaderComponent";
 import {toast} from "../../Omni";
+import firestore from "@react-native-firebase/firestore";
 
-export const DryClean = () => {
+export const AddOrderScreen = (props) => {
     const navigation = useNavigation();
-    const list = [
-        {
-            title: "Shalwar Kameez",
-            Price: "100",
-            image: require('../../images/kurta.png')
-        },
-        {
-            title: "Shirt",
-            Price: "100",
-            image: require('../../images/shirt.png')
-        },
-        {
-            title: "Bottom",
-            Price: "100",
-            image: require('../../images/jeans.png')
-        },
-        {
-            title: "suite",
-            Price: "100",
-            image: require('../../images/blazer.png')
-        }
-    ];
+    const [list, setList] = useState([])
+    const [Loading, setLoading] = useState(false)
+    const From=props?.route?.params?.From
+
+
+    useEffect(() => {
+        GetData()
+    }, [])
+
+    function GetData() {
+        setLoading(true)
+        const dummy = []
+        firestore()
+            .collection('Services')
+            .get()
+            .then(querySnapshot => {
+                setLoading(false)
+                querySnapshot.forEach(res => {
+                    const data = res.data()
+                    dummy.push({...data, ServiceID: res?.id})
+                });
+                setList(dummy)
+            }).catch(err => {
+            console.log(err)
+            setLoading(false)
+        })
+    }
 
     const [order, setOrder] = useState([]);
     const [cartItems, setCartItems] = useState([]);
@@ -62,11 +68,10 @@ export const DryClean = () => {
             setCartItems([...cartItems, newItem]);
         }
     };
-
     return (
         <View style={{flex: 1, backgroundColor: Color.primary}}>
             <View style={{paddingHorizontal: 20, marginVertical: 40, flexDirection: "row", alignItems: "center"}}>
-                <HeaderComponent title={"Dry Clean"}/>
+                <HeaderComponent title={From}/>
             </View>
             <View style={{
                 flex: 1,
@@ -105,7 +110,13 @@ export const DryClean = () => {
             <ButtonComponent
                 onPress={() => {
                     if (cartItems.length > 0) {
-                        navigation.navigate("LocationScreen", {bill: {total: totalBill, cartItems,ServiceType:"Dry Clean"}});
+                        navigation.navigate("LocationScreen", {
+                            bill: {
+                                total: totalBill,
+                                cartItems,
+                                ServiceType: From
+                            }
+                        });
                     } else {
                         toast("Select at least 1 item...")
                     }
@@ -139,7 +150,7 @@ const DetailComponent = ({item, setValueBack}) => {
             }}
         >
             <Image
-                source={item.image ? item.image : require('../../images/shirt.png')}
+                source={item.title === "Shirt" ? require('../../images/shirt.png') : item.title === "Shalwar Kameez" ? require('../../images/kurta.png') : item.title === "Bottom" ? require('../../images/jeans.png') : item.title === "Suite" ? require('../../images/blazer.png') : require('../../images/Others.png')}
                 style={{aspectRatio: 1, width: "10%", height: undefined}}
             />
             <View style={{flex: 1}}>

@@ -53,7 +53,7 @@ export const CustomersScreen = () => {
     return (
         <View style={{flex: 1, backgroundColor: Color.primary}}>
             <View style={{paddingHorizontal: 20, marginVertical: 40, flexDirection: "row", alignItems: "center"}}>
-                <HeaderComponent back={false} title={"Customers Orders"}/>
+                <HeaderComponent back={true} title={"Customers Orders"}/>
             </View>
             <View style={{
                 flex: 1,

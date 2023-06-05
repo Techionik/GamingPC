@@ -19,7 +19,7 @@ export const ProfileScreen = () => {
     return (
         <View style={{flex: 1, backgroundColor: Color.primary}}>
             <View style={{paddingHorizontal: 20, marginVertical: 40, flexDirection: "row", alignItems: "center"}}>
-                <HeaderComponent back={false} title={"Profile"}/>
+                <HeaderComponent back={true} title={"Profile"}/>
             </View>
             <View style={{
                 flex: 1,

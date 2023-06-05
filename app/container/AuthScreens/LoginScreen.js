@@ -17,7 +17,7 @@ import InputCode from "../Components/input/InputCode";
 import {RiderHomeScreen} from "../RiderScreens/RiderHomeScreen";
 
 
-export const LoginScreen = () => {
+export const LoginScreen = (props) => {
     const navigation = useNavigation()
     const [Phone, setPhone] = useState("")
     const [countryCode, setcountryCode] = useState("+92")
@@ -36,7 +36,7 @@ export const LoginScreen = () => {
             .get();
         if (userSnapshot.empty) {
             // Phone number doesn't exist, navigate to SignUpScreen
-            navigation.navigate("SignUpScreen");
+            navigation.navigate("SignUpScreen",{PhoneNumber:countryCode+Phone});
         } else {
             // Phone number exists, send OTP
             const confirmation = await auth().signInWithPhoneNumber(phoneNumber, true).then(res => {
@@ -65,14 +65,15 @@ export const LoginScreen = () => {
                             navigation.replace('HomeScreen');
                         } else if(data?.Role === "Rider"){
                             navigation.navigate("RiderHomeScreen")
-                        }else {
+                        }else if(data?.Role === "Admin") {
                             navigation.replace("AdminDashboard")
                         }
                         toast("Verified");
                     });
 
                 }).catch(err => {
-                navigation.navigate("SignUpScreen");
+
+                navigation.navigate("SignUpScreen",{PhoneNumber:countryCode+Phone});
             });
         } catch (error) {
             toast('Invalid code.');
@@ -124,14 +125,15 @@ export const LoginScreen = () => {
                         </> :
                         <View style={{marginHorizontal: 10}}>
                             <InputCode
-                                onFulfill={() => {}}
+                                onFulfill={() => {
+                                    confirmCode()
+                                }}
                                 onCodeChange={value => {
                                     setCode(value)
                                     // verifyCode(value)
                                 }}
                                 // editable={!isLoading}
                             />
-                            <ButtonComponent onPress={() => {confirmCode()}} Style={{alignSelf: "center", marginTop: 15, paddingHorizontal: 50}} title={"Verify"}/>
                         </View>
                     }
                 </View>

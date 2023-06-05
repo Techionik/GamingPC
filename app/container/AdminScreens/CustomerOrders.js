@@ -49,8 +49,9 @@ export const CustomerOrders = (props) => {
                 borderTopLeftRadius: 20,
                 borderTopRightRadius: 20
             }}>
+
                 <FlatList ListEmptyComponent={
-                    <View style={{flex:1,alignItems:"center",justifyContent:"center"}}>
+                    <View  style={{alignItems:"center",justifyContent:"center"}}>
                         <Text style={{fontSize: 14, fontFamily: Constants.fontFamilyRegular, color: "#000"}}>This User Have No
                             Orders Yet..!</Text>
                     </View>} refreshing={loading} onRefresh={() => {

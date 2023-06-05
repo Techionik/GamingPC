@@ -8,7 +8,7 @@ export const ServiceComponent = ({item, Style}) => {
     const navigation = useNavigation()
     return (
         <TouchableOpacity onPress={() => {
-            navigation.navigate(item.navigation)
+            navigation.navigate(item.navigation,{From:item?.title})
         }} style={[{
             backgroundColor: "#fff",
             borderRadius: 10,

@@ -24,6 +24,7 @@ export const AddToCartScreen = (props) => {
     const DeliveryAddress = useSelector(state => state?.user?.deliveryAddress)
     const [cart, setCart] = useState([])
     const [uniqueId, setUniqueId] = useState([])
+    const [PaymentType, setPaymentType] = useState([])
     const dispatch = useDispatch()
     const navigation = useNavigation()
 
@@ -51,17 +52,18 @@ export const AddToCartScreen = (props) => {
             Delivery_Address: DeliveryAddress,
             Service_Type: ServiceType,
         },
-        Status: "pending",
+        PaymentType:PaymentType,
+        PaymentStatus:PaymentType==="Cash On Delivery"?"pending":"Confirm",
+        Status:"pending",
         Items: Bill?.cartItems, Total: Bill?.total
     }
 
     return (
-        <ScrollView showsVerticalScrollIndicator={false} style={{flex: 1, backgroundColor: Color.primary}}>
+        <View style={{flex:1, backgroundColor:Color.primary}}>
             <View style={{paddingHorizontal: 20, marginVertical: 40, flexDirection: "row", alignItems: "center"}}>
                 <HeaderComponent title={"Payment Screen"}/>
             </View>
-            <View  style={{
-                flex:1,
+            <ScrollView contentContainerStyle={{paddingBottom:30}}  style={{
                 backgroundColor: "#dfdfdf",
                 padding: 20,
                 borderTopLeftRadius: 20,
@@ -76,22 +78,28 @@ export const AddToCartScreen = (props) => {
                 }}>Payment Method</Text>
                 <View>
                     <FlatList
-                        data={[{image: require('../../images/plus.png')}, {image: require('../../images/creditcard.png')}, {image: require('../../images/unnamed.png')}, {image: require('../../images/download.png')}]}
+                        data={[{title:"Cash On Delivery",image: require('../../images/cash-on-delivery.png')}, {title:"Card Payment",image: require('../../images/creditcard.png')}, {title:"Jazz Cash",image: require('../../images/unnamed.png')}, {title:"Easy Pysa",image: require('../../images/download.png')}]}
                         horizontal={true} renderItem={({item, index}) =>
-                        <TouchableOpacity
-                            style={{padding: 5, backgroundColor: "#fff", marginRight: 10, borderRadius: 10}}>
+                        <TouchableOpacity onPress={()=>{setPaymentType(item?.title)}}
+                            style={{padding: 5, backgroundColor: item?.title===PaymentType?Color.primary:"#fff", marginRight: 10, borderRadius: 10}}>
                             <Image source={item?.image} style={{height: 40, width: 40}}/>
                         </TouchableOpacity>
                     }/>
                 </View>
-                <CartFieldComponent title={"Name On Card"}/>
-                <CartFieldComponent title={"Card Number"}/>
-                <CartFieldComponent title={"Date"}/>
-                <CartFieldComponent title={"CVC"}/>
-                <View style={{flex: 1}}/>
-                <ButtonComponent onPress={() => {
+                <View style={{flex:1}}/>
+                {PaymentType==="Card Payment"&&<>
+                    <CartFieldComponent title={"Name On Card"}/>
+                    <CartFieldComponent title={"Card Number"}/>
+                    <CartFieldComponent title={"Date"}/>
+                    <CartFieldComponent title={"CVC"}/>
+                </>}
 
-                    firestore()
+            </ScrollView>
+            <ButtonComponent Style={{backgroundColor:Color.primary}} TitleStyle={{color:"#fff"}} onPress={() => {
+                if(PaymentType===""){
+                    toast("Select A Payment Method")
+                }
+                else {firestore()
                         .collection('Orders')
                         .doc(uniqueId)
                         .set(Param)
@@ -99,8 +107,9 @@ export const AddToCartScreen = (props) => {
                             navigation.navigate("OrdersScreen")
                             toast('OrderPlace');
                         });
-                }} title={"Add To Cart"}/>
-            </View>
-        </ScrollView>
+                }
+            }} title={"Add To Cart"}/>
+
+        </View>
     )
 }

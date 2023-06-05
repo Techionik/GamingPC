@@ -13,7 +13,7 @@ import {HomeScreen} from "../container/HomeScreen/HomeScreen";
 import {DeliveryAddressSceen} from "../container/HomeScreen/DeliveryAddressSceen";
 import {AddToCartScreen} from "../container/HomeScreen/AddToCartScreen";
 
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Color} from "../common";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
@@ -21,15 +21,11 @@ import Entypo from "react-native-vector-icons/Entypo";
 import {OrdersScreen} from "../container/HomeScreen/OrdersScreen";
 import {SignUpScreen} from "../container/AuthScreens/SignUpScreen";
 import {ProfileScreen} from "../container/HomeScreen/ProfileScreen";
-import {WashingIron} from "../container/HomeScreen/WahingIron";
-import {Iron} from "../container/HomeScreen/Iron";
-import {DryClean} from "../container/HomeScreen/DryClean";
 import {LocationEditScreen} from "../container/HomeScreen/LocationEditScreen";
 import {AdminDashboard} from "../container/AdminScreens/AdminDashboard";
 import {ActiveOrders} from "../container/AdminScreens/OrderScreens/ActiveOrders";
-import {PendingOrders} from "../container/AdminScreens/OrderScreens/PendingOrders";
-import {ConfermOreders, ConfirmOrders} from "../container/AdminScreens/OrderScreens/ConfirmOrders";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import {PickedUpOrders} from "../container/AdminScreens/OrderScreens/PickedUpOrders";
+import {ConfirmOrders} from "../container/AdminScreens/OrderScreens/ConfirmOrders";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import {SettingScreen} from "../container/AdminScreens/SettingScreen";
 import {OrderStatus} from "../container/AdminScreens/OrderStatus";
@@ -43,6 +39,9 @@ import {AddRiderScreen} from "../container/AdminScreens/AddRiderScreen";
 import {CurrentOrderScreen} from "../container/RiderScreens/CurrentOrderScreen";
 import {DeliveryScreen} from "../container/RiderScreens/DeliveryScreen";
 import {DeliverCurrentOrder} from "../container/RiderScreens/DeliverCurrentOrder";
+import {AddOrderScreen} from "../container/HomeScreen/AddOrderScreen";
+import {PendingOrderScreen} from "../container/AdminScreens/OrderScreens/PendingOrderScreen";
+import {DeliveredOrders} from "../container/AdminScreens/OrderScreens/DeliveredOrders";
 
 
 const Tab = createBottomTabNavigator();
@@ -58,7 +57,7 @@ function CustomerTabs() {
             tabBarOptions={{
                 inactiveTintColor: '#dfdfdf',
                 activeTintColor: '#fff',
-                style: { backgroundColor: 'green' },
+                style: {backgroundColor: 'green'},
                 showLabel: false
             }}
         >
@@ -68,7 +67,8 @@ function CustomerTabs() {
                 component={HomeScreen}
                 options={{
                     tabBarLabel: 'Home',
-                    tabBarIcon: ({ color, size }) => (<AntDesign name="home" color={color} size={size} />),}}
+                    tabBarIcon: ({color, size}) => (<AntDesign name="home" color={color} size={size}/>),
+                }}
             />
             <Tab.Screen
 
@@ -76,14 +76,16 @@ function CustomerTabs() {
                 component={OrdersScreen}
                 options={{
                     tabBarLabel: 'OrdersScreen',
-                    tabBarIcon: ({ color, size }) => (<Entypo name="text-document-inverted" color={color} size={size} />),}}
+                    tabBarIcon: ({color, size}) => (<Entypo name="text-document-inverted" color={color} size={size}/>),
+                }}
             />
             <Tab.Screen
                 name="Profile"
                 component={ProfileScreen}
                 options={{
                     tabBarLabel: 'Profile',
-                    tabBarIcon: ({ color, size }) => (<FontAwesome name="user-o" color={color} size={size} />),}}
+                    tabBarIcon: ({color, size}) => (<FontAwesome name="user-o" color={color} size={size}/>),
+                }}
             />
 
         </Tab.Navigator>
@@ -102,25 +104,28 @@ function AdminTabs() {
             tabBarOptions={{
                 inactiveTintColor: '#dfdfdf',
                 activeTintColor: '#fff',
-                style: { backgroundColor: 'green' },
+                style: {backgroundColor: 'green'},
                 showLabel: false
             }}
         >
             <Tab.Screen name="AdminDashBoard" component={AdminDashboard} options={{
-                    tabBarLabel: 'Home',
-                    tabBarIcon: ({ color, size }) => (<AntDesign name="home" color={color} size={size} />),}}
+                tabBarLabel: 'Home',
+                tabBarIcon: ({color, size}) => (<AntDesign name="home" color={color} size={size}/>),
+            }}
             />
             <Tab.Screen name="Settings" component={SettingScreen} options={{
                 tabBarLabel: 'Settings',
-                tabBarIcon: ({ color, size }) => (<AntDesign name="setting" color={color} size={size} />),}}
+                tabBarIcon: ({color, size}) => (<AntDesign name="setting" color={color} size={size}/>),
+            }}
             />
         </Tab.Navigator>
     );
 }
+
 function Orders(props) {
     return (
         <Tab.Navigator
-            initialRouteName="PendingOrders"
+            initialRouteName="PickedUpOrders"
             screenOptions={{
                 headerShown: false,
                 tabBarActiveTintColor: Color.primary,
@@ -128,21 +133,27 @@ function Orders(props) {
             tabBarOptions={{
                 inactiveTintColor: 'rgb(241,85,85)',
                 activeTintColor: '#fff',
-                style: { backgroundColor: 'green' },
+                style: {backgroundColor: 'green'},
                 showLabel: true
             }}
         >
-            <Tab.Screen name="PendingOrders" component={PendingOrders} options={{
+            <Tab.Screen name="PickedUpOrders" component={PickedUpOrders} options={{
                 tabBarLabel: 'Pending',
-                tabBarIcon: ({ color, size }) => (<MaterialCommunityIcons name="clock-alert-outline" color={color} size={size} />),}}
+                tabBarIcon: ({color, size}) => (
+                    <MaterialCommunityIcons name="clock-alert-outline" color={color} size={size}/>),
+            }}
             />
             <Tab.Screen name="ActiveOrders" component={ActiveOrders} options={{
                 tabBarLabel: 'Active',
-                tabBarIcon: ({ color, size }) => (<MaterialCommunityIcons name="progress-clock" color={color} size={size} />),}}
+                tabBarIcon: ({color, size}) => (
+                    <MaterialCommunityIcons name="progress-clock" color={color} size={size}/>),
+            }}
             />
             <Tab.Screen name="ConfirmOrders" component={ConfirmOrders} options={{
                 tabBarLabel: 'Ready',
-                tabBarIcon: ({ color, size }) => (<MaterialCommunityIcons name="clock-check-outline" color={color} size={size} />),}}
+                tabBarIcon: ({color, size}) => (
+                    <MaterialCommunityIcons name="clock-check-outline" color={color} size={size}/>),
+            }}
             />
         </Tab.Navigator>
     );
@@ -159,30 +170,34 @@ function RiderApp(props) {
             tabBarOptions={{
                 inactiveTintColor: 'rgb(241,85,85)',
                 activeTintColor: '#fff',
-                style: { backgroundColor: 'green' },
-                showLabel: true
+                style: {backgroundColor: 'green'},
+                showLabel: false
             }}
         >
             <Tab.Screen name="RiderHomeScreen" component={RiderHomeScreen} options={{
                 tabBarLabel: 'Home',
-                tabBarIcon: ({ color, size }) => (<MaterialCommunityIcons name="clock-alert-outline" color={color} size={size} />),}}
+                tabBarIcon: ({color, size}) => (
+                    <MaterialCommunityIcons name="clock-alert-outline" color={color} size={size}/>),
+            }}
             />
-            <Tab.Screen name="ActiveOrders" component={ActiveOrders} options={{
+            <Tab.Screen name="DeliveryScreen" component={DeliveryScreen} options={{
                 tabBarLabel: 'Active',
-                tabBarIcon: ({ color, size }) => (<MaterialCommunityIcons name="clock-check-outline" color={color} size={size} />),}}
+                tabBarIcon: ({color, size}) => (
+                    <MaterialCommunityIcons name="clock-check-outline" color={color} size={size}/>),
+            }}
             />
             <Tab.Screen
                 name="Profile"
                 component={ProfileScreen}
                 options={{
                     tabBarLabel: 'Profile',
-                    tabBarIcon: ({ color, size }) => (<FontAwesome name="user-o" color={color} size={size} />),}}
+                    tabBarIcon: ({color, size}) => (<FontAwesome name="user-o" color={color} size={size}/>),
+                }}
             />
         </Tab.Navigator>
     );
 }
 const Stack = createStackNavigator()
-
 const AppStack = ({}) => {
     return (
         <Stack.Navigator initialRouteName={"SplashContainer"}>
@@ -190,16 +205,14 @@ const AppStack = ({}) => {
             <Stack.Screen name={"SocialSignupScreen"} component={LoginScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"HomeScreen"} component={CustomerTabs} options={{headerShown: false}}/>
             <Stack.Screen name={"AdminDashboard"} component={AdminTabs} options={{headerShown: false}}/>
-            <Stack.Screen name={"PendingOrders"} component={Orders} options={{headerShown: false}}/>
+            <Stack.Screen name={"PickedUpOrders"} component={Orders} options={{headerShown: false}}/>
             <Stack.Screen name={"RiderHomeScreen"} component={RiderApp} options={{headerShown: false}}/>
             <Stack.Screen name={"CartScreen"} component={CartScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"LocationScreen"} component={DeliveryAddressSceen} options={{headerShown: false}}/>
             <Stack.Screen name={"AddToCartScreen"} component={AddToCartScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"SignUpScreen"} component={SignUpScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"ProfileScreen"} component={ProfileScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"WashingIron"} component={WashingIron} options={{headerShown: false}}/>
-            <Stack.Screen name={"Iron"} component={Iron} options={{headerShown: false}}/>
-            <Stack.Screen name={"DryClean"} component={DryClean} options={{headerShown: false}}/>
+            <Stack.Screen name={"AddOrderScreen"} component={AddOrderScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"LocationEditScreen"} component={LocationEditScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"OrderStatus"} component={OrderStatus} options={{headerShown: false}}/>
             <Stack.Screen name={"CustomersScreen"} component={CustomersScreen} options={{headerShown: false}}/>
@@ -210,7 +223,9 @@ const AppStack = ({}) => {
             <Stack.Screen name={"CurrentOrderScreen"} component={CurrentOrderScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"DeliveryScreen"} component={DeliveryScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"DeliverCurrentOrder"} component={DeliverCurrentOrder} options={{headerShown: false}}/>
-
+            <Stack.Screen name={"AddRiderScreen"} component={AddRiderScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"PendingOrderScreen"} component={PendingOrderScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"DeliveredOrders"} component={DeliveredOrders} options={{headerShown: false}}/>
         </Stack.Navigator>
     )
 }

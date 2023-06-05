@@ -48,7 +48,7 @@ export const AddServicesScreen = (props) => {
     return (
         <View style={{flex: 1, backgroundColor: Color.primary}}>
             <View style={{paddingHorizontal: 20, marginVertical: 40, flexDirection: "row", alignItems: "center"}}>
-                <HeaderComponent back={false} title={"Orders"}/>
+                <HeaderComponent back={true} title={"Services"}/>
             </View>
             <View style={{
                 flex: 1,
