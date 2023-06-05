@@ -16,7 +16,6 @@ export const PickedUpOrders = (props) => {
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(false)
     useEffect(() => {
-        console.log(JSON.stringify(service))
         GetData()
     }, [])
 
@@ -52,6 +51,7 @@ export const PickedUpOrders = (props) => {
                 borderTopLeftRadius: 20,
                 borderTopRightRadius: 20
             }}>
+                <View>
                 <FlatList ListEmptyComponent={
                     <View style={{flex:1,alignItems:"center",justifyContent:"center"}}>
                         <Text style={{fontSize: 14, fontFamily: Constants.fontFamilyRegular, color: "#000"}}>You Have No
@@ -73,6 +73,7 @@ export const PickedUpOrders = (props) => {
                                   }} title={"Processing"} Admin={true} item={item}/>
                               </>
                           }/>
+                </View>
 
 
             </View>

@@ -53,6 +53,7 @@ export const DeliveredOrders = (props) => {
                 borderTopLeftRadius: 20,
                 borderTopRightRadius: 20
             }}>
+                <View>
                 <FlatList ListEmptyComponent={
                     <View style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
                         <Text style={{fontSize: 14, fontFamily: Constants.fontFamilyRegular, color: "#000"}}>You Have No
@@ -66,14 +67,14 @@ export const DeliveredOrders = (props) => {
                                       firestore()
                                           .collection('Orders')
                                           .doc(item?.Details?.Order_Id)
-                                          .update({Status: "In Processing"})
+                                          .update({Status: "Received"})
                                           .then(() => {
-                                              navigation.navigate("ActiveOrders")
-                                              toast('Order In Processing');
+                                              toast('Order Received');
                                           });
-                                  }} title={"Processing"} Admin={true} item={item}/>
+                                  }} title={"Confirm"} Admin={true} item={item}/>
                               </>
                           }/>
+                </View>
 
 
             </View>

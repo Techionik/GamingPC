@@ -77,7 +77,7 @@ export const DeliverCurrentOrder = (props) => {
                     firestore()
                         .collection('Orders')
                         .doc(Details?.Details?.Order_Id)
-                        .update({Status:"Delivered"})
+                        .update({Status:"Delivered",PaymentStatus:"Confirm"})
                         .then(() => {
                             toast('Delivered');
                         });

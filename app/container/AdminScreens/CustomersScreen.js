@@ -80,6 +80,7 @@ export const CustomersScreen = () => {
                                placeholderTextColor={Color.gray}>
                     </TextInput>
                 </View>
+                <View>
                 <FlatList ListEmptyComponent={
                     <View style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
                         <Text style={{fontSize: 14, fontFamily: Constants.fontFamilyRegular, color: "#000"}}>You Have No
@@ -103,6 +104,7 @@ export const CustomersScreen = () => {
                                   }}>{item?.Address}</Text>
                               </TouchableOpacity>
                           }/>
+                </View>
             </View>
         </View>
     )

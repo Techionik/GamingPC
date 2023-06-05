@@ -48,6 +48,7 @@ export const OrdersScreen = () => {
                 borderTopLeftRadius: 20,
                 borderTopRightRadius: 20
             }}>
+                <View>
                 <FlatList ListEmptyComponent={
                     <View style={{flex:1,alignItems:"center",justifyContent:"center"}}>
                         <Text style={{fontSize: 14, fontFamily: Constants.fontFamilyRegular, color: "#000"}}>You Have No
@@ -60,6 +61,7 @@ export const OrdersScreen = () => {
                                   <OrderComponent item={item}/>
                               </>
                           }/>
+                </View>
 
 
             </View>
@@ -106,6 +108,15 @@ export const OrderComponent = ({item,Admin,onPress,title}) => {
                 <RowComponent title1={"Status"} title2={item?.Status} color={"red"}/>
                 <RowComponent title1={"Pick Up Address"} title2={item?.Details?.Pick_Up_Address}/>
                 <RowComponent title1={"Delivery Address"} title2={item?.Details?.Delivery_Address}/>
+                <View style={{
+                    height: 1,
+                    marginVertical: 10,
+                    borderBottomWidth: 1,
+                    borderColor: Color.primary,
+                    borderStyle: "dashed"
+                }}/>
+                <RowComponent title1={"Payment Type"} title2={item?.PaymentType}/>
+                <RowComponent title1={"Payment Status"} title2={item?.PaymentStatus}/>
                 <View style={{
                     height: 1,
                     marginVertical: 10,

@@ -2,13 +2,17 @@ import {useNavigation} from "@react-navigation/native";
 import {Image, Text, TouchableOpacity} from "react-native";
 import {Color, Constants} from "../../common";
 import React from "react";
+import {useDispatch} from "react-redux";
+import {SaveServiceProvider} from "../../redux/user/actions";
 
 
 export const ServiceComponent = ({item, Style}) => {
     const navigation = useNavigation()
+    const dispatch=useDispatch()
     return (
         <TouchableOpacity onPress={() => {
-            navigation.navigate(item.navigation,{From:item?.title})
+            dispatch(SaveServiceProvider(item?.title))
+            navigation.navigate(item.navigation)
         }} style={[{
             backgroundColor: "#fff",
             borderRadius: 10,

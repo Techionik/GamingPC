@@ -53,6 +53,7 @@ export const ConfirmOrders = () => {
                 borderTopLeftRadius: 20,
                 borderTopRightRadius: 20
             }}>
+                <View>
                 <FlatList ListEmptyComponent={
                     <View style={{flex:1,alignItems:"center",justifyContent:"center"}}>
                         <Text style={{fontSize: 14, fontFamily: Constants.fontFamilyRegular, color: "#000"}}>You Have No
@@ -75,8 +76,7 @@ export const ConfirmOrders = () => {
                                   }}/>
                               </>
                           }/>
-
-
+                </View>
             </View>
         </View>
     )

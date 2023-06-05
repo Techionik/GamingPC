@@ -58,6 +58,7 @@ export const AddServicesScreen = (props) => {
                 borderTopRightRadius: 20,
                 paddingBottom: 20,
             }}>
+                <View>
                 <FlatList ListEmptyComponent={
                     <View style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
                         <Text style={{fontSize: 14, fontFamily: Constants.fontFamilyRegular, color: "#000"}}>This User
@@ -102,6 +103,7 @@ export const AddServicesScreen = (props) => {
                                   }}>{item?.Price} PKR</Text>
                               </TouchableOpacity>
                           }/>
+                </View>
 
 
                 <Modalize

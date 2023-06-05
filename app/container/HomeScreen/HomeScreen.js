@@ -66,11 +66,6 @@ export const HomeScreen = () => {
                     }}>{"Hope You Are Doing Well"}</Text>
                 </View>
             </View>
-            <View style={{margin: 10,}}>
-                <View style={{flex:0.2}}>
-                <ImageSliderComponent/>
-                </View>
-            </View>
             <View style={{
                 flex: 1,
                 backgroundColor: "#dfdfdf",

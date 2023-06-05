@@ -158,7 +158,7 @@ export const AdminDashboard = () => {
                     </View>} sstyle={{marginHorizontal: 10, flex: 1}} data={data} renderItem={({item, index}) =>
                     item?.Details?.Date_Time === moment().format("DD-MMM-YYYY") ?
                         <ShortOrderComponent item={item} onPress={() => {
-                            navigation.navigate("PickedUpOrders")
+                            navigation.navigate("PendingOrderScreen")
                         }}/> : null
                 }/>
             </View>
