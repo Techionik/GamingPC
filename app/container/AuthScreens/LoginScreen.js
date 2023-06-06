@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Button, Image, ImageBackground, Text, TextInput, TouchableOpacity, View} from "react-native";
+import {ActivityIndicator, Button, Image, ImageBackground, Text, TextInput, TouchableOpacity, View} from "react-native";
 import {SocialButtonComponent} from "../Components/SocialButtonComponent";
 import {Color, Constants} from "../../common";
 import SliderComponent from "../Components/SliderComponent";
@@ -21,6 +21,7 @@ export const LoginScreen = (props) => {
     const navigation = useNavigation()
     const [Phone, setPhone] = useState("")
     const [countryCode, setcountryCode] = useState("+92")
+    const [loading,setLoading]=useState(false)
     const dispatch = useDispatch()
 
     // If null, no SMS has been sent
@@ -30,20 +31,24 @@ export const LoginScreen = (props) => {
     const [code, setCode] = useState('');
 
     async function signInWithPhoneNumber(phoneNumber) {
+        setLoading(true)
         const userSnapshot = await firestore()
             .collection('Users')
             .where("PhoneNumber", "==", phoneNumber)
             .get();
         if (userSnapshot.empty) {
             // Phone number doesn't exist, navigate to SignUpScreen
+            setLoading(false)
             navigation.navigate("SignUpScreen",{PhoneNumber:countryCode+Phone});
         } else {
             // Phone number exists, send OTP
             const confirmation = await auth().signInWithPhoneNumber(phoneNumber, true).then(res => {
                 toast("Sending OTP to your number");
+                setLoading(false)
                 return res;
             }).catch(error => {
                 return error;
+                setLoading(false)
             });
             setConfirm(confirmation);
         }
@@ -51,6 +56,7 @@ export const LoginScreen = (props) => {
 
     async function confirmCode() {
         try {
+            setLoading(true)
             await confirm.confirm(code);
             const CP=countryCode+Phone
             firestore()
@@ -62,12 +68,16 @@ export const LoginScreen = (props) => {
                         const data = documentSnapshot.data();
                         dispatch(actions.loginSuccess({...data, userId: documentSnapshot.id}));
                         if (data?.Role === "Customer") {
-                            navigation.replace('HomeScreen');
+                            setLoading(false)
+                            navigation.replace('CustomerStack');
                         } else if(data?.Role === "Rider"){
-                            navigation.navigate("RiderHomeScreen")
+                            setLoading(false)
+                            navigation.navigate("RiderStack")
                         }else if(data?.Role === "Admin") {
-                            navigation.replace("AdminDashboard")
+                            setLoading(false)
+                            navigation.replace("AdminStack")
                         }
+                        setLoading(false)
                         toast("Verified");
                     });
 
@@ -76,6 +86,7 @@ export const LoginScreen = (props) => {
                 navigation.navigate("SignUpScreen",{PhoneNumber:countryCode+Phone});
             });
         } catch (error) {
+            setLoading(false)
             toast('Invalid code.');
         }
     }
@@ -118,10 +129,15 @@ export const LoginScreen = (props) => {
                                               }}
                             />
 
-                            <ButtonComponent onPress={() => {
+                            {loading===true?<ActivityIndicator size={"large"} color={"#fff"} style={{alignSelf:"center"}}/>:<ButtonComponent onPress={() => {
+
+                                if(Phone===""){
+                                    setLoading(false)
+                                    toast("Enter Number First")
+                                }else {
                                 const data = countryCode + Phone;
-                                signInWithPhoneNumber(data)
-                            }} Style={{alignSelf: "center", marginTop: 15, paddingHorizontal: 50}} title={"Sign In"}/>
+                                signInWithPhoneNumber(data)}
+                            }} Style={{alignSelf: "center", marginTop: 15, paddingHorizontal: 50}} title={"Sign In"}/>}
                         </> :
                         <View style={{marginHorizontal: 10}}>
                             <InputCode
@@ -134,6 +150,7 @@ export const LoginScreen = (props) => {
                                 }}
                                 // editable={!isLoading}
                             />
+                            {loading&&<ActivityIndicator size={"large"} color={"#fff"} style={{alignSelf:"center"}}/>}
                         </View>
                     }
                 </View>

@@ -32,7 +32,7 @@ export const CustomersScreen = () => {
                 setLoading(false)
                 querySnapshot.forEach(res => {
                     const data = res.data()
-                    if (data.Role !== "Admin") {
+                    if (data.Role === "Customer") {
                         dummy.push({...data, UserID: res?.id})
                     }
                 });

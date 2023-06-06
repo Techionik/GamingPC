@@ -40,7 +40,7 @@ export const ProfileScreen = () => {
                 <ButtonComponent onPress={() => {
                     auth().signOut()
                     dispatch(actions.logoutUser(undefined))
-                    navigation.replace("SplashContainer")
+                    navigation.replace("MainStack")
                 }} title={"Log Out"}/>
                 <ButtonComponent Style={{backgroundColor:"rgba(253,2,2,0.68)",marginTop:10}} TitleStyle={{color:"#fff"}}  onPress={() => {
                     firestore()
@@ -50,7 +50,7 @@ export const ProfileScreen = () => {
                         .then(() => {
                             toast('User deleted!');
                             dispatch(actions.logoutUser(undefined))
-                            navigation.replace("SplashContainer")
+                            navigation.replace("MainStack")
                         });
                 }} title={"Delete Account"}/>
             </View>

@@ -46,7 +46,7 @@ import {DeliveredOrders} from "../container/AdminScreens/OrderScreens/DeliveredO
 
 const Tab = createBottomTabNavigator();
 
-function CustomerTabs() {
+const CustomerTabs=()=> {
     return (
         <Tab.Navigator
             initialRouteName="Home"
@@ -93,7 +93,7 @@ function CustomerTabs() {
 }
 
 
-function AdminTabs() {
+const AdminTabs=()=> {
     return (
         <Tab.Navigator
             initialRouteName="AdminDashBoard"
@@ -122,7 +122,7 @@ function AdminTabs() {
     );
 }
 
-function Orders(props) {
+const Orders=(props)=> {
     return (
         <Tab.Navigator
             initialRouteName="PickedUpOrders"
@@ -159,7 +159,52 @@ function Orders(props) {
     );
 }
 
-function RiderApp(props) {
+const AuthStack=()=>{
+    return(
+        <Stack.Navigator initialRouteName={"SocialSignupScreen"}>
+            <Stack.Screen name={"SocialSignupScreen"} component={LoginScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"SignUpScreen"} component={SignUpScreen} options={{headerShown: false}}/>
+        </Stack.Navigator>
+
+    )
+}
+
+const CustomerStack=()=>{
+    return(
+        <Stack.Navigator initialRouteName={"CustomerTabs"}>
+            <Stack.Screen name={"CustomerTabs"} component={CustomerTabs} options={{headerShown: false}}/>
+            <Stack.Screen name={"PickedUpOrders"} component={Orders} options={{headerShown: false}}/>
+            <Stack.Screen name={"CartScreen"} component={CartScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"LocationScreen"} component={DeliveryAddressSceen} options={{headerShown: false}}/>
+            <Stack.Screen name={"AddToCartScreen"} component={AddToCartScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"AddOrderScreen"} component={AddOrderScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"LocationEditScreen"} component={LocationEditScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"ProfileScreen"} component={ProfileScreen} options={{headerShown: false}}/>
+        </Stack.Navigator>
+
+    )
+}
+
+const AdminStack=()=>{
+    return(
+        <Stack.Navigator initialRouteName={"AdminDashboard"}>
+            <Stack.Screen name={"AdminDashboard"} component={AdminTabs} options={{headerShown: false}}/>
+            <Stack.Screen name={"PickedUpOrders"} component={Orders} options={{headerShown: false}}/>
+            <Stack.Screen name={"AddRiderScreen"} component={AddRiderScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"PendingOrderScreen"} component={PendingOrderScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"DeliveredOrders"} component={DeliveredOrders} options={{headerShown: false}}/>
+            <Stack.Screen name={"OrderStatus"} component={OrderStatus} options={{headerShown: false}}/>
+            <Stack.Screen name={"CustomersScreen"} component={CustomersScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"CustomerOrders"} component={CustomerOrders} options={{headerShown: false}}/>
+            <Stack.Screen name={"AddServicesScreen"} component={AddServicesScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"ProfileScreen"} component={ProfileScreen} options={{headerShown: false}}/>
+        </Stack.Navigator>
+
+    )
+}
+
+
+function RiderBars(props) {
     return (
         <Tab.Navigator
             initialRouteName="RiderHomeScreen"
@@ -197,35 +242,37 @@ function RiderApp(props) {
         </Tab.Navigator>
     );
 }
-const Stack = createStackNavigator()
-const AppStack = ({}) => {
+function RiderStack(props) {
     return (
-        <Stack.Navigator initialRouteName={"SplashContainer"}>
-            <Stack.Screen name={"SplashContainer"} component={SplashContainer} options={{headerShown: false}}/>
-            <Stack.Screen name={"SocialSignupScreen"} component={LoginScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"HomeScreen"} component={CustomerTabs} options={{headerShown: false}}/>
-            <Stack.Screen name={"AdminDashboard"} component={AdminTabs} options={{headerShown: false}}/>
-            <Stack.Screen name={"PickedUpOrders"} component={Orders} options={{headerShown: false}}/>
-            <Stack.Screen name={"RiderHomeScreen"} component={RiderApp} options={{headerShown: false}}/>
-            <Stack.Screen name={"CartScreen"} component={CartScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"LocationScreen"} component={DeliveryAddressSceen} options={{headerShown: false}}/>
-            <Stack.Screen name={"AddToCartScreen"} component={AddToCartScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"SignUpScreen"} component={SignUpScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"ProfileScreen"} component={ProfileScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"AddOrderScreen"} component={AddOrderScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"LocationEditScreen"} component={LocationEditScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"OrderStatus"} component={OrderStatus} options={{headerShown: false}}/>
-            <Stack.Screen name={"CustomersScreen"} component={CustomersScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"CustomerOrders"} component={CustomerOrders} options={{headerShown: false}}/>
-            <Stack.Screen name={"AddServicesScreen"} component={AddServicesScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"TermsConditionsScreen"} component={TermsConditionsScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"AboutUsScreen"} component={AboutUsScreen} options={{headerShown: false}}/>
+        <Stack.Navigator initialRouteName={"RiderBars"}>
+            <Stack.Screen name={"RiderBars"} component={RiderBars} options={{headerShown: false}}/>
             <Stack.Screen name={"CurrentOrderScreen"} component={CurrentOrderScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"DeliveryScreen"} component={DeliveryScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"DeliverCurrentOrder"} component={DeliverCurrentOrder} options={{headerShown: false}}/>
-            <Stack.Screen name={"AddRiderScreen"} component={AddRiderScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"PendingOrderScreen"} component={PendingOrderScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"DeliveredOrders"} component={DeliveredOrders} options={{headerShown: false}}/>
+            <Stack.Screen name={"ProfileScreen"} component={ProfileScreen} options={{headerShown: false}}/>
+        </Stack.Navigator>
+    );
+}
+function MainStack(props) {
+    return (
+        <Stack.Navigator initialRouteName={"SplashContainer"}>
+            <Stack.Screen name={"SplashContainer"} component={SplashContainer} options={{headerShown: false}}/>
+        </Stack.Navigator>
+    );
+}
+
+
+const Stack = createStackNavigator()
+const AppStack = ({}) => {
+    return (
+        <Stack.Navigator initialRouteName={"MainStack"}>
+            <Stack.Screen name={"MainStack"} component={MainStack} options={{headerShown: false}}/>
+            <Stack.Screen name={"AuthStack"} component={AuthStack} options={{headerShown: false}}/>
+            <Stack.Screen name={"CustomerStack"} component={CustomerStack} options={{headerShown: false}}/>
+            <Stack.Screen name={"AdminStack"} component={AdminStack} options={{headerShown: false}}/>
+            <Stack.Screen name={"RiderStack"} component={RiderStack} options={{headerShown: false}}/>
+            <Stack.Screen name={"TermsConditionsScreen"} component={TermsConditionsScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"AboutUsScreen"} component={AboutUsScreen} options={{headerShown: false}}/>
         </Stack.Navigator>
     )
 }
