@@ -3,7 +3,7 @@
 import { Color } from './index'
 
 export default {
-  error: '#f44336',
+  error: '#fff',
   facebook: '#3b5998',
   google: '#d34836',
   transparent: 'rgba(207, 212, 216, 0.1)',
