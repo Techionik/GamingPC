@@ -11,6 +11,7 @@ import {LoginScreen} from "../container/AuthScreens/LoginScreen";
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {SignUpScreen} from "../container/AuthScreens/SignUpScreen";
 import {DashboardScreen} from "../container/HomeScreen/DashboardScreen";
+import {PcBuildScreen} from "../container/HomeScreen/PcBuildScreen";
 
 
 const Tab = createBottomTabNavigator();
@@ -57,8 +58,8 @@ const Tab = createBottomTabNavigator();
 
 const AuthStack=()=>{
     return(
-        <Stack.Navigator initialRouteName={"SocialSignupScreen"}>
-            <Stack.Screen name={"SocialSignupScreen"} component={LoginScreen} options={{headerShown: false}}/>
+        <Stack.Navigator initialRouteName={"LoginScreen"}>
+            <Stack.Screen name={"LoginScreen"} component={LoginScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"SignUpScreen"} component={SignUpScreen} options={{headerShown: false}}/>
         </Stack.Navigator>
 
@@ -70,6 +71,7 @@ function HomeStack(props) {
     return (
         <Stack.Navigator initialRouteName={"DashboardScreen"}>
             <Stack.Screen name={"DashboardScreen"} component={DashboardScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"PcBuildScreen"} component={PcBuildScreen} options={{headerShown: false}}/>
         </Stack.Navigator>
     );
 }

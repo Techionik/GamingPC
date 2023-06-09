@@ -49,7 +49,7 @@ export const SignUpScreen = (props) => {
                 </View>
                 <FieldComponent Style={{marginTop: 20}} placeholder={"Enter Email"} title={"Email"}/>
                 <FieldComponent Style={{marginTop: 20}} placeholder={"Enter Password"} title={"Password"}/>
-                <ButtonComponent onPress={()=>{navigation.navigate("LoginScreen")}} Style={{marginTop: 50}} title={"Sign Up"}/>
+                <ButtonComponent onPress={()=>{navigation.pop()}} Style={{marginTop: 50}} title={"Sign Up"}/>
             </View>
             <View style={{flex:1}}/>
 

@@ -54,17 +54,24 @@ export const DashboardScreen = (props) => {
             <Text style={{fontFamily:Constants.fontFamilyRegular,color:"#fff",fontSize:12,width:"90%",alignSelf:"center",textAlign:"center"}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.</Text>
 
             <View style={{flexDirection:"row",alignItems:"center",margin:30,justifyContent:"space-between"}}>
-                <TouchableOpacity  style={{backgroundColor:Color.theme,borderRadius:10,padding:20}}>
-                    <Image source={require('../../images/BuildImage.png')} resizeMode={"contain"} style={{height:120,width:120}}/>
-                </TouchableOpacity>
-                <TouchableOpacity  style={{backgroundColor:Color.theme,borderRadius:10,padding:20}}>
-                    <Image source={require('../../images/AccesoriesImage.png')} resizeMode={"contain"} style={{height:120,width:120}}/>
-                </TouchableOpacity>
+               <DashboardComponent onPress={()=>{navigation.navigate("PcBuildScreen")}} title={"Pc Build"} image={require('../../images/BuildImage.png')}/>
+               <DashboardComponent title={"Accessories"} image={require('../../images/AccesoriesImage.png')}/>
             </View>
 
         </View>
     )
 }
 
+
+const DashboardComponent=({title,onPress,image})=>{
+    return(
+        <View style={{justifyContent:"center"}}>
+            <TouchableOpacity onPress={onPress}  style={{backgroundColor:Color.theme,borderRadius:10,padding:20}}>
+                <Image source={image} resizeMode={"contain"} style={{height:120,width:120}}/>
+            </TouchableOpacity>
+            <Text style={{fontFamily:Constants.fontFamilySemiBold,color:"#fff",fontSize:20,alignSelf:"center",textAlign:"center"}}>{title}</Text>
+        </View>
+    )
+}
 
 

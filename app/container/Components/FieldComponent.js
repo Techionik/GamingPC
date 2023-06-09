@@ -9,7 +9,7 @@ export const FieldComponent = ({Style, title, secureTextEntry, placeholder, valu
         <View style={[{
             marginVertical: 5,
         }, Style]}>
-            <Text style={{fontSize: 15, color: "#fff", fontFamily: Constants.fontFamilyBold}}>{title}</Text>
+            <Text style={{fontSize: 15,marginLeft:10, color: "#fff", fontFamily: Constants.fontFamilyBold}}>{title}</Text>
             <TextInput secureTextEntry={secureTextEntry} value={value} onChangeText={onChangeText} style={[{
                 paddingLeft: 20,
                 backgroundColor: "rgba(248,248,248,0.2)",
