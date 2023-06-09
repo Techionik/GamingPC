@@ -89,6 +89,11 @@ function HomeStack(props) {
             <Stack.Screen name={"OrderDetailsScreen"} component={OrderDetailsScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"OrdersScreen"} component={OrdersScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"IndividualOrderDetailScreen"} component={IndividualOrderDetailScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"SettingScreen"} component={SettingScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"ProfileScreen"} component={ProfileScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"AboutUsScreen"} component={AboutUsScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"FeaturesScreen"} component={FeaturesScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"PrivacyPolicyScreen"} component={PrivacyPolicyScreen} options={{headerShown: false}}/>
         </Stack.Navigator>
     );
 }
@@ -109,11 +114,6 @@ const AppStack = ({}) => {
             <Stack.Screen name={"MainStack"} component={MainStack} options={{headerShown: false}}/>
             <Stack.Screen name={"AuthStack"} component={AuthStack} options={{headerShown: false}}/>
             <Stack.Screen name={"HomeStack"} component={HomeStack} options={{headerShown: false}}/>
-            <Stack.Screen name={"SettingScreen"} component={SettingScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"ProfileScreen"} component={ProfileScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"AboutUsScreen"} component={AboutUsScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"FeaturesScreen"} component={FeaturesScreen} options={{headerShown: false}}/>
-            <Stack.Screen name={"PrivacyPolicyScreen"} component={PrivacyPolicyScreen} options={{headerShown: false}}/>
         </Stack.Navigator>
     )
 }
