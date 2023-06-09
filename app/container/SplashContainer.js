@@ -27,13 +27,8 @@ class SplashContainer extends React.Component {
             if (this.props?.userInfo?.Role === "" || this.props?.userInfo === undefined) {
                 this.props.navigation.replace('AuthStack');
             } else {
-                if (this.props?.userInfo?.Role === "Admin") {
-                    this.props.navigation.replace('AdminStack')
-                } else if(this.props?.userInfo?.Role === "Rider"){
-                    this.props.navigation.replace('RiderStack')
-                }else {
-                    this.props.navigation.replace('CustomerStack')
-                }
+                    this.props.navigation.replace('AuthStack')
+
 
             }
         }, 2000)
@@ -48,11 +43,11 @@ class SplashContainer extends React.Component {
                 alignItems: 'center',
                 backgroundColor: Color.primary
             }}>
-                <View style={{paddingHorizontal: 30, justifyContent: "center"}}>
+                <View style={{flex:1,paddingHorizontal: 30, justifyContent: "center"}}>
                     <Image style={{
                         height: undefined,
-                        width: "90%",
-                        aspectRatio: 8,
+                        width: "50%",
+                        aspectRatio: 2.81,
                         alignSelf: 'center',
                     }} source={require('../images/Logo.png')}/>
                 </View>
