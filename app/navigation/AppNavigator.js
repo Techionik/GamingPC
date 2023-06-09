@@ -18,6 +18,11 @@ import {AddCardScreen} from "../container/HomeScreen/AddCardScreen";
 import {OrderDetailsScreen} from "../container/HomeScreen/OrderDetailsScreen";
 import {OrdersScreen} from "../container/HomeScreen/OrdersScreen";
 import {IndividualOrderDetailScreen} from "../container/HomeScreen/IndividualOrderDetailScreen";
+import {SettingScreen} from "../container/HomeScreen/SettingScreen";
+import {ProfileScreen} from "../container/HomeScreen/ProfileScreen";
+import {AboutUsScreen} from "../container/HomeScreen/AboutUsScreen";
+import {FeaturesScreen} from "../container/HomeScreen/FeaturesScreen";
+import {PrivacyPolicyScreen} from "../container/HomeScreen/PrivacyPolicyScreen";
 
 
 const Tab = createBottomTabNavigator();
@@ -104,7 +109,11 @@ const AppStack = ({}) => {
             <Stack.Screen name={"MainStack"} component={MainStack} options={{headerShown: false}}/>
             <Stack.Screen name={"AuthStack"} component={AuthStack} options={{headerShown: false}}/>
             <Stack.Screen name={"HomeStack"} component={HomeStack} options={{headerShown: false}}/>
-
+            <Stack.Screen name={"SettingScreen"} component={SettingScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"ProfileScreen"} component={ProfileScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"AboutUsScreen"} component={AboutUsScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"FeaturesScreen"} component={FeaturesScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"PrivacyPolicyScreen"} component={PrivacyPolicyScreen} options={{headerShown: false}}/>
         </Stack.Navigator>
     )
 }

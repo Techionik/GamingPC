@@ -34,14 +34,22 @@ export const PcBuildScreen = (props) => {
             flex: 1,
             backgroundColor: Color.primary,
         }}>
-            <HeaderComponent title={"PC Build!"}/>
-            <View style={{flex:1}}>
-                <FlatList showsVerticalScrollIndicator={false} style={{marginTop: 20, paddingBottom:50,marginHorizontal: 20}}
+            <HeaderComponent title={"PC Build!"} Children={<>
+                <AntDesign onPress={() => {
+                    navigation.navigate("SettingScreen")
+                }} size={35} name={"setting"} color={"#000"}/>
+            </>}
+            />
+            <View style={{flex: 1}}>
+                <FlatList showsVerticalScrollIndicator={false}
+                          style={{marginTop: 20, paddingBottom: 50, marginHorizontal: 20}}
                           data={Products} renderItem={({item, index}) =>
                     <BuildComponent item={item}/>
                 }/>
             </View>
-            <ButtonComponent onPress={()=>{navigation.navigate("OrderDetailsScreen")}} Style={{borderRadius:0}} title={"Check Out"}/>
+            <ButtonComponent onPress={() => {
+                navigation.navigate("OrderDetailsScreen")
+            }} Style={{borderRadius: 0}} title={"Check Out"}/>
         </View>
     )
 }
@@ -49,12 +57,12 @@ export const PcBuildScreen = (props) => {
 
 const BuildComponent = ({item, image}) => {
     const [selected, setSelected] = useState(false)
-    const navigation=useNavigation()
+    const navigation = useNavigation()
     return (
         <View style={{
             backgroundColor: "rgba(177,184,185,0.2)",
             marginVertical: 15,
-            borderRadius:10,
+            borderRadius: 10,
         }}>
             <TouchableOpacity onPress={() => {
                 navigation.navigate("ItemSelectionScreen")

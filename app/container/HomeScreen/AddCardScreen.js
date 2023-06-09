@@ -14,7 +14,7 @@ export const AddCardScreen=()=>{
         <View style={{flex:1,backgroundColor:Color.primary}}>
             <ScrollView>
             <HeaderComponent title={"Card Details"}/>
-            <Image source={require('../../images/Card.png')} style={{aspectRatio:2,alignSelf:"center",marginVertical:20,height:undefined,width:"95%"}}/>
+            <Image source={require('../../images/Card.png')} style={{aspectRatio:1.92,alignSelf:"center",marginVertical:20,height:undefined,width:"95%"}}/>
             <View style={{padding:10}}>
                 <CardField placeholder={"Name On Card"}/>
                 <CardField placeholder={"Account Name"}/>
@@ -29,7 +29,7 @@ export const AddCardScreen=()=>{
             </View>
             <View style={{flex:1}}/>
             </ScrollView>
-            <ButtonComponent  title={"Confirm"} Style={{width:"50%",marginBottom:20,borderRadius:10,alignSelf:"center"}}/>
+            <ButtonComponent  title={"Confirm"} Style={{width:"50%",marginVertical:20,borderRadius:10,alignSelf:"center"}}/>
         </View>
     )
 }

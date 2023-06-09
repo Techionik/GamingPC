@@ -55,7 +55,7 @@ export const DashboardScreen = (props) => {
 
             <View style={{flexDirection:"row",alignItems:"center",margin:30,justifyContent:"space-between"}}>
                <DashboardComponent onPress={()=>{navigation.navigate("PcBuildScreen")}} title={"Pc Build"} image={require('../../images/BuildImage.png')}/>
-               <DashboardComponent title={"Accessories"} image={require('../../images/AccesoriesImage.png')}/>
+               <DashboardComponent onPress={()=>{navigation.navigate("PcBuildScreen")}}  title={"Accessories"} image={require('../../images/AccesoriesImage.png')}/>
             </View>
 
         </View>
