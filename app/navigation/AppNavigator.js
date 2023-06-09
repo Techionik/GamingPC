@@ -12,6 +12,12 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {SignUpScreen} from "../container/AuthScreens/SignUpScreen";
 import {DashboardScreen} from "../container/HomeScreen/DashboardScreen";
 import {PcBuildScreen} from "../container/HomeScreen/PcBuildScreen";
+import {ItemSelectionScreen} from "../container/HomeScreen/ItemSelectionScreen";
+import {ItemDetailsScreen} from "../container/HomeScreen/ItemDetailsScreen";
+import {AddCardScreen} from "../container/HomeScreen/AddCardScreen";
+import {OrderDetailsScreen} from "../container/HomeScreen/OrderDetailsScreen";
+import {OrdersScreen} from "../container/HomeScreen/OrdersScreen";
+import {IndividualOrderDetailScreen} from "../container/HomeScreen/IndividualOrderDetailScreen";
 
 
 const Tab = createBottomTabNavigator();
@@ -72,6 +78,12 @@ function HomeStack(props) {
         <Stack.Navigator initialRouteName={"DashboardScreen"}>
             <Stack.Screen name={"DashboardScreen"} component={DashboardScreen} options={{headerShown: false}}/>
             <Stack.Screen name={"PcBuildScreen"} component={PcBuildScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"ItemSelectionScreen"} component={ItemSelectionScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"ItemDetailsScreen"} component={ItemDetailsScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"CheckOutScreen"} component={AddCardScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"OrderDetailsScreen"} component={OrderDetailsScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"OrdersScreen"} component={OrdersScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"IndividualOrderDetailScreen"} component={IndividualOrderDetailScreen} options={{headerShown: false}}/>
         </Stack.Navigator>
     );
 }

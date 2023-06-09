@@ -23,9 +23,10 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import {HeaderComponent} from "../Components/HeaderComponent";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import {SearchHeaderComponent} from "../Components/SearchHeaderComponent";
 
 
-export const PcBuildScreen = (props) => {
+export const ItemSelectionScreen = (props) => {
     const navigation = useNavigation()
     const dispatch = useDispatch()
     const Products = [{title: "Processor"}, {title: "Motherboard"}, {title: "Memory"}, {title: "Monitor"}, {title: "Keyboard"}, {title: "Mouse"}, {title: "Graphic Card"}]
@@ -34,14 +35,13 @@ export const PcBuildScreen = (props) => {
             flex: 1,
             backgroundColor: Color.primary,
         }}>
-            <HeaderComponent title={"PC Build!"}/>
+            <SearchHeaderComponent title={"PC Build!"}/>
             <View style={{flex:1}}>
-                <FlatList showsVerticalScrollIndicator={false} style={{marginTop: 20, paddingBottom:50,marginHorizontal: 20}}
+                <FlatList showsVerticalScrollIndicator={false} style={{marginTop: 20,paddingBottom:50, marginHorizontal: 20}}
                           data={Products} renderItem={({item, index}) =>
                     <BuildComponent item={item}/>
                 }/>
             </View>
-            <ButtonComponent onPress={()=>{navigation.navigate("OrderDetailsScreen")}} Style={{borderRadius:0}} title={"Check Out"}/>
         </View>
     )
 }
@@ -51,65 +51,44 @@ const BuildComponent = ({item, image}) => {
     const [selected, setSelected] = useState(false)
     const navigation=useNavigation()
     return (
-        <View style={{
+        <TouchableOpacity onPress={()=>{navigation.navigate("ItemDetailsScreen")}} style={{
             backgroundColor: "rgba(177,184,185,0.2)",
             marginVertical: 15,
             borderRadius:10,
+            padding: 10,
         }}>
-            <TouchableOpacity onPress={() => {
-                navigation.navigate("ItemSelectionScreen")
-                // setSelected(!selected)
-            }} style={{
-                justifyContent: "space-between",
-                flexDirection: "row",
-                padding: 10,
-                borderRadius: 10,
-                borderWidth: 1.5,
-                borderColor: Color.theme
-            }}>
-                <View/>
-                <Text
-                    style={{
-                        fontSize: 20,
-                        color: Color.theme,
-                        fontFamily: Constants.fontFamilyMedium
-                    }}>{item?.title}</Text>
-                <AntDesign name={"plus"} color={"#000"}
-                           style={{padding: 5, backgroundColor: Color.theme, alignSelf: "center"}}/>
-            </TouchableOpacity>
-            {selected && <View style={{padding: 10, flexDirection: "row", alignItems: "center"}}>
+          <View style={{ flexDirection: "row", alignItems: "center"}}>
                 <Image source={require('../../images/Item.png')}
                        style={{aspectRatio: 1, height: undefined, width: "20%"}}/>
                 <View style={{marginLeft: 10, flex: 1}}>
-                    <Text style={{fontSize: 14, fontFamily: Constants.fontFamilySemiBold, color: Color.theme}}>Asus
-                        TUF</Text>
+                    <Text style={{fontSize: 14, fontFamily: Constants.fontFamilySemiBold,includeFontPadding:false,padding:0, color: Color.theme}}>Asus TUF</Text>
                     <Text style={{fontSize: 12, width: "100%", fontFamily: Constants.fontFamilyRegular, color: "#fff"}}>visual
                         display unit, screen, display, video display, video display terminal.</Text>
                     <View style={{flexDirection: "row", alignItems: "center", justifyContent: "space-between"}}>
                         <Text style={{fontSize: 12, fontFamily: Constants.fontFamilyBold, color: Color.theme}}>$
                             100</Text>
-                        <TouchableOpacity style={{
-                            borderWidth: 1,
-                            paddingVertical: 3,
-                            paddingHorizontal: 10,
-                            flexDirection: "row",
-                            alignItems: "center",
-                            borderColor: "red",
-                            borderRadius: 5
-                        }}>
-                            <MaterialIcons name={"delete"} color={"red"} size={20}/>
-                            <Text style={{
-                                fontSize: 14,
-                                fontFamily: Constants.fontFamilyRegular,
-                                includeFontPadding: false,
-                                padding: 0,
-                                color: "#fff"
-                            }}>Remove</Text>
-                        </TouchableOpacity>
                     </View>
                 </View>
-            </View>}
-        </View>
+            </View>
+            <View style={{flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+                <View style={{justifyContent:"center",alignItems:"center"}}>
+                    <Text style={{fontSize:10,fontFamily:Constants.fontFamilyRegular,color:Color.theme}}>Brand</Text>
+                    <Text style={{fontSize:10,fontFamily:Constants.fontFamilyRegular,color:"#fff"}}>Aoc</Text>
+                </View>
+                <View style={{justifyContent:"center",alignItems:"center"}}>
+                    <Text style={{fontSize:10,fontFamily:Constants.fontFamilyRegular,color:Color.theme}}>Model</Text>
+                    <Text style={{fontSize:10,fontFamily:Constants.fontFamilyRegular,color:"#fff"}}>C24G1</Text>
+                </View>
+                <View style={{justifyContent:"center",alignItems:"center"}}>
+                    <Text style={{fontSize:10,fontFamily:Constants.fontFamilyRegular,color:Color.theme}}>Resolution</Text>
+                    <Text style={{fontSize:10,fontFamily:Constants.fontFamilyRegular,color:"#fff"}}>1920 x 1080</Text>
+                </View>
+                <View style={{justifyContent:"center",alignItems:"center"}}>
+                    <Text style={{fontSize:10,fontFamily:Constants.fontFamilyRegular,color:Color.theme}}>Screen Size</Text>
+                    <Text style={{fontSize:10,fontFamily:Constants.fontFamilyRegular,color:"#fff"}}>24”</Text>
+                </View>
+            </View>
+        </TouchableOpacity>
     )
 }
 
